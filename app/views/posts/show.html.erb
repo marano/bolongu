@@ -1,0 +1,24 @@
+<%= render :partial => @post %>
+
+<% unless @post.comments.empty? %>
+  <h2>Comments</h2>
+<% end %>
+<div id="comments">  
+  <%= render :partial => @post.comments %>
+</div>
+
+<div class='new_comment'>
+  <% if logged_in? %>
+    <% remote_form_for [@post, Comment.new] do |f| %>
+      <p>
+        <%= f.label :body, "New Comment" %><br />
+        <%= f.text_area :body, :class => 'comment_input' %>
+      </p>
+      <p><%= f.submit "Add Comment" %></p>
+    <% end %>
+  <% else %>
+    <p><i>login so you can comment!</i></p>
+  <% end %>
+</div>
+
+<%= link_to 'Back', account_index_path(@post.account.login) %>
