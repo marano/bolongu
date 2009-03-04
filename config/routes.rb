@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.home '/home', :controller => 'home', :action => 'index'
+  map.about '/about', :controller => 'home', :action => 'about'
   
 #  map.signup '/signup', :controller => 'accounts', :action => 'new'
 #  map.login  '/login',  :controller => 'sessions', :action => 'new'
