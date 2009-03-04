@@ -1,9 +1,0 @@
-<% div_for comment do %>
-  <p>
-    <%= render :partial => 'accounts/account_content', :locals => { :account_content => comment } %>
-    <div class='comment_body'>says <%= h comment.body %></div>
-    <% if current_account_content?(comment) || current_account_content?(comment.post) %>
-    <%= link_to_remote 'Delete', :url => post_comment_path(comment.post, comment), :confirm => 'Are you sure?', :method => :delete %>
-    <% end %>
-  </p>
-<% end %>
