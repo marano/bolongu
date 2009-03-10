@@ -18,15 +18,7 @@ pre {
 a img { border: none; }
 
 #top_menu {
-    /* border: solid 1px black; */
-    list-style-type: none;
-    padding: 0px 0px 0px 0px;
     width: 80%;
-}
-
-#top_menu li {
-    float: left;
-    display: block;
 }
 
 .green_border {
@@ -49,10 +41,12 @@ a img { border: none; }
 
 .menu_item a, .menu_item a:visited {
     color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 .menu_item a:hover {
-    background-color: red;
+    color: red;
+    background-color: #4c8542;
 }
 
 #about_logo {
@@ -60,17 +54,14 @@ a img { border: none; }
     text-align: center;
 }
 
-#home_logo {
-    float: left;
-}
+#home_logo { float: left; }
 
-#home_content {
-    clear: left;    
-}
+#home_content { clear: left; }
+
+#home_posts { margin-top: 10px; }
 
 .account_title {
     text-align: center;
-    /* border: solid 1px black; */
     width: 50%;
 }
 
@@ -89,8 +80,9 @@ a img { border: none; }
     padding: 10px 10px 10px 10px;
 }
 
-.avatar_tiny {
+.avatar_tiny { 
     float: left;
+    width: 70px;
 }
 
 .account_info {
@@ -119,20 +111,16 @@ a img { border: none; }
 
 .account_content_avatar {
     float: left;
-    padding: 0px 0px 0px 0px;
     margin-right: 5px;
 }
 
 .account_content_time {
     float: left;
-    padding: 0px 0px 0px 0px;
-    margin-right: 5px;
 }
 
 .account_content_name {
     font-weight:bold;
     float: left;
-    padding: 0px 0px 0px 0px;
     margin-right: 5px;
 }
 

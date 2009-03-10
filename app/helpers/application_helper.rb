@@ -3,6 +3,10 @@ module ApplicationHelper
   def title(title)
     content_for(:title) { title }
   end
+
+  def head(head)
+    content_for(:head) { head }
+  end
   
   def current_account_content?(object)
     object.account == current_account

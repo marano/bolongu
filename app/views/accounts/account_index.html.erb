@@ -1,3 +1,6 @@
+<% head (auto_discovery_link_tag :atom, formatted_account_index_path(@account.login)) %>
+<% head (auto_discovery_link_tag :atom, formatted_account_index_path(@account.login, :options => :format)) %>
+
 <% title @account.blog_title %>
 
 <div class='account_info'>
