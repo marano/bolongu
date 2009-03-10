@@ -19,9 +19,9 @@ role :web, domain
 role :app, domain
 role :db, domain
  
-set :deploy_to, "/home/decorosa/rails_app/blog_stage"
+set :deploy_to, "/home/decorosa/rails_app/bolungo"
 set :public_html, "/home/decorosa/public_html"
-set :site_path, "/home/decorosa/public_html/blog_stage"
+set :site_path, "/home/decorosa/public_html/bolungo"
 set :runner, nil
 set :use_sudo, false
 set :no_release, true

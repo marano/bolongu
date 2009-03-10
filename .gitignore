@@ -4,6 +4,7 @@ log/*.log
 tmp/**/*
 doc/api
 doc/app
+public/system
 config/initializers/mail_config.rb
 config/database.yml
 db/*.sqlite3
