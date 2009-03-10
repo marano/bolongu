@@ -48,6 +48,7 @@ class AccountsController < ApplicationController
   end
 
   def create
+    debugger
     logout_keeping_session!
     @account = Account.new(params[:account])
     success = @account && @account.save

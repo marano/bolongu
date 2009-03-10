@@ -7,3 +7,4 @@ doc/app
 config/initializers/mail_config.rb
 config/database.yml
 db/*.sqlite3
+public/system

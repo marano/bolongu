@@ -25,3 +25,5 @@ config.action_controller.perform_caching             = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+SITE_URL = "www.bolungo-bongo.com"
