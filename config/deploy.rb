@@ -33,3 +33,18 @@ ssh_options[:forward_agent] = true
 ssh_options[:username] = user
 ssh_options[:paranoid] = false
 
+namespace(:customs) do
+  task :config, :roles => :app do
+    run <<-CMD
+      ln -nfs #{shared_path}/system/database.yml #{release_path}/config/database.yml
+    CMD
+  end
+  task :symlink, :roles => :app do
+    run <<-CMD
+      ln -s ~/rails_app/config/mail_config.rb #{release_path}/config/initializers/mail_config.rb
+    CMD
+  end
+end
+
+after "deploy:symlink","customs:symlink"
+
