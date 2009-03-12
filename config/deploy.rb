@@ -72,9 +72,10 @@ end
 namespace :deploy do
   desc "Pede restart ao servidor Passenger"
   task :restart, :roles => :app do
+    #run "if [ -d #{release_path}/vendor/rails ]; then rmdir #{release_path}/vendor/rails ; fi"
+    run "ln -s #{deploy_to}/rails #{release_path}/vendor/"
     run "chmod -R 755 #{release_path}"
-    run "touch #{deploy_to}/current/tmp/restart.txt"
-    run "ln -s #{release_path}/rails #{deploy_to}/rails"
+    run "touch #{deploy_to}/current/tmp/restart.txt"    
   end
 end
 
