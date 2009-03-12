@@ -55,6 +55,7 @@ task :before_setup do
   run "ln -s #{deploy_to}/current/public #{public_html}/#{application}"
   upload File.join(File.dirname(__FILE__), "database_production.yml"), "#{deploy_to}/etc/database.yml"
   upload File.join(File.dirname(__FILE__), "initializers/mail_config.rb"), "#{deploy_to}/etc/mail_config.rb"
+  upload File.join(File.dirname(__FILE__), "../vendor/rails"), "#{deploy_to}/rails"
   #upload File.join(File.dirname(__FILE__), "locaweb_backup.rb"), "#{deploy_to}/etc/locaweb_backup.rb"
   #upload File.join(File.dirname(__FILE__), "ssh_helper.rb"), "#{deploy_to}/etc/ssh_helper.rb"  
 end
@@ -73,6 +74,7 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "chmod -R 755 #{release_path}"
     run "touch #{deploy_to}/current/tmp/restart.txt"
+    run "ln -s #{release_path}/rails #{deploy_to}/rails"
   end
 end
 
