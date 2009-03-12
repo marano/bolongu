@@ -34,9 +34,9 @@ class AccountsController < ApplicationController
   def update
     @account = Account.find(params[:id])
 
-    params[:account] -= :avatar if params[:account][:avatar].nil?
-    params[:account] -= :password if params[:account][:password].blank?
-    params[:account] -= :password_confirmation if params[:account][:password_confirmation].blank?
+    params[:account].delete :avatar if params[:account][:avatar].nil?
+    params[:account].delete :password if params[:account][:password].blank?
+    params[:account].delete :password_confirmation if params[:account][:password_confirmation].blank?
 
     if @account.update_attributes(params[:account])
       flash[:notice] = 'Account was successfully updated.'
