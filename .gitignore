@@ -5,7 +5,7 @@ tmp/**/*
 db/*.sqlite3
 doc/api
 doc/app
-public/vendor/rails
 public/system
+vendor/rails
 config/initializers/mail_config.rb
 config/database_production.yml
