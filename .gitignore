@@ -2,9 +2,10 @@
 *~
 log/*.log
 tmp/**/*
+db/*.sqlite3
 doc/api
 doc/app
+public/vendor/rails
 public/system
 config/initializers/mail_config.rb
-config/database.yml
-db/*.sqlite3
+config/database_production.yml
