@@ -16,8 +16,8 @@ class AccountMailer < ActionMailer::Base
   protected
     def setup_email(account)
       @recipients  = "#{account.email}"
-      @from        = "blogstore"
-      @subject     = "blogstore "
+      @from        = "Bolongu! <#{MAILER_ADRESS}>"
+      @subject     = "Bolongu! "
       @sent_on     = Time.now
       @body[:account] = account
     end
