@@ -18,7 +18,7 @@
       %>
     </div>
   <% end %>
-  <%= render :partial => 'accounts/account_content', :locals => { :account_content => post } %>
+  <%= render :partial => 'accounts/account_content', :object => post %>
   <%= link_to_unless_current pluralize(post.comments.size, 'comment'), post %> from   <%= link_to_unless_current pluralize(post.commentator.size, 'commentator'), post %>
   <br />
   <br />
