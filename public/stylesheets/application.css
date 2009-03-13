@@ -103,11 +103,11 @@ a img { border: none; }
 .post_content { }
 
 .post_manager_links {
-    clear: both;
+    clear: left;
     margin-bottom: 10px;
 }
 
-.account_content { clear: both; }
+.account_content { clear: left; }
 
 .account_content_avatar {
     float: left;

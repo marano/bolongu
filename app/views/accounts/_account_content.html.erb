@@ -1,6 +1,6 @@
 <div class="account_content" >
   <div class="account_content_avatar" >
-    <% unless account_content.account.avatar.url.nil?  %>
+    <% if account_content.account.avatar.file?  %>
       <%= image_tag account_content.account.avatar.url(:tiny) %>
     <% end %>
   </div>

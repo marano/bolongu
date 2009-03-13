@@ -1,22 +1,23 @@
 <% head (auto_discovery_link_tag :atom, formatted_account_index_path(@account.login)) %>
-<% head (auto_discovery_link_tag :atom, formatted_account_index_path(@account.login, :options => :format)) %>
+<% #head (auto_discovery_link_tag :atom, formatted_account_index_path(@account.login, :options => :format)) 
+%>
 
 <% title @account.blog_title %>
 
+<div class='account_title'><h1><%= @account.blog_title %></h1></div>
+
 <div class='account_info'>
   <h2><%= @account.name %></h2>
-  <% unless @account.avatar.nil? %>
+  <% if @account.avatar.file? %>
     <p><%= image_tag @account.avatar.url(:default) %></p>
   <% end %>  
-  <% unless @account == current_account || friend?(current_account, @account) %>
+  <% unless !logged_in? || @account == current_account || friend?(current_account, @account) %>
     <p><%= link_to 'Add friend', create_friendship_path(@account.id), :html => {:method => :post} %></p>
   <% end %>
-  <%= "<h2>Friends</h2>" unless @account.friends.empty? %>
+  <%= '<h3>Friends</h3>' unless @account.friends.empty? %>
   <% for friend in @account.friends %>
-    <p><%= image_tag friend.avatar(:tiny) %><%= link_to friend.name, account_index_path(friend.login) %></p>
+    <p><%= image_tag friend.avatar(:tiny) %> <%= link_to friend.name, account_index_path(friend.login) %></p>
   <% end %>
 </div>
-
-<div class='account_title'><h1><%= @account.blog_title %></h1></div>
 
 <%= render :partial => @account.posts %>

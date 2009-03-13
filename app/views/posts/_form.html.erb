@@ -1,10 +1,10 @@
 <% form_for post, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   
-  <% unless post.photo.nil? %>
-  <p>
-    <%= image_tag post.photo.url(:small) %>
-  </p>
+  <% if post.photo.file? %>
+    <p>
+      <%= image_tag post.photo.url(:small) %>
+    </p>
   <% end %>
   <p>
     <%= f.label :photo, 'Picture' %><br />

@@ -1,7 +1,7 @@
 <% div_for post do %>
   <div class='post_head'>
     <h2><%= link_to_unless_current h(post.title), post %></h2>
-    <% unless post.photo.nil? %>
+    <% if post.photo.file? %>
       <div class='post_photo'>
         <%= image_tag(post.photo.url :small) %>
       </div>
