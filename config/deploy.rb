@@ -64,7 +64,9 @@ task :before_symlink do
   on_rollback {}
   run "test -d #{release_path}/tmp || mkdir -m 755 #{release_path}/tmp"
   run "test -d #{release_path}/db || mkdir -m 755 #{release_path}/db"
-  run "cp #{deploy_to}/etc/database.yml #{release_path}/config/database.yml"
+  #Copia também a configuração do email de envio
+  run "cp #{deploy_to}/etc/mail_config.rb #{release_path}/config/initializers/mail_config.rb"
+  run "cp #{deploy_to}/etc/database.yml #{release_path}/config/database.yml"  
   run "cd #{release_path} && rake db:migrate RAILS_ENV=production"
 end
 
