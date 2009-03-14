@@ -1,7 +1,7 @@
 <%= render :partial => @post %>
 
 <% unless @post.comments.empty? %>
-  <h2>Comments</h2>
+  <h3>Comments</h3>
 <% end %>
 <div id="comments">  
   <%= render :partial => @post.comments %>
