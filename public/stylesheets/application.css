@@ -107,6 +107,10 @@ a img { border: none; }
     margin-bottom: 10px;
 }
 
+.comment {
+    clear: left;
+}
+
 .account_content { clear: left; }
 
 .account_content_avatar {
