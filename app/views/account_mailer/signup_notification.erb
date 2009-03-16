@@ -1,10 +1,9 @@
-<%= image_tag '#{SITE_URL}/images/logo.jpg' %>
+<p><%= image_tag @logo %></p>
 
-Your account has been created.
+<p>Your account has been created.</p>
 
-  Username: <%=h @account.login %>
-  Password: <%=h @account.password %>
+<p>Username: <%=h @account.login %>
+<br/>Password: <%=h @account.password %></p>
 
-Visit this url to activate your account:
-
-  <%=h @url %>
+<p>Visit this url to activate your account:
+<br/><%=h @url %></p>

@@ -19,6 +19,8 @@ class AccountMailer < ActionMailer::Base
       @from        = "Bolongu! <#{MAILER_ADRESS}>"
       @subject     = "Bolongu! "
       @sent_on     = Time.now
+      @content_type = "text/html"
       @body[:account] = account
+      @body[:logo] = "http://#{SITE_URL}/images/logo.jpg"
     end
 end
