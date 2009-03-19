@@ -10,7 +10,7 @@ common: &default_settings
   # ============================== LICENSE KEY ===============================
   # You must specify the licence key associated with your New Relic account.
   # This key binds your Agent's data to your account in the New Relic RPM service.
-  license_key: 'PASTE_YOUR_KEY_HERE'
+  license_key: 'cd6c216c2d34d3e1c454dd48be01d1f7a488db70'
   
   # Application Name
   # Set this to be the name of your application as you'd like it show up in RPM.
@@ -18,6 +18,15 @@ common: &default_settings
   # on your home dashboard page. This setting does not prevent you from manually
   # defining applications.
   app_name: Bolongu
+  
+  # Agent Enabled
+  # Use this setting to force the agent to run or not run.
+  # Default is 'auto' which means the agent will install and run only if a
+  # valid dispatcher such as Mongrel is running.  This prevents it from running
+  # with Rake or the console.  Set to false to completely turn the agent off
+  # regardless of the other settings.  Valid values are true, false and auto.
+  # agent_enabled: auto
+  agent_enabled: auto
 
   # the 'enabled' setting is used to turn on the NewRelic Agent.  When false,
   # your application is not instrumented and the Agent does not start up or
@@ -47,7 +56,7 @@ common: &default_settings
   # If a proxy is used, the host setting is required.  Other settings are optional.  Default
   # port is 8080.
   #
-  # proxy_host: proxy.sample.com
+  # proxy_host: hostname
   # proxy_port: 8080
   # proxy_user:
   # proxy_pass:

@@ -17,8 +17,10 @@
       <%=# link_to_remote 'Delete', :url => post_path(post), :confirm => 'Are you sure?', :method => :delete
       %>
     </div>
+  <% end %>  
+  <% render :layout => 'accounts/account_content', :object => post do %>
+    <%= share_this post.title, post_url(post) %>
   <% end %>
-  <%= render :partial => 'accounts/account_content', :object => post %>
   <%= link_to_unless_current pluralize(post.comments.size, 'comment'), post %> from   <%= link_to_unless_current pluralize(post.commentator.size, 'commentator'), post %>
   <br />
   <br />
