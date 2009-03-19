@@ -1,11 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.root :controller => 'home', :action => 'index'
   map.home '/home', :controller => 'home', :action => 'index'
   map.about '/about', :controller => 'home', :action => 'about'
-  
-#  map.signup '/signup', :controller => 'accounts', :action => 'new'
-#  map.login  '/login',  :controller => 'sessions', :action => 'new'
-#  map.logout '/logout', :controller => 'sessions', :action => 'destroy'  
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
@@ -25,9 +22,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.resources :posts, :has_many => :comments
 
-  map.account_index '', :controller => 'accounts', :action => 'account_index'
   map.account_index ':account_login', :controller => 'accounts', :action => 'account_index'
-
+  
   map.create_friendship 'friendships/:friend_id', :controller => 'friendships', :action => 'create', :method => :post
 
   # The priority is based upon order of creation: first created -> highest priority.
