@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   has_attached_file :photo, :styles => { :default => ["640x480>", :jpg], :small => ["320x240>", :jpg], :tiny => ["160x120>", :jpg] }
   
   validates_attachment_content_type :photo, :content_type => [ 'image/jpeg', 'image/png', 'image/bmp' , 'image/gif' ]
-  validates_attachment_size :photo, :less_than => 2.megabytes
+  validates_attachment_size :photo, :less_than => 5.megabytes
   
   default_scope :order => 'created_at DESC'
   
