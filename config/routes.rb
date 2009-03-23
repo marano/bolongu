@@ -18,11 +18,12 @@ ActionController::Routing::Routes.draw do |map|
 #    end  
 #  end
   
-  map.resources :things, :member => [ :add, :remove ]
+  map.resources :things, :member => [ :add, :remove ], :has_many => :comments
   map.resources :accounts
   map.resource :session
   map.resources :friendships, :except => [ :new, :update, :show, :edit ]  
   map.resources :posts, :has_many => :comments
+  map.resources :comments, :only => [ :create, :show, :destroy ]
 
   map.account_index ':account_login', :controller => 'accounts', :action => 'account_index'
   

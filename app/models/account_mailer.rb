@@ -1,10 +1,16 @@
 class AccountMailer < ActionMailer::Base
+  def comment_notification(account, comment)
+    setup_email(account)
+    @subject    += 'new comment'
+    
+    @body[:url] = "http://#{SITE_URL}/comments/#{comment.id}"
+  end  
+
   def signup_notification(account)
     setup_email(account)
     @subject    += 'Please activate your new account'
   
     @body[:url]  = "http://#{SITE_URL}/activate/#{account.activation_code}"
-  
   end
   
   def activation(account)
