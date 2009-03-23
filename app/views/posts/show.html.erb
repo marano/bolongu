@@ -1,24 +1,35 @@
 <%= render :partial => @post %>
 
-<% unless @post.comments.empty? %>
-  <h3>Comments</h3>
-<% end %>
+<h3>Comments</h3>
+
+<div class='new_comment clear'>
+  <% remote_form_for [@post, Comment.new] do |f| %>
+    <% unless logged_in? %>
+      <p>
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+      </p>
+      <p>
+        <%= f.label :url %><br />
+        <%= f.text_field :url %>
+      </p>
+    <% end %>
+    <p>
+      <%= f.label :body, "Comment" %><br />
+      <%= f.text_area :body, :class => 'comment_input' %>
+    </p>
+    <p><%= f.submit "Add Comment" %></p>
+  <% end %>
+</div>
+
 <div id="comments">  
   <%= render :partial => @post.comments %>
 </div>
 
-<div class='new_comment'>
-  <% if logged_in? %>
-    <% remote_form_for [@post, Comment.new] do |f| %>
-      <p>
-        <%= f.label :body, "New Comment" %><br />
-        <%= f.text_area :body, :class => 'comment_input' %>
-      </p>
-      <p><%= f.submit "Add Comment" %></p>
-    <% end %>
-  <% else %>
-    <p><i>login so you can comment!</i></p>
-  <% end %>
+<div class='clear'>
+  <%= link_to 'Back', account_index_path(@post.account.login) %>
 </div>
-
-<%= link_to 'Back', account_index_path(@post.account.login) %>

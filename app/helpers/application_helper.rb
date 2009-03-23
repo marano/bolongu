@@ -1,5 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+
+  def javascript(script)
+    head javascript_include_tag(script)
+  end
+
   def title(title)
     content_for(:title) { title }
   end
@@ -8,11 +13,4 @@ module ApplicationHelper
     content_for(:head) { head }
   end
   
-  def current_account_content?(object)
-    object.account == current_account
-  end
-  
-  def friend?(account, friend)
-    account.friends.include?(friend)
-  end
 end

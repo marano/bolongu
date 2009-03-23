@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090303193654) do
+ActiveRecord::Schema.define(:version => 20090323021130) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -33,12 +33,21 @@ ActiveRecord::Schema.define(:version => 20090303193654) do
 
   add_index "accounts", ["login"], :name => "index_accounts_on_login", :unique => true
 
+  create_table "accounts_things", :id => false, :force => true do |t|
+    t.integer "account_id"
+    t.integer "thing_id"
+  end
+
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id"
+    t.integer  "thing_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "url"
   end
 
   create_table "friendships", :force => true do |t|
@@ -57,6 +66,18 @@ ActiveRecord::Schema.define(:version => 20090303193654) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.integer  "account_id"
+  end
+
+  create_table "things", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "author_id"
   end
 
 end

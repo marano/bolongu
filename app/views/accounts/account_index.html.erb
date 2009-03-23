@@ -4,20 +4,8 @@
 
 <% title @account.blog_title %>
 
-<div class='account_title'><h1><%= @account.blog_title %></h1></div>
+<div id='account_title' class='text_center'><h1><%= @account.blog_title %></h1></div>
 
-<div class='account_info'>
-  <h2><%= @account.name %></h2>
-  <% if @account.avatar.file? %>
-    <p><%= image_tag @account.avatar.url(:default) %></p>
-  <% end %>  
-  <% unless !logged_in? || @account == current_account || friend?(current_account, @account) %>
-    <p><%= link_to 'Add friend', create_friendship_path(@account.id), :html => {:method => :post} %></p>
-  <% end %>
-  <%= '<h3>Friends</h3>' unless @account.friends.empty? %>
-  <% for friend in @account.friends %>
-    <p><%= image_tag friend.avatar(:tiny) %> <%= link_to friend.name, account_index_path(friend.login) %></p>
-  <% end %>
-</div>
+<%= render :partial => 'side_bar', :locals => { :account => @account } %>
 
 <%= render :partial => @account.posts %>

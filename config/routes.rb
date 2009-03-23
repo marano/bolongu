@@ -16,8 +16,9 @@ ActionController::Routing::Routes.draw do |map|
 #    account.resources :posts do |post|  
 #      post.resources :comments  
 #    end  
-#  end 
+#  end
   
+  map.resources :things
   map.resources :accounts
   map.resource :session
   map.resources :posts, :has_many => :comments

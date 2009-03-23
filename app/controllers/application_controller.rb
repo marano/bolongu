@@ -7,11 +7,13 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
   helper :all
+  helper_method :'friend?', :'current_account_content?'
+  
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   protected
 
-  def current_account_owns?(object)
+  def current_account_content?(object)
     object.account == current_account
   end
   

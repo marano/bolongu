@@ -2,60 +2,33 @@
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Bolongu! <%= yield :title %></title>
-  <%= stylesheet_link_tag 'application' %>
-  <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag 'rounded' %>
-  <%= share_this_javascript_include %>
-  <%= yield :head %>
-  <link rel="shortcut icon" href="/favicon.ico" />
-</head>
-<body>
-
-<div id="container">
   
-  <div style='float:right;'><%= link_to image_tag('logo_tiny.jpg'), about_path %></div>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Bolongu! <%= yield :title %></title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag :defaults %>
+    <%= share_this_javascript_include %>
+    <%= javascript_include_tag 'rounded' %>
+    <%= yield :head %>
+    <link rel="shortcut icon" href="/favicon.ico" />
+  </head>
+  <body>
   
-  <div id="top_menu">
-      <% if logged_in? && !current_account.avatar.url.nil?  %>
-        <div class='green_border avatar_tiny rounded'>
-          <%= image_tag current_account.avatar.url(:tiny) %>
-        </div>
-      <% end %>
-    <div class="menu_item green_border rounded"><%= link_to_unless_current "Home", home_path %></div>
-    <% if logged_in? %>
-      <div class="menu_item green_border rounded"><%= link_to_unless_current "Blog", account_index_path(current_account.login) %></div>
-      <div class="menu_item green_border rounded"><%= link_to_unless_current "Post", new_post_path %></div>
-      <div class="menu_item green_border rounded"><%= link_to_unless_current "Settings", edit_account_path(current_account) %></div>
-      <div class="menu_item green_border rounded"><%= link_to 'Logout', logout_path %></div>
-    <% else %>
-      <div class="menu_item green_border rounded"><%= link_to_unless_current 'Login', login_path %></div>
-      <div class="menu_item green_border rounded"><%= link_to_unless_current 'Sign Up', signup_path %></div>
-    <% end %>
-  </div>
+    <div id="container">
   
-  <% unless flash[:notice].nil? %>
-    <div id="flash_notice">
-      <p><%= flash[:notice] %></p>
+      <div class='right'><%= link_to image_tag('logo_tiny.jpg'), about_path %></div>
+  
+      <%= render :partial => 'layouts/menu' %>
+  
+      <%= render :partial => 'layouts/notification_message' %>
+  
+      <div id="content" class="clear padding">
+        <%= yield  %>
+      </div>
+  
     </div>
-  <% end %>
-  <% unless flash[:error].nil? %>
-    <div id="flash_error">
-      <p><%= flash[:error] %></p>
-    </div>
-  <% end %>
+    
+  </body>
   
-  <div id="content">
-    <%= yield  %>
-  </div>
-  
-</div>
-
-<script type="text/javascript">
-  Rounded('rounded', 10, 10);
-</script>
-
-</body>
 </html>

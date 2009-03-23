@@ -1,0 +1,17 @@
+<div class='right padding'>
+  <h2><%= account.name %></h2>
+  <% if account.avatar.file? %>
+    <p><%= image_tag account.avatar.url(:default) %></p>
+  <% end %>
+  <% unless !logged_in? || account == current_account || friend?(current_account, account) %>
+    <p><%= link_to 'Follow', create_friendship_path(account.id), :html => {:method => :post} %></p>
+  <% end %>
+  <%= '<h3>Following</h3>' unless account.friends.empty? %>
+  <% for friend in account.friends %>
+    <p><%= link_to image_tag(friend.avatar(:tiny)), account_index_path(friend.login), :title => friend.name %></p>
+  <% end %>
+  <h3>Things</h3> <%= link_to 'create', new_thing_path %>
+  <% for thing in account.things %>
+    <p><%= link_to image_tag(thing.photo(:tiny)), thing_path(thing), :title => thing.name %></p>
+  <% end %>
+</div>

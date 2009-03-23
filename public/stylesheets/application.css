@@ -4,10 +4,15 @@ body {
 }
 
 body, p, ol, ul, td {
-  font-family: comic-sans, verdana, arial, helvetica, sans-serif;
+  font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
 }
 
+a img { border: none; }
+
+a { color: #666; }
+a:visited { color: #666; }
+a:hover { color: red; }
 
 pre {
   background-color: #eee;
@@ -15,20 +20,45 @@ pre {
   font-size: 11px;
 }
 
-a img { border: none; }
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.padding {
+    padding: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+.clear_left {
+    clear: left;
+}
+
+.clear_right {
+    clear: right;
+}
+
+.text_center {
+    text-align: center;
+}
 
 #top_menu {
     width: 80%;
 }
 
 .green_border {
-    float: left;
-    margin: 0px 0px 0px 10px;    
+    margin-left: 10px;    
     background-color: #4c8542;
     font-variant: small-caps;
     font-weight: bold;
     font-size: 15px;
-    line-height: 20px;
+    line-height: 15px;
     font-size-adjust: none;
     font-stretch: normal;
     color: rgb(255, 255, 255);
@@ -36,7 +66,7 @@ a img { border: none; }
 }
 
 .menu_item {
-    width: 100px;
+    width: 80px;
 }
 
 .menu_item a, .menu_item a:visited {
@@ -49,22 +79,6 @@ a img { border: none; }
     background-color: #4c8542;
 }
 
-#about_logo {
-    clear: left;
-    text-align: center;
-}
-
-#home_logo { float: left; }
-
-#home_content { clear: left; }
-
-#home_posts { margin-top: 10px; }
-
-.account_title {
-    text-align: center;
-    width: 50%;
-}
-
 #container {
     width: 70%;
     margin: 0 auto;
@@ -75,20 +89,14 @@ a img { border: none; }
 }
 
 #content {
-    clear: both;
     width: 100%;
-    padding: 10px 10px 10px 10px;
 }
 
 .avatar_tiny { 
-    float: left;
     width: 70px;
 }
 
-.account_info {
-    padding: 10px 10px 10px 10px;
-    float: right;
-}
+#home_posts {}
 
 .post { clear: left; }
 
@@ -103,7 +111,6 @@ a img { border: none; }
 .post_content { }
 
 .post_manager_links {
-    clear: left;
     margin-bottom: 10px;
 }
 
@@ -111,26 +118,17 @@ a img { border: none; }
     clear: left;
 }
 
-.account_content { clear: left; }
-
 .account_content_avatar {
-    float: left;
     margin-right: 5px;
-}
-
-.account_content_time {
-    float: left;
 }
 
 .account_content_name {
     font-weight:bold;
-    float: left;
     margin-right: 5px;
 }
 
 .new_comment {
-    clear: both;
-    padding: 5px 0px 0px 0px;
+    margin-bottom: 10px;
 }
 
 .comment_input {
@@ -140,14 +138,8 @@ a img { border: none; }
 
 .comment_body {}
 
-a { color: #666; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color: red; }
-
 #flash_notice, #flash_error {
-  clear: both;
-  padding: 5px 8px;
-  margin: 10px 0;
+  margin: 75px 0 0 0;
 }
  
 #flash_notice {

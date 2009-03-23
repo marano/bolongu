@@ -1,9 +1,19 @@
 class CommentsController < ApplicationController
 
   def create
-    @post = Post.find(params[:post_id])
-    params[:comment][:account] = current_account
-    @comment = @post.comments.create!(params[:comment])
+#    @post = Post.find(params[:post_id])
+#    params[:comment][:account] = current_account
+#    @comment = @post.comments.create!(params[:comment])    
+    
+    @comment = Comment.new(params[:comment])
+    @comment.post_id = params[:post_id]    
+    
+    if logged_in?
+      @comment.account = current_account
+    end
+    
+    @comment.save!
+    
     respond_to do |format|
       format.html { redirect_to @post}
       format.xml  { head :ok }

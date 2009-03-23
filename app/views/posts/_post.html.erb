@@ -11,7 +11,7 @@
     <%= simple_format h(post.body) %>
   </div>
   <% if current_account_content? post %>
-    <div class='post_manager_links'>
+    <div class='post_manager_links left'>
       <%= link_to 'Edit', edit_post_path(post) %> |
       <%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %>
       <%=# link_to_remote 'Delete', :url => post_path(post), :confirm => 'Are you sure?', :method => :delete
@@ -21,7 +21,7 @@
   <% render :layout => 'accounts/account_content', :object => post do %>
     <%= share_this post.title, post_url(post) %>
   <% end %>
-  <%= link_to_unless_current pluralize(post.comments.size, 'comment'), post %> from   <%= link_to_unless_current pluralize(post.commentator.size, 'commentator'), post %>
+  <%= link_to_unless_current pluralize(post.comments.size, 'comment'), post %> from   <%= link_to_unless_current pluralize(post.commentator.size, 'person'), post %>
   <br />
   <br />
 <% end %>

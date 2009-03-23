@@ -2,10 +2,9 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- home/index.rhtml -->
 
-<div id='home_content'>
+<div class='left'><%= image_tag 'logo.jpg' %></div>
 
-  <div id='home_logo'><%= image_tag 'logo.jpg' %></div>
-
+<div class='left'>
   <h2>
     Spread your content socially!
   </h2>
@@ -19,7 +18,7 @@
     <li>Keep track of your friends contents</li>
   </ul>
 </div>
-<br/><br/><br/><br/><br/><br/>
+
 <div id='home_posts'>
   <%= render :partial => @posts %>
 </div>
