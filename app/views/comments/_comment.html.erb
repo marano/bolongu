@@ -11,7 +11,7 @@
         <br/>
         <div class="account_content_name left">          
           <% if comment.name.blank? %>
-            anonymous
+            <i>anonymous</i>
           <% else %>
             <% if comment.url.blank? %>
               <%= comment.name %>
@@ -20,7 +20,7 @@
             <% end %>
           <% end %>
           <% unless comment.email.blank? %>
-            (<%= comment.email %>)
+            (<%= mail_to comment.email %>)
           <% end %>
         </div>
       </div>

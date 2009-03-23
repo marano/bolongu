@@ -15,11 +15,11 @@ class CommentsController < ApplicationController
     @comment.post_id = params[:post_id]
 
     if logged_in?
-      @comment.account = current_account
+      @comment.author = current_account
     end
 
     if @comment.save
-      if @comment.post and @comment.account != @comment.post.account
+      if @comment.post and @comment.author != @comment.post.account
         AccountMailer.deliver_comment_notification(@comment.post.account, @comment)
       end      
       respond_to do |format|
