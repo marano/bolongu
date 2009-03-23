@@ -1,18 +1,17 @@
-<h1>Listing things</h1>
+<h1>Things</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
+    <th></th>
   </tr>
 
 <% @things.each do |thing| %>
   <tr>
-    <td><%=h thing.name %></td>
-    <td><%=h thing.description %></td>
-    <td><%= link_to 'Show', thing %></td>
-    <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
-    <td><%= link_to 'Destroy', thing, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to thing.name, thing %></td>
+    <% if thing.author == current_account %>
+      <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
+      <td><%= link_to 'Destroy', thing, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>    
   </tr>
 <% end %>
 </table>

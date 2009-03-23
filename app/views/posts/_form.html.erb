@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag :fckeditor %>
+<% end %>
+
 <% form_for post, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   
@@ -16,7 +20,7 @@
   </p>
   <p>
     <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    <%= fckeditor_textarea(:post, :body, :toolbarSet => 'Mine', :width => '100%', :height => '300px') %>
   </p>
   <p>
     <%= f.submit "Post!" %>

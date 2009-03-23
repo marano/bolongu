@@ -8,20 +8,17 @@
     <% end %>
   </div>
   <div class='post_content'>
-    <%= simple_format h(post.body) %>
+    <%= format post.body %>
   </div>
   <% if current_account_content? post %>
-    <div class='post_manager_links left'>
+    <div class='manager_links right'>
       <%= link_to 'Edit', edit_post_path(post) %> |
       <%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %>
-      <%=# link_to_remote 'Delete', :url => post_path(post), :confirm => 'Are you sure?', :method => :delete
-      %>
     </div>
   <% end %>  
-  <% render :layout => 'accounts/account_content', :object => post do %>
+  <%= render :partial => 'accounts/account_content', :object => post %>
+  <div class='clear_left'>
     <%= share_this post.title, post_url(post) %>
-  <% end %>
-  <%= link_to_unless_current pluralize(post.comments.size, 'comment'), post %> from   <%= link_to_unless_current pluralize(post.commentator.size, 'person'), post %>
-  <br />
-  <br />
+    <%= link_to_unless_current pluralize(post.comments.size, 'comment'), post %> from   <%= link_to_unless_current pluralize(post.commentator.size, 'person'), post %>
+  </div>
 <% end %>

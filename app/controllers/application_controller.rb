@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def friend?(account, friend)
-    account.friends.include?(friend)
+    account.friendship(friend)
   end
   
   # Scrub sensitive parameters from your log

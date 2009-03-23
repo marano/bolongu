@@ -1,20 +1,5 @@
 <h1>Editing thing</h1>
 
-<% form_for(@thing) do |f| %>
-  <%= f.error_messages %>
+<%= render :partial => 'form', :locals => { :thing => @thing } %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @thing %> |
-<%= link_to 'Back', things_path %>
+<%= link_to 'Show', @thing %>

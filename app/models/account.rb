@@ -38,6 +38,10 @@ class Account < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :blog_title, :avatar
 
+  def friendship(friend)
+    friendships.first(:conditions => { :friend_id => friend.id })
+  end
+
   def self.find_by_login(login)
     find(:first, :conditions => { :login => login })
   end

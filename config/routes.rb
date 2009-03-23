@@ -18,15 +18,14 @@ ActionController::Routing::Routes.draw do |map|
 #    end  
 #  end
   
-  map.resources :things
+  map.resources :things, :member => [ :add, :remove ]
   map.resources :accounts
   map.resource :session
+  map.resources :friendships, :except => [ :new, :update, :show, :edit ]  
   map.resources :posts, :has_many => :comments
 
   map.account_index ':account_login', :controller => 'accounts', :action => 'account_index'
   
-  map.create_friendship 'friendships/:friend_id', :controller => 'friendships', :action => 'create', :method => :post
-
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

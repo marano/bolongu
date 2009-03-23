@@ -4,13 +4,25 @@
       <%= render :partial => 'accounts/account_content', :object => comment %>  
     <% else %>
       <div class="clear_left" >
-        <div class="account_content_avatar left" >
-        </div>
+        <div class="account_content_avatar left"></div>
         <div class="left">
           <%= time_ago_in_words comment.created_at %>
         </div>
         <br/>
-        <div class="account_content_name left"><%= link_to_unless_current comment.name, comment.url %> (<%= comment.email %>)</div>
+        <div class="account_content_name left">          
+          <% if comment.name.blank? %>
+            anonymous
+          <% else %>
+            <% if comment.url.blank? %>
+              <%= comment.name %>
+            <% else %>
+              <%= link_to_unless_current comment.name, comment.url %>
+            <% end %>
+          <% end %>
+          <% unless comment.email.blank? %>
+            (<%= comment.email %>)
+          <% end %>
+        </div>
       </div>
     <% end %>
     <div class='comment_body'> <%= h comment.body %></div>

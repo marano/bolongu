@@ -1,4 +1,19 @@
 class ThingsController < ApplicationController
+
+  def add
+    @thing = Thing.find(params[:id])
+    current_account.things << @thing
+    flash[:notice] = "#{@thing.name} was added to your things."
+    redirect_to @thing
+  end
+  
+  def remove
+    @thing = Thing.find(params[:id])
+    current_account.things.delete @thing
+    flash[:notice] = "#{@thing.name} was removed from your things."
+    redirect_to @thing
+  end
+  
   # GET /things
   # GET /things.xml
   def index
@@ -41,11 +56,12 @@ class ThingsController < ApplicationController
   # POST /things.xml
   def create
     @thing = Thing.new(params[:thing])
-
+    @thing.author = current_account
+    
     respond_to do |format|
       if @thing.save
         flash[:notice] = 'Thing was successfully created.'
-        format.html { redirect_to(@thing) }
+        format.html { redirect_to add_thing_path(@thing) }
         format.xml  { render :xml => @thing, :status => :created, :location => @thing }
       else
         format.html { render :action => "new" }
@@ -59,9 +75,11 @@ class ThingsController < ApplicationController
   def update
     @thing = Thing.find(params[:id])
 
+    params[:thing].delete :photo if params[:thing][:photo].nil?
+
     respond_to do |format|
       if @thing.update_attributes(params[:thing])
-        flash[:notice] = 'Thing was successfully updated.'
+        flash[:notice] = "#{@thing.name} was updated."
         format.html { redirect_to(@thing) }
         format.xml  { head :ok }
       else
@@ -76,7 +94,7 @@ class ThingsController < ApplicationController
   def destroy
     @thing = Thing.find(params[:id])
     @thing.destroy
-
+    flash[:notice] = "#{@thing.name} was deleted."
     respond_to do |format|
       format.html { redirect_to(things_url) }
       format.xml  { head :ok }

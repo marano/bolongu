@@ -9,8 +9,17 @@ class FriendshipsController < ApplicationController
     else
       friendship = Friendship.new({ :account => current_account, :friend => friend})
       friendship.save
-
+      flash[:notice] = "Started to follow #{friendship.friend.name}"      
       redirect_to account_index_path friend.login
+    end
+  end
+  
+  def destroy
+    friendship = current_account.friendships.find(params[:id])
+
+    if friendship.destroy
+      flash[:notice] = "Stoped follow #{friendship.friend.name}"
+      redirect_to account_index_path friendship.friend.login
     end
   end
 end
