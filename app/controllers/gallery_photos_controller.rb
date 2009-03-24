@@ -84,7 +84,7 @@ class GalleryPhotosController < ApplicationController
     @gallery_photo.destroy
     flash[:notice] = 'Photo was successfully deleted.'
     respond_to do |format|
-      format.html { redirect_to(@gallery_photo.gallery.account, @gallery_photo.gallery) }
+      format.html { redirect_to(account_gallery_path(@gallery_photo.gallery.account, @gallery_photo.gallery)) }
       format.xml  { head :ok }
     end
   end
