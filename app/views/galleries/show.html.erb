@@ -1,0 +1,36 @@
+<h1>
+  <%=h @gallery.name %>
+</h1>
+
+<p>
+  <%=h @gallery.description %>
+</p>
+
+<% if logged_in? and @gallery.account == current_account %>
+  <%= link_to 'Edit', edit_account_gallery_path(@gallery.account, @gallery) %> |
+  <%= link_to 'Delete', [@gallery.account, @gallery], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to 'Back', account_galleries_path(@gallery.account) %>
+  
+  <div>
+    <h3>
+      Upload new photo
+    </h3>
+    <p>
+      <% form_for GalleryPhoto.new, :html => { :multipart => true } do |f| %>
+        <%= hidden_field_tag 'gallery_photo[gallery_id]', @gallery.id %>
+        <%= f.file_field :photo %>
+        <%= f.submit 'Upload' %>
+      <% end %>
+    </p>
+  </div>  
+<% end %>
+
+<div class='padding'>
+  <ul class='plain_list'>
+    <% for gallery_photo in @gallery.gallery_photos %>
+      <li><%= link_to image_tag(gallery_photo.url(:small)), gallery_photo %></li>
+    <% end %>
+  </ul>
+</div>
+
+

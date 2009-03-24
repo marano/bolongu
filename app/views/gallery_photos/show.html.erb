@@ -1,0 +1,15 @@
+<h1>
+  <%= h @gallery_photo.name %>
+</h1>
+<p>
+  <%= link_to image_tag(@gallery_photo.url(:default)), @gallery_photo.url %>
+</p>
+<p>
+  <%=h @gallery_photo.caption %>
+</p>
+
+<% if logged_in? and (@gallery_photo.publisher == current_account or @gallery_photo.gallery.account == current_account) %>
+  <%= link_to 'Edit', edit_gallery_photo_path(@gallery_photo) %> |
+  <%= link_to 'Delete', gallery_photo_path(@gallery_photo), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Back to #{@gallery_photo.gallery.name}", @gallery_photo.gallery %>
+<% end %>

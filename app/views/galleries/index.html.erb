@@ -1,0 +1,5 @@
+<%= render @galleries %>
+
+<% if @account == current_account %>
+  <%= link_to 'New gallery', new_account_gallery_path(@account) %>
+<% end %>

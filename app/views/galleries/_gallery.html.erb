@@ -1,0 +1,15 @@
+<h1>
+  <%= link_to gallery.name, account_gallery_path(gallery.account, gallery) %>
+</h1>
+
+<p>
+  <%=h gallery.description %>
+</p>
+
+<div class='padding'>
+  <ul class='plain_list'>
+    <% for gallery_photo in gallery.gallery_photos %>
+      <li><%= link_to image_tag(gallery_photo.url(:tiny)), gallery_photo %></li>
+    <% end %>
+  </ul>
+</div>

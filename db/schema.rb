@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090323021130) do
+ActiveRecord::Schema.define(:version => 20090324021249) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -55,6 +55,28 @@ ActiveRecord::Schema.define(:version => 20090323021130) do
     t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "galleries", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gallery_photos", :force => true do |t|
+    t.string   "name"
+    t.text     "caption"
+    t.integer  "gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.boolean  "cover"
+    t.integer  "publisher_id"
   end
 
   create_table "posts", :force => true do |t|

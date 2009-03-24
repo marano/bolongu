@@ -9,8 +9,8 @@ class Account < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :friendships, :dependent => :destroy, :include => :friend
   has_many :friends, :through => :friendships, :source => :friend, :limit => 10
-  #has_many :authorships, :class_name => 'Thing', :foreing_key => 'author_id'
   has_and_belongs_to_many :things
+  has_many :galleries, :dependent => :destroy
   
   has_attached_file :avatar, :styles => { :default => ["150x150>", :jpg], :small => ["100x100>", :jpg], :tiny => ["50x50>", :jpg] }
   

@@ -25,7 +25,7 @@
         </div>
       </div>
     <% end %>
-    <div class='comment_body'> <%= h comment.body %></div>
+    <div class='comment_body'> <%= simple_format comment.body %></div>
     <% if current_account_content?(comment) || current_account_content?(comment.post) %>
     <%= link_to_remote 'Delete', :url => post_comment_path(comment.post, comment), :confirm => 'Are you sure?', :method => :delete %>
     <% end %>

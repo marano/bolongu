@@ -1,0 +1,5 @@
+<h1>Editing gallery</h1>
+
+<%= render :partial => 'form', :locals => { :account => @account, :gallery => @gallery } %>
+
+<%= link_to 'Show', [@gallery.account, @gallery] %>

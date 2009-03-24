@@ -22,5 +22,22 @@
       <li><%= link_to image_tag(thing.photo(:tiny)), thing_path(thing), :title => thing.name %></li>
     <% end %>
   </ul>
-  <div class='_menu_action'><%= link_to 'new thing', new_thing_path %></div>
+  <% if account == current_account %>
+    <div class='_menu_action'><%= link_to 'new thing', new_thing_path %></div>
+  <% end %>
+  <h3 class='left'><%= link_to 'Galleries', account_galleries_path(account) %></h3>
+  <ul class='plain_list clear'>
+    <% for gallery in account.galleries %>
+      <li>
+        <% if gallery.cover %>
+          <%= link_to image_tag(gallery.cover.url(:micro)), account_gallery_path(account, gallery), :title => gallery.name %>
+        <% else %>
+          <%= link_to gallery.name, account_gallery_path(account, gallery), :title => gallery.name %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>  
+  <% if account == current_account %>
+    <div class='_menu_action'><%= link_to 'new galery', new_account_gallery_path(current_account) %></div>
+  <% end %>
 </div>

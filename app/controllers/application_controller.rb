@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
 
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  include AuthenticatedSystem  
 
   helper :all
   helper_method :'friend?', :'current_account_content?'
