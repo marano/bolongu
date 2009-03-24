@@ -50,7 +50,7 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       if @gallery.save
         flash[:notice] = 'Gallery was successfully created.'
-        format.html { redirect_to(@gallery) }
+        format.html { redirect_to(account_gallery_path(@gallery.account, @gallery)) }
         format.xml  { render :xml => @gallery, :status => :created, :location => @gallery }
       else
         format.html { render :action => "new" }
