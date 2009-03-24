@@ -11,5 +11,5 @@
 <% if logged_in? and (@gallery_photo.publisher == current_account or @gallery_photo.gallery.account == current_account) %>
   <%= link_to 'Edit', edit_gallery_photo_path(@gallery_photo) %> |
   <%= link_to 'Delete', gallery_photo_path(@gallery_photo), :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "Back to #{@gallery_photo.gallery.name}", @gallery_photo.gallery %>
+  <%= link_to "Back to #{@gallery_photo.gallery.name}", [@gallery_photo.gallery.account, @gallery_photo.gallery] %>
 <% end %>
