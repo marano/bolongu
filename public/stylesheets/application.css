@@ -175,6 +175,7 @@ pre {
 }
 
 #flash_notice, #flash_error {
+    text-align: center;
     width: 60%;
     margin: 10px;
 }
