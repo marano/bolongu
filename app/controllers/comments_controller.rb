@@ -1,29 +1,22 @@
 class CommentsController < ApplicationController
 
   def show
-    @comment = Comment.find(params[:id])
-
-    if @comment.post
-      redirect_to @comment.post
-    elsif @comment.thing
-      redirect_to @comment.thing
-    end
+    redirect_to Comment.find(params[:id]).commentable
   end
 
   def create
-    @comment = Comment.new(params[:comment])
-    @comment.post_id = params[:post_id]
+    @comment = find_commentable.comments.build(params[:comment])    
 
     if logged_in?
       @comment.author = current_account
     end
 
     if @comment.save
-      if @comment.post and @comment.author != @comment.post.account
-        AccountMailer.deliver_comment_notification(@comment.post.account, @comment)
+      if @comment.author != @comment.commentable.account
+        AccountMailer.deliver_comment_notification(@comment.commentable.account, @comment, url_for([@comment.commentable, @comment]))
       end      
       respond_to do |format|
-        format.html { redirect_to @post}
+        format.html { redirect_to @comment.commentable}
         format.xml  { head :ok }
         format.js
       end
@@ -37,10 +30,21 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@post) }
+      format.html { redirect_to(@comment.commentable) }
       format.xml  { head :ok }
       format.js
     end
+  end
+  
+  private
+  
+  def find_commentable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+    nil
   end
 
   #  # GET /comment

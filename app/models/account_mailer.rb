@@ -1,32 +1,37 @@
 class AccountMailer < ActionMailer::Base
-  def comment_notification(account, comment)
+
+  def comment_notification(account, comment, url)
     setup_email(account)
-    @subject    += 'new comment'
-    
-    @body[:url] = "http://#{SITE_URL}/comments/#{comment.id}"
-  end  
+    @subject += 'comment notification'
+
+    @body[:url] = url
+  end
 
   def signup_notification(account)
     setup_email(account)
-    @subject    += 'Please activate your new account'
-  
-    @body[:url]  = "http://#{SITE_URL}/activate/#{account.activation_code}"
+    @subject += 'Please activate your new account'
+
+    @body[:url] = "http://#{SITE_URL}/activate/#{account.activation_code}"
   end
-  
+
   def activation(account)
     setup_email(account)
-    @subject    += 'Your account has been activated!'
-    @body[:url]  = "http://#{SITE_URL}/"
+    @subject += 'Your account has been activated!'
+    @body[:url] = "http://#{SITE_URL}/"
   end
-  
+
   protected
-    def setup_email(account)
-      @recipients  = "#{account.email}"
-      @from        = "Bolongu! <#{MAILER_ADRESS}>"
-      @subject     = "Bolongu! "
-      @sent_on     = Time.now
-      @content_type = "text/html"
-      @body[:account] = account
-      @body[:logo] = "http://#{SITE_URL}/images/logo.jpg"
-    end
+
+  def setup_email(account)
+    @recipients  = "#{account.email}"
+    @from        = "Bolongu! <#{MAILER_ADRESS}>"
+    @subject     = ""
+    @sent_on     = Time.now
+    @content_type = "text/html"
+    @body[:account] = account
+    @body[:logo] = "http://#{SITE_URL}/images/logo.jpg"
+    @body[:logo_tiny] = "http://#{SITE_URL}/images/logo_tiny.jpg"
+  end
+
 end
+

@@ -1,6 +1,6 @@
 <% div_for comment do %>
   <p>
-    <% if comment.account %>
+    <% if comment.author %>
       <%= render :partial => 'accounts/account_content', :object => comment %>  
     <% else %>
       <div class="clear_left" >
@@ -26,8 +26,8 @@
       </div>
     <% end %>
     <div class='comment_body'> <%= simple_format comment.body %></div>
-    <% if current_account_content?(comment) || current_account_content?(comment.post) %>
-    <%= link_to_remote 'Delete', :url => post_comment_path(comment.post, comment), :confirm => 'Are you sure?', :method => :delete %>
+    <% if current_account_content?(comment) || current_account_content?(comment.commentable) %>
+    <%= link_to_remote 'Delete', :url => [comment.commentable, comment], :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
   </p>
 <% end %>

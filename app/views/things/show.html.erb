@@ -30,3 +30,5 @@
     <% end %>  
   <% end %>
 </div>
+
+<%= render :partial => 'comments/comments', :locals => { :commentable => @thing } %>

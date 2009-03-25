@@ -3,33 +3,28 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'home', :action => 'index'
   map.home '/home', :controller => 'home', :action => 'index'
   map.about '/about', :controller => 'home', :action => 'about'
-
+  
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'accounts', :action => 'create'
   map.signup '/signup', :controller => 'accounts', :action => 'new'
-  map.activate '/activate/:activation_code', :controller => 'accounts', :action => 'activate', :activation_code => nil  
+  map.activate '/activate/:activation_code', :controller => 'accounts', :action => 'activate', :activation_code => nil
+  map.resource :session, :only => [ :new, :create, :destroy ]
+  
   #map.forgot_password '/forgot_password', :controller => 'accounts', :action => 'forgot_password'
   #map.reset_password '/reset_password', :controller => 'accounts', :action => 'reset_password'
-  
-#  map.resources :accounts do |account|  
-#    account.resources :posts do |post|  
-#      post.resources :comments  
-#    end  
-#  end
 
   map.resources :accounts do |account|
     account.resources :galleries
   end
   
-  map.resources :things, :member => [ :add, :remove ], :has_many => :comments
-  map.resource :session
-  map.resources :friendships, :except => [ :new, :update, :show, :edit ]  
   map.resources :posts, :has_many => :comments
-  map.resources :comments, :only => [ :create, :show, :destroy ]
-  map.resources :gallery_photos
-
-  map.account_index ':account_login', :controller => 'accounts', :action => 'account_index'
+  map.resources :things, :member => [ :add, :remove ], :has_many => :comments
+  map.resources :gallery_photos, :has_many => :comments
+  
+  map.resources :friendships, :except => [ :new, :update, :show, :edit ]
+  
+  map.account_index '/:account_login', :controller => 'accounts', :action => 'account_index'
   
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -70,6 +65,6 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  #map.connect ':controller/:action/:id'
+  #map.connect ':controller/:action/:id.:format'
 end

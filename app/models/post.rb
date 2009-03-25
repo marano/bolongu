@@ -1,8 +1,7 @@
 class Post < ActiveRecord::Base  
   
   belongs_to :account
-  has_many :comments, :dependent => :destroy
-  has_many :commentator, :through => :comments, :source => :account, :uniq => true
+  has_many :comments, :as => :commentable, :dependent => :destroy
   
   has_attached_file :photo, :styles => { :default => ["640x480>", :jpg], :small => ["320x240>", :jpg], :tiny => ["160x120>", :jpg] }
   
@@ -14,4 +13,17 @@ class Post < ActiveRecord::Base
   def self.find_all_by_account(account)
     all(:conditions => { :account_id => account })
   end
+  
+  def commentators_size
+    total = 0
+    counted = []
+    for comment in comments do
+      if comment.author and !counted.include?(comment.author)
+        counted << comment.author
+        total += 1
+      end
+    end
+    total
+  end
+  
 end

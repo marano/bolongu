@@ -1,0 +1,7 @@
+<h3>Comments</h3>
+
+<%= render :partial => 'comments/new', :locals => { :commentable => commentable } %>
+
+<div id="comments">  
+  <%= render commentable.comments %>
+</div>

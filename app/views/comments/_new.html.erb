@@ -1,0 +1,23 @@
+<div class='new_comment clear'>
+  <% remote_form_for [commentable, Comment.new] do |f| %>
+    <% unless logged_in? %>
+      <p>
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+      </p>
+      <p>
+        <%= f.label :url %><br />
+        <%= f.text_field :url %>
+      </p>
+    <% end %>
+    <p>
+      <%= f.label :body, "Comment" %><br />
+      <%= f.text_area :body, :class => 'comment_input' %>
+    </p>
+    <p><%= f.submit "Comment!" %></p>
+  <% end %>
+</div>

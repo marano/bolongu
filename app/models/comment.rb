@@ -1,16 +1,10 @@
 class Comment < ActiveRecord::Base
 
-  belongs_to :account
-  belongs_to :post
-  belongs_to :thing
+  belongs_to :commentable, :polymorphic => true
+  belongs_to :author, :class_name => 'Account'
   
   default_scope :order => 'created_at DESC'
-
-  def author
-    account
-  end
   
-  def author=(author)
-    account = author
-  end
+  alias :account :author
+  
 end

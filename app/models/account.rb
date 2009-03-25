@@ -6,7 +6,7 @@ class Account < ActiveRecord::Base
   include Authentication::ByCookieToken
 
   has_many :posts, :dependent => :destroy, :limit => 10, :order => 'created_at desc'
-  has_many :comments, :dependent => :destroy
+  has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :friendships, :dependent => :destroy, :include => :friend
   has_many :friends, :through => :friendships, :source => :friend, :limit => 10
   has_and_belongs_to_many :things

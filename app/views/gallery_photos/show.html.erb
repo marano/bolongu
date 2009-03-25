@@ -13,3 +13,5 @@
   <%= link_to 'Delete', gallery_photo_path(@gallery_photo), :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "Back to #{@gallery_photo.gallery.name}", [@gallery_photo.gallery.account, @gallery_photo.gallery] %>
 <% end %>
+
+<%= render :partial => 'comments/comments', :locals => { :commentable => @gallery_photo } %>
