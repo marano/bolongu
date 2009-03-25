@@ -1,0 +1,32 @@
+<h1>
+  <%=h thing.name %>
+</h1>
+<% if thing.photo.file? %>
+  <p>
+    <%= image_tag thing.photo.url(:default) %>
+  </p>
+<% end %>
+<p>
+  <%=h thing.description %>
+</p>
+
+<% if logged_in? and current_account == thing.author %>
+  <div>
+    <%= link_to 'Edit', edit_thing_path(thing) %> |
+    <%= link_to 'Delete', thing, :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+<% end %>
+
+<% render :layout => 'accounts/account_content', :object => thing do %>
+  <%= share_this thing.name, thing_url(thing) %>
+<% end %>
+
+<div class='clear'>
+  <% if logged_in? %>
+    <% if current_account.things.include?(thing) %>
+      <p><%= link_to 'Remove from my things', remove_thing_path(thing) %></p>
+    <% else %>
+      <p><%= link_to 'Add to my things', add_thing_path(thing) %></p>
+    <% end %>  
+  <% end %>
+</div>

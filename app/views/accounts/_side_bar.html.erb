@@ -16,7 +16,7 @@
       <li><%= link_to image_tag(friend.avatar(:tiny)), account_index_path(friend.login), :title => friend.name %></li>
     <% end %>
   </ul>  
-  <h3 class='left'>Things</h3>  
+  <h3 class='left'><%= link_to 'Things', things_path %></h3>  
   <ul class='plain_list clear'>
     <% for thing in account.things %>
       <li><%= link_to image_tag(thing.photo(:tiny)), thing_path(thing), :title => thing.name %></li>

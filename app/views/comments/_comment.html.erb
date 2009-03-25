@@ -1,33 +1,29 @@
 <% div_for comment do %>
   <p>
-    <% if comment.author %>
-      <%= render :partial => 'accounts/account_content', :object => comment %>  
-    <% else %>
-      <div class="clear_left" >
-        <div class="account_content_avatar left"></div>
-        <div class="left">
-          <%= time_ago_in_words comment.created_at %>
-        </div>
-        <br/>
-        <div class="account_content_name left">          
-          <% if comment.name.blank? %>
-            <i>anonymous</i>
+    <table>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>
+          <% if comment.author %>
+            <%= render :partial => 'accounts/account_content', :object => comment %>  
           <% else %>
-            <% if comment.url.blank? %>
-              <%= comment.name %>
-            <% else %>
-              <%= link_to_unless_current comment.name, comment.url %>
+            <%= render :partial => 'comments/anonymous', :locals => { :comment => comment } %>
+          <% end %>
+        </td>
+        <td>
+          <div class='comment_body'>
+            <%= simple_format comment.body %>
+            <% if current_account_content?(comment) || current_account_content?(comment.commentable) %>
+              <div class='right'>
+                <%= link_to_remote 'Delete', :url => [comment.commentable, comment], :confirm => 'Are you sure?', :method => :delete %>
+                </div>
             <% end %>
-          <% end %>
-          <% unless comment.email.blank? %>
-            (<%= mail_to comment.email %>)
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-    <div class='comment_body'> <%= simple_format comment.body %></div>
-    <% if current_account_content?(comment) || current_account_content?(comment.commentable) %>
-    <%= link_to_remote 'Delete', :url => [comment.commentable, comment], :confirm => 'Are you sure?', :method => :delete %>
-    <% end %>
+          </div>            
+        </td>
+      </tr>
+    </table>
   </p>
 <% end %>
