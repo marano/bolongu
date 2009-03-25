@@ -10,10 +10,6 @@ class Post < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
-  def self.find_all_by_account(account)
-    all(:conditions => { :account_id => account })
-  end
-  
   def commentators_size
     total = 0
     counted = []

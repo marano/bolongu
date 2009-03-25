@@ -170,17 +170,18 @@ pre {
 }
 
 .comment_body {}
+ 
+.photo_list {
+}
 
 #flash_notice, #flash_error {
-  margin: 75px 0 0 0;
+    width: 60%;
+    margin: 10px;
 }
  
 #flash_notice {
   background-color: #CFC;
   border: solid 1px #6C6;
-}
- 
-.photo_list {
 }
 
 #flash_error {
