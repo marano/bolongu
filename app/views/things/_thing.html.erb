@@ -1,9 +1,9 @@
 <h1>
-  <%=h thing.name %>
+  <%= link_to_unless_current thing.name, thing %>
 </h1>
 <% if thing.photo.file? %>
   <p>
-    <%= image_tag thing.photo.url(:default) %>
+    <%= link_to_unless_current image_tag(thing.photo.url(:default)), thing %>
   </p>
 <% end %>
 <p>
