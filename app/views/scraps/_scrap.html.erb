@@ -11,7 +11,7 @@
           <%= render :partial => 'accounts/account_content', :object => scrap %>
         </td>
         <td>
-          <%=h scrap.body %>
+          <%= simple_format scrap.body %>
           <% if current_account == scrap.author or current_account == scrap.recipient %>
             <div class='right'>
               <% if current_account == scrap.recipient %>
