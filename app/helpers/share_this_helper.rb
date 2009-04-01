@@ -6,8 +6,23 @@ module ShareThisHelper
 
   def share_this(title, url)
     "<script type=\"text/javascript\">
-      SHARETHIS.addEntry({ title: \"#{title}\", url: \"#{url}\" });
+      SHARETHIS.addEntry({ 
+        title: \"#{title}\",
+        url: \"#{url}\"
+      });
     </script>"
   end
+
+#  def share_this(title, summary, content ,url)
+#    "<script type=\"text/javascript\">
+#      SHARETHIS.addEntry({ 
+#        title: \"#{title}\",
+#        summary: \"#{summary}\",
+#        url: \"#{url}\",
+#        content: \"#{content}\",
+#        icon: \"http://#{SITE_URL}/images/logo_tiny.jpg\"
+#      });
+#    </script>"
+#  end
 
 end
