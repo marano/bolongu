@@ -4,6 +4,15 @@ class AccountMailer < ActionMailer::Base
     setup_email(account)
     @subject += 'comment notification'
 
+    @body[:comment] = comment
+    @body[:url] = url
+  end
+
+  def scrap_notification(account, scrap, url)
+    setup_email(account)
+    @subject += 'scrap notification'
+
+    @body[:scrap] = scrap
     @body[:url] = url
   end
 
@@ -34,4 +43,3 @@ class AccountMailer < ActionMailer::Base
   end
 
 end
-

@@ -9,7 +9,9 @@
   Scraps  
 </h1>
 
-<%= render :partial => 'new', :locals => { :recipient => @account } %>
+<% unless @account == current_account %>
+  <%= render :partial => 'new', :locals => { :recipient => @account } %>
+<% end %>
 
 <div id='scraps'>
   <%= render @scraps %>

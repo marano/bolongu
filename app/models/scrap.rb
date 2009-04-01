@@ -7,4 +7,8 @@ class Scrap < ActiveRecord::Base
   
   alias :account :author
   
+  def send_notification(url)
+    AccountMailer.deliver_scrap_notification(recipient, self, url)
+  end
+  
 end

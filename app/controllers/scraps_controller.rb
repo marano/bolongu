@@ -13,16 +13,11 @@ class ScrapsController < ApplicationController
     end
   end
 
-  #  # GET /scraps/1
-  #  # GET /scraps/1.xml
-  #  def show
-  #    @scrap = @account.scraps.find(params[:id])
-
-  #    respond_to do |format|
-  #      format.html # show.html.erb
-  #      format.xml  { render :xml => @scrap }
-  #    end
-  #  end
+    # GET /scraps/1
+    # GET /scraps/1.xml
+    def show
+      redirect_to account_scraps_path(@account)
+    end
 
   #  # GET /scraps/new
   #  # GET /scraps/new.xml
@@ -48,6 +43,7 @@ class ScrapsController < ApplicationController
     
     respond_to do |format|
       if @scrap.save
+        @scrap.send_notification(url_for([@scrap.recipient, @scrap]))
         #flash[:notice] = 'Scrap was successfully created.'
         format.html { redirect_to account_scraps_path(@account) }
         format.xml  { render :xml => @scrap, :status => :created, :location => @scrap }
