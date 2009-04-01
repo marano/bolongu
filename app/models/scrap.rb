@@ -11,4 +11,15 @@ class Scrap < ActiveRecord::Base
     AccountMailer.deliver_scrap_notification(recipient, self, url)
   end
   
+  def new?
+    not read or @recently_read
+  end
+  
+  def mark_as_read
+    return if read
+    
+    update_attribute :read, true
+    @recently_read = true
+  end
+  
 end

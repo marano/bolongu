@@ -5,7 +5,7 @@ class ScrapsController < ApplicationController
   def index
     @scraps = @account.scraps
     
-    @scraps.each { |s| s.update_attribute :read, true }
+    @scraps.each { |s| s.mark_as_read }
     
     respond_to do |format|
       format.html # index.html.erb

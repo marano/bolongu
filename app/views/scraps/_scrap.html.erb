@@ -15,6 +15,9 @@
           <% if current_account == scrap.author or current_account == scrap.recipient %>
             <div class='right'>
               <% if current_account == scrap.recipient %>
+                <% if scrap.new? %>
+                  <font color='red'>new</font> |
+                <% end %>
                 <%= link_to 'Reply', account_scraps_path(scrap.author) %> |
               <% end %>
               <%= link_to_remote 'Delete', :url => [scrap.recipient, scrap], :confirm => 'Are you sure?', :method => :delete %>
