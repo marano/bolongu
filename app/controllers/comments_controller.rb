@@ -5,16 +5,16 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = find_commentable.comments.build(params[:comment])    
+    @comment = find_commentable.comments.build(params[:comment])
 
     if logged_in?
       @comment.author = current_account
     end
 
     if @comment.save
-      if @comment.author != @comment.commentable.account
-        AccountMailer.deliver_comment_notification(@comment.commentable.account, @comment, url_for([@comment.commentable, @comment]))
-      end      
+      unless @comment.self_comment?
+        @comment.send_notification(url_for([@comment.commentable, @comment]))
+      end
       respond_to do |format|
         format.html { redirect_to @comment.commentable}
         format.xml  { head :ok }
@@ -35,9 +35,9 @@ class CommentsController < ApplicationController
       format.js
     end
   end
-  
+
   private
-  
+
   def find_commentable
     params.each do |name, value|
       if name =~ /(.+)_id$/

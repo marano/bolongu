@@ -5,12 +5,13 @@ class Account < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  has_many :posts, :dependent => :destroy, :limit => 10, :order => 'created_at desc'
+  has_many :posts, :dependent => :destroy, :limit => 10, :order => 'created_at desc', :foreign_key => 'author_id'
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :friendships, :dependent => :destroy, :include => :friend
   has_many :friends, :through => :friendships, :source => :friend, :limit => 10
   has_and_belongs_to_many :things
   has_many :galleries, :dependent => :destroy
+  has_many :scraps, :foreign_key => 'recipient_id'
   
   has_attached_file :avatar, :styles => { :default => ["150x150>", :jpg], :small => ["100x100>", :jpg], :tiny => ["50x50>", :jpg] }
   
@@ -82,6 +83,10 @@ class Account < ActiveRecord::Base
 
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
+  end
+  
+  def to_s
+    name
   end
 
   protected

@@ -62,25 +62,28 @@ pre {
     padding-left: 60px;
 }
 
+.scrap_count {
+    color: red;
+}
+
 #top_menu {
-    width: 80%;
+    width: 90%;
 }
 
 .green_border {
     margin-left: 10px;    
     background-color: #4c8542;
-    font-variant: small-caps;
-    font-weight: bold;
-    font-size: 15px;
-    line-height: 15px;
-    font-size-adjust: none;
-    font-stretch: normal;
     color: rgb(255, 255, 255);
-    text-align: center;
 }
 
 .menu_item {
-    width: 80px;
+    width: 65px;
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    font-size-adjust: none;
+    font-stretch: normal;
 }
 
 .menu_item a, .menu_item a:visited {
@@ -170,6 +173,11 @@ pre {
 }
 
 .comment_body {}
+ 
+.scrap_input {
+    width: 80%;
+    height: 80px;
+}
  
 .photo_list {
 }

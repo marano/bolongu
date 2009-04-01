@@ -1,0 +1,16 @@
+<h1>
+  <% unless @account == current_account %>
+    <% if @account.avatar.file? %>
+      <%= image_tag @account.avatar.url(:tiny), :title => @account.name %>
+    <% else %>
+      <%= @account.name %>
+    <% end %>
+  <% end %>
+  Scraps  
+</h1>
+
+<%= render :partial => 'new', :locals => { :recipient => @account } %>
+
+<div id='scraps'>
+  <%= render @scraps %>
+</div>

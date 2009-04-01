@@ -1,0 +1,3 @@
+page.insert_html :top, :scraps, :partial => @scrap
+page[@scrap].visual_effect :highlight
+page[:new_scrap].reset

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090324232434) do
+ActiveRecord::Schema.define(:version => 20090401033219) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20090324232434) do
     t.string   "url"
     t.integer  "commentable_id"
     t.string   "commentable_type"
+    t.boolean  "read",             :default => false
   end
 
   create_table "friendships", :force => true do |t|
@@ -87,7 +88,16 @@ ActiveRecord::Schema.define(:version => 20090324232434) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
-    t.integer  "account_id"
+    t.integer  "author_id"
+  end
+
+  create_table "scraps", :force => true do |t|
+    t.text     "body"
+    t.integer  "author_id"
+    t.integer  "recipient_id"
+    t.boolean  "read",         :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "things", :force => true do |t|

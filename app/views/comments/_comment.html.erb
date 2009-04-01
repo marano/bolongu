@@ -8,7 +8,7 @@
       <tr>
         <td>
           <% if comment.author %>
-            <%= render :partial => 'accounts/account_content', :object => comment %>  
+            <%= render :partial => 'accounts/account_content', :object => comment %>
           <% else %>
             <%= render :partial => 'comments/anonymous', :locals => { :comment => comment } %>
           <% end %>
@@ -16,10 +16,10 @@
         <td>
           <div class='comment_body'>
             <%= simple_format comment.body %>
-            <% if current_account_content?(comment) || current_account_content?(comment.commentable) %>
+            <% if logged_in? and current_account_content?(comment) || current_account_content?(comment.commentable) %>
               <div class='right'>
                 <%= link_to_remote 'Delete', :url => [comment.commentable, comment], :confirm => 'Are you sure?', :method => :delete %>
-                </div>
+              </div>
             <% end %>
           </div>            
         </td>

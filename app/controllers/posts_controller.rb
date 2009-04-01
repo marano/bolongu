@@ -44,7 +44,8 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @post = Post.new(params[:post])
-    @post.account = current_account
+    @post.author = current_account
+    
     respond_to do |format|
       if @post.save
         flash[:notice] = 'Post was successfully created.'

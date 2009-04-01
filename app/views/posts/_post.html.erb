@@ -19,6 +19,6 @@
   <%= render :partial => 'accounts/account_content', :object => post %>
   <div class='clear_left'>
     <%= share_this post.title, post_url(post) %>
-    <%= link_to_unless_current pluralize(post.comments.size, 'comment'), post %> from <%= link_to_unless_current pluralize(post.commentators_size, 'person'), post %>
+    <%= link_to_unless_current pluralize(post.comments.count, 'comment'), post %> from <%= link_to_unless_current pluralize(post.commentators.count, 'person'), post %>
   </div>
 <% end %>

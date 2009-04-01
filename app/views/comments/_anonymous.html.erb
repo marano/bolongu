@@ -1,7 +1,5 @@
 <div class="clear_left">
-  <div class="account_content_avatar left"></div>
-  <div class="left"><%= time_ago_in_words comment.created_at %></div>
-  <br/>
+  <div class="account_content_avatar left"></div>  
   <div class="account_content_name left">
     <% if comment.name.blank? %>
       <i>anonymous</i>
@@ -12,6 +10,8 @@
         <%= link_to_unless_current comment.name, comment.url %>
       <% end %>
     <% end %>
+    <div class="left"><%= time_ago_in_words comment.created_at %></div>
+    <br/>
     <% unless comment.email.blank? %>
       <br/><%= mail_to comment.email %>
     <% end %>

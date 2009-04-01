@@ -1,0 +1,10 @@
+<% if logged_in? %>
+  <div class='new_scrap clear'>
+    <% remote_form_for [recipient, Scrap.new] do |f| %>
+      <p>
+        <%= f.text_area :body, :class => 'scrap_input' %>
+      </p>
+      <p><%= f.submit "Scrap!" %></p>
+    <% end %>
+  </div>
+<% end %>
