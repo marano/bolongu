@@ -22,7 +22,7 @@
   <ul class='plain_list'>
     <% for friend in account.friends %>
       <li>
-        <%= if friend.avatar.file? %>
+        <% if friend.avatar.file? %>
           <%= link_to image_tag(friend.avatar(:tiny)), account_index_path(friend.login), :title => friend.name %>
         <% else %>
           <%= link_to account.name, account_index_path(friend.login), :title => friend.blog_title %>
