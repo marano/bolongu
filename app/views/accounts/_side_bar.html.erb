@@ -21,9 +21,15 @@
   <%= '<h3>Following</h3>' unless account.friends.empty? %>
   <ul class='plain_list'>
     <% for friend in account.friends %>
-      <li><%= link_to image_tag(friend.avatar(:tiny)), account_index_path(friend.login), :title => friend.name %></li>
+      <li>
+        <%= if friend.avatar.file? %>
+          <%= link_to image_tag(friend.avatar(:tiny)), account_index_path(friend.login), :title => friend.name %>
+        <% else %>
+          <%= link_to account.name, account_index_path(friend.login), :title => friend.blog_title %>
+        <% end %>
+      </li>
     <% end %>
-  </ul>  
+  </ul>
   
   <h3 class='left'><%= link_to 'Things', things_path %></h3>  
   <ul class='plain_list clear'>
