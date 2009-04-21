@@ -25,7 +25,7 @@
         <% if friend.avatar.file? %>
           <%= link_to image_tag(friend.avatar(:tiny)), account_index_path(friend.login), :title => friend.name %>
         <% else %>
-          <%= link_to account.name, account_index_path(friend.login), :title => friend.blog_title %>
+          <%= link_to friend.name, account_index_path(friend.login), :title => friend.blog_title %>
         <% end %>
       </li>
     <% end %>
