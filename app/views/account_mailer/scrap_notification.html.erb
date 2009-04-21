@@ -1,6 +1,10 @@
 <p>Your received a new Scrap from <%= @scrap.author %>.</p>
 
-<p>Visit this url to see the scrap:
+<p>
+  <%= simple_format @scrap.body %>
+<p>
+
+<p>Visit your scraps to reply:
 <br/><%=h @url %></p>
 
 <p><%= image_tag @logo_tiny %></p>
