@@ -8,6 +8,8 @@ class Thing < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => [ 'image/jpeg', 'image/png', 'image/bmp' , 'image/gif' ]
   validates_attachment_size :photo, :less_than => 5.megabytes
 
+  default_scope :order => 'created_at DESC'
+
   alias :account :author
   
 end
