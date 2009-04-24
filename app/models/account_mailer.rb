@@ -31,7 +31,7 @@ class AccountMailer < ActionMailer::Base
   
   def password(account)
     setup_email(account)
-    @body[:password] = account.password
+    @body[:password] = account.crypted_password
   end
 
   protected

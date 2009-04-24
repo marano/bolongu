@@ -39,6 +39,11 @@ class Account < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :blog_title, :avatar
 
+  def new_random_password
+    self.password_confirmation = self.password = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--")[0,6]
+    save
+  end
+
   def friendship(friend)
     friendships.first(:conditions => { :friend_id => friend.id })
   end
