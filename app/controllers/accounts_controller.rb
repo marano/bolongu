@@ -2,6 +2,17 @@ class AccountsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   # include AuthenticatedSystem
 
+  def send_password
+    @account = Account.scoped_by_email(params[:email]).first
+    if @account
+      flash[:notice] = "Thanks! We are sending you your password!"
+      redirect_to new_session_path
+    else
+      flash[:error] = "We couldnt find yout account with #{params[:email]}!"
+      redirect_to forgot_password_path
+    end
+  end
+
   def account_index
     if params[:account_login].blank?
       if logged_in?

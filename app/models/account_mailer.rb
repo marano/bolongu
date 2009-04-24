@@ -28,6 +28,11 @@ class AccountMailer < ActionMailer::Base
     @subject += 'Your account has been activated!'
     @body[:url] = "http://#{SITE_URL}/"
   end
+  
+  def password(account)
+    setup_email(account)
+    @body[:password] = account.password
+  end
 
   protected
 

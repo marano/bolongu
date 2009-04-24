@@ -24,6 +24,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :gallery_photos, :has_many => :comments
   
   map.resources :friendships, :except => [ :new, :update, :show, :edit ]
+
+  map.send_password '/send_password', :controller => 'accounts', :action => 'send_password'
+  map.forgot_password '/forgot_password', :controller => 'accounts', :action => 'forgot_password'
   
   map.account_index '/:account_login', :controller => 'accounts', :action => 'account_index'
   
