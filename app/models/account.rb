@@ -7,7 +7,7 @@ class Account < ActiveRecord::Base
 
   has_many :posts, :dependent => :destroy, :limit => 10, :order => 'created_at desc', :foreign_key => 'author_id'
   has_many :friendships, :dependent => :destroy, :include => :friend
-  has_many :friends, :through => :friendships, :source => :friend, :limit => 10
+  has_many :friends, :through => :friendships, :source => :friend, :order => 'last_login DESC'
   has_and_belongs_to_many :things
   has_many :galleries, :dependent => :destroy
   has_many :scraps, :foreign_key => 'recipient_id'
