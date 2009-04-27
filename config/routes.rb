@@ -19,6 +19,8 @@ ActionController::Routing::Routes.draw do |map|
     account.resources :scraps, :only => [ :index, :create, :show, :destroy ]
   end
   
+  map.resources :galleries, :only => [], :has_many => :comments
+  
   map.resources :posts, :except => [ :index ], :has_many => :comments
   map.resources :things, :member => [ :add, :remove ], :has_many => :comments
   map.resources :gallery_photos, :has_many => :comments
