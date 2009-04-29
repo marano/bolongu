@@ -6,31 +6,37 @@ ActionController::Routing::Routes.draw do |map|
   
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
-  map.register '/register', :controller => 'accounts', :action => 'create'
-  map.signup '/signup', :controller => 'accounts', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'accounts', :action => 'activate', :activation_code => nil
   map.resource :session, :only => [ :new, :create, :destroy ]
   
-  #map.forgot_password '/forgot_password', :controller => 'accounts', :action => 'forgot_password'
+  map.send_password '/send_password', :controller => 'accounts', :action => 'send_password', :conditions => { :method => :post }
+  map.forgot_password '/forgot_password', :controller => 'accounts', :action => 'forgot_password', :conditions => { :method => :get }
   #map.reset_password '/reset_password', :controller => 'accounts', :action => 'reset_password'
 
-  map.resources :accounts do |account|
+  map.resources :accounts, :except => [ :index, :show ] do |account|
     account.resources :galleries
     account.resources :scraps, :only => [ :index, :create, :show, :destroy ]
   end
   
-  map.resources :galleries, :only => [], :has_many => :comments
+  map.resources :galleries, :only => [] do |gallery|
+    gallery.resources :comments, :only => [ :create, :show, :destroy ]
+  end
+    
+  map.resources :posts, :except => [ :index ] do |post|
+    post.resources :comments, :only => [ :create, :show, :destroy ]
+  end
   
-  map.resources :posts, :except => [ :index ], :has_many => :comments
-  map.resources :things, :member => [ :add, :remove ], :has_many => :comments
-  map.resources :gallery_photos, :has_many => :comments
+  map.resources :things, :member => { :add => :post, :remove => :delete} do |thing|
+    thing.resources :comments, :only => [ :create, :show, :destroy ]
+  end
   
-  map.resources :friendships, :except => [ :new, :update, :show, :edit ]
-
-  map.send_password '/send_password', :controller => 'accounts', :action => 'send_password'
-  map.forgot_password '/forgot_password', :controller => 'accounts', :action => 'forgot_password'
+  map.resources :gallery_photos, :except => [ :index, :new ] do |gallery_photo|
+    gallery_photo.resources :comments, :only => [ :create, :show, :destroy ]
+  end
   
-  map.account_index '/:account_login', :controller => 'accounts', :action => 'account_index'
+  map.resources :friendships, :only => [ :create, :destroy ]  
+  
+  map.account_index '/:account_login', :controller => 'accounts', :action => 'account_index', :conditions => { :method => :get }
   
   # The priority is based upon order of creation: first created -> highest priority.
 

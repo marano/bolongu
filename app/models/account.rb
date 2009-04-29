@@ -8,6 +8,7 @@ class Account < ActiveRecord::Base
   has_many :posts, :dependent => :destroy, :limit => 10, :order => 'created_at desc', :foreign_key => 'author_id'
   has_many :friendships, :dependent => :destroy, :include => :friend
   has_many :friends, :through => :friendships, :source => :friend, :order => 'last_login DESC'
+  has_many :fans, :through => :friendships, :source => :account, :order => 'last_login DESC'
   has_and_belongs_to_many :things
   has_many :galleries, :dependent => :destroy
   has_many :scraps, :foreign_key => 'recipient_id'
@@ -38,17 +39,13 @@ class Account < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :blog_title, :avatar
 
-  def new_random_password
+  def generate_random_password
     self.password_confirmation = self.password = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--")[0,6]
     save
   end
 
   def friendship(friend)
-    friendships.first(:conditions => { :friend_id => friend.id })
-  end
-
-  def self.find_by_login(login)
-    find(:first, :conditions => { :login => login })
+    friendships.scoped_by_friend_id(friend.id).first
   end
 
   # Activates the user in the database.
@@ -98,6 +95,5 @@ class Account < ActiveRecord::Base
     def make_activation_code
         self.activation_code = self.class.make_token
     end
-
 
 end

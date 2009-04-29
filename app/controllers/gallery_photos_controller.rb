@@ -3,16 +3,16 @@ class GalleryPhotosController < ApplicationController
   # fix for swfupload
   # session :cookie_only => false, :only => :create
 
-  # GET /gallery_photos
-  # GET /gallery_photos.xml
-  def index
-    @gallery_photos = GalleryPhoto.all
+#  # GET /gallery_photos
+#  # GET /gallery_photos.xml
+#  def index
+#    @gallery_photos = GalleryPhoto.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @gallery_photos }
-    end
-  end
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.xml  { render :xml => @gallery_photos }
+#    end
+#  end
 
   # GET /gallery_photos/1
   # GET /gallery_photos/1.xml
@@ -25,16 +25,16 @@ class GalleryPhotosController < ApplicationController
     end
   end
 
-  # GET /gallery_photos/new
-  # GET /gallery_photos/new.xml
-  def new
-    @gallery_photo = GalleryPhoto.new
+#  # GET /gallery_photos/new
+#  # GET /gallery_photos/new.xml
+#  def new
+#    @gallery_photo = GalleryPhoto.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @gallery_photo }
-    end
-  end
+#    respond_to do |format|
+#      format.html # new.html.erb
+#      format.xml  { render :xml => @gallery_photo }
+#    end
+#  end
 
   # GET /gallery_photos/1/edit
   def edit

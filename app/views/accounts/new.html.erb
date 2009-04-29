@@ -1,8 +1,9 @@
 <h1>Sign up as a new user</h1>
+
 <% @account.password = @account.password_confirmation = nil %>
 
+<% form_for @account, :url => accounts_path do |f| -%>
 <%= error_messages_for :account %>
-<% form_for :account, :url => accounts_path do |f| -%>
 
 <p><%= label_tag 'name' %><br/>
 <%= f.text_field :name %></p>
