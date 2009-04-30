@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
   def send_password
     @account = Account.scoped_by_email(params[:email]).first
     if @account
-      if @account.generate_random_password
+      if @account.generate_random_password!
         AccountMailer.deliver_password(@account)
         flash[:notice] = "Thanks! We are sending you a new password!"      
         redirect_to new_session_path

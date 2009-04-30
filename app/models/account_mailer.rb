@@ -31,7 +31,8 @@ class AccountMailer < ActionMailer::Base
   
   def password(account)
     setup_email(account)
-    @body[:password] = account.crypted_password
+    @subject += 'New password request!'
+    @body[:password] = account.password
   end
 
   protected
