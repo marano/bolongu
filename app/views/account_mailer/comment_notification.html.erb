@@ -1,4 +1,4 @@
-<p>Your received a new Comment from <%= @comment.author ? @comment.author.name ? @comment.name %>.</p>
+<p>Your received a new Comment from <%= @comment.author ? @comment.author.name : @comment.name %>.</p>
 
 <p>Visit this url to see the comment:
 <br/><%=h @url %></p>
