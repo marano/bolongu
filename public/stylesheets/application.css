@@ -91,6 +91,10 @@ pre {
   color: white;
 }
 
+#home_logo {
+  padding-left: 70px;
+}
+
 .button:hover {
   color: red;
   cursor: pointer;

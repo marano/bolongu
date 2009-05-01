@@ -2,23 +2,25 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <% unless logged_in? %>
-  <div class='left'><%= image_tag 'logo.jpg' %></div>
-  
-  <div class='left'>
-    <h2>
-      Spread your content socially!
-    </h2>
-  
-    <h3>Features</h3>
-    <ul>
-      <li>Post your ideas</li>
-      <li>Share your pictures</li>
-      <li>Show your artworks</li>
-      <li>Chat with your friends</li>
-      <li>Keep track of your friends contents</li>
-    </ul>
+  <div id='home_logo' class='clear'>
+    <div class='left'><%= image_tag 'logo.jpg' %></div>
+    
+    <div class=''>
+      <h2>
+        Spread your content socially!
+      </h2>
+    
+      <h3>Features</h3>
+      <ul>
+        <li>Post your ideas</li>
+        <li>Share your pictures</li>
+        <li>Show your artworks</li>
+        <li>Chat with your friends</li>
+        <li>Keep track of your friends contents</li>
+      </ul>
+    </div>
+    <div class='clear'></div>
   </div>
-  <div class='clear'></div>
 <% end %>
 
 <div id='home_posts'>

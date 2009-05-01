@@ -11,11 +11,13 @@
   <div class='post_content'>
     <%= format post.body %>
     <% unless current_page? post  %>
-      <%= link_to 'See more >>', post %>
+      <div class='right'>
+        <%= link_to 'See more >>', post %>
+      </div>
     <% end %>
   </div>  
   
-  <table>
+  <table width='100%'>
     <tr>
       <td>
         <% if post.account.avatar.file?  %>
