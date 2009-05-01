@@ -1,6 +1,9 @@
+.green_bg {
+  background-color: #4c8542;
+}
+
 body {
-    background-color: #4c8542;;
-    color: #333;
+  color: #333;
 }
 
 body, p, ol, ul, td {
@@ -13,6 +16,18 @@ a img { border: none; }
 a { color: #666; }
 a:visited { color: #666; }
 a:hover { color: red; }
+
+.button {
+  border: none;
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
+  color: white;
+}
+
+.button:hover {
+  color: red;
+  cursor: pointer;
+}
 
 pre {
   background-color: #eee;
@@ -70,12 +85,6 @@ pre {
     width: 90%;
 }
 
-.green_border {
-    margin-left: 10px;    
-    background-color: #4c8542;
-    color: rgb(255, 255, 255);
-}
-
 .menu_item {
     width: 65px;
     font-variant: small-caps;
@@ -84,16 +93,17 @@ pre {
     line-height: 15px;
     font-size-adjust: none;
     font-stretch: normal;
+    margin-left: 10px;
+    color: white;
 }
 
 .menu_item a, .menu_item a:visited {
-    color: rgb(255, 255, 255);
+    color: white;
     text-decoration: none;
 }
 
 .menu_item a:hover {
     color: red;
-    background-color: #4c8542;
 }
 
 #side_bar {

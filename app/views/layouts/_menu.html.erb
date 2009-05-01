@@ -1,14 +1,14 @@
 <div id="top_menu">  
   <% if logged_in? %>
     <% if current_account.avatar.file?  %>
-      <div class='avatar_tiny text_center green_border rounded left'>
+      <div class='avatar_tiny text_center green_bg  rounded left'>
         <%= image_tag current_account.avatar.url(:tiny) %>
       </div>
     <% end %>
-    <div class="menu_item left text_center green_border rounded"><%= link_to_unless_current "Home", home_path %></div>
-    <div class="menu_item left text_center green_border rounded"><%= link_to_unless_current "Blog", account_index_path(current_account.login) %></div>
-    <div class="menu_item left text_center green_border rounded"><%= link_to_unless_current "Post", new_post_path %></div>
-    <div class="menu_item left text_center green_border rounded">
+    <div class="menu_item left text_center green_bg rounded"><%= link_to_unless_current "Home", home_path %></div>
+    <div class="menu_item left text_center green_bg rounded"><%= link_to_unless_current "Blog", account_index_path(current_account.login) %></div>
+    <div class="menu_item left text_center green_bg rounded"><%= link_to_unless_current "Post", new_post_path %></div>
+    <div class="menu_item left text_center green_bg rounded">
       <%= link_to_unless_current "Scraps", account_scraps_path(current_account) %>
       <% unless current_account.scraps.scoped_by_read(false).empty? %>
         <div class='scrap_count'>
@@ -16,14 +16,14 @@
         </div>
       <% end %>
     </div>
-    <div class="menu_item left text_center green_border rounded"><%= link_to_unless_current "Things", things_path %></div>
-    <div class="menu_item left text_center green_border rounded"><%= link_to_unless_current "Settings", edit_account_path(current_account) %></div>
-    <div class="menu_item left text_center green_border rounded"><%= link_to 'Logout', logout_path %></div>
+    <div class="menu_item left text_center green_bg rounded"><%= link_to_unless_current "Things", things_path %></div>
+    <div class="menu_item left text_center green_bg rounded"><%= link_to_unless_current "Settings", edit_account_path(current_account) %></div>
+    <div class="menu_item left text_center green_bg rounded"><%= link_to 'Logout', logout_path %></div>
   <% else %>
-    <div class="menu_item left text_center green_border rounded"><%= link_to_unless_current "Home", home_path %></div>
-    <div class="menu_item left text_center green_border rounded"><%= link_to_unless_current "Things", things_path %></div>
-    <div class="menu_item left text_center green_border rounded"><%= link_to_unless_current 'Login', login_path %></div>
-    <div class="menu_item left text_center green_border rounded"><%= link_to_unless_current 'Sign Up', new_account_path %></div>
+    <div class="menu_item left text_center green_bg rounded"><%= link_to_unless_current "Home", home_path %></div>
+    <div class="menu_item left text_center green_bg rounded"><%= link_to_unless_current "Things", things_path %></div>
+    <div class="menu_item left text_center green_bg rounded"><%= link_to_unless_current 'Login', login_path %></div>
+    <div class="menu_item left text_center green_bg rounded"><%= link_to_unless_current 'Sign Up', new_account_path %></div>
   <% end %>
 </div>
 

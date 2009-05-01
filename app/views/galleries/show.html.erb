@@ -19,7 +19,7 @@
       <% form_for GalleryPhoto.new, :html => { :multipart => true } do |f| %>
         <%= hidden_field_tag 'gallery_photo[gallery_id]', @gallery.id %>
         <%= f.file_field :photo %>
-        <%= f.submit 'Upload' %>
+        <%= f.submit 'Upload', :class => 'button green_bg' %>
       <% end %>
     </p>
   </div>  
