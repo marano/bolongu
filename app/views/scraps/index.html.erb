@@ -1,18 +1,11 @@
-<h1>
+<% render :layout => @account do %>
+  <h1>Scraps</h1>
+
   <% unless @account == current_account %>
-    <% if @account.avatar.file? %>
-      <%= image_tag @account.avatar.url(:tiny), :title => @account.name %>
-    <% else %>
-      <%= @account.name %>
-    <% end %>
+    <%= render :partial => 'new', :locals => { :recipient => @account } %>
   <% end %>
-  Scraps  
-</h1>
 
-<% unless @account == current_account %>
-  <%= render :partial => 'new', :locals => { :recipient => @account } %>
+  <div id='scraps'>
+    <%= render :partial => @scraps, :spacer_template => 'separator' %>
+  </div>
 <% end %>
-
-<div id='scraps'>
-  <%= render @scraps %>
-</div>

@@ -7,14 +7,14 @@
   </p>
   <p>
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'input' %>
   </p>
   <p>
     <%= f.label :cover %> <%= f.check_box :cover %>
   </p>
   <p>
     <%= f.label :caption %><br />
-    <%= f.text_area :caption %>
+    <%= f.text_area :caption, :class => 'input' %>
   </p>
   <p>
     <%= f.submit 'Update', :class => 'button green_bg' %>

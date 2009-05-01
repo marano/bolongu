@@ -1,36 +1,37 @@
 <h1>Account Settings</h1>
+
 <% @account.password = @account.password_confirmation = nil %>
 
 <%= error_messages_for :account %>
 <% form_for @account, :html => { :multipart => true } do |f| -%>
 
-<p><%= label_tag 'name' %><br/>
-<%= f.text_field :name %></p>
+  <p><%= label_tag 'name' %><br/>
+  <%= f.text_field :name, :class => 'input' %></p>
 
-<p>
-<% unless current_account.avatar.url.nil?  %>
-  <%= image_tag current_account.avatar.url(:default) %>
-<% end %>
-</p>
+  <p>
+    <% unless current_account.avatar.url.nil?  %>
+      <%= image_tag current_account.avatar.url(:default) %>
+    <% end %>
+  </p>
 
-<p><%= label_tag 'avatar' %><br/>
-<%= f.file_field :avatar %>
-</p>
+  <p><%= label_tag 'avatar' %><br/>
+  <%= f.file_field :avatar %>
+  </p>
 
-<p><%= label_tag 'blog title' %><br/>
-<%= f.text_field :blog_title %></p>
+  <p><%= label_tag 'blog title' %><br/>
+  <%= f.text_field :blog_title, :class => 'input' %></p>
 
-<p><%= label_tag 'login' %><br/>
-<%= f.label :login, @account.login %></p>
+  <p><%= label_tag 'login' %><br/>
+  <%= f.label :login, @account.login %></p>
 
-<p><%= label_tag 'email' %><br/>
-<%= f.label :emai, @account.email %></p>
+  <p><%= label_tag 'email' %><br/>
+  <%= f.label :emai, @account.email %></p>
 
-<p><%= label_tag 'password' %><br/>
-<%= f.password_field :password %></p>
+  <p><%= label_tag 'password' %><br/>
+  <%= f.password_field :password, :class => 'input' %></p>
 
-<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
-<%= f.password_field :password_confirmation %></p>
+  <p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
+  <%= f.password_field :password_confirmation, :class => 'input' %></p>
 
-<p><%= submit_tag 'Update', :class => 'button green_bg' %></p>
+  <p><%= submit_tag 'Update', :class => 'button green_bg' %></p>
 <% end -%>

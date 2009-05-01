@@ -118,7 +118,8 @@ FCKConfig.ToolbarSets["Default"] = [
 FCKConfig.ToolbarSets["Mine"] = [
 	['Cut','Copy','Paste','PasteText','PasteWord'],
 	['FontName','FontSize'],
-	['Bold','Italic','Underline','-','OrderedList','UnorderedList','-','Link','Unlink']
+	['Bold','Italic','Underline','-','OrderedList','UnorderedList','-','Link','Unlink'],
+	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull']
 ] ;
 
 FCKConfig.ToolbarSets["Basic"] = [

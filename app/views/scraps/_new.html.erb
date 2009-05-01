@@ -1,8 +1,8 @@
 <% if logged_in? %>
-  <div class='new_scrap clear'>
+  <div class='new_scrap'>
     <% remote_form_for [recipient, Scrap.new] do |f| %>
       <p>
-        <%= f.text_area :body, :class => 'scrap_input' %>
+        <%= f.text_area :body, :class => 'scrap_input input' %>
       </p>
       <p><%= f.submit "Scrap!", :class => 'button green_bg' %></p>
     <% end %>

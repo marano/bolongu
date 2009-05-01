@@ -11,22 +11,16 @@ body, p, ol, ul, td {
   font-size:   13px;
 }
 
+a { color: #666; text-decoration: none; }
 a img { border: none; }
-
-a { color: #666; }
 a:visited { color: #666; }
 a:hover { color: red; }
 
-.button {
-  border: none;
-  font-weight: bold;
-  padding: 10px 10px 10px 10px;
-  color: white;
-}
-
-.button:hover {
-  color: red;
-  cursor: pointer;
+hr {
+  background-color: #999;
+  height: 0.08em;
+  border: 0;
+  width: 95%;
 }
 
 pre {
@@ -63,6 +57,14 @@ pre {
     text-align: center;
 }
 
+.text_right {
+    text-align: right;
+}
+
+.text_left {
+    text-align: left;
+}
+
 .plain_list, .plain_list {
     margin:0;
     padding:0;
@@ -72,9 +74,35 @@ pre {
 
 .plain_list li{ display:inline; }
 
+.input {
+  border: 0.08em solid #999;
+  font-size: 120%;
+  padding: 0.2em 0.2em 0.2em 0.2em;
+}
+
+.email_input {
+  width: 350px;
+}
+
+.button {
+  border: none;
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
+  color: white;
+}
+
+.button:hover {
+  color: red;
+  cursor: pointer;
+}
+
 .menu_action {
     margin: 15px 0;
     padding-left: 60px;
+}
+
+.sidebar_action {
+  padding-left: 80px;
 }
 
 .scrap_count {
@@ -85,8 +113,11 @@ pre {
     width: 90%;
 }
 
-.menu_item {
-    width: 65px;
+.vertical_center {
+  vertical-align: middle;
+}
+
+.menu_item {    
     font-variant: small-caps;
     font-weight: bold;
     font-size: 12px;
@@ -95,19 +126,43 @@ pre {
     font-stretch: normal;
     margin-left: 10px;
     color: white;
+    width: 75px;
+    height: 70px;
+}
+
+.menu_item p {
+    padding: 20px 0;
 }
 
 .menu_item a, .menu_item a:visited {
-    color: white;
+    color: white;    
     text-decoration: none;
 }
 
-.menu_item a:hover {
-    color: red;
+.menu_item:hover {
+    color: white;
+    background-color:red;
 }
+
+.avatar_menu, .avatar_menu_cell {
+    width: 75px;
+    height: 70px;
+}
+
+.avatar_menu img {
+  vertical-align: middle;
+}
+
 
 #side_bar {
     width:160px;
+}
+
+#blog_title {
+}
+
+#account_content {
+  width: 550px;
 }
 
 .photo_list {
@@ -115,20 +170,17 @@ pre {
 }
 
 #container {
-    width: 70%;
-    margin: 0 auto;
+    margin: 1em auto;
+    position: relative;
+    width: 763px;    
     background-color: #FFF;
-    padding: 20px 40px 20px 40px;
-    border: solid 1px black;
+    border: solid 1px rgb(255,255,255);
     margin-top: 20px;
 }
 
 #content {
-    width: 100%;
-}
-
-.avatar_tiny { 
-    width: 70px;
+    margin: 1em auto;
+    position: relative;
 }
 
 #home_posts {}
@@ -137,7 +189,9 @@ pre {
     padding-top: 5px;
 }
 
-.post { clear: left; }
+.post { 
+  text-align: justify;
+}
 
 .post_head { }
 
@@ -158,18 +212,19 @@ pre {
     clear: left;
 }
 
-.account_content {
+.account_info {
     height: 50px;
+    width: 170px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.account_content_avatar {
-    margin-right: 5px;
+.account_info_avatar {
 }
 
-.account_content_name {
-    font-weight:bold;
+.account_info_name {
+    text-align: left;
+    font-weight: bold;
     margin-right: 5px;
 }
 
@@ -185,7 +240,7 @@ pre {
 .comment_body {}
  
 .scrap_input {
-    width: 80%;
+    width: 90%;
     height: 80px;
 }
  
@@ -194,8 +249,8 @@ pre {
 
 #flash_notice, #flash_error {
     text-align: center;
-    width: 60%;
-    margin: 10px;
+    width: 600px;
+    margin: 10px 10px 10px 81px;
 }
  
 #flash_notice {

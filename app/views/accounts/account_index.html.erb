@@ -1,11 +1,7 @@
-<% head (auto_discovery_link_tag :atom, formatted_account_index_path(@account.login)) %>
-<% #head (auto_discovery_link_tag :atom, formatted_account_index_path(@account.login, :options => :format)) 
-%>
-
 <% title @account.blog_title %>
 
-<div id='account_title' class='text_center'><h1><%= @account.blog_title %></h1></div>
-
-<%= render :partial => 'side_bar', :locals => { :account => @account } %>
-
-<%= render :partial => @account.posts %>
+<% render :layout => @account do %>
+  <div id='blog_title' class='text_center'><h1><%= @account.blog_title %></h1></div>  
+  
+  <%= render :partial => @account.posts, :spacer_template => 'posts/separator' %>  
+<% end %>

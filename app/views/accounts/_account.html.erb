@@ -1,0 +1,9 @@
+<% head (auto_discovery_link_tag :atom, formatted_account_index_path(@account.login)) %>
+<% #head (auto_discovery_link_tag :atom, formatted_account_index_path(@account.login, :options => :format)) 
+%>
+
+<%= render :partial => 'accounts/side_bar', :locals => { :account => @account } %>
+
+<div id='account_content'>
+  <%= yield %>
+</div>

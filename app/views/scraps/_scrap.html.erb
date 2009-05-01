@@ -3,14 +3,18 @@
   <p>
     <table>
       <tr>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr>
         <td>
-          <%= render :partial => 'accounts/account_content', :object => scrap %>
+          <% if scrap.account.avatar.file?  %>
+            <%= image_tag scrap.account.avatar.url(:tiny) %> 
+          <% end %>
         </td>
-        <td>
+        <td width='25%'>
+          <div class='account_info_name'>
+            <%= link_to_unless_current scrap.account.name, account_index_url(scrap.account.login) %>
+          </div>
+          <%= time_ago_in_words scrap.created_at %>
+        </td>
+        <td width='100%'>
           <%= simple_format scrap.body %>
           <% if current_account == scrap.author or current_account == scrap.recipient %>
             <div class='right'>

@@ -7,18 +7,45 @@
       </div>
     <% end %>
   </div>
+  
   <div class='post_content'>
     <%= format post.body %>
-  </div>
-  <% if current_account_content? post %>
-    <div class='manager_links right'>
-      <%= link_to 'Edit', edit_post_path(post) %> |
-      <%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %>
-    </div>
-  <% end %>  
-  <%= render :partial => 'accounts/account_content', :object => post %>
-  <div class='clear_left'>
-    <%= share_this post.title, post_url(post) %>
-    <%= link_to_unless_current pluralize(post.comments.count, 'comment'), post %> from <%= link_to_unless_current pluralize(post.commentators.count, 'person'), post %>
-  </div>
+    <% unless current_page? post  %>
+      <%= link_to 'See more >>', post %>
+    <% end %>
+  </div>  
+  
+  <table>
+    <tr>
+      <td>
+        <% if post.account.avatar.file?  %>
+          <%= image_tag post.account.avatar.url(:tiny) %> 
+        <% end %>
+      </td>
+      <td width='25%'>
+        <div class='account_info_name'>
+          <%= link_to_unless_current post.account.name, account_index_url(post.account.login) %>
+        </div>
+        <%= time_ago_in_words post.created_at %>
+      </td>
+      
+      <td width='50%'>
+        <div class='text_center'>
+          <%= share_this post.title, post_url(post) %>
+          <%= link_to_unless_current pluralize(post.comments.count, 'comment'), post %> from <%= link_to_unless_current pluralize(post.commentators.count, 'person'), post %>
+        </div>
+      </td>
+      
+      <td width='25%'>
+        <% if current_account_content? post %>
+          <div class='manager_links text_right'>            
+            <%= link_to 'Edit', edit_post_path(post) %> |
+            <%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+  </table>  
+  
+
 <% end %>

@@ -4,8 +4,8 @@
   
   <% if account.avatar.file? %>
     <p><%= image_tag account.avatar.url(:default) %></p>
-  <% end %>
-  
+  <% end %>  
+
   <% unless !logged_in? || account == current_account %>
     <% if friend?(current_account, account) %>
       <p><%= link_to "Stop following #{account.name}", current_account.friendship(account), :confirm => 'Are you sure?', :method => :delete %></p>
@@ -15,34 +15,40 @@
   <% end %>
   
   <% unless account == current_account %>
+    <hr/>
     <h3><%= link_to 'Scraps', account_scraps_path(account) %></h3>
+    <hr/>
   <% end %>
   
-  <%= '<h3>Following</h3>' unless account.friends.empty? %>
-  <ul class='plain_list'>
-    <% for friend in account.friends %>
-      <li>
-        <% if friend.avatar.file? %>
-          <%= link_to image_tag(friend.avatar(:tiny)), account_index_path(friend.login), :title => friend.name %>
-        <% else %>
-          <%= link_to friend.name, account_index_path(friend.login), :title => friend.blog_title %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+  <% unless account.friends.empty? %>
+    <h3>Following</h3>
+    <ul class='plain_list'>
+      <% for friend in account.friends %>
+        <li>
+          <% if friend.avatar.file? %>
+            <%= link_to image_tag(friend.avatar(:tiny)), account_index_path(friend.login), :title => friend.name %>
+          <% else %>
+            <%= link_to friend.name, account_index_path(friend.login), :title => friend.blog_title %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
   
-  <h3 class='left'><%= link_to 'Things', things_path %></h3>  
-  <ul class='plain_list clear'>
+  <hr/>
+  <h3><%= link_to 'Things', things_path %></h3>  
+  <ul class='plain_list'>
     <% for thing in account.things %>
       <li><%= link_to image_tag(thing.photo(:tiny)), thing_path(thing), :title => thing.name %></li>
     <% end %>
   </ul>
   <% if account == current_account %>
-    <div class='_menu_action'><%= link_to 'new thing', new_thing_path %></div>
+    <div class='sidebar_action'><%= link_to 'new thing', new_thing_path %></div>
   <% end %>
   
-  <h3 class='left'><%= link_to 'Galleries', account_galleries_path(account) %></h3>
-  <ul class='plain_list clear'>
+  <hr/>
+  <h3><%= link_to 'Galleries', account_galleries_path(account) %></h3>
+  <ul class='plain_list'>
     <% for gallery in account.galleries %>
       <li>
         <% if gallery.cover %>
@@ -54,6 +60,8 @@
     <% end %>
   </ul>  
   <% if account == current_account %>
-    <div class='_menu_action'><%= link_to 'new galery', new_account_gallery_path(current_account) %></div>
+    <div class='sidebar_action'><%= link_to 'new galery', new_account_gallery_path(current_account) %></div>
   <% end %>
+  
+  <hr/>
 </div>

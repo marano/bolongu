@@ -1,5 +1,7 @@
-<%= render @galleries %>
+<% render :layout => @account do %>
+  <%= render :partial => @galleries, :spacer_template => 'separator' %>
 
-<% if @account == current_account %>
-  <%= link_to 'New gallery', new_account_gallery_path(@account) %>
+  <% if @account == current_account %>
+    <%= link_to 'New gallery', new_account_gallery_path(@account) %>
+  <% end %>
 <% end %>

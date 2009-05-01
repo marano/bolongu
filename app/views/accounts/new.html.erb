@@ -6,22 +6,22 @@
 <%= error_messages_for :account %>
 
 <p><%= label_tag 'name' %><br/>
-<%= f.text_field :name %></p>
+<%= f.text_field :name, :class => 'input' %></p>
 
 <p><%= label_tag 'blog title' %><br/>
-<%= f.text_field :blog_title %></p>
+<%= f.text_field :blog_title, :class => 'input' %></p>
 
 <p><%= label_tag 'login' %><br/>
-<%= f.text_field :login %></p>
+<%= f.text_field :login, :class => 'input' %></p>
 
 <p><%= label_tag 'email' %><br/>
-<%= f.text_field :email %></p>
+<%= f.text_field :email, :class => 'email_input input' %></p>
 
 <p><%= label_tag 'password' %><br/>
-<%= f.password_field :password %></p>
+<%= f.password_field :password, :class => 'input' %></p>
 
 <p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
-<%= f.password_field :password_confirmation %></p>
+<%= f.password_field :password_confirmation, :class => 'input' %></p>
 
 <p><%= submit_tag 'Sign up', :class => 'button green_bg' %></p>
 <% end -%>
