@@ -4,10 +4,12 @@
   </div>
   <% if logged_in? %>
     <% if current_account.avatar.file?  %>
-      <div class='image_menu left green_bg'>
-        <table>
+      <div class='menu_item left green_bg'>
+        <table class='menu_item'>
           <tr>
-            <td class='image_menu_cell text_center'><%= image_tag current_account.avatar.url(:tiny) %></td>
+            <td class='text_center'>
+              <%= link_to image_tag(current_account.avatar.url(:tiny)), account_index_path(current_account.login) %>
+            </td>
           </tr>
         </table>
       </div>
@@ -46,10 +48,10 @@
       <p><%= link_to_unless_current 'Sign Up', new_account_path %></p>
     </div>
   <% end %>
-  <div class='image_menu right margin_left green_bg'>
-    <table>
+  <div class='menu_item right margin_left green_bg'>
+    <table class='menu_item'>
       <tr>
-        <td class='image_menu_cell text_center'><%= link_to image_tag('logo_tiny.jpg'), about_path %></td>
+        <td class='text_center'><%= link_to image_tag('logo_tiny.jpg'), about_path %></td>
       </tr>
     </table>
   </div>
