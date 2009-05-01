@@ -1,24 +1,24 @@
 <div id="top_menu">  
+  <div class="menu_item left margin_right text_center green_bg">
+    <p><%= link_to_unless_current "Home", home_path %></p>
+  </div>
   <% if logged_in? %>
     <% if current_account.avatar.file?  %>
-      <div class='avatar_menu left green_bg left'>
+      <div class='image_menu left green_bg'>
         <table>
           <tr>
-            <td class='avatar_menu_cell text_center'><%= image_tag current_account.avatar.url(:tiny) %></td>
+            <td class='image_menu_cell text_center'><%= image_tag current_account.avatar.url(:tiny) %></td>
           </tr>
         </table>
       </div>
     <% end %>
     <div class="menu_item left text_center green_bg">
-      <p><%= link_to_unless_current "Home", home_path %></p>
-    </div>
-    <div class="menu_item left text_center green_bg">
       <p><%= link_to_unless_current "Blog", account_index_path(current_account.login) %></p>
     </div>
-    <div class="menu_item left text_center green_bg">
+    <div class="menu_item left margin_left text_center green_bg">
       <p><%= link_to_unless_current "Post", new_post_path %></p>
     </div>
-    <div class="menu_item left text_center green_bg">
+    <div class="menu_item left margin_left text_center green_bg">
       <p>
         <%= link_to_unless_current "Scraps", account_scraps_path(current_account) %>        
         <% unless current_account.scraps.scoped_by_read(false).empty? %>
@@ -26,27 +26,31 @@
       <% end %>
       </p>      
     </div>
-    <div class="menu_item left text_center green_bg">
+    <div class="menu_item left margin_left text_center green_bg">
       <p><%= link_to_unless_current "Things", things_path %></p>
     </div>
-    <div class="menu_item left text_center green_bg">
+    <div class="menu_item left margin_left text_center green_bg">
       <p><%= link_to_unless_current "Settings", edit_account_path(current_account) %></p>
     </div>
-    <div class="menu_item left text_center green_bg">
+    <div class="menu_item left margin_left text_center green_bg">
       <p><%= link_to 'Logout', logout_path %></p>
     </div>
-  <% else %>
-    <div class="menu_item left text_center green_bg">
-      <p><%= link_to_unless_current "Home", home_path %></p>
-    </div>
+  <% else %>    
     <div class="menu_item left text_center green_bg">
       <p><%= link_to_unless_current "Things", things_path %></p>
     </div>
-    <div class="menu_item left text_center green_bg">
+    <div class="menu_item left margin_left text_center green_bg">
       <p><%= link_to_unless_current 'Login', login_path %></p>
     </div>
-    <div class="menu_item left text_center green_bg">
+    <div class="menu_item left margin_left text_center green_bg">
       <p><%= link_to_unless_current 'Sign Up', new_account_path %></p>
     </div>
   <% end %>
+  <div class='image_menu right margin_left green_bg'>
+    <table>
+      <tr>
+        <td class='image_menu_cell text_center'><%= link_to image_tag('logo_tiny.jpg'), about_path %></td>
+      </tr>
+    </table>
+  </div>
 </div>

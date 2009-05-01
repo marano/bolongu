@@ -41,6 +41,14 @@ pre {
     padding: 10px;
 }
 
+.margin_left {
+  margin-left: 10px;
+}
+
+.margin_right {
+  margin-right: 10px;
+}
+
 .clear {
     clear: both;
 }
@@ -114,7 +122,7 @@ pre {
 }
 
 #top_menu {
-    width: 90%;
+    width: 100%;
 }
 
 .vertical_center {
@@ -127,8 +135,7 @@ pre {
     font-size: 12px;
     line-height: 15px;
     font-size-adjust: none;
-    font-stretch: normal;
-    margin-left: 10px;
+    font-stretch: normal;    
     color: white;
     width: 75px;
     height: 70px;
@@ -148,12 +155,12 @@ pre {
     background-color:red;
 }
 
-.avatar_menu, .avatar_menu_cell {
+.image_menu, .image_menu_cell {
     width: 75px;
     height: 70px;
 }
 
-.avatar_menu img {
+.image_menu img {
   vertical-align: middle;
 }
 
