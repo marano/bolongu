@@ -16,11 +16,11 @@
   
   <% unless account == current_account %>
     <hr/>
-    <h3><%= link_to 'Scraps', account_scraps_path(account) %></h3>
-    <hr/>
+    <h3><%= link_to 'Scraps', account_scraps_path(account) %></h3>    
   <% end %>
   
   <% unless account.friends.empty? %>
+    <hr/>
     <h3>Following</h3>
     <ul class='plain_list'>
       <% for friend in account.friends %>
