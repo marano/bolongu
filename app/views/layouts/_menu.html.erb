@@ -19,12 +19,12 @@
       <p><%= link_to_unless_current "Post", new_post_path %></p>
     </div>
     <div class="menu_item left text_center green_bg">
-      <p><%= link_to_unless_current "Scraps", account_scraps_path(current_account) %></p>
-      <% unless current_account.scraps.scoped_by_read(false).empty? %>
-        <div class='scrap_count'>
-          <p><%= current_account.scraps.scoped_by_read(false).count %></p>
-        </div>
+      <p>
+        <%= link_to_unless_current "Scraps", account_scraps_path(current_account) %>        
+        <% unless current_account.scraps.scoped_by_read(false).empty? %>
+          <br/><span class='scrap_count'><%= current_account.scraps.scoped_by_read(false).count %></span>
       <% end %>
+      </p>      
     </div>
     <div class="menu_item left text_center green_bg">
       <p><%= link_to_unless_current "Things", things_path %></p>
