@@ -1,6 +1,14 @@
-<p>Your received a new Comment from <%= @comment.author ? @comment.author.name : @comment.name %>.</p>
+<p>
+  Your received a new Comment from
+  <% if @comment.author %>
+    <%= @comment.author.name %>
+  <% else %>
+    <%= @comment.name %>
+  <% end %>
+  .
+</p>
 
 <p>Visit this url to see the comment:
-<br/><%=h @url %></p>
+<br/><%= link_to @url, @url %></p>
 
 <p><%= image_tag @logo_tiny %></p>

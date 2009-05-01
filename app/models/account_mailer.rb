@@ -15,6 +15,14 @@ class AccountMailer < ActionMailer::Base
     @body[:scrap] = scrap
     @body[:url] = url
   end
+  
+  def follow_notification(friendship, url)
+    setup_email(friendship.friend)
+    @subject += 'follow notification'
+
+    @body[:friendship] = friendship
+    @body[:url] = url    
+  end
 
   def signup_notification(account)
     setup_email(account)
