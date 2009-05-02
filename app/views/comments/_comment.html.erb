@@ -1,21 +1,28 @@
 <% div_for comment do %>
   <p>
-    <table>
-      <tr>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>
-          <% if comment.author %>
-            <%= render :partial => 'accounts/account_content', :object => comment %>
-          <% else %>
+    <table width='100%'>
+      <tr>        
+        <% if comment.author %>
+          <td>
+            <% if comment.author.avatar.file?  %>
+              <%= image_tag comment.author.avatar.url(:tiny) %> 
+            <% end %>
+          </td>
+          <td width='20%'>
+            <div class='account_info_name'>
+              <%= link_to_unless_current comment.author.name, account_index_url(comment.author.login) %>
+            </div>
+            <%= time_ago_in_words comment.created_at %>
+          </td>        
+        <% else %>
+          <td width='20%'>
             <%= render :partial => 'comments/anonymous', :locals => { :comment => comment } %>
-          <% end %>
-        </td>
-        <td>
+          </td>
+        <% end %>        
+        <td width='80%'>
           <div class='comment_body'>
             <%= simple_format comment.body %>
+            
             <% if logged_in? and current_account_content?(comment) || current_account_content?(comment.commentable) %>
               <div class='right'>
                 <%= link_to_remote 'Delete', :url => [comment.commentable, comment], :confirm => 'Are you sure?', :method => :delete %>

@@ -198,10 +198,9 @@ pre {
 
 .post_head { }
 
-.post_photo {
-    float: left;
+.post_photo, .thing_photo {
     margin-right: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .post_content { }

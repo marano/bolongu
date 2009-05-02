@@ -17,10 +17,10 @@
     <div class="menu_item left text_center green_bg">
       <p><%= link_to_unless_current "Blog", account_index_path(current_account.login) %></p>
     </div>
-    <div class="menu_item left margin_left text_center green_bg">
+    <div class="menu_item left text_center green_bg">
       <p><%= link_to_unless_current "Post", new_post_path %></p>
     </div>
-    <div class="menu_item left margin_left text_center green_bg">
+    <div class="menu_item left text_center green_bg">
       <p>
         <%= link_to_unless_current "Scraps", account_scraps_path(current_account) %>        
         <% unless current_account.scraps.scoped_by_read(false).empty? %>

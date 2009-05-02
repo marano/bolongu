@@ -4,14 +4,14 @@ class ThingsController < ApplicationController
     @thing = Thing.find(params[:id])
     current_account.things << @thing
     flash[:notice] = "#{@thing.name} was added to your things."
-    redirect_to @thing
+    redirect_to :back
   end
   
   def remove
     @thing = Thing.find(params[:id])
     current_account.things.delete @thing
     flash[:notice] = "#{@thing.name} was removed from your things."
-    redirect_to @thing
+    redirect_to :back
   end
   
   # GET /things

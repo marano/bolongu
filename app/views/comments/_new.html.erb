@@ -2,16 +2,16 @@
   <% remote_form_for [commentable, Comment.new] do |f| %>
     <% unless logged_in? %>
       <p>
-        <%= f.label :name, :class => 'input' %><br />
-        <%= f.text_field :name %>
+        <%= f.label :name %><br />
+        <%= f.text_field :name, :class => 'input' %>
       </p>
       <p>
-        <%= f.label :email, :class => 'email_input input' %><br />
-        <%= f.text_field :email %>
+        <%= f.label :email %><br />
+        <%= f.text_field :email, :class => 'email_input input' %>
       </p>
       <p>
-        <%= f.label :url, :class => 'input' %><br />
-        <%= f.text_field :url %>
+        <%= f.label :url%><br />
+        <%= f.text_field :url, :class => 'input' %>
       </p>
     <% end %>
     <p>
