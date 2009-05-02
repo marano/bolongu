@@ -1,52 +1,54 @@
-<div>
-  <h1>
-    <%= link_to_unless_current thing.name, thing %>
-  </h1>
-  <% if thing.photo.file? %>
-    <div class='thing_photo left'>
-      <%= link_to_unless_current image_tag(thing.photo.url(:default)), thing %>
+<% div_for thing do %>
+  <div>
+    <h1>
+      <%= link_to_unless_current thing.name, thing %>
+    </h1>
+    <% if thing.photo.file? %>
+      <div class='thing_photo left'>
+        <%= link_to_unless_current image_tag(thing.photo.url(:default)), thing %>
+      </div>
+    <% end %>
+  </div>
+
+  <p>
+    <%=h thing.description %>
+  </p>
+
+  <% if logged_in? %>
+    <div class='right'>
+      <% if current_account.things.include?(thing) %>
+        <p><%= link_to "Remove #{thing.name} from my things <<", remove_thing_path(thing), :method => :delete %></p>
+      <% else %>
+        <p><%= link_to "Add #{thing.name} to my things >>", add_thing_path(thing), :method => :post %></p>
+      <% end %>  
     </div>
   <% end %>
-</div>
 
-<p>
-  <%=h thing.description %>
-</p>
-
-<% if logged_in? %>
-  <div class='right'>
-    <% if current_account.things.include?(thing) %>
-      <p><%= link_to "Remove #{thing.name} from my things <<", remove_thing_path(thing), :method => :delete %></p>
-    <% else %>
-      <p><%= link_to "Add #{thing.name} to my things >>", add_thing_path(thing), :method => :post %></p>
-    <% end %>  
-  </div>
-<% end %>
-
-<table width='100%'>
-  <tr>
-    <td width='50px'>
-      <% if thing.author.avatar.file?  %>
-        <%= image_tag thing.author.avatar.url(:tiny) %> 
-      <% end %>
-    </td>
-    <td width='25%'>
-      <div class='account_info_name'>
-        <%= link_to_unless_current thing.author.name, account_index_url(thing.author.login) %>
-      </div>
-      <%= time_ago_in_words thing.created_at %>
-    </td>
-    <td width='55%' class='text_center'>
-      <%= share_this thing.name, thing_url(thing) %>
-      <%= link_to_unless_current pluralize(thing.comments.count, 'comment'), thing %> from <%= link_to_unless_current pluralize(thing.commentators.count, 'person'), thing %>
-    </td>
-    <td width='20%'>
-      <% if logged_in? and current_account == thing.author %>
-        <div class='manager_links text_right'>            
-          <%= link_to 'Edit', edit_thing_path(thing) %> |
-          <%= link_to 'Delete', thing, :confirm => 'Are you sure?', :method => :delete %>
+  <table width='100%'>
+    <tr>
+      <td width='50px'>
+        <% if thing.author.avatar.file?  %>
+          <%= image_tag thing.author.avatar.url(:tiny) %> 
+        <% end %>
+      </td>
+      <td width='25%'>
+        <div class='account_info_name'>
+          <%= link_to_unless_current thing.author.name, account_index_url(thing.author.login) %>
         </div>
-      <% end %>
-    </td>
-  </tr>
-</table>
+        <%= time_ago_in_words thing.created_at %>
+      </td>
+      <td width='55%' class='text_center'>
+        <%= share_this thing.name, thing_url(thing) %>
+        <%= link_to_unless_current pluralize(thing.comments.count, 'comment'), thing %> from <%= link_to_unless_current pluralize(thing.commentators.count, 'person'), thing %>
+      </td>
+      <td width='20%'>
+        <% if logged_in? and current_account == thing.author %>
+          <div class='manager_links text_right'>            
+            <%= link_to 'Edit', edit_thing_path(thing) %> |
+            <%= link_to 'Delete', thing, :confirm => 'Are you sure?', :method => :delete %>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<% end %>

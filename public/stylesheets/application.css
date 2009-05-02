@@ -196,6 +196,10 @@ pre {
   text-align: justify;
 }
 
+.thing {
+  text-align: justify;
+}
+
 .post_head { }
 
 .post_photo, .thing_photo {
