@@ -5,6 +5,8 @@
   <% if account.avatar.file? %>
     <p><%= image_tag account.avatar.url(:default) %></p>
   <% end %>  
+  
+  <p><%= account.bio %></p>
 
   <% unless !logged_in? || account == current_account %>
     <% if friend?(current_account, account) %>

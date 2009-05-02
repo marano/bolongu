@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090430221241) do
+ActiveRecord::Schema.define(:version => 20090502181248) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20090430221241) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.time     "last_login"
+    t.text     "bio"
   end
 
   add_index "accounts", ["login"], :name => "index_accounts_on_login", :unique => true
