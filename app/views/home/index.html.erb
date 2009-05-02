@@ -25,4 +25,9 @@
 
 <div id='home_posts'>
   <%= render :partial => @posts, :spacer_template => 'posts/separator' %>
+  <%= render :partial => 'posts/separator' %>
+</div>
+
+<div class='text_center'>
+  <%= will_paginate @posts %> 
 </div>
