@@ -14,7 +14,7 @@ a:hover { color: red; }
 
 hr {
   background-color: #999;
-  height: 0.08em;
+  height: 1px;
   border: 0;
   width: 95%;
 }

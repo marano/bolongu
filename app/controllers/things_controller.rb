@@ -17,7 +17,7 @@ class ThingsController < ApplicationController
   # GET /things
   # GET /things.xml
   def index
-    @things = Thing.all
+    @things = Thing.all.paginate :page => params[:page], :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb

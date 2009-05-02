@@ -29,7 +29,9 @@ class AccountsController < ApplicationController
     else
       @account = account_from_path
 
-      unless @account
+      if @account
+        @posts = @account.posts.paginate :page => params[:page], :per_page => 10
+      else
         flash[:error] = "Account #{params[:account_login]} couldn't be found!"
         respond_to do |format|
           format.html { redirect_to home_path }
