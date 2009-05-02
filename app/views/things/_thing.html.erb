@@ -13,6 +13,13 @@
   <p>
     <%=h thing.description %>
   </p>
+  
+  <% if thing.attachment.file?  %>
+    <p>
+      <%= label_tag :attachment %><br/>
+      <%= link_to thing.attachment_file_name, thing.attachment.url %>
+    </p>
+  <% end %>
 
   <% if logged_in? %>
     <div class='right'>
