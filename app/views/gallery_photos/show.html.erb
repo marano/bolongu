@@ -3,7 +3,7 @@
 <%= link_to "Back to #{@gallery_photo.gallery.name}", [@gallery_photo.gallery.account, @gallery_photo.gallery] %>
 
 <% div_for @gallery_photo do %>
-
+  <%= will_paginate @gallery_photos %>
   <h1>
     <%= h @gallery_photo.name %>
   </h1>

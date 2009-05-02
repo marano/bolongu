@@ -4,7 +4,7 @@ class GalleriesController < ApplicationController
   # GET /galleries.xml
   def index
     @account = Account.find(params[:account_id])
-    @galleries = @account.galleries
+    @galleries = @account.galleries.paginate :page => params[:page], :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb
