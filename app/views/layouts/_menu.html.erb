@@ -1,6 +1,6 @@
 <div id="top_menu">  
   <div class="menu_item left margin_right text_center green_bg">
-    <p><%= link_to_unless_current "Home", home_path %></p>
+    <p><%= link_to "Home", home_path %></p>
   </div>
   <% if logged_in? %>
     <% if current_account.avatar.file?  %>
@@ -15,37 +15,37 @@
       </div>
     <% end %>
     <div class="menu_item left text_center green_bg">
-      <p><%= link_to_unless_current "Blog", account_index_path(current_account.login) %></p>
+      <p><%= link_to "Blog", account_index_path(current_account.login) %></p>
     </div>
     <div class="menu_item left text_center green_bg">
-      <p><%= link_to_unless_current "Post", new_post_path %></p>
+      <p><%= link_to "Post", new_post_path %></p>
     </div>
     <div class="menu_item left text_center green_bg">
       <p>
-        <%= link_to_unless_current "Scraps", account_scraps_path(current_account) %>        
+        <%= link_to "Scraps", account_scraps_path(current_account) %>        
         <% unless current_account.scraps.scoped_by_read(false).empty? %>
           <br/><span class='scrap_count'><%= current_account.scraps.scoped_by_read(false).count %></span>
       <% end %>
       </p>      
     </div>
     <div class="menu_item left margin_left text_center green_bg">
-      <p><%= link_to_unless_current "Things", things_path %></p>
+      <p><%= link_to "Things", things_path %></p>
     </div>
     <div class="menu_item left margin_left text_center green_bg">
-      <p><%= link_to_unless_current "Settings", edit_account_path(current_account) %></p>
+      <p><%= link_to "Settings", edit_account_path(current_account) %></p>
     </div>
     <div class="menu_item left margin_left text_center green_bg">
       <p><%= link_to 'Logout', logout_path %></p>
     </div>
   <% else %>    
     <div class="menu_item left text_center green_bg">
-      <p><%= link_to_unless_current "Things", things_path %></p>
+      <p><%= link_to "Things", things_path %></p>
     </div>
     <div class="menu_item left margin_left text_center green_bg">
-      <p><%= link_to_unless_current 'Login', login_path %></p>
+      <p><%= link_to 'Login', login_path %></p>
     </div>
     <div class="menu_item left margin_left text_center green_bg">
-      <p><%= link_to_unless_current 'Sign Up', new_account_path %></p>
+      <p><%= link_to 'Sign Up', new_account_path %></p>
     </div>
   <% end %>
   <div class='menu_item right margin_left green_bg'>
