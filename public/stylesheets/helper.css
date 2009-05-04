@@ -6,9 +6,13 @@
 
 .padding { padding: 10px; }
 
-.margin_left { margin-left: 10px; }
+.margin_top { margin-top: 10px; }
 
 .margin_right { margin-right: 10px; }
+
+.margin_bottom { margin-bottom: 10px; }
+
+.margin_left { margin-left: 10px; }
 
 .clear { clear: both; }
 

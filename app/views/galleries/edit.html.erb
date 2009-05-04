@@ -1,5 +1,9 @@
-<h1>Editing gallery</h1>
+<div class='part padding margin_bottom'>
+  <h1>Editing gallery</h1>
+</div>
 
 <%= render :partial => 'form', :locals => { :account => @account, :gallery => @gallery } %>
 
-<%= link_to 'Show', [@gallery.account, @gallery] %>
+<div class='part padding'>
+  <%= link_to 'Show', [@gallery.account, @gallery] %>
+</div>

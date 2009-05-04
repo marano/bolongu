@@ -1,27 +1,29 @@
 <% title @gallery_photo.gallery.name %>
 
-<%= link_to "Back to #{@gallery_photo.gallery.name}", [@gallery_photo.gallery.account, @gallery_photo.gallery] %>
+<% div_for @gallery_photo, :class => 'part padding margin_bottom' do %>
+  <%= link_to "Back to #{@gallery_photo.gallery.name}", [@gallery_photo.gallery.account, @gallery_photo.gallery] %>
 
-<% div_for @gallery_photo do %>
-  <%= will_paginate @gallery_photos %>
-  <h1>
-    <%= h @gallery_photo.name %>
-  </h1>
-  <p class='text_center'>
-    <%= link_to image_tag(@gallery_photo.url(:default)), @gallery_photo.url %>
-  </p>
-  <p>
-    <%=h @gallery_photo.caption %>
-  </p>
+  <% div_for @gallery_photo do %>
+    <%= will_paginate @gallery_photos %>
+    <h1>
+      <%= h @gallery_photo.name %>
+    </h1>
+    <p class='text_center'>
+      <%= link_to image_tag(@gallery_photo.url(:default)), @gallery_photo.url %>
+    </p>
+    <p>
+      <%=h @gallery_photo.caption %>
+    </p>
 
-  <div class='manager_links right'>
-    <% if logged_in? and (@gallery_photo.publisher == current_account or @gallery_photo.gallery.account == current_account) %>
-      <%= link_to 'Edit', edit_gallery_photo_path(@gallery_photo) %> |
-      <%= link_to 'Delete', gallery_photo_path(@gallery_photo), :confirm => 'Are you sure?', :method => :delete %>    
-    <% end %>
-  </div>
-  
-  <div class='clear'></div>
+    <div class='manager_links right'>
+      <% if logged_in? and (@gallery_photo.publisher == current_account or @gallery_photo.gallery.account == current_account) %>
+        <%= link_to 'Edit', edit_gallery_photo_path(@gallery_photo) %> |
+        <%= link_to 'Delete', gallery_photo_path(@gallery_photo), :confirm => 'Are you sure?', :method => :delete %>    
+      <% end %>
+    </div>
+    
+    <div class='clear'></div>
+  <% end %>
 <% end %>
 
 <%= render :partial => 'comments/comments', :locals => { :commentable => @gallery_photo } %>

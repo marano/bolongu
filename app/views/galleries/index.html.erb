@@ -1,9 +1,13 @@
 <% render :layout => @account do %>
-  <% if @account == current_account %>
-    <%= link_to 'New gallery', new_account_gallery_path(@account) %>
-  <% end %>
+  <div class='part padding margin_bottom'>
+    <h1>Galleries</h1>
+    
+    <% if @account == current_account %>
+      <%= link_to 'New gallery', new_account_gallery_path(@account) %>
+    <% end %>
+  </div>
   
-  <%= render :partial => @galleries, :spacer_template => 'separator' %>
+  <%= render :partial => @galleries %>
   
   <div class='text_center'>
     <%= render :partial => 'separator' %>

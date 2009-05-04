@@ -1,25 +1,25 @@
-<% div_for comment do %>
+<% div_for comment, :class => 'part padding' do %>
   <p>
     <table width='100%'>
       <tr>        
         <% if comment.author %>
-          <td>
+          <td width='50px'>
             <% if comment.author.avatar.file?  %>
               <%= image_tag comment.author.avatar.url(:tiny) %> 
             <% end %>
           </td>
-          <td width='20%'>
+          <td width='120'>
             <div class='account_info_name'>
               <%= link_to_unless_current comment.author.name, account_index_url(comment.author.login) %>
             </div>
             <%= time_ago_in_words comment.created_at %>
           </td>        
         <% else %>
-          <td width='20%'>
+          <td width='180px'>
             <%= render :partial => 'comments/anonymous', :locals => { :comment => comment } %>
           </td>
         <% end %>        
-        <td width='80%'>
+        <td>
           <div class='comment_body'>
             <%= simple_format comment.body %>
             
@@ -32,6 +32,5 @@
         </td>
       </tr>
     </table>
-    <%= render :partial => 'comments/separator' %>
   </p>
 <% end %>

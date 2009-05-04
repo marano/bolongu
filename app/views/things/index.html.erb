@@ -1,13 +1,14 @@
 <%= title 'Things' %>
 
-<h1>Things</h1>
+<div class='part padding'>
+  <h1>Things</h1>
+  
+  <% if logged_in?  %>
+    <%= link_to 'New thing', new_thing_path %>
+  <% end %>
+</div>
 
-<% if logged_in?  %>
-  <%= link_to 'new thing', new_thing_path %>
-<% end %>
-
-<%= render :partial => @things, :spacer_template => 'separator' %>
-<%= render :partial => 'separator' %>
+<%= render :partial => @things %>
 
 <div class='text_center'>
   <%= will_paginate @things %> 

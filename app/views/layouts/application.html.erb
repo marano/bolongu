@@ -16,13 +16,16 @@
   </head>
   <body class='green_bg'>
   
-    <div id="container" class='padding'>
+    <div id="container">
   
-      <%= render :partial => 'layouts/menu' %>
+      <div class='part padding margin_bottom'>
+        <%= render :partial => 'layouts/menu' %>
       
-      <%= render :partial => 'layouts/notification_message' %>
+        <%= render :partial => 'layouts/notification_message' %>        
+        <div class='clear'></div>
+      </div>      
   
-      <div id="content" class="clear padding">
+      <div id="content" class="clear">
         <%= yield  %>
       </div>
       

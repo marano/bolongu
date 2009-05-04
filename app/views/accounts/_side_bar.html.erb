@@ -1,73 +1,75 @@
-<div id='side_bar' class='right padding'>
-  
-  <h1><%= account.name %></h1>
-  
-  <% if account.avatar.file? %>
-    <p class='text_center'><%= image_tag account.avatar.url(:default) %></p>
-  <% end %>  
-  
-  <p><%= account.bio %></p>
+<div id='side_bar' class='right'>
+  <div class='part padding margin_bottom'>
+    
+    <h1><%= account.name %></h1>
+    
+    <% if account.avatar.file? %>
+      <p class='text_center'><%= image_tag account.avatar.url(:default) %></p>
+    <% end %>  
+    
+    <p><%= account.bio %></p>
 
-  <% unless !logged_in? || account == current_account %>
-    <% if friend?(current_account, account) %>
-      <p><%= link_to "Stop following #{account.name}", current_account.friendship(account), :confirm => 'Are you sure?', :method => :delete %></p>
-    <% else %>
-      <p><%= link_to "Follow #{account.name}", { :controller => 'friendships', :action => 'create', :friend_id => account.id }, :method => :post %></p>
+    <% unless !logged_in? || account == current_account %>
+      <% if friend?(current_account, account) %>
+        <p><%= link_to "Stop following #{account.name}", current_account.friendship(account), :confirm => 'Are you sure?', :method => :delete %></p>
+      <% else %>
+        <p><%= link_to "Follow #{account.name}", { :controller => 'friendships', :action => 'create', :friend_id => account.id }, :method => :post %></p>
+      <% end %>
     <% end %>
-  <% end %>
-  
-  <% unless account == current_account %>
-    <hr/>
+  </div>
+
+  <div class='part padding margin_bottom'>  
     <h2><%= link_to 'Scraps', account_scraps_path(account) %></h2>
-  <% end %>
-  
-  <% unless account.friends.empty? %>
-    <hr/>
-    <h2>Following</h2>
+  </div>
+    
+  <div class='part padding margin_bottom'>
+    <% unless account.friends.empty? %>
+      <h2>Following</h2>
+      <ul class='plain_list'>
+        <% for friend in account.friends %>
+          <li>
+            <% if friend.avatar.file? %>
+              <%= link_to image_tag(friend.avatar(:tiny)), account_index_path(friend.login), :title => friend.name %>
+            <% else %>
+              <%= link_to friend.name, account_index_path(friend.login), :title => friend.blog_title %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+    
+  <div class='part padding margin_bottom'>
+    <h2><%= link_to 'Things', things_path %></h2>  
     <ul class='plain_list'>
-      <% for friend in account.friends %>
+      <% for thing in account.things %>
+        <% if thing.photo.file? %>
+          <li><%= link_to image_tag(thing.photo(:tiny)), thing_path(thing), :title => thing.name %></li>
+        <% else %>
+          <li><%= link_to thing.name, thing_path(thing), :title => thing.name %></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <% if account == current_account %>
+      <div class='sidebar_action'><%= link_to 'new thing', new_thing_path %></div>
+    <% end %>
+  </div>  
+    
+  <div class='part padding margin_bottom'>
+    <h2><%= link_to 'Galleries', account_galleries_path(account) %></h2>
+    <ul class='plain_list'>
+      <% for gallery in account.galleries %>
         <li>
-          <% if friend.avatar.file? %>
-            <%= link_to image_tag(friend.avatar(:tiny)), account_index_path(friend.login), :title => friend.name %>
+          <% if gallery.cover %>
+            <%= link_to image_tag(gallery.cover.url(:micro)), account_gallery_path(account, gallery), :title => gallery.name %>
           <% else %>
-            <%= link_to friend.name, account_index_path(friend.login), :title => friend.blog_title %>
+            <%= link_to gallery.name, account_gallery_path(account, gallery), :title => gallery.name %>
           <% end %>
         </li>
       <% end %>
-    </ul>
-  <% end %>
-  
-  <hr/>
-  <h2><%= link_to 'Things', things_path %></h2>  
-  <ul class='plain_list'>
-    <% for thing in account.things %>
-      <% if thing.photo.file? %>
-        <li><%= link_to image_tag(thing.photo(:tiny)), thing_path(thing), :title => thing.name %></li>
-      <% else %>
-        <li><%= link_to thing.name, thing_path(thing), :title => thing.name %></li>
-      <% end %>
+    </ul>  
+    <% if account == current_account %>
+      <div class='sidebar_action'><%= link_to 'new galery', new_account_gallery_path(current_account) %></div>
     <% end %>
-  </ul>
-  <% if account == current_account %>
-    <div class='sidebar_action'><%= link_to 'new thing', new_thing_path %></div>
-  <% end %>
-  
-  <hr/>
-  <h2><%= link_to 'Galleries', account_galleries_path(account) %></h2>
-  <ul class='plain_list'>
-    <% for gallery in account.galleries %>
-      <li>
-        <% if gallery.cover %>
-          <%= link_to image_tag(gallery.cover.url(:micro)), account_gallery_path(account, gallery), :title => gallery.name %>
-        <% else %>
-          <%= link_to gallery.name, account_gallery_path(account, gallery), :title => gallery.name %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>  
-  <% if account == current_account %>
-    <div class='sidebar_action'><%= link_to 'new galery', new_account_gallery_path(current_account) %></div>
-  <% end %>
-  
-  <hr/>
+  </div>
 </div>

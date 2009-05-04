@@ -1,8 +1,7 @@
-<% div_for thing do %>
+<% div_for thing, :class => 'part' do %>
   <div>
-    <h1>
-      <%= link_to_unless_current thing.name, thing %>
-    </h1>
+    <h1><%= link_to_unless_current thing.name, thing %></h1>
+    
     <% if thing.photo.file? %>
       <div class='thing_photo left'>
         <%= link_to_unless_current image_tag(thing.photo.url(:default)), thing %>
@@ -10,9 +9,7 @@
     <% end %>
   </div>
 
-  <p>
-    <%=h thing.description %>
-  </p>
+  <p><%=h thing.description %></p>
   
   <% if thing.attachment.file?  %>
     <p>
@@ -24,9 +21,13 @@
   <% if logged_in? %>
     <div class='right'>
       <% if current_account.things.include?(thing) %>
-        <p><%= link_to "Remove #{thing.name} from my things <<", remove_thing_path(thing), :method => :delete %></p>
+        <p>
+          <%= link_to "Remove #{thing.name} from my things <<", remove_thing_path(thing), :method => :delete %>
+        </p>
       <% else %>
-        <p><%= link_to "Add #{thing.name} to my things >>", add_thing_path(thing), :method => :post %></p>
+        <p>
+          <%= link_to "Add #{thing.name} to my things >>", add_thing_path(thing), :method => :post %>
+        </p>
       <% end %>  
     </div>
   <% end %>

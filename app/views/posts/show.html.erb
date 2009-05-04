@@ -4,6 +4,6 @@
 
 <%= render :partial => 'comments/comments', :locals => { :commentable => @post } %>
 
-<div class='back'>
+<div class='part back'>
   <%= link_to "Back to #{@post.account.blog_title}", account_index_path(@post.account.login) %>
 </div>

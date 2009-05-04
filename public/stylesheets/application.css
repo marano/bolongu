@@ -7,6 +7,8 @@ body, p, ol, ul, td {
   font-size:   13px;
 }
 
+h1, h2 { margin: 5px 0 5px 0; }
+
 label { font-weight: bold; }
 
 a { color: #666; text-decoration: none; }
@@ -53,12 +55,15 @@ pre {
 /* STRUCTURE */
 
 #container {
-    margin: 1em auto;
-    position: relative;
-    width: 763px;    
-    background-color: #FFF;
-    border: solid 1px rgb(255,255,255);
-    margin-top: 20px;
+  margin: 1em auto;
+  position: relative;
+  width: 763px;    
+  margin-top: 20px;
+}
+
+.part {
+  border: solid 1px rgb(255,255,255);
+  background-color: #FFF;
 }
 
 #content { position: relative; }
@@ -107,7 +112,7 @@ pre {
 
 .sidebar_action { padding-left: 80px; }
 
-#side_bar { width:160px; }
+#side_bar { width:200px; }
 
 .photo_list {}
 
@@ -123,7 +128,11 @@ pre {
 
 .back { margin-top: 20px; }
 
-.post, .thing, .gallery, .gallery_photo { text-align: justify; }
+.post, .thing, .gallery, .gallery_photo { 
+  text-align: justify;
+  margin: 10px 0px 10px 0px;
+  padding: 0px 10px 10px 10px;
+}
 
 .post_photo, .thing_photo {
     margin-right: 20px;

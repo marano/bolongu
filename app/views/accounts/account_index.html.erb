@@ -1,12 +1,11 @@
 <% title @account.blog_title %>
 
 <% render :layout => @account do %>
-  <div id='blog_title' class='text_center'><h1><%= @account.blog_title %></h1></div>  
+  <div id='blog_title' class='part padding text_center'><h1><%= @account.blog_title %></h1></div>  
   
-  <%= render :partial => @posts, :spacer_template => 'posts/separator' %>
-  <%= render :partial => 'posts/separator' %>
+  <%= render :partial => @posts %>
   
-  <div class='text_center'>
+  <div class='part margin_top text_center'>
     <%= will_paginate @posts %> 
   </div>
 <% end %>

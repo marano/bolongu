@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <% unless logged_in? %>
-  <div id='home_logo' class='clear'>
+  <div id='home_logo' class='part padding clear'>
     <div class='left'><%= image_tag 'logo.jpg' %></div>
     
     <div class=''>
@@ -19,16 +19,15 @@
         <li>Keep track of your friends contents</li>
       </ul>
     </div>    
+    
+    <div class='clear'></div>
   </div>
 <% end %>
 
-<div class='clear'></div>
-
 <div id='home_posts'>
-  <%= render :partial => @posts, :spacer_template => 'posts/separator' %>  
+  <%= render :partial => @posts %>
 </div>
 
-<div class='text_center'>
-  <%= render :partial => 'posts/separator' %>
+<div class='part text_center'>
   <%= will_paginate @posts %> 
 </div>

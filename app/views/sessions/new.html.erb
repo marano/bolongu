@@ -1,17 +1,20 @@
-<h1>Log In</h1>
+<div class='part padding'>
+  <h1>Log In</h1>
+</div>
+<div class='part padding margin_top'>
+  <% form_tag session_path do -%>
+  <p><%= label_tag 'login' %><br />
+  <%= text_field_tag 'login', @login, :class => 'input' %></p>
+  
+  <p><%= label_tag 'password' %><br/>
+  <%= password_field_tag 'password', nil, :class => 'input' %></p>
 
-<% form_tag session_path do -%>
-<p><%= label_tag 'login' %><br />
-<%= text_field_tag 'login', @login, :class => 'input' %></p>
+  <p><%= label_tag 'remember_me', 'Remember me' %>
+  <%= check_box_tag 'remember_me', '1', @remember_me %></p>
 
-<p><%= label_tag 'password' %><br/>
-<%= password_field_tag 'password', nil, :class => 'input' %></p>
+  <p><%= submit_tag 'Log in', :class => 'button green_bg' %></p>
 
-<p><%= label_tag 'remember_me', 'Remember me' %>
-<%= check_box_tag 'remember_me', '1', @remember_me %></p>
+  <p><%= link_to 'Forgot my password :/', forgot_password_path %></p>
 
-<p><%= submit_tag 'Log in', :class => 'button green_bg' %></p>
-
-<p><%= link_to 'Forgot my password :/', forgot_password_path %></p>
-
-<% end -%>
+  <% end -%>
+</div>

@@ -2,31 +2,33 @@
   <%= javascript_include_tag :fckeditor %>
 <% end %>
 
-<% form_for post, :html => { :multipart => true } do |f| %>
-  <%= f.error_messages %>
-  
-  <% if post.photo.file? %>
+<div class='part padding'>
+  <% form_for post, :html => { :multipart => true } do |f| %>
+    <%= f.error_messages %>
+    
+    <% if post.photo.file? %>
+      <p>
+        <%= image_tag post.photo.url(:small) %>
+      </p>
+    <% end %>
     <p>
-      <%= image_tag post.photo.url(:small) %>
+      <%= f.label :photo, 'Picture' %><br />
+      <%= f.file_field :photo %>
+    </p>
+    <p>
+      <%= f.label :title %><br />
+      <%= f.text_field :title, :class => 'input' %>
+    </p>
+    <p>
+      <%= f.label :blog_private %>
+      <%= f.check_box :blog_private %>
+    </p>
+    <p>
+      <%= f.label :body %><br />
+      <%= fckeditor_textarea(:post, :body, :toolbarSet => 'Mine', :width => '100%', :height => '300px') %>
+    </p>
+    <p>
+      <%= f.submit "Post!", :class => 'button green_bg' %>
     </p>
   <% end %>
-  <p>
-    <%= f.label :photo, 'Picture' %><br />
-    <%= f.file_field :photo %>
-  </p>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title, :class => 'input' %>
-  </p>
-  <p>
-    <%= f.label :blog_private %>
-    <%= f.check_box :blog_private %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= fckeditor_textarea(:post, :body, :toolbarSet => 'Mine', :width => '100%', :height => '300px') %>
-  </p>
-  <p>
-    <%= f.submit "Post!", :class => 'button green_bg' %>
-  </p>
-<% end %>
+</div>

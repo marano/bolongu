@@ -1,13 +1,17 @@
 <%= title 'Scraps' %>
 
 <% render :layout => @account do %>
-  <h1>Scraps</h1>
+  <div class='part padding margin_bottom'>
+    <h1>Scraps</h1>
+  </div>
 
   <% unless @account == current_account %>
-    <%= render :partial => 'new', :locals => { :recipient => @account } %>
+    <div class='part padding margin_bottom'>    
+      <%= render :partial => 'new', :locals => { :recipient => @account } %>
+    </div>
   <% end %>
-
+  
   <div id='scraps'>
-    <%= render :partial => @scraps, :spacer_template => 'separator' %>
+    <%= render :partial => @scraps %>
   </div>
 <% end %>
