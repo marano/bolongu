@@ -3,7 +3,7 @@
   <h2><%= account.name %></h2>  
   
   <% if account.avatar.file? %>
-    <p><%= image_tag account.avatar.url(:default) %></p>
+    <p class='text_center'><%= image_tag account.avatar.url(:default) %></p>
   <% end %>  
   
   <p><%= account.bio %></p>

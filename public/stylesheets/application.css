@@ -13,6 +13,7 @@ label {
 
 a { color: #666; text-decoration: none; }
 a img { border: none; }
+a:active { color: red; }
 a:visited { color: #666; }
 a:hover { color: red; }
 
