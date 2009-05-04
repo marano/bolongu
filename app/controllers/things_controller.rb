@@ -60,8 +60,10 @@ class ThingsController < ApplicationController
     
     respond_to do |format|
       if @thing.save
+        current_account.things << @thing
+        
         flash[:notice] = 'Thing was successfully created.'
-        format.html { redirect_to add_thing_path(@thing) }
+        format.html { redirect_to @thing }
         format.xml  { render :xml => @thing, :status => :created, :location => @thing }
       else
         format.html { render :action => "new" }
