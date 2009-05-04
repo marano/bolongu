@@ -9,8 +9,7 @@
   
   <%= render :partial => @galleries %>
   
-  <div class='text_center'>
-    <%= render :partial => 'separator' %>
+  <div class='part padding margin_top text_center' style='text-align: left;'>
     <%= will_paginate @galleries %>
   </div>
 <% end %>

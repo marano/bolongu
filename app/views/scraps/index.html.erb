@@ -14,4 +14,8 @@
   <div id='scraps'>
     <%= render :partial => @scraps %>
   </div>
+  
+  <div class='part padding margin_top text_center'>
+    <%= will_paginate @scraps %> 
+  </div>
 <% end %>

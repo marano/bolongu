@@ -114,8 +114,6 @@ pre {
 
 #side_bar { width:200px; }
 
-.photo_list {}
-
 /* END SIDEBAR */
 
 /* HOME */
@@ -137,6 +135,9 @@ pre {
 .post_photo, .thing_photo {
     margin-right: 20px;
     margin-bottom: 10px;
+}
+
+.photo_list {
 }
 
 .manager_links { margin: 10px; }

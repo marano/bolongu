@@ -3,7 +3,7 @@ class ScrapsController < ApplicationController
   before_filter :login_required, :fetch_account
 
   def index
-    @scraps = @account.scraps
+    @scraps = @account.scraps.paginate :page => params[:page], :per_page => 10
     
     @scraps.each { |s| s.mark_as_read }
     
