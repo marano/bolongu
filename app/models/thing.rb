@@ -7,7 +7,7 @@ class Thing < ActiveRecord::Base
   has_attached_file :photo, :styles => { :default => ["320x240>", :jpg], :small => ["100x100>", :jpg], :tiny => ["50x50>", :jpg] }
   has_attached_file :attachment
 
-  validates_presence_of :email
+  validates_presence_of :name
 
   validates_attachment_content_type :photo, :content_type => [ 'image/jpeg', 'image/png', 'image/bmp' , 'image/gif' ]
   validates_attachment_size :photo, :less_than => 5.megabytes
