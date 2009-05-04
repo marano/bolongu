@@ -41,7 +41,11 @@
   <h3><%= link_to 'Things', things_path %></h3>  
   <ul class='plain_list'>
     <% for thing in account.things %>
-      <li><%= link_to image_tag(thing.photo(:tiny)), thing_path(thing), :title => thing.name %></li>
+      <% if thing.photo.file? %>
+        <li><%= link_to image_tag(thing.photo(:tiny)), thing_path(thing), :title => thing.name %></li>
+      <% else %>
+        <li><%= link_to thing.name, thing_path(thing), :title => thing.name %></li>
+      <% end %>
     <% end %>
   </ul>
   <% if account == current_account %>

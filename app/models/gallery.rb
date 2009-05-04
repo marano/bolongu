@@ -7,6 +7,6 @@ class Gallery < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
   
   def cover
-    gallery_photos.first(:conditions => { :cover => true })
+    gallery_photos.first(:conditions => { :cover => true }) or gallery_photos.first
   end
 end
