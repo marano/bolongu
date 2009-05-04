@@ -1,6 +1,6 @@
 <div id='side_bar' class='right padding'>
   
-  <h2><%= account.name %></h2>  
+  <h1><%= account.name %></h1>
   
   <% if account.avatar.file? %>
     <p class='text_center'><%= image_tag account.avatar.url(:default) %></p>
@@ -18,12 +18,12 @@
   
   <% unless account == current_account %>
     <hr/>
-    <h3><%= link_to 'Scraps', account_scraps_path(account) %></h3>    
+    <h2><%= link_to 'Scraps', account_scraps_path(account) %></h2>
   <% end %>
   
   <% unless account.friends.empty? %>
     <hr/>
-    <h3>Following</h3>
+    <h2>Following</h2>
     <ul class='plain_list'>
       <% for friend in account.friends %>
         <li>
@@ -38,7 +38,7 @@
   <% end %>
   
   <hr/>
-  <h3><%= link_to 'Things', things_path %></h3>  
+  <h2><%= link_to 'Things', things_path %></h2>  
   <ul class='plain_list'>
     <% for thing in account.things %>
       <% if thing.photo.file? %>
@@ -53,7 +53,7 @@
   <% end %>
   
   <hr/>
-  <h3><%= link_to 'Galleries', account_galleries_path(account) %></h3>
+  <h2><%= link_to 'Galleries', account_galleries_path(account) %></h2>
   <ul class='plain_list'>
     <% for gallery in account.galleries %>
       <li>

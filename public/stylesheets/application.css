@@ -1,15 +1,13 @@
-body {
-  color: #333;
-}
+/* SITE */
+
+body { color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
 }
 
-label {
-  font-weight: bold;  
-}
+label { font-weight: bold; }
 
 a { color: #666; text-decoration: none; }
 a img { border: none; }
@@ -30,63 +28,6 @@ pre {
   font-size: 11px;
 }
 
-.right {
-  float: right;
-}
-
-.left {
-  float: left;
-}
-
-.padding {
-    padding: 10px;
-}
-
-.margin_left {
-  margin-left: 10px;
-}
-
-.margin_right {
-  margin-right: 10px;
-}
-
-.clear {
-    clear: both;
-}
-
-.clear_left {
-    clear: left;
-}
-
-.clear_right {
-    clear: right;
-}
-
-.text_center {
-    text-align: center;
-}
-
-.text_right {
-    text-align: right;
-}
-
-.text_left {
-    text-align: left;
-}
-
-.vertical_center {
-  vertical-align: middle;
-}
-
-.plain_list, .plain_list {
-    margin:0;
-    padding:0;
-    list-style:none;
-    display:block;
-}
-
-.plain_list li{ display:inline; }
-
 .button {
   border: none;
   font-weight: bold;
@@ -94,10 +35,7 @@ pre {
   color: white;
 }
 
-.button:hover {
-  color: red;
-  cursor: pointer;
-}
+.button:hover { color: red; cursor: pointer; }
 
 .input {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -106,41 +44,40 @@ pre {
   padding: 0.2em 0.2em 0.2em 0.2em;
 }
 
-.green_bg {
-  background-color: #4c8542;
+.green_bg { background-color: #4c8542; }
+
+.email_input { width: 350px; }
+
+/* END SITE */
+
+/* STRUCTURE */
+
+#container {
+    margin: 1em auto;
+    position: relative;
+    width: 763px;    
+    background-color: #FFF;
+    border: solid 1px rgb(255,255,255);
+    margin-top: 20px;
 }
 
-.email_input {
-  width: 350px;
-}
+#content { position: relative; }
 
-.menu_action {
-    margin: 15px 0;
-    padding-left: 60px;
-}
+/* END STRUCTURE */
 
-#home_logo {
-  padding-left: 70px;
-}
+/* HOME */
 
-.sidebar_action {
-  padding-left: 80px;
-}
+#home_logo { padding-left: 70px; }
 
-.scrap_count {
-    color: red;
-}
+/* END HOME */
 
-#top_menu {
-    width: 100%;
-}
+/* MENU */
 
-.menu_item, .menu_item_image {
-    width: 75px;
-    height: 70px;
-}
+#top_menu { width: 100%; }
 
 .menu_item {
+    width: 75px;
+    height: 70px;
     font-variant: small-caps;
     font-weight: bold;
     font-size: 12px;
@@ -150,9 +87,7 @@ pre {
     color: white;
 }
 
-.menu_item p {
-    padding: 20px 0;
-}
+.menu_item p { padding: 20px 0; }
 
 .menu_item a, .menu_item a:visited {
     color: white;    
@@ -164,61 +99,74 @@ pre {
     background-color:red;
 }
 
-#side_bar {
-    width:160px;
-}
+.scrap_count { color: red; }
 
-#blog_title {
-}
+/* END MENU */
 
-#account_content {
-  width: 550px;
-}
+/* SIDEBAR */
 
-.photo_list {    
-}
+.sidebar_action { padding-left: 80px; }
 
-#container {
-    margin: 1em auto;
-    position: relative;
-    width: 763px;    
-    background-color: #FFF;
-    border: solid 1px rgb(255,255,255);
-    margin-top: 20px;
-}
+#side_bar { width:160px; }
 
-#content {
-    margin: 1em auto;
-    position: relative;
-}
+.photo_list {}
+
+/* END SIDEBAR */
+
+/* HOME */
 
 #home_posts {}
 
-.back {
-    margin-top: 20px;
-}
+/* END HOME */
 
-.post, .thing, .gallery, .gallery_photo { 
-  text-align: justify;
-}
+/* MISCELANIOUS */
 
-.post_head {}
+.back { margin-top: 20px; }
+
+.post, .thing, .gallery, .gallery_photo { text-align: justify; }
 
 .post_photo, .thing_photo {
     margin-right: 20px;
     margin-bottom: 10px;
 }
 
-.post_content { }
+.manager_links { margin: 10px; }
 
-.manager_links {
-    margin: 10px;
-}
+/* END MISCELANIOUS */
+
+/* BLOG */
+
+#account_content { width: 550px; }
+
+#blog_title {}
+
+.post_head {}
+
+.post_content {}
+
+.photo_list {}
+
+/* END BLOG */
+
+/* COMMENT */
 
 .comment {
     padding-top: 5px;
     clear: left;
 }
+
+.new_comment { margin-bottom: 10px; }
+
+.comment_input {
+    width: 80%;
+    height: 80px;
+}
+
+.comment_body {}
+
+/* END COMMENT */
+
+/* ACCOUNT INFO */
 
 .account_info {
     height: 50px;
@@ -227,8 +175,7 @@ pre {
     margin-bottom: 10px;
 }
 
-.account_info_avatar {
-}
+.account_info_avatar {}
 
 .account_info_name {
     text-align: left;
@@ -236,24 +183,18 @@ pre {
     margin-right: 5px;
 }
 
-.new_comment {
-    margin-bottom: 10px;
-}
+/* END ACCOUNT INFO */
 
-.comment_input {
-    width: 80%;
-    height: 80px;
-}
-
-.comment_body {}
+/* SCRAP */
  
 .scrap_input {
     width: 90%;
     height: 80px;
 }
- 
-.photo_list {
-}
+
+/* END SCRAP */
+
+/* FLASH */
 
 #flash_notice, #flash_error {
     text-align: center;
@@ -270,6 +211,10 @@ pre {
   background-color: #FCC;
   border: solid 1px #C66;
 }
+
+/* END FLASH */
+
+/* ERROR */
 
 .fieldWithErrors {
   padding: 2px;
@@ -307,3 +252,4 @@ pre {
   list-style: square;
 }
 
+/* END ERROR */

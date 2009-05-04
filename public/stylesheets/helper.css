@@ -1,0 +1,31 @@
+/* HELPERS */
+
+.right { float: right; }
+
+.left { float: left; }
+
+.padding { padding: 10px; }
+
+.margin_left { margin-left: 10px; }
+
+.margin_right { margin-right: 10px; }
+
+.clear { clear: both; }
+
+.clear_left { clear: left; }
+
+.clear_right { clear: right; }
+
+.text_center { text-align: center; }
+
+.text_right { text-align: right; }
+
+.text_left { text-align: left; }
+
+.vertical_center { vertical-align: middle; }
+
+.plain_list { margin:0; padding:0; list-style:none; display:block; }
+
+.plain_list li{ display:inline; }
+
+/* END HELPERS */
