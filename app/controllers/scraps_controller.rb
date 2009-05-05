@@ -1,6 +1,7 @@
 class ScrapsController < ApplicationController
 
-  before_filter :login_required, :fetch_account
+  before_filter :login_required, :only => [ 'create', 'destroy' ]
+  before_filter :fetch_account
 
   def index
     @scraps = @account.scraps.paginate :page => params[:page], :per_page => 10

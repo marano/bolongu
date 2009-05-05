@@ -9,9 +9,9 @@
   </p>
 
   <% if logged_in? and @gallery.account == current_account %>
-    <%= link_to 'Edit', edit_account_gallery_path(@gallery.account, @gallery) %> |
-    <%= link_to 'Delete', [@gallery.account, @gallery], :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to 'Back', account_galleries_path(@gallery.account) %>
+    <%= link_to 'Edit', edit_account_gallery_path(@gallery.account, @gallery), :class => 'edit' %> |
+    <%= link_to 'Delete', [@gallery.account, @gallery], :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %> |
+    <%= link_to 'Back', account_galleries_path(@gallery.account), :class => 'back' %>
     
     <div>
       <h3>

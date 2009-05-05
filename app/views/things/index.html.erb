@@ -4,7 +4,7 @@
   <h1>Things</h1>
   
   <% if logged_in?  %>
-    <%= link_to 'New thing', new_thing_path %>
+    <%= link_to 'New thing', new_thing_path, :class => 'create' %>
   <% end %>
 </div>
 

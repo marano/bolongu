@@ -3,13 +3,13 @@
     <h1>Galleries</h1>
     
     <% if @account == current_account %>
-      <%= link_to 'New gallery', new_account_gallery_path(@account) %>
+      <%= link_to 'New gallery', new_account_gallery_path(@account), :class => 'create' %>
     <% end %>
   </div>
   
   <%= render :partial => @galleries %>
   
-  <div class='part padding margin_top text_center' style='text-align: left;'>
+  <div class='part padding margin_top text_center'>
     <%= will_paginate @galleries %>
   </div>
 <% end %>

@@ -22,11 +22,11 @@
     <div class='right'>
       <% if current_account.things.include?(thing) %>
         <p>
-          <%= link_to "Remove #{thing.name} from my things <<", remove_thing_path(thing), :method => :delete %>
+          <%= link_to "Remove #{thing.name} from my things", remove_thing_path(thing), :method => :delete, :class => 'remove' %>
         </p>
       <% else %>
         <p>
-          <%= link_to "Add #{thing.name} to my things >>", add_thing_path(thing), :method => :post %>
+          <%= link_to "Add #{thing.name} to my things", add_thing_path(thing), :method => :post, :class => 'add' %>
         </p>
       <% end %>  
     </div>
@@ -43,17 +43,17 @@
         <div class='account_info_name'>
           <%= link_to_unless_current thing.author.name, account_index_url(thing.author.login) %>
         </div>
-        <%= time_ago_in_words thing.created_at %>
+        <span class='time_ago'><%= time_ago_in_words thing.created_at %></span>
       </td>
-      <td width='55%' class='text_center'>
+      <td width='45%' class='text_center'>
         <%= share_this thing.name, thing_url(thing) %>
         <%= link_to_unless_current pluralize(thing.comments.count, 'comment'), thing %> from <%= link_to_unless_current pluralize(thing.commentators.count, 'person'), thing %>
       </td>
-      <td width='20%'>
+      <td width='30%'>
         <% if logged_in? and current_account == thing.author %>
           <div class='manager_links text_right'>            
-            <%= link_to 'Edit', edit_thing_path(thing) %> |
-            <%= link_to 'Delete', thing, :confirm => 'Are you sure?', :method => :delete %>
+            <%= link_to 'Edit', edit_thing_path(thing), :class => 'edit' %> |
+            <%= link_to 'Delete', thing, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
           </div>
         <% end %>
       </td>
