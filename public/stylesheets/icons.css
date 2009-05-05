@@ -1,0 +1,133 @@
+/* ICONS */
+
+.follow_menu {
+  padding-left: 36px;
+  background: transparent url('/images/follow_big.png') no-repeat center left;
+}
+
+.gallery_menu {
+  padding-left: 36px;
+  background: transparent url('/images/gallery_big.png') no-repeat center left;
+}
+
+.gallery_title {
+  padding-left: 36px;
+  background: transparent url('/images/gallery_big.png') no-repeat center left;
+}
+
+.gallery_create {
+  padding-left: 18px;
+  background: transparent url('/images/create_tiny.png') no-repeat center left;
+}
+
+.thing_title {
+  padding-left: 36px;
+  background: transparent url('/images/thing_big.png') no-repeat center left;
+}
+
+.thing_menu {
+  padding-left: 36px;
+  background: transparent url('/images/thing_big.png') no-repeat center left;
+}
+
+.thing_edit_title {
+  padding-left: 36px;
+  background: transparent url('/images/thing_edit_big.png') no-repeat center left;
+}
+
+.thing_edit {
+  padding-left: 18px;
+  background: transparent url('/images/thing_edit_tiny.png') no-repeat center left;
+}
+
+.thing_create_title {
+  padding-left: 36px;
+  background: transparent url('/images/thing_create_big.png') no-repeat center left;
+}
+
+.thing_create {
+  padding-left: 18px;
+  background: transparent url('/images/thing_create_tiny.png') no-repeat center left;
+}
+
+.thing_destroy {
+  padding-left: 18px;
+  background: transparent url('/images/thing_destroy_tiny.png') no-repeat center left;
+}
+
+.user_edit_title {
+  padding-left: 36px;
+  background: transparent url('/images/user_edit_big.png') no-repeat center left;
+}
+
+.user_title {
+  padding-left: 36px;
+  background: transparent url('/images/user_big.png') no-repeat center left;
+}
+
+.paperclip {
+  padding-left: 18px;
+  background: transparent url('/images/paperclip_tiny.png') no-repeat center left;
+}
+
+.scrap_title {
+  padding-left: 50px;
+  background: transparent url('/images/scrap.png') no-repeat center left;
+}
+
+.scrap_menu {
+  padding-left: 36px;
+  background: transparent url('/images/scrap_big.png') no-repeat center left;
+}
+
+.scrap_reply {
+  padding-left: 18px;
+  background: transparent url('/images/scrap_reply_tiny.png') no-repeat center left;
+}
+
+.scrap_destroy {
+  padding-left: 18px;
+  background: transparent url('/images/scrap_destroy_tiny.png') no-repeat center left;
+}
+
+.time_ago {
+  padding-left: 18px;
+  background: transparent url('/images/clock_tiny.png') no-repeat center left;
+}
+
+.add {
+  padding-left: 18px;
+  background: transparent url('/images/add_tiny.png') no-repeat center left;
+}
+
+.remove {
+  padding-left: 18px;
+  background: transparent url('/images/remove_tiny.png') no-repeat center left;
+}
+
+.create_title {
+  padding-left: 36px;
+  background: transparent url('/images/create_big.png') no-repeat center left;
+}
+
+.create {
+  padding-left: 18px;
+  background: transparent url('/images/create_tiny.png') no-repeat center left;
+}
+
+.edit_title {
+  padding-left: 36px;
+  background: transparent url('/images/edit_big.png') no-repeat center left;
+}
+
+.edit {
+  padding-left: 18px;
+  background: transparent url('/images/edit_tiny.png') no-repeat center left;
+}
+
+.destroy {
+  padding-left: 18px;
+  background: transparent url('/images/destroy_tiny.png') no-repeat center left;
+}
+
+/* END ICONS */

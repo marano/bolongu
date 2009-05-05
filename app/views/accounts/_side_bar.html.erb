@@ -19,12 +19,12 @@
   </div>
 
   <div class='part padding margin_bottom'>  
-    <h2><%= link_to 'Scraps', account_scraps_path(account) %></h2>
+    <h2><%= link_to 'Scraps', account_scraps_path(account), :class => 'scrap_menu' %></h2>
   </div>
     
   <div class='part padding margin_bottom'>
     <% unless account.friends.empty? %>
-      <h2>Following</h2>
+      <h2 class='follow_menu margin_bottom'>Following</h2>
       <ul class='plain_list'>
         <% for friend in account.friends %>
           <li>
@@ -40,7 +40,7 @@
   </div>
     
   <div class='part padding margin_bottom'>
-    <h2><%= link_to 'Things', things_path %></h2>  
+    <h2 class='margin_bottom'><%= link_to 'Things', things_path, :class => 'thing_menu' %></h2>  
     <ul class='plain_list'>
       <% for thing in account.things %>
         <% if thing.photo.file? %>
@@ -51,12 +51,12 @@
       <% end %>
     </ul>
     <% if account == current_account %>
-      <div class='sidebar_action'><%= link_to 'new thing', new_thing_path %></div>
+      <div class='sidebar_action'><%= link_to 'new thing', new_thing_path, :class => 'thing_create' %></div>
     <% end %>
   </div>  
     
   <div class='part padding margin_bottom'>
-    <h2><%= link_to 'Galleries', account_galleries_path(account) %></h2>
+    <h2 class='margin_bottom'><%= link_to 'Galleries', account_galleries_path(account), :class => 'gallery_menu' %></h2>
     <ul class='plain_list'>
       <% for gallery in account.galleries %>
         <li>
@@ -69,7 +69,7 @@
       <% end %>
     </ul>  
     <% if account == current_account %>
-      <div class='sidebar_action'><%= link_to 'new galery', new_account_gallery_path(current_account) %></div>
+      <div class='sidebar_action'><%= link_to 'new galery', new_account_gallery_path(current_account), :class => 'gallery_create' %></div>
     <% end %>
   </div>
 </div>

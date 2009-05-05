@@ -13,8 +13,7 @@
   
   <% if thing.attachment.file?  %>
     <p>
-      <%= label_tag :attachment %><br/>
-      <%= link_to thing.attachment_file_name, thing.attachment.url %>
+      <%= link_to thing.attachment_file_name, thing.attachment.url, :class => 'paperclip' %>
     </p>
   <% end %>
 
@@ -52,8 +51,8 @@
       <td width='30%'>
         <% if logged_in? and current_account == thing.author %>
           <div class='manager_links text_right'>            
-            <%= link_to 'Edit', edit_thing_path(thing), :class => 'edit' %> |
-            <%= link_to 'Delete', thing, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
+            <%= link_to 'Edit', edit_thing_path(thing), :class => 'thing_edit' %> |
+            <%= link_to 'Delete', thing, :confirm => 'Are you sure?', :method => :delete, :class => 'thing_destroy' %>
           </div>
         <% end %>
       </td>

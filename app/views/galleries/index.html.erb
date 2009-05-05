@@ -1,9 +1,9 @@
 <% render :layout => @account do %>
   <div class='part padding margin_bottom'>
-    <h1>Galleries</h1>
+    <h1 class='gallery_title'>Galleries</h1>
     
     <% if @account == current_account %>
-      <%= link_to 'New gallery', new_account_gallery_path(@account), :class => 'create' %>
+      <%= link_to 'New gallery', new_account_gallery_path(@account), :class => 'gallery_create' %>
     <% end %>
   </div>
   

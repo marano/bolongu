@@ -52,50 +52,6 @@ pre {
 
 /* END SITE */
 
-/* ICONS */
-
-.scrap_reply {
-  padding-left: 18px;
-  background: transparent url('/images/scrap_reply_tiny.png') no-repeat center left;
-}
-
-.scrap_destroy {
-  padding-left: 18px;
-  background: transparent url('/images/scrap_destroy_tiny.png') no-repeat center left;
-}
-
-.time_ago {
-  padding-left: 18px;
-  background: transparent url('/images/clock_tiny.png') no-repeat center left;
-}
-
-.add {
-  padding-left: 18px;
-  background: transparent url('/images/add_tiny.png') no-repeat center left;
-}
-
-.remove {
-  padding-left: 18px;
-  background: transparent url('/images/remove_tiny.png') no-repeat center left;
-}
-
-.create {
-  padding-left: 18px;
-  background: transparent url('/images/create_tiny.png') no-repeat center left;
-}
-
-.edit {
-  padding-left: 18px;
-  background: transparent url('/images/edit_tiny.png') no-repeat center left;
-}
-
-.destroy {
-  padding-left: 18px;
-  background: transparent url('/images/destroy_tiny.png') no-repeat center left;
-}
-
-/* END ICONS */
-
 /* STRUCTURE */
 
 #container {
@@ -154,7 +110,7 @@ pre {
 
 /* SIDEBAR */
 
-.sidebar_action { padding-left: 80px; }
+.sidebar_action { padding: 10px 0 0 80px; }
 
 #side_bar { width:200px; }
 
