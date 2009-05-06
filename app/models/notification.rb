@@ -5,13 +5,23 @@ class Notification < ActiveRecord::Base
   
   default_scope :order => 'published_at DESC'
   
+  before_create :extract_attributes
+  
   def self.notify!(notifiable)
-    notifiable.notification = Notification.new(:notifiable => notifiable, :publisher => notifiable.account, :private_content => notifiable.blog_private, :published_at => notifiable.created_at)
+    notifiable.notification = Notification.new(:notifiable => notifiable)
   end
   
   def self.recreate_all!  
     Post.all.each { |notifiable| notifiable.notify! }
     Thing.all.each { |notifiable| notifiable.notify! }
     Gallery.all.each { |notifiable| notifiable.notify! }
+  end
+  
+  private
+  
+  def extract_attributes
+    self.publisher = notifiable.account
+    self.private_content = notifiable.blog_private
+    self.published_at = notifiable.created_at    
   end
 end
