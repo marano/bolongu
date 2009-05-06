@@ -32,7 +32,7 @@
   <div class='padding'>
     <ul id='gallery_photos' class='plain_list text_left'>
       <% for gallery_photo in @gallery.gallery_photos %>
-        <% content_tag_for :li, gallery_photo do %>
+        <% content_tag_for :li, gallery_photo, :style => 'padding: 0' do %>
           <%= link_to image_tag(gallery_photo.url(:small)), gallery_photo %>
         <% end %>
       <% end %>
