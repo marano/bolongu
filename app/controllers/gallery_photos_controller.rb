@@ -4,8 +4,10 @@ class GalleryPhotosController < ApplicationController
   # session :cookie_only => false, :only => :create
 
   def sort
-    params[:gallery_photos].each_with_index do |id, index|
-      GalleryPhoto.update_all(['position = ?', index + 1], ['id = ?', id])
+    if logged_in? and current_account == GalleryPhoto.find(params[:gallery_photos][0]).gallery.account
+      params[:gallery_photos].each_with_index do |id, index|
+        GalleryPhoto.update_all(['position = ?', index + 1], ['id = ?', id])
+      end
     end
     render :nothing => true
   end
