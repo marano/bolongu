@@ -1,6 +1,6 @@
 class GalleryPhoto < ActiveRecord::Base
 
-  act_as_list
+  acts_as_list
 
   belongs_to :gallery
   belongs_to :publisher, :class_name => 'Account'
