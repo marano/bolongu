@@ -1,5 +1,7 @@
 class GalleryPhoto < ActiveRecord::Base
 
+  act_as_list
+
   belongs_to :gallery
   belongs_to :publisher, :class_name => 'Account'
   has_many :comments, :as => :commentable, :dependent => :destroy
