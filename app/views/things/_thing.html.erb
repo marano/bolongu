@@ -60,7 +60,7 @@
   </table>
   
   <% unless thing.comments.empty?  %>
-    <% render :layout => 'comments/comment', :object => thing.comments.last do %>
+    <% render :layout => 'comments/comment', :object => thing.comments.first do %>
       <h4>last comment</h4>
     <% end %>
   <% end %>

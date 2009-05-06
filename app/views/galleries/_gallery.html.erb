@@ -16,7 +16,7 @@
   </div>
   
   <% unless gallery.comments.empty?  %>
-    <% render :layout => 'comments/comment', :object => gallery.comments.last do %>
+    <% render :layout => 'comments/comment', :object => gallery.comments.first do %>
       <h4>last comment</h4>
     <% end %>
   <% end %>
