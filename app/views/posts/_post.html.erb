@@ -49,4 +49,9 @@
     </tr>
   </table>
   
+  <% unless post.comments.empty?  %>
+    <% render :layout => 'comments/comment', :object => post.comments.last do %>
+      <h4>last comment</h4>
+    <% end %>
+  <% end %>
 <% end %>

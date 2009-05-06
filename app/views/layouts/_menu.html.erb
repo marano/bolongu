@@ -4,7 +4,7 @@
   </div>
   
   <div class="menu_item left text_center <%= 'current_menu_item' if current_page? home_path or current_page? root_path %>">
-    <p><%= link_to "Home", home_path, :class => 'home_menu' %></p>
+    <p><%= link_to('Overview', home_path, :class => 'home_menu') %></p>
   </div>
   
   <% if logged_in? %>
@@ -12,10 +12,10 @@
     <div class="menu_item left text_center <%= 'current_menu_item' if current_page? account_index_path(current_account.login) %>">
       <p>
         <% if current_account.avatar.file? %>
-          <%= link_to "Blog", account_index_path(current_account.login),
+          <%= link_to "Home", account_index_path(current_account.login),
         :style => "padding-left: 18px; background: transparent url(#{current_account.avatar.url(:micro)}) no-repeat center left" %>
         <% else %>
-          <%= link_to "Blog", account_index_path(current_account.login) %>
+          <%= link_to "Home", account_index_path(current_account.login) %>
         <% end %>
       </p>
     </div>

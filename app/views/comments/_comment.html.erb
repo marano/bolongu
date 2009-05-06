@@ -1,5 +1,7 @@
 <% div_for comment, :class => 'part padding' do %>
   <p>
+    <%= yield %>
+    
     <table width='100%'>
       <tr>        
         <% if comment.author %>
@@ -12,7 +14,7 @@
             <div class='account_info_name'>
               <%= link_to_unless_current comment.author.name, account_index_url(comment.author.login) %>
             </div>
-            <span class='time_ago'><%= time_ago_in_words comment.created_at %></span>
+            <span class='time_ago text_left'><%= time_ago_in_words comment.created_at %></span>
           </td>        
         <% else %>
           <td width='180px'>

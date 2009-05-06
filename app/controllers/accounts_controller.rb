@@ -1,6 +1,4 @@
 class AccountsController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  # include AuthenticatedSystem
 
   def send_password
     @account = Account.scoped_by_email(params[:email]).first
