@@ -30,7 +30,7 @@ class AccountsController < ApplicationController
       @account = account_from_path
 
       if @account
-        @posts = @account.posts.paginate :page => params[:page], :per_page => 10
+        @notifications = Notification.paginate :conditions => "publisher_id = #{@account.id} OR publisher_id IN (#{@account.friend_ids})" , :page => params[:page], :per_page => 10
       else
         flash[:error] = "Account #{params[:account_login]} couldn't be found!"
         respond_to do |format|
