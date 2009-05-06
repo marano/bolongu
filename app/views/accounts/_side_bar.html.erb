@@ -11,20 +11,20 @@
 
     <% unless !logged_in? || account == current_account %>
       <% if friend?(current_account, account) %>
-        <p><%= link_to "Stop following #{account.name}", current_account.friendship(account), :confirm => 'Are you sure?', :method => :delete %></p>
+        <p><%= link_to "Stop following #{account.name}", current_account.friendship(account), :confirm => 'Are you sure?', :method => :delete, :class => 'remove' %></p>
       <% else %>
-        <p><%= link_to "Follow #{account.name}", { :controller => 'friendships', :action => 'create', :friend_id => account.id }, :method => :post %></p>
+        <p><%= link_to "Follow #{account.name}", { :controller => 'friendships', :action => 'create', :friend_id => account.id }, :method => :post, :class => 'add' %></p>
       <% end %>
     <% end %>
   </div>
 
   <div class='part padding margin_bottom'>  
-    <h2><%= link_to 'Scraps', account_scraps_path(account), :class => 'scrap_menu' %></h2>
+    <h2><%= link_to 'Scraps', account_scraps_path(account), :class => 'scrap_sidebar' %></h2>
   </div>
     
   <div class='part padding margin_bottom'>
     <% unless account.friends.empty? %>
-      <h2 class='follow_menu margin_bottom'>Following</h2>
+      <h2 class='follow_sidebar margin_bottom'>Following</h2>
       <ul class='plain_list'>
         <% for friend in account.friends %>
           <li>
@@ -40,7 +40,7 @@
   </div>
     
   <div class='part padding margin_bottom'>
-    <h2 class='margin_bottom'><%= link_to 'Things', things_path, :class => 'thing_menu' %></h2>  
+    <h2 class='margin_bottom'><%= link_to 'Things', things_path, :class => 'thing_sidebar' %></h2>  
     <ul class='plain_list'>
       <% for thing in account.things %>
         <% if thing.photo.file? %>
@@ -56,7 +56,7 @@
   </div>  
     
   <div class='part padding margin_bottom'>
-    <h2 class='margin_bottom'><%= link_to 'Galleries', account_galleries_path(account), :class => 'gallery_menu' %></h2>
+    <h2 class='margin_bottom'><%= link_to 'Galleries', account_galleries_path(account), :class => 'gallery_sidebar' %></h2>
     <ul class='plain_list'>
       <% for gallery in account.galleries %>
         <li>

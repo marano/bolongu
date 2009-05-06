@@ -1,58 +1,66 @@
-<div id="top_menu">  
-  <div class="menu_item left margin_right text_center green_bg">
-    <p><%= link_to "Home", home_path %></p>
+<div id="top_menu">
+  <div class="left text_center" style='margin: 7px 5px 0;'>
+    <%= link_to image_tag('logo_tiny_small.jpg'), about_path %>
   </div>
+  
+  <div class="menu_item left text_center <%= 'current' if current_page? home_path or current_page? root_path %>">
+    <p><%= link_to "Home", home_path, :class => 'home_menu' %></p>
+  </div>
+  
   <% if logged_in? %>
-    <% if current_account.avatar.file?  %>
-      <div class='menu_item left green_bg'>
-        <table class='menu_item'>
-          <tr>
-            <td class='text_center'>
-              <%= link_to image_tag(current_account.avatar.url(:menu)), account_index_path(current_account.login) %>
-            </td>
-          </tr>
-        </table>
-      </div>
-    <% end %>
-    <div class="menu_item left text_center green_bg">
-      <p><%= link_to "Blog", account_index_path(current_account.login) %></p>
-    </div>
-    <div class="menu_item left text_center green_bg">
-      <p><%= link_to "Post", new_post_path %></p>
-    </div>
-    <div class="menu_item left text_center green_bg">
+  
+    <div class="menu_item left text_center <%= 'current' if current_page? account_index_path(current_account.login) %>">
       <p>
-        <%= link_to "Scraps", account_scraps_path(current_account) %>        
+        <% if current_account.avatar.file? %>
+          <%= link_to "Blog", account_index_path(current_account.login),
+        :style => "padding-left: 18px; background: transparent url(#{current_account.avatar.url(:micro)}) no-repeat center left" %>
+        <% else %>
+          <%= link_to "Blog", account_index_path(current_account.login) %>
+        <% end %>
+      </p>
+    </div>
+    
+    <div class="menu_item left text_center <%= 'current' if current_page? new_post_path %>">
+      <p><%= link_to "Post", new_post_path, :class => 'create_menu' %></p>
+    </div>
+    
+    <div class="menu_item left text_center <%= 'current' if current_page? account_scraps_path(current_account) %>">
+      <p>
+        <%= link_to "Scraps", account_scraps_path(current_account), :class => 'scrap_menu' %>        
         <% unless current_account.scraps.scoped_by_read(false).empty? %>
-          <br/><span class='scrap_count'><%= current_account.scraps.scoped_by_read(false).count %></span>
-      <% end %>
+          <span class='scrap_count'><%= current_account.scraps.scoped_by_read(false).count %></span>
+        <% end %>
       </p>      
     </div>
-    <div class="menu_item left margin_left text_center green_bg">
-      <p><%= link_to "Things", things_path %></p>
+    
+    <div class="menu_item left text_center <%= 'current' if current_page? things_path %>">
+      <p><%= link_to "Things", things_path, :class => 'thing_menu' %></p>
     </div>
-    <div class="menu_item left margin_left text_center green_bg">
-      <p><%= link_to "Settings", edit_account_path(current_account) %></p>
+    
+    <div class="menu_item left text_center <%= 'current' if current_page? account_galleries_path(current_account) %>">
+      <p><%= link_to "Galleries", account_galleries_path(current_account), :class => 'gallery_menu' %></p>
     </div>
-    <div class="menu_item left margin_left text_center green_bg">
-      <p><%= link_to 'Logout', logout_path %></p>
+    
+    <div class="menu_item left text_center <%= 'current' if current_page? edit_account_path(current_account) %>">
+      <p><%= link_to "Settings", edit_account_path(current_account), :class => 'user_edit_menu' %></p>
+    </div>    
+    
+    <div class="menu_item left text_center">
+      <p><%= link_to 'Logout', logout_path, :class => 'logout_menu' %></p>
     </div>
-  <% else %>    
-    <div class="menu_item left text_center green_bg">
-      <p><%= link_to "Things", things_path %></p>
+    
+  <% else %> 
+     
+    <div class="menu_item left text_center <%= 'current' if current_page? things_path %>">
+      <p><%= link_to "Things", things_path, :class => 'thing_menu' %></p>
     </div>
-    <div class="menu_item left margin_left text_center green_bg">
-      <p><%= link_to 'Login', login_path %></p>
+    
+    <div class="menu_item left text_center <%= 'current' if current_page? login_path %>">
+      <p><%= link_to 'Login', login_path, :class => 'login_menu' %></p>
     </div>
-    <div class="menu_item left margin_left text_center green_bg">
-      <p><%= link_to 'Sign Up', new_account_path %></p>
+    
+    <div class="menu_item left text_center <%= 'current' if current_page? new_account_path %>">
+      <p><%= link_to 'Sign Up', new_account_path, :class => 'user_new_menu' %></p>
     </div>
   <% end %>
-  <div class='menu_item right margin_left green_bg'>
-    <table class='menu_item'>
-      <tr>
-        <td class='text_center'><%= link_to image_tag('logo_tiny.jpg'), about_path %></td>
-      </tr>
-    </table>
-  </div>
 </div>

@@ -1,11 +1,41 @@
 /* ICONS */
 
-.follow_menu {
+.login_title {
+  padding-left: 36px;
+  background: transparent url('/images/login_big.png') no-repeat center left;
+}
+
+.login_menu {
+  padding-left: 18px;
+  background: transparent url('/images/login_tiny.png') no-repeat center left;
+}
+
+.logout_title {
+  padding-left: 36px;
+  background: transparent url('/images/logout_big.png') no-repeat center left;
+}
+
+.logout_menu {
+  padding-left: 18px;
+  background: transparent url('/images/logout_tiny.png') no-repeat center left;
+}
+
+.home_menu {
+  padding-left: 18px;
+  background: transparent url('/images/home_tiny.png') no-repeat center left;
+}
+
+.follow_sidebar {
   padding-left: 36px;
   background: transparent url('/images/follow_big.png') no-repeat center left;
 }
 
 .gallery_menu {
+  padding-left: 18px;
+  background: transparent url('/images/gallery_tiny.png') no-repeat center left;
+}
+
+.gallery_sidebar {
   padding-left: 36px;
   background: transparent url('/images/gallery_big.png') no-repeat center left;
 }
@@ -25,9 +55,14 @@
   background: transparent url('/images/thing_big.png') no-repeat center left;
 }
 
-.thing_menu {
+.thing_sidebar {
   padding-left: 36px;
   background: transparent url('/images/thing_big.png') no-repeat center left;
+}
+
+.thing_menu {
+  padding-left: 26px;
+  background: transparent url('/images/thing_small.png') no-repeat center left;
 }
 
 .thing_edit_title {
@@ -55,6 +90,16 @@
   background: transparent url('/images/thing_destroy_tiny.png') no-repeat center left;
 }
 
+.user_edit_menu {
+  padding-left: 18px;
+  background: transparent url('/images/user_edit_tiny.png') no-repeat center left;
+}
+
+.user_new_menu {
+  padding-left: 18px;
+  background: transparent url('/images/user_edit_tiny.png') no-repeat center left;
+}
+
 .user_edit_title {
   padding-left: 36px;
   background: transparent url('/images/user_edit_big.png') no-repeat center left;
@@ -75,9 +120,14 @@
   background: transparent url('/images/scrap.png') no-repeat center left;
 }
 
-.scrap_menu {
+.scrap_sidebar {
   padding-left: 36px;
   background: transparent url('/images/scrap_big.png') no-repeat center left;
+}
+
+.scrap_menu {
+  padding-left: 26px;
+  background: transparent url('/images/scrap_small.png') no-repeat center left;
 }
 
 .scrap_reply {
@@ -108,6 +158,11 @@
 .create_title {
   padding-left: 36px;
   background: transparent url('/images/create_big.png') no-repeat center left;
+}
+
+.create_menu {
+  padding-left: 18px;
+  background: transparent url('/images/create_tiny.png') no-repeat center left;
 }
 
 .create {
