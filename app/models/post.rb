@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base  
   
   after_create :notify!
+  after_save :update_notification
   
   belongs_to :author, :class_name => 'Account'
   has_many :comments, :as => :commentable, :dependent => :destroy
@@ -18,5 +19,11 @@ class Post < ActiveRecord::Base
   
   def notify!
     Notification.notify!(self)
+  end
+  
+  private
+  
+  def update_notification
+    notification.update_attributes :private_content => blog_private
   end
 end
