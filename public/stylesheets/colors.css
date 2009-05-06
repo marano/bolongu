@@ -30,3 +30,15 @@ pre { background-color: #eee; }
 .current_menu_item a, .current_menu_item a:hover, .current_menu_item a:visited { color: #000; }
 
 .scrap_count { color: #ff3300; }
+
+/* FILTER MENU */
+
+.filter_menu_item:hover { background-color: #ff3300 }
+
+.filter_menu_item a, .filter_menu_item a:visited { color: #FFF; }
+
+.filter_menu_item a:hover { color: #FFF; }
+
+.current_filter_menu_item, .currentfilter_menu_item:hover { background-color: #FFF; }
+
+.current_filter_menu_item a, .current_filter_menu_item a:hover, .current_filter_menu_item a:visited { color: #000; }

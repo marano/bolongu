@@ -3,9 +3,25 @@
 <% render :layout => @account do %>
   <div id='blog_title' class='part padding text_center'><h1><%= @account.blog_title %></h1></div>  
   
+  <div class='filter_menu'>
+    <div class="filter_menu_item left padding <%= 'current_filter_menu_item' if current_page? account_index_path(@account.login, :show => 'account') %>">
+      <%= link_to @account.login, account_index_path(@account.login, :show => 'account') %>
+    </div>
+    
+    <div class="filter_menu_item left padding <%= 'current_filter_menu_item' if current_page? account_index_path(@account.login, :show => 'all') %>">
+      <%= link_to 'all', account_index_path(@account.login, :show => 'all') %>
+    </div>
+    
+    <div class="filter_menu_item left padding <%= 'current_filter_menu_item' if current_page? account_index_path(@account.login, :show => 'network') %>">
+      <%= link_to 'network', account_index_path(@account.login, :show => 'network') %>
+    </div>
+    
+    <div class='clear_left'></div>
+  </div>
+  
   <%= render @notifications %>
   
-  <div class='part margin_top padding text_center'>
+  <div class='part padding text_center'>
     <%= will_paginate @notifications %> 
   </div>
 <% end %>

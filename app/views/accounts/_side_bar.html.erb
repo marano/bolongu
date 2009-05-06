@@ -21,9 +21,9 @@
   <div class='part padding margin_bottom'>  
     <h2><%= link_to 'Scraps', account_scraps_path(account), :class => 'scrap_sidebar' %></h2>
   </div>
-    
-  <div class='part padding margin_bottom'>
-    <% unless account.friends.empty? %>
+  
+  <% unless account.friends.empty? %>  
+    <div class='part padding margin_bottom'>
       <h2 class='follow_sidebar margin_bottom'>Following</h2>
       <ul class='plain_list'>
         <% for friend in account.friends %>
@@ -35,9 +35,9 @@
             <% end %>
           </li>
         <% end %>
-      </ul>
-    <% end %>
-  </div>
+      </ul>    
+    </div>
+  <% end %>
     
   <div class='part padding margin_bottom'>
     <h2 class='margin_bottom'><%= link_to 'Things', things_path, :class => 'thing_sidebar' %></h2>  

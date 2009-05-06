@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
   
   def account_from_path
-    Account.scoped_by_login(params[:account_login]).first
+    @account = Account.scoped_by_login(params[:account_login]).first
   end
 
   def friend?(account, friend)

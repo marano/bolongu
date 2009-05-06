@@ -1,49 +1,26 @@
 class AccountsController < ApplicationController
 
-  def send_password
-    @account = Account.scoped_by_email(params[:email]).first
-    if @account
-      if @account.generate_random_password!
-        AccountMailer.deliver_password(@account)
-        flash[:notice] = "Thanks! We are sending you a new password!"      
-        redirect_to new_session_path
-      else
-        flash[:error] = "We couldnt setup a new password for #{params[:email]}!"
-        redirect_to forgot_password_path
-      end
-    else
-      flash[:error] = "We couldnt find your account by #{params[:email]}!"
-      redirect_to forgot_password_path
-    end
-  end
-
   def account_index
-    if params[:account_login].blank?
-      if logged_in?
-        redirect_to account_index_path current_account.login
+    if account_from_path
+      case params[:show]
+      when 'all'
+        search_all_notifications
+      when 'account'
+        search_account_notifications
+      when 'network'
+        search_network_notifications
       else
-        redirect_to home_path
+        if logged_in? and current_account == @account
+          redirect_to account_index_path(@account.login, :show => 'all')
+        else
+          redirect_to account_index_path(@account.login, :show => 'account')
+        end
       end
     else
-      @account = account_from_path
-
-      if @account
-        if @account.friend_ids.empty?
-          @notifications = Notification.paginate :conditions => "publisher_id = #{@account.id}" , :page => params[:page], :per_page => 10
-        else
-          _friends_ids = ""
-          @account.friend_ids.each do |id|
-            _friends_ids << ',' unless _friends_ids.blank?
-            _friends_ids << id.to_s
-          end
-          @notifications = Notification.paginate :conditions => "publisher_id = #{@account.id} OR (publisher_id IN (#{_friends_ids}) AND (private_content = 'false' OR private_content = 'f'))" , :page => params[:page], :per_page => 10
-        end
-      else
-        flash[:error] = "Account #{params[:account_login]} couldn't be found!"
-        respond_to do |format|
-          format.html { redirect_to home_path }
-          format.atom
-        end
+      flash[:error] = "Account #{params[:account_login]} couldn't be found!"
+      respond_to do |format|
+        format.html { redirect_to home_path }
+        format.atom
       end
     end
   end
@@ -101,6 +78,54 @@ class AccountsController < ApplicationController
       flash[:error]  = "We couldn't find a account with that activation code -- check your email? Or maybe you've already activated -- try signing in."
       redirect_back_or_default('/')
     end
+  end
+
+  def send_password
+    @account = Account.scoped_by_email(params[:email]).first
+    if @account
+      if @account.generate_random_password!
+        AccountMailer.deliver_password(@account)
+        flash[:notice] = "Thanks! We are sending you a new password!"      
+        redirect_to new_session_path
+      else
+        flash[:error] = "We couldnt setup a new password for #{params[:email]}!"
+        redirect_to forgot_password_path
+      end
+    else
+      flash[:error] = "We couldnt find your account by #{params[:email]}!"
+      redirect_to forgot_password_path
+    end
+  end
+  
+  private
+  
+  def search_account_notifications
+    @notifications = Notification.paginate :conditions => "publisher_id = #{@account.id}" , :page => params[:page], :per_page => 10
+  end
+  
+  def search_all_notifications
+    if @account.friend_ids.empty?
+      search_account_notifications
+    else
+      @notifications = Notification.paginate :conditions => "publisher_id = #{@account.id} OR (publisher_id IN (#{friend_ids_as_string}) AND (private_content = 'false' OR private_content = 'f'))" , :page => params[:page], :per_page => 10   
+    end
+  end
+  
+  def search_network_notifications
+    unless @account.friend_ids.empty?
+      @notifications = Notification.paginate :conditions => "publisher_id IN (#{friend_ids_as_string}) AND (private_content = 'false' OR private_content = 'f')" , :page => params[:page], :per_page => 10
+    else
+      @notifications = Notification.paginate :conditions => ['id=?', 0], :page => params[:page], :per_page => 10
+    end
+  end
+  
+  def friend_ids_as_string
+    _friend_ids = ""
+    @account.friend_ids.each do |id|
+      _friend_ids << ',' unless _friend_ids.blank?
+      _friend_ids << id.to_s
+    end
+    _friend_ids
   end
 end
 
