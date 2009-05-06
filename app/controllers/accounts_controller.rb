@@ -28,12 +28,16 @@ class AccountsController < ApplicationController
       @account = account_from_path
 
       if @account
-        _friends_ids = ""
-        @account.friend_ids.each do |id|
-          _friends_ids << ',' unless _friends_ids.blank?
-          _friends_ids << id.to_s
-        end
-        @notifications = Notification.paginate :conditions => "publisher_id = #{@account.id} OR publisher_id IN (#{_friends_ids})" , :page => params[:page], :per_page => 10
+        if @account.friend_ids.empty?
+          @notifications = Notification.paginate :conditions => "publisher_id = #{@account.id}" , :page => params[:page], :per_page => 10
+        else
+          _friends_ids = ""
+          @account.friend_ids.each do |id|
+            _friends_ids << ',' unless _friends_ids.blank?
+            _friends_ids << id.to_s
+          end
+          @notifications = Notification.paginate :conditions => "publisher_id = #{@account.id} OR publisher_id IN (#{_friends_ids})" , :page => params[:page], :per_page => 10
+        end        
       else
         flash[:error] = "Account #{params[:account_login]} couldn't be found!"
         respond_to do |format|
