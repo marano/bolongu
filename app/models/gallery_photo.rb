@@ -4,7 +4,7 @@ class GalleryPhoto < ActiveRecord::Base
   belongs_to :publisher, :class_name => 'Account'
   has_many :comments, :as => :commentable, :dependent => :destroy
   
-  default_scope :order => 'created_at DESC'
+  default_scope :order => 'position'
   
   has_attached_file :photo, :styles => { :big => ["800x600>", :jpg], :default => ["640x480>", :jpg], :small => ["320x240>", :jpg], :tiny => ["160x120>", :jpg], :micro => ["80x60>", :jpg] }
   

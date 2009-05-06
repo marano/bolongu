@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090506061347) do
+ActiveRecord::Schema.define(:version => 20090506170756) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20090506061347) do
     t.datetime "photo_updated_at"
     t.boolean  "cover"
     t.integer  "publisher_id"
+    t.integer  "position"
   end
 
   create_table "notifications", :force => true do |t|

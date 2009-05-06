@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
     thing.resources :comments, :only => [ :create, :show, :destroy ]
   end
   
-  map.resources :gallery_photos, :except => [ :index, :new ] do |gallery_photo|
+  map.resources :gallery_photos, :except => [ :index, :new ], :collection => { :sort => :post } do |gallery_photo|
     gallery_photo.resources :comments, :only => [ :create, :show, :destroy ]
   end
   

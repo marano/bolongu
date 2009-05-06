@@ -3,6 +3,13 @@ class GalleryPhotosController < ApplicationController
   # fix for swfupload
   # session :cookie_only => false, :only => :create
 
+  def sort
+    params[:gallery_photos].each_with_index do |id, index|
+      GalleryPhoto.update_all(['position = ?', index + 1], ['id = ?', id])
+    end
+    render :nothing => true
+  end
+
 #  # GET /gallery_photos
 #  # GET /gallery_photos.xml
 #  def index
