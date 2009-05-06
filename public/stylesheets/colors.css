@@ -27,6 +27,6 @@ pre { background-color: #eee; }
 
 .current_menu_item, .current_menu_item:hover { background-color: #FFF; }
 
-.current_menu_item a, .current_menu_item a:hover, .current_menu_item a:visited { color: black; }
+.current_menu_item a, .current_menu_item a:hover, .current_menu_item a:visited { color: #000; }
 
 .scrap_count { color: #ff3300; }
