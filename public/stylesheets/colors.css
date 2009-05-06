@@ -17,14 +17,16 @@ pre { background-color: #eee; }
 
 .part { background-color: #FFF; }
 
+/* MENU */
+
+.menu_item:hover { background-color: #ff3300 }
+
 .menu_item a, .menu_item a:visited { color: #FFF; }
 
-.menu_item:hover {
-    background-color: #ff3300;
-}
+.menu_item a:hover { color: #FFF; }
 
-.current_menu_item {
-    background-color: #ff3300;
-}
+.current_menu_item, .current_menu_item:hover { background-color: #FFF; }
+
+.current_menu_item a, .current_menu_item a:hover, .current_menu_item a:visited { color: black; }
 
 .scrap_count { color: #ff3300; }
