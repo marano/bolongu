@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090502191425) do
+ActiveRecord::Schema.define(:version => 20090506061347) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(:version => 20090502191425) do
     t.datetime "photo_updated_at"
     t.boolean  "cover"
     t.integer  "publisher_id"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.datetime "published_at"
+    t.integer  "publisher_id"
+    t.boolean  "private_content", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|

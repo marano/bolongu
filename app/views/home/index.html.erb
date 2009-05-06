@@ -25,9 +25,9 @@
 <% end %>
 
 <div id='home_posts'>
-  <%= render :partial => @posts %>
+  <%= render @notifications %>
 </div>
 
 <div class='part padding text_center'>
-  <%= will_paginate @posts %> 
+  <%= will_paginate @notifications %> 
 </div>

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.scoped_by_blog_private(false).paginate :page => params[:page], :per_page => 10
+    @notifications = Notification.scoped_by_private_content(false).paginate :page => params[:page], :per_page => 10
   end
   
   def about

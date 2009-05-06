@@ -1,8 +1,11 @@
 class Post < ActiveRecord::Base  
   
+  after_create :notify!
+  
   belongs_to :author, :class_name => 'Account'
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :commentators, :class_name => 'Account', :source => :author ,:through => :comments, :uniq => true
+  has_one :notification, :as => :notifiable, :dependent => :destroy
   
   has_attached_file :photo, :styles => { :default => ["640x480>", :jpg], :small => ["320x240>", :jpg], :tiny => ["160x120>", :jpg] }
   
@@ -13,4 +16,7 @@ class Post < ActiveRecord::Base
   
   alias :account :author
   
+  def notify!
+    Notification.notify!(self)
+  end
 end

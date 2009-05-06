@@ -1,11 +1,14 @@
 class Thing < ActiveRecord::Base
   
+  before_create :notify!
+  
   belongs_to :author, :class_name => 'Account'
   has_and_belongs_to_many :accounts
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :commentators, :class_name => 'Account', :source => :author ,:through => :comments, :uniq => true
   has_attached_file :photo, :styles => { :default => ["320x240>", :jpg], :small => ["100x100>", :jpg], :tiny => ["50x50>", :jpg] }
   has_attached_file :attachment
+  has_one :notification, :as => :notifiable, :dependent => :destroy
 
   validates_presence_of :name
 
@@ -18,4 +21,11 @@ class Thing < ActiveRecord::Base
 
   alias :account :author
   
+  def notify!
+    Notification.notify!(self)
+  end
+  
+  def blog_private
+    false
+  end
 end

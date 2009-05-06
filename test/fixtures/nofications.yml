@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  notofiable: 
+  published_at: 2009-05-06 03:13:47
+  publisher: 
+  notifiable: 
+  private: false
+
+two:
+  notofiable: 
+  published_at: 2009-05-06 03:13:47
+  publisher: 
+  notifiable: 
+  private: false
