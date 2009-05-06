@@ -1,0 +1,30 @@
+body { color: #333; }
+
+a { color: #666; }
+a:active { color: #ff3300; }
+a:visited { color: #666; }
+a:hover { color: #ff3300; }
+
+hr { background-color: #999; }
+
+pre { background-color: #eee; }
+
+.button { color: #FFF; }
+
+.button:hover { color: #ff3300; cursor: pointer; }
+
+.green_bg { background-color: #4c8542; }
+
+.part { background-color: #FFF; }
+
+.menu_item a, .menu_item a:visited { color: #FFF; }
+
+.menu_item:hover {
+    background-color: #ff3300;
+}
+
+.current_menu_item {
+    background-color: #ff3300;
+}
+
+.scrap_count { color: #ff3300; }

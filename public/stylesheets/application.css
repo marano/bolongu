@@ -1,7 +1,5 @@
 /* SITE */
 
-body { color: #333; }
-
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
@@ -11,21 +9,16 @@ h1, h2 { margin: 5px 0 5px 0; }
 
 label { font-weight: bold; }
 
-a { color: #666; text-decoration: none; }
+a { text-decoration: none; }
 a img { border: none; }
-a:active { color: red; }
-a:visited { color: #666; }
-a:hover { color: red; }
 
 hr {
-  background-color: #999;
   height: 1px;
   border: 0;
   width: 95%;
 }
 
 pre {
-  background-color: #eee;
   padding: 10px;
   font-size: 11px;
 }
@@ -34,10 +27,9 @@ pre {
   border: none;
   font-weight: bold;
   padding: 10px 10px 10px 10px;
-  color: white;
 }
 
-.button:hover { color: red; cursor: pointer; }
+.button:hover { cursor: pointer; }
 
 .input {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -46,9 +38,11 @@ pre {
   padding: 0.2em 0.2em 0.2em 0.2em;
 }
 
-.green_bg { background-color: #4c8542; }
-
 .email_input { width: 350px; }
+
+.current {
+  font-size: 120%;
+}
 
 /* END SITE */
 
@@ -62,12 +56,9 @@ pre {
 
 .part {
   border: solid 1px rgb(255,255,255);
-  background-color: #FFF;
 }
 
-#content {
-  margin-top: 40px;
-}
+#content { margin-top: 40px; }
 
 /* END STRUCTURE */
 
@@ -92,29 +83,11 @@ pre {
     font-variant: small-caps;
     font-weight: bold;
     font-size: 12px;
-    line-height: 15px;
-    font-size-adjust: none;
-    font-stretch: normal;    
-    color: white;
 }
 
 .menu_item p { padding: 0; }
 
-.menu_item a, .menu_item a:visited {
-    color: white;    
-    text-decoration: none;
-}
-
-.menu_item:hover {
-    color: white;
-    background-color:red;
-}
-
-.current {
-    background-color:red;
-}
-
-.scrap_count { color: red; }
+.menu_item a, .menu_item a:visited { text-decoration: none; }
 
 /* END MENU */
 

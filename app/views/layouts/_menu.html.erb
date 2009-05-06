@@ -3,13 +3,13 @@
     <%= link_to image_tag('logo_tiny_small.jpg'), about_path %>
   </div>
   
-  <div class="menu_item left text_center <%= 'current' if current_page? home_path or current_page? root_path %>">
+  <div class="menu_item left text_center <%= 'current_menu_item' if current_page? home_path or current_page? root_path %>">
     <p><%= link_to "Home", home_path, :class => 'home_menu' %></p>
   </div>
   
   <% if logged_in? %>
   
-    <div class="menu_item left text_center <%= 'current' if current_page? account_index_path(current_account.login) %>">
+    <div class="menu_item left text_center <%= 'current_menu_item' if current_page? account_index_path(current_account.login) %>">
       <p>
         <% if current_account.avatar.file? %>
           <%= link_to "Blog", account_index_path(current_account.login),
@@ -20,11 +20,11 @@
       </p>
     </div>
     
-    <div class="menu_item left text_center <%= 'current' if current_page? new_post_path %>">
+    <div class="menu_item left text_center <%= 'current_menu_item' if current_page? new_post_path %>">
       <p><%= link_to "Post", new_post_path, :class => 'create_menu' %></p>
     </div>
     
-    <div class="menu_item left text_center <%= 'current' if current_page? account_scraps_path(current_account) %>">
+    <div class="menu_item left text_center <%= 'current_menu_item' if current_page? account_scraps_path(current_account) %>">
       <p>
         <%= link_to "Scraps", account_scraps_path(current_account), :class => 'scrap_menu' %>        
         <% unless current_account.scraps.scoped_by_read(false).empty? %>
@@ -33,15 +33,15 @@
       </p>      
     </div>
     
-    <div class="menu_item left text_center <%= 'current' if current_page? things_path %>">
+    <div class="menu_item left text_center <%= 'current_menu_item' if current_page? things_path %>">
       <p><%= link_to "Things", things_path, :class => 'thing_menu' %></p>
     </div>
     
-    <div class="menu_item left text_center <%= 'current' if current_page? account_galleries_path(current_account) %>">
+    <div class="menu_item left text_center <%= 'current_menu_item' if current_page? account_galleries_path(current_account) %>">
       <p><%= link_to "Galleries", account_galleries_path(current_account), :class => 'gallery_menu' %></p>
     </div>
     
-    <div class="menu_item left text_center <%= 'current' if current_page? edit_account_path(current_account) %>">
+    <div class="menu_item left text_center <%= 'current_menu_item' if current_page? edit_account_path(current_account) %>">
       <p><%= link_to "Settings", edit_account_path(current_account), :class => 'user_edit_menu' %></p>
     </div>    
     
@@ -51,15 +51,15 @@
     
   <% else %> 
      
-    <div class="menu_item left text_center <%= 'current' if current_page? things_path %>">
+    <div class="menu_item left text_center <%= 'current_menu_item' if current_page? things_path %>">
       <p><%= link_to "Things", things_path, :class => 'thing_menu' %></p>
     </div>
     
-    <div class="menu_item left text_center <%= 'current' if current_page? login_path %>">
+    <div class="menu_item left text_center <%= 'current_menu_item' if current_page? login_path %>">
       <p><%= link_to 'Login', login_path, :class => 'login_menu' %></p>
     </div>
     
-    <div class="menu_item left text_center <%= 'current' if current_page? new_account_path %>">
+    <div class="menu_item left text_center <%= 'current_menu_item' if current_page? new_account_path %>">
       <p><%= link_to 'Sign Up', new_account_path, :class => 'user_new_menu' %></p>
     </div>
   <% end %>
