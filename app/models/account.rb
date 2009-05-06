@@ -13,7 +13,7 @@ class Account < ActiveRecord::Base
   has_many :galleries, :dependent => :destroy
   has_many :scraps, :foreign_key => 'recipient_id'
   
-  has_attached_file :avatar, :styles => { :default => ["170x200>", :jpg], :small => ["100x100>", :jpg], :tiny => ["50x50>", :jpg], :micro => ["16x16>", :png], :menu => ["60x60>", :jpg] }
+  has_attached_file :avatar, :styles => { :default => ["170x200>", :jpg], :small => ["100x100>", :jpg], :tiny => ["50x50>", :jpg], :micro => ["42x32>", :png], :menu => ["60x60>", :jpg] }
   
   validates_attachment_content_type :avatar, :content_type => [ 'image/jpeg', 'image/png', 'image/bmp' , 'image/gif' ]
   validates_attachment_size :avatar, :less_than => 2.megabytes
