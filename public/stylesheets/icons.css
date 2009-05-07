@@ -1,5 +1,20 @@
 /* ICONS */
 
+.filter_menu_account {
+  padding-left: 18px;
+  background: transparent url('/images/user_tiny.png') no-repeat center left;
+}
+
+.filter_menu_all {
+  padding-left: 18px;
+  background: transparent url('/images/network_tiny.png') no-repeat center left;
+}
+
+.filter_menu_network {
+  padding-left: 18px;
+  background: transparent url('/images/follow_tiny.png') no-repeat center left;
+}
+
 .login_title {
   padding-left: 36px;
   background: transparent url('/images/login_big.png') no-repeat center left;

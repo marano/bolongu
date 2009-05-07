@@ -76,6 +76,12 @@ class Account < ActiveRecord::Base
     return nil if login.blank? || password.blank?
     u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login] # need to get the salt
     u && u.authenticated?(password) ? u : nil
+    u.logged_in! unless u
+    u
+  end
+  
+  def logged_in!
+    update_attributes last_login => Time.now
   end
 
   def login=(value)
