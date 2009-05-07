@@ -9,7 +9,7 @@
     <% end %>
   </div>
 
-  <p><%=h thing.description %></p>
+  <p><%= format thing.description %></p>
   
   <% if thing.attachment.file?  %>
     <p>
