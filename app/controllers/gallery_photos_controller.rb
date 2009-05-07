@@ -64,7 +64,8 @@ class GalleryPhotosController < ApplicationController
         format.html { redirect_to(account_gallery_path(@gallery_photo.gallery.account, @gallery_photo.gallery)) }
         format.xml  { render :xml => @gallery_photo, :status => :created, :location => @gallery_photo }
       else
-        flash[:error] = 'Photo couldnt be created :('
+        flash[:gallery_photo] = @gallery_photo
+        flash[:error] = 'Photo couldnt be created :('        
         format.html { redirect_to [@gallery_photo.gallery.account, @gallery_photo.gallery] }
         format.xml  { render :xml => @gallery_photo.errors, :status => :unprocessable_entity }
       end

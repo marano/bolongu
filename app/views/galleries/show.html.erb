@@ -18,7 +18,7 @@
         Upload new photo
       </h3>
       <p>
-        <% form_for (@gallery_photo or GalleryPhoto.new), :html => { :multipart => true } do |f| %>
+        <% form_for (@gallery_photo or flash[:gallery_photo] or GalleryPhoto.new), :html => { :multipart => true } do |f| %>
           <%= f.error_messages %>
           <%= hidden_field_tag 'gallery_photo[gallery_id]', @gallery.id %>
           

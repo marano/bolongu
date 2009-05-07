@@ -11,7 +11,7 @@ class GalleryPhoto < ActiveRecord::Base
   has_attached_file :photo, :styles => { :big => ["800x600>", :jpg], :default => ["640x480>", :jpg], :small => ["320x240>", :jpg], :tiny => ["160x120>", :jpg], :micro => ["80x60>", :jpg] }
   
   validates_attachment_presence :photo
-  validates_attachment_content_type :photo, :content_type => [ 'image/jpeg', 'image/png', 'image/bmp' , 'image/gif' ]
+  validates_attachment_content_type :photo, :content_type => [ 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png', 'image/bmp' , 'image/gif' ]
   validates_attachment_size :photo, :less_than => 5.megabytes
   
   def url(*args)

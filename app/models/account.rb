@@ -15,7 +15,7 @@ class Account < ActiveRecord::Base
   
   has_attached_file :avatar, :styles => { :default => ["170x200>", :jpg], :small => ["100x100>", :jpg], :tiny => ["50x50>", :jpg], :micro => ["42x32>", :png], :menu => ["60x60>", :jpg] }
   
-  validates_attachment_content_type :avatar, :content_type => [ 'image/jpeg', 'image/png', 'image/bmp' , 'image/gif' ]
+  validates_attachment_content_type :avatar, :content_type => [ 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png', 'image/bmp' , 'image/gif' ]
   validates_attachment_size :avatar, :less_than => 2.megabytes
 
   validates_presence_of     :login
