@@ -1,4 +1,4 @@
-class Post < ActiveRecord::Base  
+class Post < ActiveRecord::Base
   
   after_create :notify!
   after_save :update_notification
@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
-  alias :account :author
+  alias :account :author  
   
   def notify!
     Notification.notify!(self)

@@ -33,7 +33,8 @@
       
       <td width='40%'>
         <div class='text_center'>
-          <%= share_this post.title, post_url(post) %>
+          <%= # share_this post.title, post_url(post)
+          %>
           <%= link_to_unless_current pluralize(post.comments.count, 'comment'), post %> from <%= link_to_unless_current pluralize(post.commentators.count, 'person'), post %>
         </div>
       </td>

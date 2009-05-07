@@ -45,7 +45,8 @@
         <span class='time_ago'><%= time_ago_in_words thing.created_at %></span>
       </td>
       <td width='45%' class='text_center'>
-        <%= share_this thing.name, thing_url(thing) %>
+        <%= #share_this thing.name, thing_url(thing)
+        %>
         <%= link_to_unless_current pluralize(thing.comments.count, 'comment'), thing %> from <%= link_to_unless_current pluralize(thing.commentators.count, 'person'), thing %>
       </td>
       <td width='30%'>
