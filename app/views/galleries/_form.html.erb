@@ -1,3 +1,5 @@
+<% javascript :fckeditor %>
+
 <div class='part padding'>
   <% form_for [account, gallery] do |f| %>
     <%= f.error_messages %>
@@ -12,7 +14,7 @@
     </p>
     <p>
       <%= f.label :description %><br />
-      <%= f.text_area :description, :class => 'input' %>
+      <%= fckeditor_textarea(:gallery, :description, :toolbarSet => 'Mine', :width => '100%', :height => '300px') %>
     </p>
     <p>
       <%= f.submit 'Save', :class => 'button green_bg' %>

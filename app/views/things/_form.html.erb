@@ -1,6 +1,4 @@
-<% content_for :head do %>
-  <%= javascript_include_tag :fckeditor %>
-<% end %>
+<% javascript :fckeditor %>
 
 <div class='part padding'>
   <% form_for @thing, :html => { :multipart => true } do |f| %>

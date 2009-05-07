@@ -1,18 +1,39 @@
 <% div_for gallery, :class => 'part padding' do %>
   <h1>
-    <%= link_to gallery.name, account_gallery_path(gallery.account, gallery) %>
+    <%= link_to_unless_current gallery.name, account_gallery_path(gallery.account, gallery) %>
   </h1>
 
   <p>
-    <%=h gallery.description %>
+    <%= format gallery.description %>
   </p>
+  
+  <% if (current_page? gallery or current_page? [gallery.account, gallery]) and logged_in? and gallery.account == current_account %>
+    <div>
+      <h3>
+        Upload new photo
+      </h3>
+      <p>
+        <% form_for (@gallery_photo or flash[:gallery_photo] or GalleryPhoto.new), :html => { :multipart => true } do |f| %>
+          <%= f.error_messages %>
+          <%= hidden_field_tag 'gallery_photo[gallery_id]', gallery.id %>
+          
+          <%= f.file_field :photo %>
+          <%= f.submit 'Upload', :class => 'button green_bg' %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
 
   <div class='padding text_left'>
-    <ul class='plain_list'>
+    <ul id="gallery_<%= gallery.id %>_photos" class='plain_list text_left'>
       <% for gallery_photo in gallery.gallery_photos %>
-        <li><%= link_to image_tag(gallery_photo.url(:tiny)), gallery_photo %></li>
-      <% end %>
+        <% content_tag_for :li, gallery_photo, :style => 'padding: 0' do %>
+          <%= link_to image_tag(gallery_photo.url((current_page?(gallery) or current_page?([gallery.account, gallery])) ? :small : :tiny)), gallery_photo %>
+        <% end %>
+      <% end %>      
     </ul>
+    
+    <%= sortable_element "gallery_#{gallery.id}_photos", :url => sort_gallery_photos_path %>
   </div>
   
   <table width='100%' class='clear_left'>
@@ -41,7 +62,7 @@
         <% if current_account_content? gallery %>
           <div class='manager_links text_right'>
             <%= link_to 'Edit', edit_account_gallery_path(gallery.account, gallery), :class => 'edit' %> |
-            <%= link_to 'Delete', gallery, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
+            <%= link_to 'Delete', [gallery.account, gallery], :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
           </div>
         <% end %>
       </td>
@@ -53,4 +74,5 @@
       <h4>last comment</h4>
     <% end %>
   <% end %>
+  
 <% end %>
