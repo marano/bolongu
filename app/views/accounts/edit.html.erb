@@ -15,7 +15,7 @@
     <%= f.text_field :bio, :class => 'input' %></p>
 
     <p>
-      <% unless current_account.avatar.url.nil?  %>
+      <% if current_account.avatar.file?  %>
         <%= image_tag current_account.avatar.url(:default) %>
       <% end %>
     </p>
@@ -28,10 +28,10 @@
     <%= f.text_field :blog_title, :class => 'input' %></p>
 
     <p><%= label_tag :login %><br/>
-    <%= f.label :login, @account.login %></p>
+    <%= @account.login %></p>
 
     <p><%= label_tag :email %><br/>
-    <%= f.label :emai, @account.email %></p>
+    <%= @account.email %></p>
 
     <p><%= label_tag :password %><br/>
     <%= f.password_field :password, :class => 'input' %></p>

@@ -1,9 +1,12 @@
 /* SITE */
 
+body {
+  margin: 0;
+}
+
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
-  margin: 0;
 }
 
 h1, h2 { margin: 5px 0 5px 0; }
@@ -32,11 +35,15 @@ pre {
 
 .button:hover { cursor: pointer; }
 
-.input {
+.input, .input_big {
   font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 110%;  
   border: 0.08em solid #999;
-  font-size: 120%;
-  padding: 0.2em 0.2em 0.2em 0.2em;
+  padding: 0.25em 0.25em 0.25em 0.25em;
+}
+
+.input_big {
+  font-size: 120%;  
 }
 
 .email_input { width: 350px; }
