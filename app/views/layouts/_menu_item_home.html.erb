@@ -1,0 +1,10 @@
+<div class="menu_item left text_center <%= div_style %>">
+  <% if current_account.avatar.file? %>
+    <p style='padding:0;margin:0'>    
+      <p class='left' style='margin-top:4px'><%= image_tag current_account.avatar.url :micro %></p>
+      <p class='left margin_left'><%= link_to title, link %></p>    
+    </p>
+  <% else %>
+    <p><%= link_to title, link, :class => link_style %></p>
+  <% end %>  
+</div>

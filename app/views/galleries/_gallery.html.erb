@@ -1,7 +1,7 @@
 <% div_for gallery, :class => 'part padding' do %>
-  <h1>
+  <h2>
     <%= link_to_unless_current gallery.name, account_gallery_path(gallery.account, gallery) %>
-  </h1>
+  </h2>
 
   <p>
     <%= format gallery.description %>
@@ -17,7 +17,7 @@
           <%= f.error_messages %>
           <%= hidden_field_tag 'gallery_photo[gallery_id]', gallery.id %>
           
-          <%= f.file_field :photo %>
+          <%= f.file_field :photo, :class => 'input' %>
           <%= f.submit 'Upload', :class => 'button green_bg' %>
         <% end %>
       </p>

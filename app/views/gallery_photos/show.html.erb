@@ -5,9 +5,9 @@
 
   <% div_for @gallery_photo do %>
     <%= will_paginate @gallery_photos %>
-    <h1>
+    <h2>
       <%= h @gallery_photo.name %>
-    </h1>
+    </h2>
     <p class='text_center'>
       <%= link_to image_tag(@gallery_photo.url(:default)), @gallery_photo.url %>
     </p>

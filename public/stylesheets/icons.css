@@ -105,6 +105,11 @@
   background: transparent url('/images/thing_destroy_tiny.png') no-repeat center left;
 }
 
+.user_menu {
+  padding-left: 18px;
+  background: transparent url('/images/user_tiny.png') no-repeat center left;
+}
+
 .user_edit_menu {
   padding-left: 18px;
   background: transparent url('/images/user_edit_tiny.png') no-repeat center left;

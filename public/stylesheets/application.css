@@ -7,7 +7,7 @@ body, p, ol, ul, td {
   font-size:   13px;
 }
 
-h1, h2 { margin: 5px 0 5px 0; }
+h1, h2, h3 { margin: 5px 0 5px 0; }
 
 label { font-weight: bold; }
 
@@ -96,7 +96,7 @@ pre {
 .filter_menu { margin-left: 30px; }
 
 .filter_menu_item {
-    width: 80px;
+    min-width: 70px;
     height: 5px;
     padding: 0 10px 0 10px;
     line-height: 5px;
@@ -109,6 +109,11 @@ pre {
 .sidebar_action { padding: 10px 0 0 80px; }
 
 #side_bar { width:200px; }
+
+#side_bar h3 a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
 /* END SIDEBAR */
 

@@ -1,6 +1,6 @@
 <% div_for thing, :class => 'part' do %>
   <div>
-    <h1><%= link_to_unless_current thing.name, thing %></h1>
+    <h2><%= link_to_unless_current thing.name, thing %></h2>
     
     <% if thing.photo.file? %>
       <div class='thing_photo left'>
