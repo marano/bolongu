@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090506170756) do
+ActiveRecord::Schema.define(:version => 20090507175237) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20090506170756) do
     t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "blog_private", :default => false
   end
 
   create_table "gallery_photos", :force => true do |t|
@@ -127,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20090506170756) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.boolean  "blog_private",            :default => false
   end
 
 end

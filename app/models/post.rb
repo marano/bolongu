@@ -1,12 +1,10 @@
-class Post < ActiveRecord::Base
+class Post < ActiveRecord::Base  
   
-  after_create :notify!
-  after_save :update_notification
+  include Notifiable
   
   belongs_to :author, :class_name => 'Account'
   has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :commentators, :class_name => 'Account', :source => :author ,:through => :comments, :uniq => true
-  has_one :notification, :as => :notifiable, :dependent => :destroy
+  has_many :commentators, :class_name => 'Account', :source => :author ,:through => :comments, :uniq => true  
   
   has_attached_file :photo, :styles => { :default => ["640x480>", :jpg], :small => ["320x240>", :jpg], :tiny => ["160x120>", :jpg] }
   
@@ -15,15 +13,5 @@ class Post < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
-  alias :account :author  
-  
-  def notify!
-    Notification.notify!(self)
-  end
-  
-  private
-  
-  def update_notification
-    notification.update_attributes :private_content => blog_private
-  end
+  alias :account :author
 end

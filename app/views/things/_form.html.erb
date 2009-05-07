@@ -10,6 +10,10 @@
       <%= f.label :name %><br />
       <%= f.text_field :name, :class => 'input' %>
     </p>
+    <p>
+      <%= f.label :blog_private %>
+      <%= f.check_box :blog_private %>
+    </p>
     <% if thing.photo.file? %>
       <p>
         <%= image_tag thing.photo.url(:small) %>
