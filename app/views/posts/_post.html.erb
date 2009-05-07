@@ -3,7 +3,7 @@
     <h2><%= link_to_unless_current h(post.title), post %></h2>
     <% if post.photo.file? %>
       <div class='post_photo left'>
-        <%= link_to image_tag(post.photo.url :small), post.photo.url(:original) %>
+        <%= link_to image_tag(post.photo.url(:small)), current_page?(post) ? post.photo.url : post %>
       </div>
     <% end %>
   </div>
