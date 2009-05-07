@@ -1,7 +1,7 @@
 <% title @account.blog_title %>
 
 <% render :layout => @account do %>
-  <div id='blog_title' class='part padding text_center'><h1><%= @account.blog_title %></h1></div>  
+  <div id='blog_title' class='part text_center'><h1><%= @account.blog_title %></h1></div>  
   
   <div class='filter_menu'>
     <div class="filter_menu_item left padding <%= 'current_filter_menu_item' if current_page? account_index_path(@account.login, :show => 'account') %>">

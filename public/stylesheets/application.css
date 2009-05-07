@@ -3,6 +3,7 @@
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
+  margin: 0;
 }
 
 h1, h2 { margin: 5px 0 5px 0; }
@@ -58,7 +59,7 @@ pre {
   border: solid 1px rgb(255,255,255);
 }
 
-#content { margin-top: 40px; }
+#content {}
 
 /* END STRUCTURE */
 
@@ -71,18 +72,20 @@ pre {
 /* MENU */
 
 #top_menu {
-  width: 964;
-  position: absolute;
-  top: 0;
+  width: 100%;
 }
 
 .menu_item {
-    width: 90px;
+    width: 95px;
     height: 40px;
     padding: 0 10px 0 10px;
     font-variant: small-caps;
     font-weight: bold;
     font-size: 12px;
+}
+
+.menu_item p {
+  margin-top: 12px;
 }
 
 .menu_item p { padding: 0; }
@@ -135,8 +138,7 @@ pre {
     margin-bottom: 10px;
 }
 
-.photo_list {
-}
+.photo_list {}
 
 .manager_links { margin: 10px; }
 
@@ -147,8 +149,11 @@ pre {
 #account_content { width: 755px; }
 
 #blog_title {
-  height: 20px;
-  line-height: 10px;
+  padding: 5px 0 5px 0;
+}
+
+#blog_title h1 {
+  margin: 0;
 }
 
 .post_head {}

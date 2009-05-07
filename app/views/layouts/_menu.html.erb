@@ -10,10 +10,10 @@
   <% if logged_in? %>
   
     <div class="menu_item left text_center <%= 'current_menu_item' if current_page? account_index_path(current_account.login) %>">      
-      <p>
+      <p style='padding:0;margin:0'>
         <% if current_account.avatar.file? %>
-          <p class='left' style='margin:0;padding:0; position:absolute;top:4px'><%= image_tag current_account.avatar.url :micro %></p>
-          <p><%= link_to "Home", account_index_path(current_account.login), :style => 'margin-left:45px' %></p>
+          <p class='left' style='margin-top:4px'><%= image_tag current_account.avatar.url :micro %></p>
+          <p class='left margin_left'><%= link_to "Home", account_index_path(current_account.login) %></p>
         <% else %>
           <%= link_to "Home", account_index_path(current_account.login) %>
         <% end %>
