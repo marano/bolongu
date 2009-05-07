@@ -21,7 +21,7 @@
     <tr>
       <td>
         <% if post.account.avatar.file?  %>
-          <%= image_tag post.account.avatar.url(:tiny) %> 
+          <%= link_to_unless_current image_tag(post.account.avatar.url(:tiny)), account_index_path(post.account.login) %>
         <% end %>
       </td>
       <td width='25%' class='text_left'>

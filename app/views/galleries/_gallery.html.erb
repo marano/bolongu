@@ -40,7 +40,7 @@
     <tr>
       <td>
         <% if gallery.account.avatar.file?  %>
-          <%= image_tag gallery.account.avatar.url(:tiny) %> 
+          <%= link_to_unless_current image_tag(gallery.account.avatar.url(:tiny)), account_index_url(gallery.account.login) %>
         <% end %>
       </td>
       <td width='25%' class='text_left'>
