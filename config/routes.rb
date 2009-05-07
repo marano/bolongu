@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
     account.resources :scraps, :only => [ :index, :create, :show, :destroy ]
   end
   
-  map.resources :galleries, :only => [] do |gallery|
+  map.resources :galleries, :only => [ :show ] do |gallery|
     gallery.resources :comments, :only => [ :create, :show, :destroy ]
   end
     
