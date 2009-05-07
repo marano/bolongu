@@ -4,7 +4,7 @@
     
     <% if thing.photo.file? %>
       <div class='thing_photo left'>
-        <%= link_to image_tag(thing.photo.url(:default)), current_page? thing ? thing.photo.url : thing %>
+        <%= link_to image_tag(thing.photo.url(:default)), current_page?(thing) ? thing.photo.url : thing %>
       </div>
     <% end %>
   </div>
