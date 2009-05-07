@@ -1,8 +1,9 @@
 class AccountsController < ApplicationController
 
   def account_index
+    @show = params[:show]
     if account_from_path
-      case params[:show]
+      case @show
       when 'all'
         search_all_notifications
       when 'account'
@@ -11,9 +12,11 @@ class AccountsController < ApplicationController
         search_network_notifications
       else
         if logged_in? and current_account == @account
-          redirect_to account_index_path(@account.login, :show => 'all')
+          @show = 'all'
+          search_all_notifications
         else
-          redirect_to account_index_path(@account.login, :show => 'account')
+          @show = 'account'
+          search_account_notifications
         end
       end
     else
