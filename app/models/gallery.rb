@@ -1,11 +1,10 @@
 class Gallery < ActiveRecord::Base
 
   include Notifiable
+  include Commentable
 
   belongs_to :account
   has_many :gallery_photos, :dependent => :destroy
-  has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :commentators, :class_name => 'Account', :source => :author ,:through => :comments, :uniq => true
   
   default_scope :order => 'created_at DESC'
   

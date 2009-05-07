@@ -1,10 +1,9 @@
 class Post < ActiveRecord::Base  
   
   include Notifiable
+  include Commentable
   
-  belongs_to :author, :class_name => 'Account'
-  has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :commentators, :class_name => 'Account', :source => :author ,:through => :comments, :uniq => true  
+  belongs_to :author, :class_name => 'Account'    
   
   has_attached_file :photo, :styles => { :default => ["640x480>", :jpg], :small => ["320x240>", :jpg], :tiny => ["160x120>", :jpg] }
   
