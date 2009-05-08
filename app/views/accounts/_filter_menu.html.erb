@@ -1,9 +1,9 @@
 <div class='filter_menu'>
   <%= filter_menu_item @account.login, account_index_path(@account.login, :show => 'account'), 'filter_menu_account', @show == 'account' %>
   
-  <%= filter_menu_item 'all', account_index_path(@account.login, :show => 'all'), 'filter_menu_account', @show == 'all' %>
+  <%= filter_menu_item 'all', account_index_path(@account.login, :show => 'all'), 'filter_menu_all', @show == 'all' %>
   
-  <%= filter_menu_item 'network',  account_index_path(@account.login, :show => 'network'), 'filter_menu_account', @show == 'network' %>
+  <%= filter_menu_item 'network',  account_index_path(@account.login, :show => 'network'), 'filter_menu_network', @show == 'network' %>
   
   <div class='clear_left'></div>
 </div>

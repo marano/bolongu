@@ -1,15 +1,33 @@
-<% render :layout => @account do %>
+<% title 'Galleries' %>
+
+<% if @account  %>
+  <% render :layout => @account do %>
+    <div class='part padding margin_bottom'>
+      <h1 class='gallery_title'>Galleries</h1>
+      
+      <% if @account == current_account %>
+        <%= link_to 'New gallery', new_gallery_path, :class => 'gallery_create' %>
+      <% end %>
+    </div>
+    
+    <%= render @galleries %>
+    
+    <div class='part padding margin_top text_center'>
+      <%= will_paginate @galleries %>
+    </div>
+  <% end %>
+<% else %>
   <div class='part padding margin_bottom'>
     <h1 class='gallery_title'>Galleries</h1>
     
-    <% if @account == current_account %>
-      <%= link_to 'New gallery', new_account_gallery_path(@account), :class => 'gallery_create' %>
+    <% if logged_in? %>
+      <%= link_to 'New gallery', new_gallery_path, :class => 'gallery_create' %>
     <% end %>
   </div>
-  
+    
   <%= render @galleries %>
   
   <div class='part padding margin_top text_center'>
     <%= will_paginate @galleries %>
   </div>
-<% end %>
+<% end %> 

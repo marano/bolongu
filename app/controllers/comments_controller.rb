@@ -12,9 +12,8 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      unless @comment.self_comment?
-        @comment.send_notification(url_for([@comment.commentable, @comment]))
-      end
+      @comment.send_notification(url_for(@comment))
+      
       respond_to do |format|
         format.html { redirect_to @comment.commentable}
         format.xml  { head :ok }

@@ -8,7 +8,9 @@ class Comment < ActiveRecord::Base
   alias :account :author
 
   def send_notification(url)
-    AccountMailer.deliver_comment_notification(commentable.account, self, url)
+    unless self_comment?
+      AccountMailer.deliver_comment_notification(commentable.account, self, url)
+    end
   end
   
   def self_comment?

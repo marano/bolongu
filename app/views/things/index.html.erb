@@ -1,15 +1,33 @@
 <%= title 'Things' %>
 
-<div class='part padding margin_bottom'>
-  <h1 class='thing_title'>Things</h1>
-  
-  <% if logged_in?  %>
-    <%= link_to 'New thing', new_thing_path, :class => 'thing_create' %>
+<% if @account  %>
+  <% render :layout => @account do %>
+    <div class='part padding margin_bottom'>
+      <h1 class='thing_title'>Things</h1>
+      
+      <% if logged_in? and current_account == @account %>
+        <%= link_to 'New thing', new_thing_path, :class => 'thing_create' %>
+      <% end %>
+    </div>
+
+    <%= render :partial => @things %>
+
+    <div class='part padding margin_top text_center'>
+      <%= will_paginate @things %>
+    </div>
   <% end %>
-</div>
+<% else %>
+  <div class='part padding margin_bottom'>
+    <h1 class='thing_title'>Things</h1>
+    
+    <% if logged_in?  %>
+      <%= link_to 'New thing', new_thing_path, :class => 'thing_create' %>
+    <% end %>
+  </div>
 
-<%= render :partial => @things %>
+  <%= render :partial => @things %>
 
-<div class='part padding margin_top text_center'>
-  <%= will_paginate @things %> 
-</div>
+  <div class='part padding margin_top text_center'>
+    <%= will_paginate @things %>
+  </div>
+<% end %>

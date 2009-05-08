@@ -9,29 +9,32 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:activation_code', :controller => 'accounts', :action => 'activate', :activation_code => nil
   map.resource :session, :only => [ :new, :create, :destroy ]
   
-  map.send_password '/send_password', :controller => 'accounts', :action => 'send_password', :conditions => { :method => :post }
   map.forgot_password '/forgot_password', :controller => 'accounts', :action => 'forgot_password', :conditions => { :method => :get }
+  map.send_password '/send_password', :controller => 'accounts', :action => 'send_password', :conditions => { :method => :post }
   #map.reset_password '/reset_password', :controller => 'accounts', :action => 'reset_password'
 
   map.resources :accounts, :except => [ :index, :show ] do |account|
-    account.resources :galleries
+    account.resources :galleries, :only => [ :index ]
+    account.resources :things, :only => [ :index ]
     account.resources :scraps, :only => [ :index, :create, :show, :destroy ]
   end
   
-  map.resources :galleries, :only => [ :show ] do |gallery|
-    gallery.resources :comments, :only => [ :create, :show, :destroy ]
+  map.resources :comments, :only => [ :show, :destroy ]
+  
+  map.resources :galleries do |gallery|
+    gallery.resources :comments, :only => [ :create ]
   end
     
   map.resources :posts, :except => [ :index ] do |post|
-    post.resources :comments, :only => [ :create, :show, :destroy ]
+    post.resources :comments, :only => [ :create ]
   end
   
   map.resources :things, :member => { :add => :post, :remove => :delete} do |thing|
-    thing.resources :comments, :only => [ :create, :show, :destroy ]
+    thing.resources :comments, :only => [ :create ]
   end
   
   map.resources :gallery_photos, :except => [ :index, :new ], :collection => { :sort => :post } do |gallery_photo|
-    gallery_photo.resources :comments, :only => [ :create, :show, :destroy ]
+    gallery_photo.resources :comments, :only => [ :create ]
   end
   
   map.resources :friendships, :only => [ :create, :destroy ]  

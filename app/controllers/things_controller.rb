@@ -17,8 +17,13 @@ class ThingsController < ApplicationController
   # GET /things
   # GET /things.xml
   def index
-    @things = Thing.all.paginate :page => params[:page], :per_page => 10
-
+    if params[:account_id]
+      @account = Account.find(params[:account_id])
+      @things = @account.things.paginate :page => params[:page], :per_page => 10
+    else
+      @things = Thing.paginate :page => params[:page], :per_page => 10
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @things }

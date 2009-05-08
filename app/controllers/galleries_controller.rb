@@ -3,8 +3,12 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.xml
   def index
-    @account = Account.find(params[:account_id])
-    @galleries = @account.galleries.paginate :page => params[:page], :per_page => 10
+    if params[:account_id]
+      @account = Account.find(params[:account_id])
+      @galleries = @account.galleries.paginate :page => params[:page], :per_page => 10
+    else
+      @galleries = Gallery.paginate :page => params[:page], :per_page => 10
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,8 +30,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/new
   # GET /galleries/new.xml
   def new
-    @account = Account.find(params[:account_id])
-    @gallery = @account.galleries.build
+    @gallery = Gallery.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,8 +40,7 @@ class GalleriesController < ApplicationController
 
   # GET /galleries/1/edit
   def edit
-    @account = Account.find(params[:account_id])
-    @gallery = @account.galleries.find(params[:id])
+    @gallery = Gallery.find(params[:id])
   end
 
   # POST /galleries
@@ -50,7 +52,7 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       if @gallery.save
         flash[:notice] = 'Gallery was successfully created.'
-        format.html { redirect_to(account_gallery_path(@gallery.account, @gallery)) }
+        format.html { redirect_to @gallery }
         format.xml  { render :xml => @gallery, :status => :created, :location => @gallery }
       else
         format.html { render :action => "new" }
@@ -67,7 +69,7 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       if @gallery.update_attributes(params[:gallery])
         flash[:notice] = 'Gallery was successfully updated.'
-        format.html { redirect_to(account_gallery_path(@gallery.account, @gallery)) }
+        format.html { redirect_to @gallery }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -83,7 +85,7 @@ class GalleriesController < ApplicationController
     @gallery.destroy
     flash[:notice] = 'Gallery was successfully deleted.'
     respond_to do |format|
-      format.html { redirect_to(account_galleries_url(@gallery.account)) }
+      format.html { redirect_to(account_galleries_path(@gallery.account)) }
       format.xml  { head :ok }
     end
   end

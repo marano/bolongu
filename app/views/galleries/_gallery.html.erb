@@ -1,13 +1,13 @@
 <% div_for gallery, :class => 'part padding' do %>
   <h2>
-    <%= link_to_unless_current gallery.name, account_gallery_path(gallery.account, gallery) %>
+    <%= link_to_unless_current gallery.name, gallery_path(gallery) %>
   </h2>
 
   <p>
     <%= format gallery.description %>
   </p>
   
-  <% if (current_page? gallery or current_page? [gallery.account, gallery]) and logged_in? and gallery.account == current_account %>
+  <% if (current_page? gallery) and logged_in? and gallery.account == current_account %>
     <div>
       <h3>
         Upload new photo
@@ -28,7 +28,7 @@
     <ul id="gallery_<%= gallery.id %>_photos" class='plain_list text_left'>
       <% for gallery_photo in gallery.gallery_photos %>
         <% content_tag_for :li, gallery_photo, :style => 'padding: 0' do %>
-          <%= link_to image_tag(gallery_photo.url((current_page?(gallery) or current_page?([gallery.account, gallery])) ? :small : :tiny)), gallery_photo %>
+          <%= link_to image_tag(gallery_photo.url(current_page?(gallery) ? :small : :tiny)), gallery_photo %>
         <% end %>
       <% end %>      
     </ul>
@@ -61,8 +61,8 @@
       <td width='35%'>
         <% if current_account_content? gallery %>
           <div class='manager_links text_right'>
-            <%= link_to 'Edit', edit_account_gallery_path(gallery.account, gallery), :class => 'edit' %> |
-            <%= link_to 'Delete', [gallery.account, gallery], :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
+            <%= link_to 'Edit', edit_gallery_path(gallery), :class => 'edit' %> |
+            <%= link_to 'Delete', gallery, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
           </div>
         <% end %>
       </td>

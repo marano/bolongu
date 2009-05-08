@@ -56,9 +56,7 @@ pre {
   width: 964px;
 }
 
-.part {
-  border: solid 1px rgb(255,255,255);
-}
+.part { border: solid 1px rgb(255,255,255); }
 
 #content {}
 
@@ -83,9 +81,10 @@ pre {
     font-size: 12px;
 }
 
-.menu_item p { margin-top: 12px; }
-
-.menu_item p { padding: 0; }
+.menu_item p { 
+  margin-top: 12px;
+  padding: 0;
+}
 
 .menu_item a, .menu_item a:visited { text-decoration: none; }
 
@@ -110,7 +109,7 @@ pre {
 
 #side_bar { width:200px; }
 
-#side_bar h3 a {
+#side_bar h3, #side_bar h3 a {
   padding-top: 5px;
   padding-bottom: 5px;
 }
