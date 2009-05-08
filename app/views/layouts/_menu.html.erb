@@ -8,7 +8,7 @@
   <% if logged_in? %>
     <% menu_item_home 'Home', account_index_path(current_account.login), 'user_menu' %>
     
-    <% menu_item 'Post', new_post_path, 'create_menu' %>
+    <% menu_item 'Post', new_post_path, 'post_menu' %>
     
     <% menu_item 'Scraps', account_scraps_path(current_account), 'scrap_menu' do %>
       <% unless current_account.scraps.scoped_by_read(false).empty? %>

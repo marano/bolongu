@@ -5,7 +5,23 @@ class GalleriesController < ApplicationController
   def index
     if params[:account_id]
       @account = Account.find(params[:account_id])
-      @galleries = @account.galleries.paginate :page => params[:page], :per_page => 10
+      @show = params[:show]
+      case @show
+      when 'account'
+        search_account
+      when 'all'
+        search_all
+      when 'network'
+        search_network
+      else
+        if logged_in? and @account == current_account
+          @show = 'all'
+          search_all
+        else
+          @show = 'account'
+          search_account
+        end
+      end
     else
       @galleries = Gallery.paginate :page => params[:page], :per_page => 10
     end
@@ -87,6 +103,28 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(account_galleries_path(@gallery.account)) }
       format.xml  { head :ok }
+    end
+  end
+  
+  private
+  
+  def search_account
+    @galleries = @account.galleries.paginate :page => params[:page], :per_page => 10
+  end
+  
+  def search_all
+    if @account.friend_ids.empty?
+      search_account
+    else
+      @galleries = Gallery.paginate :conditions => "account_id = #{@account.id} OR (account_id IN (#{@account.friend_ids_as_string}) AND (blog_private = 'false' OR blog_private = 'f'))" , :page => params[:page], :per_page => 10   
+    end
+  end
+  
+  def search_network
+    unless @account.friend_ids.empty?
+      @galleries = Gallery.paginate :conditions => "account_id IN (#{@account.friend_ids_as_string}) AND (blog_private = 'false' OR blog_private = 'f')" , :page => params[:page], :per_page => 10
+    else
+      @galleries = Gallery.paginate :conditions => ['id=?', 0], :page => params[:page], :per_page => 10
     end
   end
 end

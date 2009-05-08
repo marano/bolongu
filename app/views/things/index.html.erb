@@ -2,7 +2,7 @@
 
 <% if @account  %>
   <% render :layout => @account do %>
-    <div class='part padding margin_bottom'>
+    <div class='part padding'>
       <h1 class='thing_title'>Things</h1>
       
       <% if logged_in? and current_account == @account %>
@@ -10,9 +10,11 @@
       <% end %>
     </div>
 
+    <%= filter_menu account_things_path(@account, :show => 'account'), account_things_path(@account, :show => 'all'), account_things_path(@account, :show => 'network') %>
+
     <%= render :partial => @things %>
 
-    <div class='part padding margin_top text_center'>
+    <div class='part padding text_center'>
       <%= will_paginate @things %>
     </div>
   <% end %>

@@ -110,25 +110,17 @@ class AccountsController < ApplicationController
     if @account.friend_ids.empty?
       search_account_notifications
     else
-      @notifications = Notification.paginate :conditions => "publisher_id = #{@account.id} OR (publisher_id IN (#{friend_ids_as_string}) AND (private_content = 'false' OR private_content = 'f'))" , :page => params[:page], :per_page => 10   
+      @notifications = Notification.paginate :conditions => "publisher_id = #{@account.id} OR (publisher_id IN (#{@account.friend_ids_as_string}) AND (private_content = 'false' OR private_content = 'f'))" , :page => params[:page], :per_page => 10   
     end
   end
   
   def search_network_notifications
     unless @account.friend_ids.empty?
-      @notifications = Notification.paginate :conditions => "publisher_id IN (#{friend_ids_as_string}) AND (private_content = 'false' OR private_content = 'f')" , :page => params[:page], :per_page => 10
+      @notifications = Notification.paginate :conditions => "publisher_id IN (#{@account.friend_ids_as_string}) AND (private_content = 'false' OR private_content = 'f')" , :page => params[:page], :per_page => 10
     else
       @notifications = Notification.paginate :conditions => ['id=?', 0], :page => params[:page], :per_page => 10
     end
   end
   
-  def friend_ids_as_string
-    _friend_ids = ""
-    @account.friend_ids.each do |id|
-      _friend_ids << ',' unless _friend_ids.blank?
-      _friend_ids << id.to_s
-    end
-    _friend_ids
-  end
 end
 

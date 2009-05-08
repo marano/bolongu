@@ -2,13 +2,15 @@
 
 <% if @account  %>
   <% render :layout => @account do %>
-    <div class='part padding margin_bottom'>
+    <div class='part padding margin'>
       <h1 class='gallery_title'>Galleries</h1>
       
       <% if @account == current_account %>
         <%= link_to 'New gallery', new_gallery_path, :class => 'gallery_create' %>
       <% end %>
     </div>
+    
+    <%= filter_menu account_galleries_path(@account, :show => 'account'), account_galleries_path(@account, :show => 'all'), account_galleries_path(@account, :show => 'network') %>
     
     <%= render @galleries %>
     

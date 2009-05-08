@@ -19,7 +19,23 @@ class ThingsController < ApplicationController
   def index
     if params[:account_id]
       @account = Account.find(params[:account_id])
-      @things = @account.things.paginate :page => params[:page], :per_page => 10
+      @show = params[:show]
+      case @show
+      when 'account'
+        search_account
+      when 'all'
+        search_all
+      when 'network'
+        search_network
+      else
+        if logged_in? and @account == current_account
+          @show = 'all'
+          search_all
+        else
+          @show = 'account'
+          search_account
+        end
+      end
     else
       @things = Thing.paginate :page => params[:page], :per_page => 10
     end
@@ -105,6 +121,28 @@ class ThingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(things_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  private
+  
+  def search_account
+    @things = @account.things.paginate :page => params[:page], :per_page => 10
+  end
+  
+  def search_all
+    if @account.friend_ids.empty?
+      search_account
+    else
+      @things = Thing.paginate :conditions => "author_id = #{@account.id} OR (author_id IN (#{@account.friend_ids_as_string}) AND (blog_private = 'false' OR blog_private = 'f'))" , :page => params[:page], :per_page => 10   
+    end
+  end
+  
+  def search_network
+    unless @account.friend_ids.empty?
+      @things = Thing.paginate :conditions => "author_id IN (#{@account.friend_ids_as_string}) AND (blog_private = 'false' OR blog_private = 'f')" , :page => params[:page], :per_page => 10
+    else
+      @things = Thing.paginate :conditions => ['id=?', 0], :page => params[:page], :per_page => 10
     end
   end
 end

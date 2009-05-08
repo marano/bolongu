@@ -1,5 +1,20 @@
 /* ICONS */
 
+.post_icon {
+  padding-left: 18px;
+  background: transparent url('/images/post_tiny.png') no-repeat center left;
+}
+
+.thing_icon {
+  padding-left: 18px;
+  background: transparent url('/images/thing_tiny.png') no-repeat center left;
+}
+
+.gallery_icon {
+  padding-left: 18px;
+  background: transparent url('/images/gallery_tiny.png') no-repeat center left;
+}
+
 .filter_menu_account {
   padding-left: 18px;
   background: transparent url('/images/user_tiny.png') no-repeat center left;
@@ -23,6 +38,11 @@
 .login_menu {
   padding-left: 18px;
   background: transparent url('/images/login_tiny.png') no-repeat center left;
+}
+
+.post_menu {
+  padding-left: 18px;
+  background: transparent url('/images/post_new_tiny.png') no-repeat center left;
 }
 
 .logout_title {
@@ -76,8 +96,8 @@
 }
 
 .thing_menu {
-  padding-left: 26px;
-  background: transparent url('/images/thing_small.png') no-repeat center left;
+  padding-left: 18px;
+  background: transparent url('/images/thing_tiny.png') no-repeat center left;
 }
 
 .thing_edit_title {
@@ -87,7 +107,7 @@
 
 .thing_edit {
   padding-left: 18px;
-  background: transparent url('/images/thing_edit_tiny.png') no-repeat center left;
+  background: transparent url('/images/edit_tiny.png') no-repeat center left;
 }
 
 .thing_create_title {
@@ -102,7 +122,7 @@
 
 .thing_destroy {
   padding-left: 18px;
-  background: transparent url('/images/thing_destroy_tiny.png') no-repeat center left;
+  background: transparent url('/images/delete_tiny.png') no-repeat center left;
 }
 
 .user_menu {
@@ -137,7 +157,7 @@
 
 .scrap_title {
   padding-left: 50px;
-  background: transparent url('/images/scrap.png') no-repeat center left;
+  background: transparent url('/images/scrap_big.png') no-repeat center left;
 }
 
 .scrap_sidebar {
@@ -146,8 +166,8 @@
 }
 
 .scrap_menu {
-  padding-left: 26px;
-  background: transparent url('/images/scrap_small.png') no-repeat center left;
+  padding-left: 18px;
+  background: transparent url('/images/scrap_tiny.png') no-repeat center left;
 }
 
 .scrap_reply {
@@ -157,7 +177,17 @@
 
 .scrap_destroy {
   padding-left: 18px;
-  background: transparent url('/images/scrap_destroy_tiny.png') no-repeat center left;
+  background: transparent url('/images/scrap_delete.png') no-repeat center left;
+}
+
+.post_edit_title {
+  padding-left: 36px;
+  background: transparent url('/images/post_edit_big.png') no-repeat center left;
+}
+
+.post_edit {
+  padding-left: 18px;
+  background: transparent url('/images/post_edit_tiny.png') no-repeat center left;
 }
 
 .time_ago {
@@ -202,7 +232,7 @@
 
 .destroy {
   padding-left: 18px;
-  background: transparent url('/images/destroy_tiny.png') no-repeat center left;
+  background: transparent url('/images/delete_tiny.png') no-repeat center left;
 }
 
 /* END ICONS */

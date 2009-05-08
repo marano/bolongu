@@ -1,4 +1,6 @@
 <% div_for thing, :class => 'part' do %>
+  <div class='content_icon padding left'><span class='thing_icon'></span></div>
+
   <div>
     <h2><%= link_to_unless_current thing.name, thing %></h2>
     
@@ -28,6 +30,23 @@
           <%= link_to "Add #{thing.name} to my things", add_thing_path(thing), :method => :post, :class => 'add' %>
         </p>
       <% end %>  
+    </div>
+  <% end %>
+  
+  <% unless thing.accounts.empty? %>
+    <div class='margin_bottom'>
+      <label>Users with this thing</label>
+      <ul class='plain_list'>
+        <% thing.accounts.each do |account| %>
+           <li>
+             <% if account.avatar.file? %>
+               <%= link_to image_tag(account.avatar(:micro)), account_index_path(account.login), :title => account.name %>
+             <% else %>
+               <%= link_to account.name, account_index_path(account.login), :title => account.blog_title %>
+             <% end %>
+           </li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 

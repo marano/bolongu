@@ -1,4 +1,6 @@
 <% div_for post, :class => 'part' do %>
+  <div class='content_icon padding left'><span class='post_icon'></span></div>
+
   <div class='post_head'>
     <h2><%= link_to_unless_current h(post.title), post %></h2>
     <% if post.photo.file? %>

@@ -1,4 +1,6 @@
 <% div_for gallery, :class => 'part padding' do %>
+  <div class='content_icon padding left'><span class='gallery_icon'></span></div>
+
   <h2>
     <%= link_to_unless_current gallery.name, gallery_path(gallery) %>
   </h2>

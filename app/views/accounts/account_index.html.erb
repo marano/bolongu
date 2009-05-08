@@ -3,7 +3,7 @@
 <% render :layout => @account do %>
   <div id='blog_title' class='part text_center'><h1><%= @account.blog_title %></h1></div>  
   
-  <%= render :partial => 'filter_menu' %>
+  <%= filter_menu account_index_path(@account.login, :show => 'account'), account_index_path(@account.login, :show => 'all'), account_index_path(@account.login, :show => 'network') %>
   
   <%= render @notifications %>
   

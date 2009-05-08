@@ -95,6 +95,15 @@ class Account < ActiveRecord::Base
   def to_s
     name
   end
+  
+  def friend_ids_as_string
+    _friend_ids = ""
+    friend_ids.each do |id|
+      _friend_ids << ',' unless _friend_ids.blank?
+      _friend_ids << id.to_s
+    end
+    _friend_ids
+  end
 
   protected
     
