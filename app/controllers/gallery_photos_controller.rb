@@ -26,9 +26,14 @@ class GalleryPhotosController < ApplicationController
   # GET /gallery_photos/1
   # GET /gallery_photos/1.xml
   def show
-    @gallery_photo = GalleryPhoto.find params[:id]
-    @gallery_photos = @gallery_photo.gallery.gallery_photos.paginate :page => params[:page], :per_page => 1    
-
+    if params[:page]
+      @gallery_photo = GalleryPhoto.find params[:id]
+      @gallery_photos = @gallery_photo.gallery.gallery_photos.paginate :page => params[:page], :per_page => 1
+      @gallery_photo = @gallery_photos[0]
+    else
+      @gallery_photo = GalleryPhoto.find params[:id]
+      @gallery_photos = @gallery_photo.gallery.gallery_photos.paginate :page => (@gallery_photo.gallery.gallery_photos.index(@gallery_photo) + 1), :per_page => 1
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @gallery_photo }
