@@ -1,7 +1,7 @@
 <% title @gallery_photo.gallery.name %>
 
 <% div_for @gallery_photo, :class => 'part padding margin_bottom' do %>
-  <%= link_to "Back to #{@gallery_photo.gallery.name}", [@gallery_photo.gallery.account, @gallery_photo.gallery] %>
+  <%= link_to "Back to #{@gallery_photo.gallery.name}", @gallery_photo.gallery %>
 
   <% div_for @gallery_photo do %>
     <%= will_paginate @gallery_photos %>
