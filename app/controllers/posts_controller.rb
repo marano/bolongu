@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = Post.new
+    @post = session[:post_draft] || Post.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,12 +43,18 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
-    @post = Post.new(params[:post])
+    if session[:post_draft]
+      @post = session[:post_draft]
+    else
+      @post = Post.new
+    end
+    @post.attributes = params[:post]
     @post.author = current_account
-    @post.should_tweet = !params[:twitter].blank?
-    
+    @post.should_tweet = params[:twitter]
+    session[:post_draft] = @post
     respond_to do |format|
       if @post.save
+        session[:post_draft] = nil
         flash[:notice] = 'Post was successfully created.'
         format.html { redirect_to(@post) }
         format.xml  { render :xml => @post, :status => :created, :location => @post }

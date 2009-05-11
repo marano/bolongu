@@ -10,6 +10,7 @@ class TwitterController < ApplicationController
   end
   
   def authorized
+    params[:oauth_token]
     oauth = current_account.twitter_oauth
     oauth.authorize_from_request(session['rtoken'], session['rsecret'])
     

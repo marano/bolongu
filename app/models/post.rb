@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   after_create :make_tweet
   
   belongs_to :author, :class_name => 'Account'
-  has_one :tweet, :as => :tweetable    
+  has_one :tweet, :as => :tweetable
   
   has_attached_file :photo, :styles => { :default => ["640x480>", :jpg], :small => ["320x240>", :jpg], :tiny => ["160x120>", :jpg] }
   
