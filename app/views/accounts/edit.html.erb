@@ -36,9 +36,9 @@
     <p>
       <%= label_tag :twitter_active, 'Twitter' %>
       <% if @account.twitter_active %>
-        On <% link_to 'activate', activate_twitter_path %>
-      <% else %>
-        Off <% link_to 'deactivate', deactivate_twitter_path %>
+        On <%= link_to 'deactivate', deactivate_twitter_path %>
+      <% else %>      
+        Off <%= link_to 'activate', activate_twitter_path %>
       <% end %>
     </p>
 

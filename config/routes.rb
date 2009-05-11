@@ -39,7 +39,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :friendships, :only => [ :create, :destroy ]  
   
-  map.authorize_twitter '/twitter/activate', :controller => 'twitter', :action => 'activate'
+  map.activate_twitter '/twitter/activate', :controller => 'twitter', :action => 'activate'
+  map.deactivate_twitter '/twitter/deactivate', :controller => 'twitter', :action => 'deactivate'
   map.authorized_twitter '/twitter/authorized', :controller => 'twitter', :action => 'authorized'
   
   map.account_index '/:account_login', :controller => 'accounts', :action => 'account_index', :conditions => { :method => :get }
