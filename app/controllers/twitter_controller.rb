@@ -9,7 +9,7 @@ class TwitterController < ApplicationController
     redirect_to oauth.request_token.authorize_url
   end
   
-  def show
+  def authorized
     oauth = current_account.twitter_oauth
     oauth.authorize_from_request(session['rtoken'], session['rsecret'])
     
