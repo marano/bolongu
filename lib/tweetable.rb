@@ -4,6 +4,8 @@ module Tweetable
     base.class_eval do
       after_create :make_tweet
       has_one :tweet, :as => :tweetable
+      
+      attr_accessor :should_tweet
     end
   end
   

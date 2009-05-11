@@ -11,9 +11,7 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => [ 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png', 'image/bmp' , 'image/gif' ]
   validates_attachment_size :photo, :less_than => 5.megabytes
   
-  default_scope :order => 'created_at DESC'
-  
-  attr_accessor :should_tweet
+  default_scope :order => 'created_at DESC'  
   
   alias :account :author
   
