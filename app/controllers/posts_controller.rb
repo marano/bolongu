@@ -45,6 +45,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.author = current_account
+    @post.should_tweet = !params[:twitter].blank?
     
     respond_to do |format|
       if @post.save

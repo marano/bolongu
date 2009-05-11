@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090511011333) do
+ActiveRecord::Schema.define(:version => 20090511014714) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20090511011333) do
     t.integer  "photo_file_size"
     t.integer  "author_id"
     t.boolean  "blog_private",       :default => false
+    t.string   "url"
   end
 
   create_table "scraps", :force => true do |t|
