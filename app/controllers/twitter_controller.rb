@@ -21,8 +21,7 @@ class TwitterController < ApplicationController
       :twitter_token => oauth.access_token.token, 
       :twitter_secret => oauth.access_token.secret,
       :twitter_active => true
-    })
-    
+    })    
     
     flash[:notice] = 'Twitter is active!'
     redirect_to edit_account_path(current_account)
@@ -34,6 +33,9 @@ class TwitterController < ApplicationController
       :twitter_secret => nil,
       :twitter_active => false
     })
+    
+    flash[:notice] = 'Twitter was deactived!'
+    redirect_to edit_account_path(current_account)
   end
 
 end
