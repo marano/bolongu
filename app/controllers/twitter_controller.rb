@@ -27,5 +27,13 @@ class TwitterController < ApplicationController
     flash[:notice] = 'Twitter is active!'
     redirect_to edit_account_path(current_account)
   end
+  
+  def deactivate
+    current_account.update_attributes({
+      :twitter_token => nil,
+      :twitter_secret => nil,
+      :twitter_active => false
+    })
+  end
 
 end
