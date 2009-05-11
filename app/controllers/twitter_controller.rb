@@ -7,6 +7,18 @@ class TwitterController < ApplicationController
     render 'blog'
   end
   
+  def create
+    options = {}
+    
+    unless params[:in_reply_to_status_id].blank?
+      options.merge!({:in_reply_to_status_id => params[:in_reply_to_status_id]})
+    end
+    
+    tweet = current_account.twitter_client.update(params[:text], options)
+    flash[:notice] = "Tweeted succefully!"
+    redirect_to :back
+  end
+  
   def blog    
     @tweets = current_account.twitter_client.user_timeline(:id => params[:id])
     @user = current_account.twitter_client.user(params[:id])

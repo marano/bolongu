@@ -2,6 +2,7 @@
 /* */
 /*  div.info                        {float:left; display:inline; width:230px; margin:0; font-size:11px; text-align:right;}*/
 /*    div.info span.followers_count   {color:#999; position:relative; top:-4px; margin-right:3px;}*/
+    div.status {margin-bottom: 5px;}
     table.tweet {padding: 5px 0 5px 0;}
     a.profile_image        {float:right; display:block; margin:0 30px;}
     a.profile_image img    {float:left; width:48px; height:48px; border:1px solid #ddd; padding:1px;}
@@ -10,6 +11,9 @@
     p.who_when             {margin:0; padding:0;}
     span.when {font-size: 9px;}
     p.actions {margin: 0; padding:0;}
+    
+    .tweet_input { width: 570px; height: 40px; }
+    #countdown { font-size: 35px; color: #999; }
 /*    div.info span.date              {color:#aaa;}*/
 /*    div.text                        { float:left; display:inline; }*/
 /*  */
