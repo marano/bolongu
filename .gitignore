@@ -7,4 +7,5 @@ doc/api
 doc/app
 public/system
 config/initializers/mail_config.rb
+config/initializers/twitter_config.rb
 config/database_production.yml

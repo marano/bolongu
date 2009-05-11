@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090507175237) do
+ActiveRecord::Schema.define(:version => 20090511011333) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(:version => 20090507175237) do
     t.datetime "avatar_updated_at"
     t.time     "last_login"
     t.text     "bio"
+    t.boolean  "twitter_active",                           :default => false
+    t.string   "twitter_token"
+    t.string   "twitter_secret"
   end
 
   add_index "accounts", ["login"], :name => "index_accounts_on_login", :unique => true
@@ -129,6 +132,16 @@ ActiveRecord::Schema.define(:version => 20090507175237) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.boolean  "blog_private",            :default => false
+  end
+
+  create_table "tweets", :force => true do |t|
+    t.string   "body"
+    t.integer  "tweetable_id"
+    t.string   "tweetable_type"
+    t.integer  "account_id"
+    t.integer  "twitter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

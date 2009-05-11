@@ -3,7 +3,10 @@ class Post < ActiveRecord::Base
   include Notifiable
   include Commentable
   
-  belongs_to :author, :class_name => 'Account'    
+  after_create :make_tweet
+  
+  belongs_to :author, :class_name => 'Account'
+  has_one :tweet, :as => :tweetable    
   
   has_attached_file :photo, :styles => { :default => ["640x480>", :jpg], :small => ["320x240>", :jpg], :tiny => ["160x120>", :jpg] }
   
@@ -13,4 +16,15 @@ class Post < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
   
   alias :account :author
+  
+  def to_tweet(url)
+    "#{title} - #{url}"
+  end
+  
+  def make_tweet
+    tweet = create_tweet(:body => to_tweet, :account => author)
+    twitter_tweet = account.twitter_client.update(tweet.body, {})
+    tweet.twitter_id = twitter_tweet.id
+  end
+  
 end

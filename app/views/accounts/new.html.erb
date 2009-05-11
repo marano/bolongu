@@ -20,6 +20,9 @@
   <p><%= label_tag 'email' %><br/>
   <%= f.text_field :email, :class => 'email_input input' %></p>
 
+  <p><%= label_tag :twitter_active, 'Publish content on Twitter' %>
+  <%= f.check_box :twitter_active %></p>
+
   <p><%= label_tag 'password' %><br/>
   <%= f.password_field :password, :class => 'input' %></p>
 

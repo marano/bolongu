@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.root :controller => 'home', :action => 'index'
-  map.home '/home', :controller => 'home', :action => 'index'
+  map.root :controller => 'home'
+  map.home '/home', :controller => 'home'
   map.about '/about', :controller => 'home', :action => 'about'
   
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
@@ -38,6 +38,9 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :friendships, :only => [ :create, :destroy ]  
+  
+  map.authorize_twitter '/twitter/authorize', :controller => 'twitter', :action => 'authorize'
+  map.authorized_twitter '/twitter/authorized', :controller => 'twitter', :action => 'authorized'
   
   map.account_index '/:account_login', :controller => 'accounts', :action => 'account_index', :conditions => { :method => :get }
   

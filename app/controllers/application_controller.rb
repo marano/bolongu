@@ -10,20 +10,28 @@ class ApplicationController < ActionController::Base
   helper_method :'friend?', :'current_account_content?'
   
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  
+  rescue_from Twitter::Unauthorized, :with => :twitter_unauthorized
 
   protected
 
-  def current_account_content?(object)
-    object.account == current_account
-  end
-  
-  def account_from_path
-    @account = Account.scoped_by_login(params[:account_login]).first
-  end
+    def current_account_content?(object)
+      object.account == current_account
+    end
+    
+    def account_from_path
+      @account = Account.scoped_by_login(params[:account_login]).first
+    end
 
-  def friend?(account, friend)
-    account.friendship(friend)
-  end
+    def friend?(account, friend)
+      account.friendship(friend)
+    end  
+  
+  private
+  
+    def twitter_unauthorized(exception)
+      redirect_to new_authorization_path
+    end
   
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
