@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = session[:post_draft] || Post.new
+    @post = Post.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,15 +43,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
-    if session[:post_draft]
-      @post = session[:post_draft]
-    else
-      @post = Post.new
-    end
-    @post.attributes = params[:post]
+    @post = Post.new(params[:post])
     @post.author = current_account
-    @post.should_tweet = params[:twitter]
-    session[:post_draft] = @post
+    @post.should_tweet = params[:twitter]    
     respond_to do |format|
       if @post.save
         session[:post_draft] = nil

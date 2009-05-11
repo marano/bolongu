@@ -1,6 +1,6 @@
 class TwitterController < ApplicationController
 
-  def authorize
+  def activate
     oauth = current_account.twitter_oauth
     
     session['rtoken'] = oauth.request_token.token
@@ -20,9 +20,12 @@ class TwitterController < ApplicationController
     current_account.update_attributes({
       :twitter_token => oauth.access_token.token, 
       :twitter_secret => oauth.access_token.secret,
+      :twitter_active => true
     })
     
-    redirect_to root_path
+    
+    flash[:notice] = 'Twitter is active!'
+    redirect_to edit_account_path(current_account)
   end
 
 end
