@@ -64,19 +64,27 @@ class TwitterController < ApplicationController
   end
   
   def show_tweet
-    @tweet = current_account.client.status(params[:id])
+    @tweet = current_account.twitter_client.status(params[:id])
   end
   
   def fav
-    flash[:notice] = "Tweet fav'd. May not show up right away due to API latency."
-    current_user.client.favorite_create(params[:id])
-    return_to :back
+    begin
+      flash[:notice] = "Tweet fav'd. May not show up right away due to API latency."
+      current_account.twitter_client.favorite_create(params[:id])
+    rescue => e
+      flash[:notice] = "Something went wrong!"
+    end
+    redirect_to :back
   end
   
   def unfav
-    flash[:notice] = "Tweet unfav'd. May not show up right away due to API latency."
-    current_user.client.favorite_destroy(params[:id])
-    return_to :back
+    begin
+      flash[:notice] = "Tweet unfav'd. May not show up right away due to API latency."
+      current_account.twitter_client.favorite_destroy(params[:id])
+    rescue => e
+      flash[:notice] = "Something went wrong!"
+    end
+    redirect_to :back
   end
 
 end

@@ -11,9 +11,9 @@
           <%= link_to image_tag('twitter/chat.gif'), show_tweet_path(:id => status.in_reply_to_status_id), :class => 'icon' unless status.in_reply_to_status_id.blank? %>
           
           <%- if status.favorited -%>
-            <%= link_to image_tag('twitter/star_on.gif'), twitter_fav_path(:id => status.id, :return_to => request.request_uri), :class => 'icon', :method => :post %>
+            <%= link_to image_tag('twitter/star_on.gif'), twitter_unfav_path(:id => status.id), :class => 'icon', :method => :post %>
           <%- else -%>
-            <%= link_to image_tag('twitter/star.gif'), twitter_unfav_path(:id => status.id, :return_to => request.request_uri), :class => 'icon', :method => :post %>
+            <%= link_to image_tag('twitter/star.gif'), twitter_fav_path(:id => status.id), :class => 'icon', :method => :post %>
           <%- end -%>
           
           <%= link_to image_tag('twitter/mail.gif'), '#', :class => 'dm icon', :rel => h(user.screen_name), :title => "Direct Message #{h user.screen_name}" %>

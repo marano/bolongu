@@ -1,18 +1,21 @@
-<div class='part'>
-  <table style='width: 100%'>
-    <tr>    
-    <%- form_tag post_tweet_path do -%>      
-      <%= hidden_field_tag 'in_reply_to_status_id' %>
-      <td>
-        <%= text_area_tag 'text', '', :class => 'input tweet_input' %>
-      </td>
-      <td>
-        <span id="countdown">140</span>
-      </td>
-      <td>
-        <%= submit_tag 'Tweet!', :class => 'button green_bg' %>
-      </td>
-    <%- end -%>
-    </tr>
-  </table>
-</div>
+<% if logged_in? and current_account.twitter_active %>
+  <div class='part padding margin_bottom'>
+    <label for="text">Tweet</label>
+    <table>
+      <tr>    
+      <%- form_tag post_tweet_path do -%>      
+        <%= hidden_field_tag 'in_reply_to_status_id' %>
+        <td>
+          <%= text_area_tag 'text', '', :class => 'input tweet_input' %>
+        </td>
+        <td>
+          <span id="countdown">140</span>
+        </td>
+        <td>
+          <%= submit_tag 'Tweet!', :class => 'button green_bg' %>
+        </td>
+      <%- end -%>
+      </tr>
+    </table>
+  </div>
+<% end %>

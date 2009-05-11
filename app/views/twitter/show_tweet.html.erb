@@ -1,0 +1,10 @@
+<% stylesheet 'twitter' %>
+<% javascript 'twitter' %>
+
+<div class='part padding margin_bottom'>
+  <h1 class='twitter_title'>Twitter</h1>
+</div>
+
+<%= render :partial => 'new' %>
+
+<%= render :partial => 'status', :locals => { :status => @tweet } %>
