@@ -15,6 +15,10 @@ class Post < ActiveRecord::Base
   
   alias :account :author
   
+  def to_tweet
+    "#{title} #{url}"
+  end
+  
   def url
     "http://#{SITE_URL}/posts/#{id}"
   end

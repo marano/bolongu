@@ -19,7 +19,10 @@ class Thing < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
 
   alias :account :author  
-  alias :title :name
+  
+  def to_tweet
+    "#{name} #{url}"
+  end
   
   def url
     "http://#{SITE_URL}/things/#{id}"

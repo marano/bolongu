@@ -9,10 +9,12 @@ class Gallery < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
-  alias :title :name
-  
   def cover
     gallery_photos.first(:conditions => { :cover => true }) or gallery_photos.first
+  end
+  
+  def to_tweet
+    "#{name} #{url}"
   end
   
   def url
