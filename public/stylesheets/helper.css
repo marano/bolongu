@@ -6,6 +6,10 @@
 
 .padding { padding: 10px; }
 
+.padding_top { padding-top: 10px; }
+
+.padding_bottom { padding-bottom: 10px; }
+
 .margin_top { margin-top: 10px; }
 
 .margin_right { margin-right: 10px; }
@@ -26,7 +30,11 @@
 
 .text_left { text-align: left; }
 
+.vertical_top { vertical-align: top; }
+
 .vertical_center { vertical-align: middle; }
+
+.vertical_bottom { vertical-align: bottom; }
 
 .plain_list { margin:0; padding:0; list-style:none; display:block; }
 

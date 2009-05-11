@@ -17,6 +17,12 @@
       <% end %>
     <% end %>
   </div>
+  
+  <% if account.twitter_active %>
+    <div class='part padding margin_bottom'>  
+      <h3><%= link_to 'Twitter', account_twitter_blog_path(account), :class => 'twitter_sidebar' %></h3>
+    </div>
+  <% end %>
 
   <div class='part padding margin_bottom'>  
     <h3><%= link_to 'Scraps', account_scraps_path(account), :class => 'scrap_sidebar' %></h3>

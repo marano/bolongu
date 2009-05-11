@@ -20,38 +20,14 @@
     <% end %>
   </div>  
   
-  <table width='100%' class='clear_left'>
-    <tr>
-      <td>
-        <% if post.account.avatar.file?  %>
-          <%= link_to_unless_current image_tag(post.account.avatar.url(:tiny)), account_index_path(post.account.login) %>
-        <% end %>
-      </td>
-      <td width='25%' class='text_left'>
-        <div class='account_info_name'>
-          <%= link_to_unless_current post.account.name, account_index_url(post.account.login) %>
-        </div>
-        <span class='time_ago'><%= time_ago_in_words post.created_at %></span>
-      </td>
-      
-      <td width='40%'>
-        <div class='text_center'>
-          <%= # share_this post.title, post_url(post)
-          %>
-          <%= link_to_unless_current pluralize(post.comments.count, 'comment'), post %> from <%= link_to_unless_current pluralize(post.commentators.count, 'person'), post %>
-        </div>
-      </td>
-      
-      <td width='35%'>
-        <% if current_account_content? post %>
-          <div class='manager_links text_right'>
-            <%= link_to 'Edit', edit_post_path(post), :class => 'edit' %> |
-            <%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
-          </div>
-        <% end %>
-      </td>
-    </tr>
-  </table>
+  <% render :layout => 'layouts/content_info', :locals => { :content => post } do %>
+    <% if logged_in? and current_account_content? post %>
+      <div class='manager_links text_right'>
+        <%= link_to 'Edit', edit_post_path(post), :class => 'edit' %> |
+        <%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
+      </div>
+    <% end %>
+  <% end %>
   
   <% unless post.comments.empty?  %>
     <% render :layout => 'comments/comment', :object => post.comments.first do %>

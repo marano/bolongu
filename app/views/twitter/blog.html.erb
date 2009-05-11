@@ -1,0 +1,41 @@
+<% stylesheet 'twitter' %>
+
+<% if @account %>
+  <% render :layout => @account do %>
+    <div class='part padding margin_bottom'>
+      <h1 class='twitter_title'>Twitter</h1>
+    </div>
+
+    <% if logged_in? and current_account.twitter_active %>
+      <div class='part padding margin_bottom'>    
+        <%= render :partial => 'new' %>
+      </div>
+    <% end %>
+    
+    <div id='tweets'>
+      <% @tweets.each do |tweet| %>
+        <%= render :partial => 'status', :locals => { :status => tweet } %>
+      <% end %>
+    </div>
+    
+    <%= render :partial => "pagination" %>  
+  <% end %>
+<% else %>
+  <div class='part padding margin_bottom'>
+    <h1 class='twitter_title'>Twitter</h1>
+  </div>
+
+  <% if logged_in? and current_account.twitter_active %>
+    <div class='part padding margin_bottom'>    
+      <%= render :partial => 'new' %>
+    </div>
+  <% end %>
+  
+  <div id='tweets'>
+    <% @tweets.each do |tweet| %>
+      <%= render :partial => 'status', :locals => { :status => tweet } %>
+    <% end %>
+  </div>
+  
+  <%= render :partial => "pagination" %>
+<% end %>
