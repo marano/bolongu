@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
   
   def make_url
     if new_record?
-      url = "http://#{SITE_URL}/posts/#{id}"
+      self.url = "http://#{SITE_URL}/posts/#{id}"
     else
       update_attributes :url => "http://#{SITE_URL}/posts/#{id}"
     end
