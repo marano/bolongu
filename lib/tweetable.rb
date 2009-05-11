@@ -10,7 +10,7 @@ module Tweetable
   end
   
   def to_tweet
-    "#{title} - #{url}"
+    "#{title} #{url}"
   end
   
   def make_tweet

@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.author = current_account
-    @post.should_tweet = params[:twitter]    
+    @post.should_tweet = params[:twitter]
     respond_to do |format|
       if @post.save
         session[:post_draft] = nil

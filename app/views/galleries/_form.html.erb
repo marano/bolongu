@@ -8,6 +8,12 @@
       <%= f.label :name %><br />
       <%= f.text_field :name, :class => 'input' %>
     </p>
+    <% if gallery.new_record? and current_account.twitter_active %>
+      <p>
+        <%= label_tag :twitter, 'Publish on Twitter' %>
+        <%= check_box_tag :twitter, 't', true %>
+      </p>
+    <% end %>
     <p>
       <%= f.label :blog_private %>
       <%= f.check_box :blog_private %>

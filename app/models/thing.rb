@@ -2,6 +2,7 @@ class Thing < ActiveRecord::Base
   
   include Notifiable
   include Commentable
+  include Tweetable
   
   belongs_to :author, :class_name => 'Account'
   has_and_belongs_to_many :accounts
@@ -17,5 +18,10 @@ class Thing < ActiveRecord::Base
 
   default_scope :order => 'created_at DESC'
 
-  alias :account :author
+  alias :account :author  
+  alias :title :name
+  
+  def url
+    "http://#{SITE_URL}/things/#{id}"
+  end
 end

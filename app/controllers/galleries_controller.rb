@@ -64,7 +64,7 @@ class GalleriesController < ApplicationController
   def create
     @gallery = Gallery.new(params[:gallery])
     @gallery.account = current_account
-    
+    @gallery.should_tweet = params[:twitter]
     respond_to do |format|
       if @gallery.save
         flash[:notice] = 'Gallery was successfully created.'

@@ -78,7 +78,7 @@ class ThingsController < ApplicationController
   def create
     @thing = Thing.new(params[:thing])
     @thing.author = current_account
-    
+    @thing.should_tweet = params[:twitter]
     respond_to do |format|
       if @thing.save
         current_account.things << @thing
