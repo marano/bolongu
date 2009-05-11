@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   private
   
     def twitter_unauthorized(exception)
-      redirect_to new_authorization_path
+      redirect_to authorize_twitter_path
     end
   
   # Scrub sensitive parameters from your log
