@@ -20,10 +20,12 @@ module Notifiable
     end
   end
   
-  def update_notification    
-    notification.private_content = blog_private unless notification.nil?
-    notification.tag_list = tag_list
-    notification.save
+  def update_notification
+    unless notification.nil?
+      notification.private_content = blog_private
+      notification.tag_list = tag_list
+      notification.save
+    end
   end
 
 end
