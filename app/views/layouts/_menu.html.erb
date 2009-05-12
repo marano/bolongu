@@ -8,6 +8,10 @@
   <% if logged_in? %>
     <% menu_item_home 'Home', account_index_path(current_account.login), 'user_menu' %>
     
+    <% if current_account.twitter_active %>
+      <% menu_item 'Twitter',  account_twitter_blog_path(current_account), 'twitter_menu' %>
+    <% end %>
+    
     <% menu_item 'Post', new_post_path, 'post_menu' %>
     
     <% menu_item 'Scraps', account_scraps_path(current_account), 'scrap_menu' do %>

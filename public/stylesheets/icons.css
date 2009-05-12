@@ -55,6 +55,11 @@
   background: transparent url('/images/twitter_big.png') no-repeat center left;
 }
 
+.twitter_menu {
+  padding-left: 26px;
+  background: transparent url('/images/twitter_small.png') no-repeat center left;
+}
+
 .login_title {
   padding-left: 36px;
   background: transparent url('/images/login_big.png') no-repeat center left;

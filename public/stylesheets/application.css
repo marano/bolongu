@@ -73,7 +73,7 @@ pre {
 #top_menu { width: 100%; }
 
 .menu_item {
-    width: 95px;
+    min-width: 70px;
     height: 40px;
     padding: 0 10px 0 10px;
     font-variant: small-caps;
