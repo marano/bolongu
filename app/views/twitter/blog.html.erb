@@ -22,11 +22,7 @@
     <h1 class='twitter_title'>Twitter</h1>
   </div>
 
-  <% if logged_in? and current_account.twitter_active %>
-    <div class='part padding margin_bottom'>    
-      <%= render :partial => 'new' %>
-    </div>
-  <% end %>
+  <%= render :partial => 'tweets/new' %>
   
   <div id='tweets'>
     <% @tweets.each do |tweet| %>
