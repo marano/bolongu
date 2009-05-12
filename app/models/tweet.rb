@@ -3,6 +3,7 @@ class Tweet < ActiveRecord::Base
   include Notifiable
   include Commentable
 
+  before_create :create_tags
   after_create :tweet!
   before_destroy :untweet!
 
@@ -34,5 +35,13 @@ class Tweet < ActiveRecord::Base
       account.twitter_client.status_destroy(twitter_id)
     rescue Twitter::NotFound => e
     end
+  end
+  
+  private
+  
+  def create_tags
+    string_tag_list = ''
+    body.scan(/\b#\w*/).each { |word| string_tag_list << "#{word[/.(.*)/m,1]}, " }
+    tag_list = string_tag_list
   end
 end
