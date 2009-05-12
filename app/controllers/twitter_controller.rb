@@ -32,14 +32,10 @@ class TwitterController < ApplicationController
       session['rtoken'] = nil
       session['rsecret'] = nil
       
-      atoken => oauth.access_token.token, 
-      asecret => oauth.access_token.secret,
+      atoken = oauth.access_token.token
+      asecret = oauth.access_token.secret
       
-      current_account.update_attributes({
-        :twitter_token => atoken,
-        :twitter_secret => asecret,
-        :twitter_active => true
-      })
+      set_account_twitter_settings(atoken, asecret, true)
       
       flash[:notice] = 'Twitter is active!'    
     rescue => e
@@ -85,11 +81,15 @@ class TwitterController < ApplicationController
   private
   
   def disable_twitter
+    set_account_twitter_settings('', '', false) if current_account.twitter_active
+  end
+  
+  def set_account_twitter_settings(atoken, asecret, active)
     current_account.update_attributes({
-      :twitter_token => nil,
-      :twitter_secret => nil,
-      :twitter_active => false
-    }) if current_account.twitter_active
+      :twitter_token => atoken,
+      :twitter_secret => asecret,
+      :twitter_active => active
+    })
   end
 
 end
