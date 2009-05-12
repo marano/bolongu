@@ -7,6 +7,10 @@ class Notification < ActiveRecord::Base
   
   default_scope :order => 'published_at DESC'
   
+  named_scope :from_and_to_account, lambda { |account| { :conditions => "publisher_id = #{account.id} OR (publisher_id IN (#{account.friend_ids_as_string}) AND (private_content = 'false' OR private_content = 'f'))" } }
+  
+  named_scope :to_account, lambda { |account| { :conditions => "publisher_id IN (#{account.friend_ids_as_string}) AND (private_content = 'false' OR private_content = 'f')" } }
+  
   before_create :extract_attributes
   
   def self.notify!(notifiable)

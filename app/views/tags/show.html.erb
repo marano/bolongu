@@ -1,0 +1,17 @@
+  <div class='part padding text_center margin_bottom'>
+    <% tag_cloud Notification.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+      <%= link_to tag.name, tag, :class => css_class %>
+    <% end %>
+  </div>
+  
+  <div class='part padding margin_bottom'>
+    <h1 class='tag_title'><%= @tag %></h1>
+  </div>
+
+<% @taggings.each do |tagging| %>
+  <%= render tagging.taggable %>
+<% end %>
+
+<div class='part padding margin_top text_center'>
+  <%= will_paginate @taggings %>
+</div>

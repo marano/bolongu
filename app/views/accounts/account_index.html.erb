@@ -3,6 +3,12 @@
 <% render :layout => @account do %>
   <div id='blog_title' class='part text_center'><h1><%= @account.blog_title %></h1></div>  
   
+  <div class='part padding text_center'>
+    <% tag_cloud @account.notifications.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+      <%= link_to tag.name, tag, :class => css_class %>
+    <% end %>
+  </div>
+  
   <%= filter_menu account_index_path(@account.login, :show => 'account'), account_index_path(@account.login, :show => 'all'), account_index_path(@account.login, :show => 'network') %>
   
   <%= render @notifications %>

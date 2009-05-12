@@ -1,5 +1,7 @@
 module ApplicationHelper
 
+  include TagsHelper  
+
   def javascript(script)
     head javascript_include_tag(script)
   end

@@ -2,11 +2,17 @@
 
 <% if @account  %>
   <% render :layout => @account do %>
-    <div class='part padding margin'>
+    <div class='part padding margin_bottom'>
       <h1 class='gallery_title'>Galleries</h1>
       
       <% if @account == current_account %>
         <%= link_to 'New gallery', new_gallery_path, :class => 'gallery_create' %>
+      <% end %>
+    </div>
+    
+    <div class='part padding text_center'>
+      <% tag_cloud @account.galleries.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+        <%= link_to tag.name, tag, :class => css_class %>
       <% end %>
     </div>
     
@@ -24,6 +30,12 @@
     
     <% if logged_in? %>
       <%= link_to 'New gallery', new_gallery_path, :class => 'gallery_create' %>
+    <% end %>
+  </div>
+  
+  <div class='part padding text_center margin_bottom'>
+    <% tag_cloud Gallery.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+      <%= link_to tag.name, tag, :class => css_class %>
     <% end %>
   </div>
     

@@ -43,6 +43,8 @@ ActionController::Routing::Routes.draw do |map|
     tweet.resources :comments, :only => [ :create ]
   end
   
+  map.resources :tags, :only => [ :show ]
+  
   map.twitter_fav '/twitter/:id/fav', :controller => 'twitter', :action => 'fav', :conditions => { :method => :post }
   map.twitter_unfav '/twitter/:id/unfav', :controller => 'twitter', :action => 'unfav', :conditions => { :method => :post }
   map.show_twitter_tweet '/twitter/tweet/:id/show', :controller => 'twitter', :action => 'show'

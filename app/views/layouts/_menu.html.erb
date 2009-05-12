@@ -3,7 +3,7 @@
     <%= link_to image_tag('logo_tiny_small.jpg'), about_path %>
   </div>
   
-  <% menu_item 'Overview', home_path, 'home_menu' %>
+  <% menu_item 'Overview', [ home_path, root_path ], 'home_menu' %>
   
   <% if logged_in? %>
     <% menu_item_home 'Home', account_index_path(current_account.login), 'user_menu' %>

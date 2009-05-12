@@ -2,11 +2,17 @@
 
 <% if @account  %>
   <% render :layout => @account do %>
-    <div class='part padding'>
+    <div class='part padding margin_bottom'>
       <h1 class='thing_title'>Things</h1>
       
       <% if logged_in? and current_account == @account %>
         <%= link_to 'New thing', new_thing_path, :class => 'thing_create' %>
+      <% end %>
+    </div>
+      
+    <div class='part padding text_center'>
+      <% tag_cloud @account.things.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+        <%= link_to tag.name, tag, :class => css_class %>
       <% end %>
     </div>
 
@@ -24,6 +30,12 @@
     
     <% if logged_in?  %>
       <%= link_to 'New thing', new_thing_path, :class => 'thing_create' %>
+    <% end %>
+  </div>
+  
+  <div class='part padding text_center margin_bottom'>
+    <% tag_cloud Thing.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+      <%= link_to tag.name, tag, :class => css_class %>
     <% end %>
   </div>
 

@@ -24,6 +24,12 @@
   </div>
 <% end %>
 
+<div class='part padding text_center margin_bottom'>
+  <% tag_cloud Notification.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+    <%= link_to tag.name, tag, :class => css_class %>
+  <% end %>
+</div>
+
 <div id='home_posts'>
   <%= render @notifications %>
 </div>

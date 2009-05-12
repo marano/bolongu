@@ -116,6 +116,15 @@ pre {
 
 /* END SIDEBAR */
 
+/* CLOUD */
+
+.cloud_1 { font-size: 1.0em }
+.cloud_2 { font-size: 1.2em }
+.cloud_3 { font-size: 1.4em }
+.cloud_4 { font-size: 1.6em }
+
+/* END CLOUD */
+
 /* HOME */
 
 #home_posts {}

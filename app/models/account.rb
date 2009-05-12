@@ -12,6 +12,7 @@ class Account < ActiveRecord::Base
   has_and_belongs_to_many :things
   has_many :galleries, :dependent => :destroy
   has_many :scraps, :foreign_key => 'recipient_id'
+  has_many :notifications, :foreign_key => 'publisher_id'
   
   has_attached_file :avatar, :styles => { :default => ["170x200>", :jpg], :small => ["100x100>", :jpg], :tiny => ["50x50>", :jpg], :micro => ["42x32>", :png], :menu => ["60x60>", :jpg] }
   
@@ -75,6 +76,22 @@ class Account < ActiveRecord::Base
   def active?
     # the existence of an activation code means they have not activated yet
     activation_code.nil?
+  end
+  
+  def all_notifications
+    if friend_ids.empty?
+      notifications
+    else
+      Notification.from_and_to_account(self)
+    end
+  end
+  
+  def network_notifications
+    unless friend_ids.empty?
+      Notification.to_account(self)
+    else
+      Notification.scoped_by_id(0)
+    end
   end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

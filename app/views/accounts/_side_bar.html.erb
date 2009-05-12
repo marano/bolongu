@@ -78,4 +78,11 @@
       <div class='sidebar_action'><%= link_to 'new gallery', new_gallery_path, :class => 'gallery_create' %></div>
     <% end %>
   </div>
+  
+  <div class='part padding margin_bottom'>
+    <h3 class='tag_sidebar margin_bottom'>Tags</h3>
+    <% tag_cloud account.notifications.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+      <%= link_to tag.name, tag, :class => css_class %>
+    <% end %>
+  </div>
 </div>
