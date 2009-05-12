@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
-  rescue_from Twitter::Unauthorized, :with => :twitter_unauthorized
+  rescue_from Twitter::TwitterError, :with => :twitter_unauthorized
 
   protected
 
