@@ -6,14 +6,14 @@
 
   <p><%= tweet_body tweet.body %></p>
   
-  <% render :layout => 'layouts/content_info', :locals => { :content => tweet } do %>
-    <% if logged_in? and current_account == tweet.account %>
-      <div class='manager_links text_right'>
-        <%= link_to 'Show', tweet %> |
-        <%= link_to 'On Twitter', show_twitter_tweet_path(tweet.twitter_id) %> |
+  <% render :layout => 'layouts/content_info', :locals => { :content => tweet } do %>    
+    <div class='manager_links text_right'>
+      <%= link_to 'Show', tweet %> |
+      <%= link_to 'On Twitter', show_twitter_tweet_path(tweet.twitter_id) %> |
+      <% if logged_in? and current_account == tweet.account %>
         <%= link_to 'Delete', tweet, :confirm => 'Are you sure?', :method => :delete, :class => 'tweet_destroy' %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>    
   <% end %>
   
   <% unless tweet.comments.empty?  %>
