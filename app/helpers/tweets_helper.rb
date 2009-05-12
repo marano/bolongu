@@ -1,4 +1,8 @@
-module TwitterHelper  
+module TweetsHelper  
+
+  def tweet_body(text)
+    linkup_mentions(auto_link(text))
+  end
 
   def linkup_mentions(text)    
     text.gsub!(/@([\w]+)(\W)?/, '@<a href="/twitter/\1">\1</a>\2')

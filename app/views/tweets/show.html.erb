@@ -1,0 +1,3 @@
+<%= render @tweet %>
+
+<%= render :partial => 'comments/comments', :locals => { :commentable => @tweet } %>

@@ -5,15 +5,20 @@ module Notifiable
       after_create :notify!
       after_save :update_notification
       has_one :notification, :as => :notifiable, :dependent => :destroy
+      
+      attr_accessor :blog_private
+      attr_accessor :should_notify
     end
   end
 
   def notify!
-    Notification.notify!(self)
+    unless should_notify == false
+      Notification.notify!(self)
+    end
   end
   
-  def update_notification
-    notification.update_attributes :private_content => blog_private
+  def update_notification    
+    notification.update_attributes :private_content => blog_private unless notification.nil?
   end
 
 end

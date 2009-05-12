@@ -1,5 +1,11 @@
 <% div_for gallery, :class => 'part padding' do %>
   <div class='content_icon left'><span class='gallery_icon'></span></div>
+  <% if gallery.tweeted? %>
+    <div class='content_icon left'><span class='tweet_icon'></span></div>
+  <% end %>
+  <% if gallery.blog_private %>
+    <div class='content_icon left'><span class='private_icon'></span></div>
+  <% end %>
 
   <h2>
     <%= link_to_unless_current gallery.name, gallery_path(gallery) %>

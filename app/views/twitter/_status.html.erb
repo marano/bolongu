@@ -8,7 +8,7 @@
           <span class='when'><%= pretty_datetime Time.parse(status.created_at) %></span>
         </p>
         <p class="actions">
-          <%= link_to image_tag('twitter/chat.gif'), show_tweet_path(:id => status.in_reply_to_status_id), :class => 'icon' unless status.in_reply_to_status_id.blank? %>
+          <%= link_to image_tag('twitter/chat.gif'), show_twitter_tweet_path(:id => status.in_reply_to_status_id), :class => 'icon' unless status.in_reply_to_status_id.blank? %>
           
           <%- if status.favorited -%>
             <%= link_to image_tag('twitter/star_on.gif'), twitter_unfav_path(:id => status.id), :class => 'icon', :method => :post %>
@@ -25,7 +25,7 @@
       </td>
       <td class='vertical_top'>
         <div class="text">
-          <%= linkup_mentions(auto_link(status.text)) %>
+          <%= tweet_body(status.text) %>
         </div>
       </td>
     </tr>

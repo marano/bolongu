@@ -3,7 +3,7 @@
     <label for="text">Tweet</label>
     <table>
       <tr>    
-      <%- form_tag post_tweet_path do -%>      
+      <%- form_tag tweets_path do -%>      
         <%= hidden_field_tag 'in_reply_to_status_id' %>
         <td>
           <%= text_area_tag 'text', '', :class => 'input tweet_input' %>

@@ -128,7 +128,7 @@ pre {
 
 .back { margin-top: 20px; }
 
-.post, .thing, .gallery, .gallery_photo { 
+.post, .thing, .gallery, .gallery_photo, .tweet { 
   text-align: justify;
   margin: 0px 0px 10px 0px;
   padding: 0px 10px 10px 10px;

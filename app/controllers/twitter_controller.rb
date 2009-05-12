@@ -7,18 +7,6 @@ class TwitterController < ApplicationController
     render 'blog'
   end
   
-  def create
-    options = {}
-    
-    unless params[:in_reply_to_status_id].blank?
-      options.merge!({:in_reply_to_status_id => params[:in_reply_to_status_id]})
-    end
-    
-    tweet = current_account.twitter_client.update(params[:text], options)
-    flash[:notice] = "Tweeted succefully!"
-    redirect_to :back
-  end
-  
   def blog    
     @tweets = current_account.twitter_client.user_timeline(:id => params[:id])
     @user = current_account.twitter_client.user(params[:id])
@@ -63,13 +51,13 @@ class TwitterController < ApplicationController
     redirect_to edit_account_path(current_account)
   end
   
-  def show_tweet
+  def show
     @tweet = current_account.twitter_client.status(params[:id])
   end
   
   def fav
     begin
-      flash[:notice] = "Tweet fav'd. May not show up right away due to API latency."
+      flash[:notice] = "Tweet fav'd! May not show up right away due to API latency."
       current_account.twitter_client.favorite_create(params[:id])
     rescue => e
       flash[:notice] = "Something went wrong!"
@@ -79,7 +67,7 @@ class TwitterController < ApplicationController
   
   def unfav
     begin
-      flash[:notice] = "Tweet unfav'd. May not show up right away due to API latency."
+      flash[:notice] = "Tweet unfav'd! May not show up right away due to API latency."
       current_account.twitter_client.favorite_destroy(params[:id])
     rescue => e
       flash[:notice] = "Something went wrong!"

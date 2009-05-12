@@ -1,5 +1,11 @@
 <% div_for post, :class => 'part' do %>
   <div class='content_icon left'><span class='post_icon'></span></div>
+  <% if post.tweeted? %>
+    <div class='content_icon left'><span class='tweet_icon'></span></div>
+  <% end %>
+  <% if post.blog_private %>
+    <div class='content_icon left'><span class='private_icon'></span></div>
+  <% end %>
 
   <h2><%= link_to_unless_current h(post.title), post %></h2>
   

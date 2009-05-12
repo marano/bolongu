@@ -39,10 +39,13 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :friendships, :only => [ :create, :destroy ]  
   
-  map.post_tweet '/twitter', :controller => 'twitter', :action => 'create', :conditions => { :method => :post }
+  map.resources :tweets, :only => [ :create, :show, :destroy ] do |tweet|
+    tweet.resources :comments, :only => [ :create ]
+  end
+  
   map.twitter_fav '/twitter/:id/fav', :controller => 'twitter', :action => 'fav', :conditions => { :method => :post }
   map.twitter_unfav '/twitter/:id/unfav', :controller => 'twitter', :action => 'unfav', :conditions => { :method => :post }
-  map.show_tweet '/twitter/tweet/:id/show', :controller => 'twitter', :action => 'show_tweet'  
+  map.show_twitter_tweet '/twitter/tweet/:id/show', :controller => 'twitter', :action => 'show'
   map.account_twitter_blog '/accounts/:account_id/twitter', :controller => 'twitter', :action => 'account_blog', :conditions => { :method => :get }
   map.activate_twitter '/twitter/activate', :controller => 'twitter', :action => 'activate'
   map.deactivate_twitter '/twitter/deactivate', :controller => 'twitter', :action => 'deactivate'

@@ -20,8 +20,8 @@ class Thing < ActiveRecord::Base
 
   alias :account :author  
   
-  def to_tweet
-    "#{name} #{url}"
+  def to_s
+    name
   end
   
   def url

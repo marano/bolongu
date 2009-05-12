@@ -13,8 +13,8 @@ class Gallery < ActiveRecord::Base
     gallery_photos.first(:conditions => { :cover => true }) or gallery_photos.first
   end
   
-  def to_tweet
-    "#{name} #{url}"
+  def to_s
+    name
   end
   
   def url

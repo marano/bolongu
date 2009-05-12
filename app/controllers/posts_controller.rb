@@ -72,6 +72,7 @@ class PostsController < ApplicationController
         format.html { redirect_to(@post) }
         format.xml  { head :ok }
       else
+        flash[:error] = 'Post couldnt be updated!'
         format.html { render :action => "edit" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
