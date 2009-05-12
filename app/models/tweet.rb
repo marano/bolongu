@@ -9,6 +9,8 @@ class Tweet < ActiveRecord::Base
   belongs_to :tweetable, :polymorphic => true
   belongs_to :account
   
+  validates_uniqueness_of :twitter_id
+  
   attr_accessor :options
   
   def should_notify

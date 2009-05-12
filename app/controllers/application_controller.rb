@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   private
   
     def twitter_unauthorized(exception)
-      flash[:error] = 'And Twitter error has ocurred! ' + exception.message
+      flash[:error] = 'A Twitter error has ocurred! ' + exception.message
       redirect_to :back
     end
   
