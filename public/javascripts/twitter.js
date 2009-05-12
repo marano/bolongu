@@ -60,9 +60,8 @@ jQuery(function($) {
   
   $('a.dm').click(function() {
     window.scrollTo(0, 0);
-    $('#text').focus().val('d ' + $(this).attr('rel') + ' ');
-    var pieces = $(this).attr('rel').split(':');
-    var screen_name = pieces[0];
+    var screen_name = $(this).attr('rel');
+    $('#text').focus().val('d ' + screen_name + ' ');    
     $('label[for=text]').text('Direct message to ' + screen_name);
     return false;
   });
@@ -78,6 +77,16 @@ jQuery(function($) {
     $('#text').focus().val('@' + screen_name + ' ');
     $('#in_reply_to_status_id').val(id);
     $('label[for=text]').text('Replying to ' + screen_name + "'s tweet #" + id);
+    return false;
+  });
+  
+  $('a.rt').click(function() {
+    window.scrollTo(0, 0);
+    var pieces = $(this).attr('rel').split(':');
+    var screen_name = pieces[0];
+    var text = pieces[1];
+    $('#text').focus().val('RT ' + screen_name + ' ' + text);
+    $('label[for=text]').text('Retweet ' + screen_name);
     return false;
   });
 });
