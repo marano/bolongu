@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   
   rescue_from Twitter::TwitterError, :with => :twitter_unauthorized
   rescue_from Timeout::Error, :with => :timeout_error
+  rescue_from ActiveRecord::RecordNotFound, :with => :not_found_error
+  rescue_from Exception, :with => :manage_error
 
   protected
 
@@ -37,6 +39,16 @@ class ApplicationController < ActionController::Base
     
     def timeout_error(exception)
       flash[:error] = 'You never got a response! ' + exception.message
+      redirect_to :back
+    end
+    
+    def not_found_error(exception)
+      flash[:error] = 'What you seek couldnt be found! ' + exception.message
+      redirect_to :back
+    end
+    
+    def manage_error(exception)
+      flash[:error] = 'Something went wrong! ' + exception.message
       redirect_to :back
     end
   
