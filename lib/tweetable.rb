@@ -26,7 +26,7 @@ module Tweetable
   end
   
   def tweet!
-    create_tweet(:body => to_tweet, :account => account)
+    create_tweet(:body => to_tweet, :account => account, :tag_list => tag_list)
   end
   
   def tweeted?
