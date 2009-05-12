@@ -24,28 +24,35 @@ class TwitterController < ApplicationController
   
   def authorized
     params[:oauth_token]
-    oauth = current_account.twitter_oauth
-    oauth.authorize_from_request(session['rtoken'], session['rsecret'])
     
-    session['rtoken'] = nil
-    session['rsecret'] = nil
+    begin
+      oauth = current_account.twitter_oauth
+      oauth.authorize_from_request(session['rtoken'], session['rsecret'])
+      
+      session['rtoken'] = nil
+      session['rsecret'] = nil
+      
+      atoken => oauth.access_token.token, 
+      asecret => oauth.access_token.secret,
+      
+      current_account.update_attributes({
+        :twitter_token => atoken,
+        :twitter_secret => asecret,
+        :twitter_active => true
+      })
+      
+      flash[:notice] = 'Twitter is active!'    
+    rescue => e
+      disable_twitter
+      
+      flash[:error] = 'Something went wrong!'
+    end
     
-    current_account.update_attributes({
-      :twitter_token => oauth.access_token.token, 
-      :twitter_secret => oauth.access_token.secret,
-      :twitter_active => true
-    })
-    
-    flash[:notice] = 'Twitter is active!'
     redirect_to edit_account_path(current_account)
   end
   
   def deactivate
-    current_account.update_attributes({
-      :twitter_token => nil,
-      :twitter_secret => nil,
-      :twitter_active => false
-    })
+    disable_twitter
     
     flash[:notice] = 'Twitter was deactived!'
     redirect_to edit_account_path(current_account)
@@ -73,6 +80,16 @@ class TwitterController < ApplicationController
       flash[:notice] = "Something went wrong!"
     end
     redirect_to :back
+  end
+  
+  private
+  
+  def disable_twitter
+    current_account.update_attributes({
+      :twitter_token => nil,
+      :twitter_secret => nil,
+      :twitter_active => false
+    }) if current_account.twitter_active
   end
 
 end

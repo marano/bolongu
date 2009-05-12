@@ -1,13 +1,15 @@
 module Notifiable
 
   def self.included(base)
-    base.class_eval do
+    base.class_eval do    
       after_create :notify!
       after_save :update_notification
       has_one :notification, :as => :notifiable, :dependent => :destroy
       
       attr_accessor :blog_private
       attr_accessor :should_notify
+      
+      include Taggable
     end
   end
 
