@@ -14,7 +14,7 @@ module Tweetable
       return "#{to_s} #{url}"
     else
       tag_list_to_s = ''
-      tag_list.each do { |tag| tag_list_to_s << "##{tag.name}" }
+      tag_list.each { |tag| tag_list_to_s << "##{tag.name}" }
       return "#{to_s} #{url} #{tag_list_to_s}"
     end
   end
