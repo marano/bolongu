@@ -1,5 +1,7 @@
 class Notification < ActiveRecord::Base
 
+  include Taggable
+
   belongs_to :notifiable, :polymorphic => true
   belongs_to :publisher, :class_name => 'Account'
   

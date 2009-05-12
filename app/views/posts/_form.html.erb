@@ -19,17 +19,21 @@
     </p>
     <% if post.new_record? and current_account.twitter_active %>
       <p>
-        <%= label_tag :twitter, 'Publish on Twitter' %>
+        <span class='tweet_icon'></span><%= label_tag :twitter, 'Publish on Twitter' %>
         <%= check_box_tag :twitter, 't', true %>
       </p>
     <% end %>
     <p>
-      <%= f.label :blog_private %>
+      <span class='private_icon'></span><%= f.label :blog_private %>
       <%= f.check_box :blog_private %>
     </p>
     <p>
       <%= f.label :body %><br />
       <%= fckeditor_textarea(:post, :body, :toolbarSet => 'Mine', :width => '100%', :height => '300px') %>
+    </p>
+    <p>
+      <span class='tag_icon'></span><%= f.label :tag_list %><br />
+      <%= f.text_field :tag_list, :class => 'input' %>
     </p>
     <p>
       <%= f.submit "Post!", :class => 'button green_bg' %>

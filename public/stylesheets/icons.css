@@ -1,5 +1,15 @@
 /* ICONS */
 
+.tag_icon {
+  padding-left: 18px;
+  background: transparent url('/images/tag_tiny.png') no-repeat center left;
+}
+
+.tag_sidebar, .tag_title {
+  padding-left: 36px;
+  background: transparent url('/images/tag_big.png') no-repeat center left;
+}
+
 .private_icon {
   padding-left: 18px;
   background: transparent url('/images/private_tiny.png') no-repeat center left;
@@ -45,12 +55,7 @@
   background: transparent url('/images/twitter_tiny.png') no-repeat center left;
 }
 
-.twitter_title {
-  padding-left: 36px;
-  background: transparent url('/images/twitter_big.png') no-repeat center left;
-}
-
-.twitter_sidebar {
+.twitter_title, .twitter_sidebar {
   padding-left: 36px;
   background: transparent url('/images/twitter_big.png') no-repeat center left;
 }
@@ -100,12 +105,7 @@
   background: transparent url('/images/gallery_tiny.png') no-repeat center left;
 }
 
-.gallery_sidebar {
-  padding-left: 36px;
-  background: transparent url('/images/gallery_big.png') no-repeat center left;
-}
-
-.gallery_title {
+.gallery_title, .gallery_sidebar {
   padding-left: 36px;
   background: transparent url('/images/gallery_big.png') no-repeat center left;
 }
@@ -115,12 +115,7 @@
   background: transparent url('/images/create_tiny.png') no-repeat center left;
 }
 
-.thing_title {
-  padding-left: 36px;
-  background: transparent url('/images/thing_big.png') no-repeat center left;
-}
-
-.thing_sidebar {
+.thing_title, .thing_sidebar {
   padding-left: 36px;
   background: transparent url('/images/thing_big.png') no-repeat center left;
 }
@@ -180,17 +175,12 @@
   background: transparent url('/images/user_big.png') no-repeat center left;
 }
 
-.paperclip {
+.paperclip, .paperclip_icon {
   padding-left: 18px;
   background: transparent url('/images/paperclip_tiny.png') no-repeat center left;
 }
 
-.scrap_title {
-  padding-left: 50px;
-  background: transparent url('/images/scrap_big.png') no-repeat center left;
-}
-
-.scrap_sidebar {
+.scrap_title, .scrap_sidebar {
   padding-left: 36px;
   background: transparent url('/images/scrap_big.png') no-repeat center left;
 }

@@ -1,3 +1,11 @@
+<% unless content.tags.empty? %>
+  <p>
+  <span class='tag_icon'></span><label>Tags</label><br/>
+    <%= content.tag_list %>
+  </p>
+<% end %>
+
+
 <table width='100%' class='clear_left'>
   <tr>
     <td>

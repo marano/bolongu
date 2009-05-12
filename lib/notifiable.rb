@@ -6,10 +6,11 @@ module Notifiable
       after_save :update_notification
       has_one :notification, :as => :notifiable, :dependent => :destroy
       
-      attr_accessor :blog_private
       attr_accessor :should_notify
       
       include Taggable
+      
+      #make shure theres a boolean field called blog_private
     end
   end
 
@@ -20,7 +21,9 @@ module Notifiable
   end
   
   def update_notification    
-    notification.update_attributes :private_content => blog_private unless notification.nil?
+    notification.private_content = blog_private unless notification.nil?
+    notification.tag_list = tag_list
+    notification.save
   end
 
 end

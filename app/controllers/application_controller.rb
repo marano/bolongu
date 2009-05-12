@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
   rescue_from Twitter::TwitterError, :with => :twitter_unauthorized
+  rescue_from Timeout::Error, :with => :timeout_error
 
   protected
 
@@ -31,6 +32,11 @@ class ApplicationController < ActionController::Base
   
     def twitter_unauthorized(exception)
       flash[:error] = 'A Twitter error has ocurred! ' + exception.message
+      redirect_to :back
+    end
+    
+    def timeout_error(exception)
+      flash[:error] = 'You never got a response! ' + exception.message
       redirect_to :back
     end
   

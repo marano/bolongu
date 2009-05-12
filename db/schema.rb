@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090512162528) do
+ActiveRecord::Schema.define(:version => 20090512183528) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -68,7 +68,8 @@ ActiveRecord::Schema.define(:version => 20090512162528) do
     t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "blog_private", :default => false
+    t.boolean  "blog_private",    :default => false
+    t.string   "cached_tag_list"
   end
 
   create_table "gallery_photos", :force => true do |t|
@@ -94,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20090512162528) do
     t.boolean  "private_content", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_tag_list"
   end
 
   create_table "posts", :force => true do |t|
@@ -106,6 +108,7 @@ ActiveRecord::Schema.define(:version => 20090512162528) do
     t.integer  "photo_file_size"
     t.integer  "author_id"
     t.boolean  "blog_private",       :default => false
+    t.string   "cached_tag_list"
   end
 
   create_table "scraps", :force => true do |t|
@@ -146,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20090512162528) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.boolean  "blog_private",            :default => false
+    t.string   "cached_tag_list"
   end
 
   create_table "tweets", :force => true do |t|
@@ -156,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20090512162528) do
     t.integer  "twitter_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "blog_private",   :default => false
   end
 
 end
