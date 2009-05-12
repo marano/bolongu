@@ -33,24 +33,48 @@ class ApplicationController < ActionController::Base
   private
   
     def twitter_unauthorized(exception)
+      log_like_rails(exception)
       flash[:error] = 'A Twitter error has ocurred! ' + exception.message
       redirect_to :back
     end
     
     def timeout_error(exception)
-      flash[:error] = 'You never got a response! ' + exception.message
+      log_like_rails(exception)
+      flash[:error] = 'You never got a response!'
       redirect_to :back
     end
     
     def not_found_error(exception)
-      flash[:error] = 'What you seek couldnt be found! ' + exception.message
+      log_like_rails(exception)
+      flash[:error] = 'What you seek couldnt be found!'
       redirect_to :back
     end
     
     def manage_error(exception)
-      flash[:error] = 'Something went wrong! ' + exception.message
+      log_like_rails(exception)
+      flash[:error] = 'Something went wrong!'
       redirect_to :back
     end
+    
+    def log_like_rails(exception)
+      logger.fatal(
+        "\n\n#{exception.class} (#{exception.message}):\n    " + 
+        clean_backtrace(exception).join("\n    ") + 
+        "\n\n"
+      )
+
+    end
+    
+    def clean_backtrace(exception)
+      if backtrace = exception.backtrace
+        if defined?(RAILS_ROOT)
+          backtrace.map { |line| line.sub RAILS_ROOT, '' }
+        else
+          backtrace
+        end
+      end
+    end
+
   
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
