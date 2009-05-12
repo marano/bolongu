@@ -10,7 +10,13 @@ module Tweetable
   end
   
   def to_tweet
-    "#{to_s} #{url}"
+    if tag_list.empty?
+      return "#{to_s} #{url}"
+    else
+      tag_list_to_s = ''
+      tag_list.each do { |tag| tag_list_to_s << '#' + tag.name }
+      return "#{to_s} #{url} #{tag_list_to_s}"
+    end
   end
   
   def make_tweet
