@@ -35,34 +35,33 @@ class ApplicationController < ActionController::Base
     def twitter_unauthorized(exception)
       log_like_rails(exception)
       flash[:error] = 'A Twitter error has ocurred! ' + exception.message
-      redirect_to :back
+      redirect_to request.env["HTTP_REFERER"] || root_path
     end
     
     def timeout_error(exception)
       log_like_rails(exception)
       flash[:error] = 'You never got a response!'
-      redirect_to :back
+      redirect_to request.env["HTTP_REFERER"] || root_path
     end
     
     def not_found_error(exception)
       log_like_rails(exception)
       flash[:error] = 'What you seek couldnt be found!'
-      redirect_to :back
+      redirect_to request.env["HTTP_REFERER"] || root_path
     end
     
     def manage_error(exception)
       log_like_rails(exception)
       flash[:error] = 'Something went wrong!'
-      redirect_to :back
+      redirect_to request.env["HTTP_REFERER"] || root_path
     end
     
     def log_like_rails(exception)
-      logger.fatal(
+      logger.error(
         "\n\n#{exception.class} (#{exception.message}):\n    " + 
         clean_backtrace(exception).join("\n    ") + 
         "\n\n"
       )
-
     end
     
     def clean_backtrace(exception)
