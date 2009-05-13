@@ -3,13 +3,14 @@ class Tweet < ActiveRecord::Base
   include Notifiable
   include Commentable
 
-  before_create :create_tags
-  after_create :tweet!
+  before_validation_on_create :tweet!
+  before_validation_on_create :make_tags
   before_destroy :untweet!
 
   belongs_to :tweetable, :polymorphic => true
   belongs_to :account
   
+  validates_presence_of :twitter_id
   validates_uniqueness_of :twitter_id
   
   attr_accessor :options
@@ -27,7 +28,7 @@ class Tweet < ActiveRecord::Base
   end
   
   def tweet!
-    update_attributes :twitter_id => account.twitter_client.update(body, options).id
+    self.twitter_id = account.twitter_client.update(body, options).id
   end
   
   def untweet!
@@ -37,11 +38,9 @@ class Tweet < ActiveRecord::Base
     end
   end
   
-  private
-  
-  def create_tags
+  def make_tags
     string_tag_list = ''
-    body.scan(/\b#\w*/).each { |word| string_tag_list << "#{word[/.(.*)/m,1]}," }
-    tag_list = string_tag_list
+    body.scan(/ #\w*/).each { |word| string_tag_list << "#{word[/.(.*)/m,1]}," }
+    self.tag_list = string_tag_list
   end
 end

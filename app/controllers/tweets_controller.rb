@@ -9,10 +9,10 @@ class TweetsController < ApplicationController
     
     @tweet = Tweet.new(:body => params[:text], :options => options, :account => current_account)
     
-    if @tweet.save 
+    if @tweet.save!
       flash[:notice] = "Tweeted succefully!"
     else
-      flash[:error] = "Something went wrong! " + @tweet.errors
+      flash[:error] = "Something went wrong!"
     end
     
     redirect_to :back

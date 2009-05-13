@@ -82,7 +82,7 @@ jQuery(function($) {
   
   $('a.rt').click(function() {
     window.scrollTo(0, 0);
-    var pieces = $(this).attr('rel').split(':');
+    var pieces = $(this).attr('rel').split(':$;:');
     var screen_name = pieces[0];
     var text = pieces[1];
     $('#text').focus().val('RT ' + screen_name + ' ' + text);
