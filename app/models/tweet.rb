@@ -40,7 +40,7 @@ class Tweet < ActiveRecord::Base
   
   def make_tags
     string_tag_list = ''
-    body.scan(/ #\w*/).each { |word| string_tag_list << "#{word[/.(.*)/m,1]}," }
+    body.scan(/\s#\w*/).each { |word| string_tag_list << "#{word[/.(.*)/m,1]}," }
     self.tag_list = string_tag_list
   end
 end
