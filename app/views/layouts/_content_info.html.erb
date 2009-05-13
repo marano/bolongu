@@ -1,6 +1,10 @@
 <% unless content.tags.empty? %>
   <p>
-    <span class='tag_icon'></span><label>Tags</label> <%= content.tag_list %>
+    <span class='tag_icon'></span><label>Tags</label>
+    <% content.tags.each_with_index do |tag, index| %>
+      <%= ', ' if index > 0 %>
+      <%= link_to tag.name, tag %>
+    <% end %>
   </p>
 <% end %>
 
