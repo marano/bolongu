@@ -1,0 +1,32 @@
+<% form_for(bookmark) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title, :class => 'input' %>
+  </p>
+  <p>
+    <%= f.label :adress %><br />
+    <%= f.text_field :adress, :class => 'input' %>
+  </p>
+  <% if bookmark.new_record? and current_account.twitter_active %>
+      <p>
+        <span class='tweet_icon'></span><%= label_tag :twitter, 'Publish on Twitter' %>
+        <%= check_box_tag :twitter, 't', true %>
+      </p>
+    <% end %>
+  <p>
+    <span class='private_icon'></span><%= f.label :blog_private %><%= f.check_box :blog_private %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description, :class => 'input' %>
+  </p>
+  <p>
+    <span class='tag_icon'></span><%= f.label :tag_list %><br />
+    <%= f.text_field :tag_list, :class => 'input' %>
+  </p>
+  <p>
+    <%= f.submit 'Save', :class => 'button green_bg' %>
+  </p>
+<% end %>

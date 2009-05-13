@@ -9,16 +9,6 @@ module Tweetable
     end
   end
   
-  def to_tweet
-    if tag_list.empty?
-      return "#{to_s} #{url}"
-    else
-      tag_list_to_s = ''
-      tag_list.each { |tag| tag_list_to_s << " ##{tag}" }
-      return "#{to_s}#{tag_list_to_s} #{url}"
-    end
-  end
-  
   def make_tweet
     if should_tweet
       tweet!
@@ -31,6 +21,24 @@ module Tweetable
   
   def tweeted?
     tweet != nil
+  end
+  
+  def to_tweet
+    "#{to_tweet_body} #{to_tweet_tags}#{to_tweet_url}"
+  end
+  
+  def to_tweet_body
+    to_s
+  end
+  
+  def to_tweet_tags
+    tag_list_to_s = ''
+    tag_list.each { |tag| tag_list_to_s << "##{tag} " }
+    return tag_list_to_s
+  end
+  
+  def to_tweet_url
+    url
   end
 
 end

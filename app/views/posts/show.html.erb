@@ -1,6 +1,6 @@
 <% title @post.title %>
 
-<%= render :partial => @post %>
+<%= render @post %>
 
 <%= render :partial => 'comments/comments', :locals => { :commentable => @post } %>
 

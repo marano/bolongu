@@ -1,0 +1,11 @@
+<div class='part padding margin_bottom'>
+  <h1 class='bookmark_new_title'>New bookmark</h1>
+</div>
+
+<div class='part padding margin_bottom'>
+  <%= render :partial => 'form', :locals => { :bookmark => @bookmark } %>
+</div>
+
+<div class='part padding'>
+  <%= link_to 'Back', bookmarks_path %>
+</div>

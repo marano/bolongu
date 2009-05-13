@@ -14,8 +14,9 @@ ActionController::Routing::Routes.draw do |map|
   #map.reset_password '/reset_password', :controller => 'accounts', :action => 'reset_password'
 
   map.resources :accounts, :except => [ :index, :show ] do |account|
-    account.resources :galleries, :only => [ :index ]
     account.resources :things, :only => [ :index ]
+    account.resources :galleries, :only => [ :index ]    
+    account.resources :bookmarks, :only => [ :index ]
     account.resources :scraps, :only => [ :index, :create, :show, :destroy ]
   end
   
@@ -35,6 +36,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :gallery_photos, :except => [ :index, :new ], :collection => { :sort => :post } do |gallery_photo|
     gallery_photo.resources :comments, :only => [ :create ]
+  end
+  
+  map.resources :bookmarks do |bookmark|
+    bookmark.resources :comments, :only => [ :create ]
   end
   
   map.resources :friendships, :only => [ :create, :destroy ]  

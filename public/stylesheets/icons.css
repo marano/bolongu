@@ -1,5 +1,15 @@
 /* ICONS */
 
+.bookmark_icon, .bookmark_menu {
+  padding-left: 18px;
+  background: transparent url('/images/bookmark_tiny.png') no-repeat center left;
+}
+
+.bookmark_sidebar, .bookmark_title, .bookmark_new_title, .bookmark_edit_title {
+  padding-left: 36px;
+  background: transparent url('/images/bookmark_big.png') no-repeat center left;
+}
+
 .tag_icon {
   padding-left: 18px;
   background: transparent url('/images/tag_tiny.png') no-repeat center left;
@@ -30,11 +40,6 @@
   background: transparent url('/images/gallery_tiny.png') no-repeat center left;
 }
 
-.filter_menu_account {
-  padding-left: 18px;
-  background: transparent url('/images/user_tiny.png') no-repeat center left;
-}
-
 .filter_menu_all {
   padding-left: 18px;
   background: transparent url('/images/network_tiny.png') no-repeat center left;
@@ -43,11 +48,6 @@
 .filter_menu_network {
   padding-left: 18px;
   background: transparent url('/images/follow_tiny.png') no-repeat center left;
-}
-
-.tweet_destroy {
-  padding-left: 18px;
-  background: transparent url('/images/delete_tiny.png') no-repeat center left;
 }
 
 .tweet_icon {
@@ -110,11 +110,6 @@
   background: transparent url('/images/gallery_big.png') no-repeat center left;
 }
 
-.gallery_create {
-  padding-left: 18px;
-  background: transparent url('/images/create_tiny.png') no-repeat center left;
-}
-
 .thing_title, .thing_sidebar {
   padding-left: 36px;
   background: transparent url('/images/thing_big.png') no-repeat center left;
@@ -130,11 +125,6 @@
   background: transparent url('/images/thing_edit_big.png') no-repeat center left;
 }
 
-.thing_edit {
-  padding-left: 18px;
-  background: transparent url('/images/edit_tiny.png') no-repeat center left;
-}
-
 .thing_create_title {
   padding-left: 36px;
   background: transparent url('/images/thing_create_big.png') no-repeat center left;
@@ -145,22 +135,12 @@
   background: transparent url('/images/thing_create_tiny.png') no-repeat center left;
 }
 
-.thing_destroy {
-  padding-left: 18px;
-  background: transparent url('/images/delete_tiny.png') no-repeat center left;
-}
-
-.user_menu {
+.user_menu, .filter_menu_account {
   padding-left: 18px;
   background: transparent url('/images/user_tiny.png') no-repeat center left;
 }
 
-.user_edit_menu {
-  padding-left: 18px;
-  background: transparent url('/images/user_edit_tiny.png') no-repeat center left;
-}
-
-.user_new_menu {
+.user_new_menu, .user_edit_menu {
   padding-left: 18px;
   background: transparent url('/images/user_edit_tiny.png') no-repeat center left;
 }
@@ -230,12 +210,7 @@
   background: transparent url('/images/create_big.png') no-repeat center left;
 }
 
-.create_menu {
-  padding-left: 18px;
-  background: transparent url('/images/create_tiny.png') no-repeat center left;
-}
-
-.create {
+.create, .create_menu, .gallery_create, .bookmark_create {
   padding-left: 18px;
   background: transparent url('/images/create_tiny.png') no-repeat center left;
 }
@@ -245,12 +220,12 @@
   background: transparent url('/images/edit_big.png') no-repeat center left;
 }
 
-.edit {
+.edit, .thing_edit {
   padding-left: 18px;
   background: transparent url('/images/edit_tiny.png') no-repeat center left;
 }
 
-.destroy {
+.destroy, .thing_destroy, .tweet_destroy {
   padding-left: 18px;
   background: transparent url('/images/delete_tiny.png') no-repeat center left;
 }

@@ -24,11 +24,17 @@
     
     <% menu_item 'Galleries', galleries_path, 'gallery_menu' %>
     
+    <% menu_item 'Bookmarks', bookmarks_path, 'bookmark_menu' %>
+    
     <% menu_item 'Settings', edit_account_path(current_account), 'user_edit_menu' %>
     
     <% menu_item 'Logout', logout_path, 'logout_menu' %>    
   <% else %> 
      <% menu_item 'Things', things_path, 'thing_menu' %>
+     
+     <% menu_item 'Galleries', galleries_path, 'gallery_menu' %>
+     
+     <% menu_item 'Bookmarks', bookmarks_path, 'bookmark_menu' %>
      
      <% menu_item 'Login', login_path, 'login_menu' %>
     

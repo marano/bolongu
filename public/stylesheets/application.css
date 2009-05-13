@@ -73,17 +73,19 @@ pre {
 #top_menu { width: 100%; }
 
 .menu_item {
-    min-width: 70px;
+    min-width: 40px;
     height: 40px;
     padding: 0 10px 0 10px;
-    font-variant: small-caps;
-    font-weight: bold;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .menu_item p { 
   margin-top: 12px;
-  padding: 0;
+}
+
+.menu_item p a {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .menu_item a, .menu_item a:visited { text-decoration: none; }
@@ -105,7 +107,7 @@ pre {
 
 /* SIDEBAR */
 
-.sidebar_action { padding: 10px 0 0 80px; }
+.sidebar_action { padding: 10px 0 0 0px; }
 
 #side_bar { width:200px; }
 
@@ -137,7 +139,7 @@ pre {
 
 .back { margin-top: 20px; }
 
-.post, .thing, .gallery, .gallery_photo, .tweet { 
+.post, .thing, .gallery, .gallery_photo, .bookmark, .tweet { 
   text-align: justify;
   margin: 0px 0px 10px 0px;
   padding: 0px 10px 10px 10px;

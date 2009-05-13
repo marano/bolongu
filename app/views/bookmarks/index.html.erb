@@ -1,0 +1,47 @@
+<% title 'Bookmarks' %>
+
+<% if @account  %>
+  <% render :layout => @account do %>
+    <div class='part padding margin_bottom'>
+      <h1 class='bookmark_title'>Bookmarks</h1>
+      
+      <% if @account == current_account %>
+        <%= link_to 'New bookmark', new_bookmark_path, :class => 'bookmark_create' %>
+      <% end %>
+    </div>
+    
+    <div class='part padding text_center'>
+      <% tag_cloud @account.bookmarks.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+        <%= link_to tag.name, tag, :class => css_class %>
+      <% end %>
+    </div>
+    
+    <%= filter_menu account_bookmarks_path(@account, :show => 'account'), account_bookmarks_path(@account, :show => 'all'), account_bookmarks_path(@account, :show => 'network') %>
+    
+    <%= render @bookmarks %>
+    
+    <div class='part padding margin_top text_center'>
+      <%= will_paginate @bookmarks %>
+    </div>
+  <% end %>
+<% else %>
+  <div class='part padding margin_bottom'>
+    <h1 class='bookmark_title'>Bookmarks</h1>
+    
+    <% if logged_in? %>
+      <%= link_to 'New bookmark', new_bookmark_path, :class => 'bookmark_create' %>
+    <% end %>
+  </div>
+  
+  <div class='part padding text_center margin_bottom'>
+    <% tag_cloud Bookmark.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+      <%= link_to tag.name, tag, :class => css_class %>
+    <% end %>
+  </div>
+    
+  <%= render @bookmarks %>
+  
+  <div class='part padding margin_top text_center'>
+    <%= will_paginate @bookmarks %>
+  </div>
+<% end %>

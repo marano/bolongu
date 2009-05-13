@@ -44,6 +44,13 @@
       </ul>    
     </div>
   <% end %>
+  
+  <div class='part padding margin_bottom'>
+    <h3 class='tag_sidebar margin_bottom'>Tags</h3>
+    <% tag_cloud account.notifications.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
+      <%= link_to tag.name, tag, :class => css_class %>
+    <% end %>
+  </div>
     
   <div class='part padding margin_bottom'>
     <h3 class='margin_bottom'><%= link_to 'Things', account_things_path(account), :class => 'thing_sidebar' %></h3>  
@@ -79,10 +86,10 @@
     <% end %>
   </div>
   
-  <div class='part padding margin_bottom'>
-    <h3 class='tag_sidebar margin_bottom'>Tags</h3>
-    <% tag_cloud account.notifications.tag_counts, %w(cloud_1 cloud_2 cloud_3 cloud_4) do |tag, css_class| %>
-      <%= link_to tag.name, tag, :class => css_class %>
+  <div class='part padding margin_bottom'>  
+    <h3><%= link_to 'Bookmarks', account_bookmarks_path(account), :class => 'bookmark_sidebar' %></h3>
+    <% if account == current_account %>
+      <div class='sidebar_action'><%= link_to 'new bookmark', new_bookmark_path, :class => 'bookmark_create' %></div>
     <% end %>
   </div>
 </div>

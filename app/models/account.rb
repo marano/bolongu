@@ -11,6 +11,7 @@ class Account < ActiveRecord::Base
   has_many :fans, :through => :friendships, :source => :account, :order => 'last_login DESC'
   has_and_belongs_to_many :things
   has_many :galleries, :dependent => :destroy
+  has_many :bookmarks, :dependent => :destroy, :foreign_key => 'publisher_id'
   has_many :scraps, :foreign_key => 'recipient_id'
   has_many :notifications, :foreign_key => 'publisher_id'
   

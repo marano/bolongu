@@ -1,0 +1,9 @@
+<% title @bookmark.title %>
+
+<%= render @bookmark %>
+
+<%= render :partial => 'comments/comments', :locals => { :commentable => @bookmark } %>
+
+<div class='part padding margin_top'>
+  <%= link_to "Back to #{@bookmark.publisher.blog_title}", account_index_path(@bookmark.publisher.login) %>
+</div>

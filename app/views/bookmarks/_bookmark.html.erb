@@ -1,0 +1,30 @@
+<% div_for bookmark, :class => 'part' do %>
+  <div class='content_icon left'><span class='bookmark_icon'></span></div>
+  <% if bookmark.tweeted? %>
+    <div class='content_icon left'><span class='tweet_icon'></span></div>
+  <% end %>
+  <% if bookmark.blog_private %>
+    <div class='content_icon left'><span class='private_icon'></span></div>
+  <% end %>
+
+  <h2><%= link_to_unless_current h(bookmark.title), bookmark %></h2>
+  
+  <h3><%= link_to bookmark.adress, bookmark.adress %></h3>
+  
+  <p><%= format bookmark.description %></p>
+  
+  <% render :layout => 'layouts/content_info', :locals => { :content => bookmark } do %>
+    <% if logged_in? and bookmark.publisher == current_account %>
+      <div class='manager_links text_right'>
+        <%= link_to 'Edit', edit_bookmark_path(bookmark), :class => 'edit' %> |
+        <%= link_to 'Delete', bookmark, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
+      </div>
+    <% end %>
+  <% end %>
+  
+  <% unless bookmark.comments.empty?  %>
+    <% render :layout => 'comments/comment', :object => bookmark.comments.first do %>
+      <h4>last comment</h4>
+    <% end %>
+  <% end %>
+<% end %>

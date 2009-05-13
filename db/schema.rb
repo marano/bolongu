@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090512183528) do
+ActiveRecord::Schema.define(:version => 20090513040715) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(:version => 20090512183528) do
   create_table "accounts_things", :id => false, :force => true do |t|
     t.integer "account_id"
     t.integer "thing_id"
+  end
+
+  create_table "bookmarks", :force => true do |t|
+    t.string   "title"
+    t.string   "adress"
+    t.text     "description"
+    t.integer  "publisher_id"
+    t.boolean  "blog_private",    :default => false
+    t.string   "cached_tag_list"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "comments", :force => true do |t|
