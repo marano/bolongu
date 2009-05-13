@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
     if @tweet.save 
       flash[:notice] = "Tweeted succefully!"
     else
-      flash[:error] = "Something went wrong!"
+      flash[:error] = "Something went wrong! " + @tweet.errors
     end
     
     redirect_to :back
