@@ -2,8 +2,7 @@
   <p>
     <span class='tag_icon'></span><label>Tags</label>
     <% content.tags.each_with_index do |tag, index| %>
-      <%= ', ' if index > 0 %>
-      <%= link_to tag.name, tag %>
+      <%= link_to tag.name, tag %><%= ', ' if index < content.tags.size - 1 %>
     <% end %>
   </p>
 <% end %>
