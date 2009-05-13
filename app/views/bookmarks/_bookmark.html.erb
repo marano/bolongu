@@ -11,6 +11,10 @@
   
   <h3><%= link_to bookmark.adress, bookmark.adress %></h3>
   
+  <% if bookmark.screen_excerpt.file? %>
+    <p><%= image_tag bookmark.screen_excerpt.url %></p>
+  <% end %>
+  
   <p><%= format bookmark.description %></p>
   
   <% render :layout => 'layouts/content_info', :locals => { :content => bookmark } do %>

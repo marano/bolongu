@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090513040715) do
+ActiveRecord::Schema.define(:version => 20090513061507) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -47,10 +47,18 @@ ActiveRecord::Schema.define(:version => 20090513040715) do
     t.string   "adress"
     t.text     "description"
     t.integer  "publisher_id"
-    t.boolean  "blog_private",    :default => false
+    t.boolean  "blog_private",                :default => false
     t.string   "cached_tag_list"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "screen_file_name"
+    t.string   "screen_content_type"
+    t.integer  "screen_file_size"
+    t.datetime "screen_updated_at"
+    t.string   "screen_excerpt_file_name"
+    t.string   "screen_excerpt_content_type"
+    t.integer  "screen_excerpt_file_size"
+    t.datetime "screen_excerpt_updated_at"
   end
 
   create_table "comments", :force => true do |t|
