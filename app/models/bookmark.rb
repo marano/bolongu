@@ -28,21 +28,28 @@ class Bookmark < ActiveRecord::Base
   
   def make_thumbs
     #Thread.new do
-      t = Nailer.new(adress)
-      t.wait_until_ready
-      
-      screen_file = Tempfile.new('screen')
-      screen_file << t.retrieve(:large)      
-      
-      screen_excerpt_file = Tempfile.new('screen_excerpt')
-      screen_excerpt_file << t.retrieve(:excerpt)
-      
-      b = Bookmark.find(id)
-      
-      b.screen = screen_file
-      b.screen_excerpt = screen_excerpt_file
-      
-      b.save
+      begin
+        t = Nailer.new(adress)
+        t.wait_until_ready
+        
+        screen_file = Tempfile.new('screen')
+        screen_file << t.retrieve(:large)      
+        
+        screen_excerpt_file = Tempfile.new('screen_excerpt')
+        screen_excerpt_file << t.retrieve(:excerpt)
+        
+        screen = screen_file
+        screen_excerpt = screen_excerpt_file
+        
+        save        
+#        b = Bookmark.find(id)
+#        
+#        b.screen = screen_file
+#        b.screen_excerpt = screen_excerpt_file
+#        
+#        b.save
+      rescue => e
+      end
     #end
   end
 end
