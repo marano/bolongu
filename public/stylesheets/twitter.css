@@ -3,14 +3,15 @@
 /*  div.info                        {float:left; display:inline; width:230px; margin:0; font-size:11px; text-align:right;}*/
 /*    div.info span.followers_count   {color:#999; position:relative; top:-4px; margin-right:3px;}*/
     div.status {margin-bottom: 5px;}
-    table.tweet {padding: 5px 0 5px 0;}
-    a.profile_image        {float:right; display:block; margin:0 30px;}
-    a.profile_image img    {float:left; width:48px; height:48px; border:1px solid #ddd; padding:1px;}
+    table.status {padding: 5px 0;}
+    a.profile_image img    {width:48px; height:48px; border:1px solid #ddd; padding:1px;}
     a.profile_image:hover  {background:none;}
     a.profile_image:hover img {border-color: red;}
-    p.who_when             {margin:0; padding:0;}
-    span.when {font-size: 9px;}
+    p.who, p.when             {margin:0; padding:0;}
+    p.who {font-weight: bold;}
+    p.when {font-size: 9px;}
     p.actions {margin: 0; padding:0;}
+    p.status_text {margin: 0; padding:0;font-size:14px;}
     
     .tweet_input { width: 570px; height: 40px; }
     #countdown { font-size: 35px; color: #999; }

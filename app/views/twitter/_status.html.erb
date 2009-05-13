@@ -1,12 +1,10 @@
 <%- user = status.user.blank? ? status.sender : status.user -%>
 <div id="status_<%= status.id %>" class="part status">
-  <table width='100%' class='tweet'>
+  <table width='100%' class='status'>
     <tr>      
-      <td class='text_right' style='width:120px'>
-        <p class="who_when">
-          <%= link_to h(user.screen_name), twitter_blog_path(user.screen_name) %><br />
-          <span class='when'><%= pretty_datetime Time.parse(status.created_at) %></span>
-        </p>
+      <td class='text_right' style='width:140px'>
+        <p class="who"><%= link_to h(user.screen_name), twitter_blog_path(user.screen_name) %></p>          
+        <p class="when"><%= pretty_datetime Time.parse(status.created_at) %></p>
         <p class="actions">
           <%= link_to image_tag('twitter/chat.gif'), show_twitter_tweet_path(:id => status.in_reply_to_status_id), :class => 'icon' unless status.in_reply_to_status_id.blank? %>
           
@@ -25,8 +23,8 @@
         <%= link_to image_tag(user.profile_image_url), twitter_blog_path(user.screen_name), :class => 'profile_image' %>
       </td>
       <td class='vertical_top'>
-        <div class="text">
-          <%= tweet_body(status.text) %>
+        <div class="margin_left margin_right">
+          <p class='status_text'><%= tweet_body(status.text) %></p>
         </div>
       </td>
     </tr>
