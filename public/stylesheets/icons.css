@@ -220,12 +220,12 @@
   background: transparent url('/images/edit_big.png') no-repeat center left;
 }
 
-.edit, .thing_edit {
+.edit, .post_edit, .thing_edit, .gallery_edit, .bookmark_edit {
   padding-left: 18px;
   background: transparent url('/images/edit_tiny.png') no-repeat center left;
 }
 
-.destroy, .thing_destroy, .tweet_destroy {
+.destroy, .post_destroy, .thing_destroy, .tweet_destroy, .gallery_destroy, .bookmark_destroy {
   padding-left: 18px;
   background: transparent url('/images/delete_tiny.png') no-repeat center left;
 }

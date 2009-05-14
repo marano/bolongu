@@ -30,10 +30,14 @@
   <% end %>
 </div>
 
-<div id='home_posts'>
+<div id='home_content' class='left'>
   <%= render @notifications %>
 </div>
 
-<div class='part padding text_center'>
+<div id='home_tweets' class='right'>
+  <%= render @tweets %>
+</div>
+
+<div class='part padding text_center clear'>
   <%= will_paginate @notifications %> 
 </div>

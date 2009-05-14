@@ -4,7 +4,7 @@ body { margin: 0; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
+  font-size:   12px;
 }
 
 h1, h2, h3 { margin: 5px 0 5px 0; }
@@ -129,7 +129,9 @@ pre {
 
 /* HOME */
 
-#home_posts {}
+#home_content { width: 600px; }
+
+#home_tweets { width: 355px; }
 
 /* END HOME */
 
@@ -152,7 +154,21 @@ pre {
 
 .photo_list {}
 
-.manager_links { margin: 10px; }
+.manager_links { 
+}
+
+.manager_links span, .manager_links a {
+  padding-top: 3px; 
+  padding-top: 3px;
+  margin-left: 8px;
+}
+.manager_links p { 
+  text-align: right;  
+  text-align: right;
+  font-size: 0.8em;
+}
+
+.time_ago { font-size: 0.8em; }
 
 /* END MISCELANIOUS */
 

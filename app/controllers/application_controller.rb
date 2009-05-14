@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem  
 
   helper :all
-  helper_method :'friend?', :'current_account_content?'
+  helper_method :friend?, :current_account_content?, :user_content?
   
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
     def current_account_content?(object)
       object.account == current_account
     end
+    
+    alias :user_content? :current_account_content?
     
     def account_from_path
       @account = Account.scoped_by_login(params[:account_login]).first

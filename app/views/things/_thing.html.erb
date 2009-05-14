@@ -24,20 +24,6 @@
       <%= link_to thing.attachment_file_name, thing.attachment.url, :class => 'paperclip' %>
     </p>
   <% end %>
-
-  <% if logged_in? %>
-    <div class='right'>
-      <% if current_account.things.include?(thing) %>
-        <p>
-          <%= link_to "Remove #{thing.name} from my things", remove_thing_path(thing), :method => :delete, :class => 'remove' %>
-        </p>
-      <% else %>
-        <p>
-          <%= link_to "Add #{thing.name} to my things", add_thing_path(thing), :method => :post, :class => 'add' %>
-        </p>
-      <% end %>  
-    </div>
-  <% end %>
   
   <% unless thing.accounts.empty? %>
     <div class='margin_bottom'>
@@ -57,10 +43,24 @@
   <% end %>
   
   <% render :layout => 'layouts/content_info', :locals => { :content => thing } do %>
-    <% if logged_in? and current_account == thing.author %>
-      <div class='manager_links text_right'>            
-        <%= link_to 'Edit', edit_thing_path(thing), :class => 'thing_edit' %> |
-        <%= link_to 'Delete', thing, :confirm => 'Are you sure?', :method => :delete, :class => 'thing_destroy' %>
+    <% unless current_page? thing %>
+      <%= link_to 'See more >>', thing %>
+    <% end %>
+    <% if user_content?(thing) %>
+      <%= link_to "<span class='thing_edit'></span>", edit_thing_path(thing) %>
+      <%= link_to "<span class='thing_destroy'></span>", thing, :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+    <% if logged_in? %>
+      <div class='right'>
+        <% if current_account.things.include?(thing) %>
+          <p>
+            <%= link_to "Remove #{thing.name} from my things", remove_thing_path(thing), :method => :delete, :class => 'remove' %>
+          </p>
+        <% else %>
+          <p>
+            <%= link_to "Add #{thing.name} to my things", add_thing_path(thing), :method => :post, :class => 'add' %>
+          </p>
+        <% end %>  
       </div>
     <% end %>
   <% end %>

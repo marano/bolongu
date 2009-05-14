@@ -8,12 +8,16 @@
   
   <% render :layout => 'layouts/content_info', :locals => { :content => tweet } do %>    
     <div class='manager_links text_right'>
-      <%= link_to 'Show', tweet %> |
-      <%= link_to 'On Twitter', show_twitter_tweet_path(tweet.twitter_id) %>
-      <% if logged_in? and current_account == tweet.account %>
-        | <%= link_to 'Delete', tweet, :confirm => 'Are you sure?', :method => :delete, :class => 'tweet_destroy' %>
+      <% unless current_page? tweet %>
+        <%= link_to 'show', tweet %>
       <% end %>
-    </div>    
+      <% unless current_page? show_twitter_tweet_path(tweet.twitter_id) %>
+        <%= link_to 'on Twitter', show_twitter_tweet_path(tweet.twitter_id) %>
+      <% end %>
+      <% if user_content?(tweet) %>
+        <%= link_to "<span class='tweet_destroy'></span>", tweet, :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
+    </div>
   <% end %>
   
   <% unless tweet.comments.empty?  %>

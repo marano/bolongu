@@ -21,17 +21,16 @@
     <%= format post.body %>
     <% unless current_page? post  %>
       <div class='right'>
-        <%= link_to 'See more >>', post %>
+        
       </div>
     <% end %>
   </div>  
   
   <% render :layout => 'layouts/content_info', :locals => { :content => post } do %>
-    <% if logged_in? and current_account_content? post %>
-      <div class='manager_links text_right'>
-        <%= link_to 'Edit', edit_post_path(post), :class => 'edit' %> |
-        <%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
-      </div>
+    <%= link_to 'See more >>', post %>
+    <% if user_content?(post) %>
+      <%= link_to "<span class='post_edit'></span>", edit_post_path(post) %>
+      <%= link_to "<span class='post_destroy'></span>", post, :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
   <% end %>
   

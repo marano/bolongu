@@ -18,11 +18,10 @@
   <p><%= format bookmark.description %></p>
   
   <% render :layout => 'layouts/content_info', :locals => { :content => bookmark } do %>
-    <% if logged_in? and bookmark.publisher == current_account %>
-      <div class='manager_links text_right'>
-        <%= link_to 'Edit', edit_bookmark_path(bookmark), :class => 'edit' %> |
-        <%= link_to 'Delete', bookmark, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
-      </div>
+    <%= link_to 'See more >>', bookmark %>
+    <% if user_content?(bookmark) %>
+      <%= link_to "<span class='bookmark_edit'></span>", edit_bookmark_path(bookmark) %>
+      <%= link_to "<span class='bookmark_destroy'></span>", bookmark, :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
   <% end %>
   
