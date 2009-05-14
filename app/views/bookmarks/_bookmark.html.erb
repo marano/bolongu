@@ -1,33 +1,28 @@
-<% div_for bookmark, :class => 'part' do %>
-  <div class='content_icon left'><span class='bookmark_icon'></span></div>
-  <% if bookmark.tweeted? %>
-    <div class='content_icon left'><span class='tweet_icon'></span></div>
-  <% end %>
-  <% if bookmark.blog_private %>
-    <div class='content_icon left'><span class='private_icon'></span></div>
-  <% end %>
+<% div_for bookmark do %>
+  <div class='content part'>
+    <div class='content_icon left'><span class='bookmark_icon'></span></div>
+    <% if bookmark.tweeted? %>
+      <div class='content_icon left'><span class='tweet_icon'></span></div>
+    <% end %>
+    <% if bookmark.blog_private %>
+      <div class='content_icon left'><span class='private_icon'></span></div>
+    <% end %>
 
-  <h2><%= link_to_unless_current h(bookmark.title), bookmark %></h2>
-  
-  <h3><%= link_to bookmark.adress, bookmark.adress %></h3>
-  
-  <% if bookmark.screen_excerpt.file? %>
-    <p><%= image_tag bookmark.screen_excerpt.url %></p>
-  <% end %>
-  
-  <p><%= format bookmark.description %></p>
+    <h2><%= link_to_unless_current h(bookmark.title), bookmark %></h2>
+    
+    <h3><%= link_to bookmark.adress, bookmark.adress %></h3>
+    
+    <% if bookmark.screen_excerpt.file? %>
+      <p><%= image_tag bookmark.screen_excerpt.url %></p>
+    <% end %>
+    
+    <p><%= format bookmark.description %></p>
+  </div>
   
   <% render :layout => 'layouts/content_info', :locals => { :content => bookmark } do %>
-    <%= link_to 'See more >>', bookmark %>
     <% if user_content?(bookmark) %>
-      <%= link_to "<span class='bookmark_edit'></span>", edit_bookmark_path(bookmark) %>
-      <%= link_to "<span class='bookmark_destroy'></span>", bookmark, :confirm => 'Are you sure?', :method => :delete %>
-    <% end %>
-  <% end %>
-  
-  <% unless bookmark.comments.empty?  %>
-    <% render :layout => 'comments/comment', :object => bookmark.comments.first do %>
-      <h4>last comment</h4>
+      <%= link_to '', edit_bookmark_path(bookmark), :class => 'bookmark_edit', :title => 'edit' %>
+      <%= link_to '', bookmark, :confirm => 'Are you sure?', :method => :delete, :class => 'bookmark_destroy', :title => 'delete' %>
     <% end %>
   <% end %>
 <% end %>

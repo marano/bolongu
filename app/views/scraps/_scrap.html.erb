@@ -1,6 +1,4 @@
-<% div_for scrap, :class => 'part padding margin_bottom' do %>
-
-  <p>
+<% div_for scrap, :class => 'part' do %>
     <table>
       <tr>
         <td>
@@ -23,14 +21,13 @@
                   <% if scrap.new? %>
                     <font color='red'>new</font>
                   <% end %>
-                  <%= link_to 'Reply', account_scraps_path(scrap.author), :class => 'scrap_reply' %>
+                  <%= link_to '', account_scraps_path(scrap.author), :class => 'scrap_reply', :title => 'reply' %>
                 <% end %>
-                <%= link_to_remote 'Delete', :url => [scrap.recipient, scrap], :confirm => 'Are you sure?', :method => :delete, :html => { :class => 'scrap_destroy' } %>
+                <%= link_to_remote '', :url => [scrap.recipient, scrap], :confirm => 'Are you sure?', :method => :delete, :html => { :class => 'scrap_destroy', :title => 'delete' } %>
               </P>
             </div>
           <% end %>
         </td>
       </tr>
     </table>
-  </p>
 <% end %>

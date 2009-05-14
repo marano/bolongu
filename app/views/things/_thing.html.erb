@@ -1,73 +1,64 @@
-<% div_for thing, :class => 'part' do %>
-  <div class='content_icon left'><span class='thing_icon'></span></div>
-  <% if thing.tweeted? %>
-    <div class='content_icon left'><span class='tweet_icon'></span></div>
-  <% end %>
-  <% if thing.blog_private %>
-    <div class='content_icon left'><span class='private_icon'></span></div>
-  <% end %>
+<% div_for thing do %>
+  <div class='content part'>
+    <div class='content_icon left'><span class='thing_icon'></span></div>
+    <% if thing.tweeted? %>
+      <div class='content_icon left'><span class='tweet_icon'></span></div>
+    <% end %>
+    <% if thing.blog_private %>
+      <div class='content_icon left'><span class='private_icon'></span></div>
+    <% end %>
 
-  <div>
-    <h2><%= link_to_unless_current thing.name, thing %></h2>
+    <div>
+      <h2><%= link_to_unless_current thing.name, thing %></h2>
+      
+      <% if thing.photo.file? %>
+        <div class='thing_photo left'>
+          <%= link_to_unless_current image_tag(thing.photo.url(:default)), thing %>
+        </div>
+      <% end %>
+    </div>
+
+    <p><%= format thing.description %></p>
     
-    <% if thing.photo.file? %>
-      <div class='thing_photo left'>
-        <%= link_to_unless_current image_tag(thing.photo.url(:default)), thing %>
+    <% if thing.attachment.file?  %>
+      <p>
+        <%= link_to thing.attachment_file_name, thing.attachment.url, :class => 'paperclip' %>
+      </p>
+    <% end %>
+  </div>
+  
+  <div class='users_with_thing part'>
+    <% unless thing.accounts.empty? %>
+      <div class='margin_bottom'>
+        <label class='user_icon'>Users with this thing</label>
+        <div class='margin_top'>
+          <ul class='plain_list'>
+            <% thing.accounts.each do |account| %>
+               <li>
+                 <% if account.avatar.file? %>
+                   <%= link_to image_tag(account.avatar(:micro)), account_index_path(account.login), :title => account.name %>
+                 <% else %>
+                   <%= link_to account.name, account_index_path(account.login), :title => account.blog_title %>
+                 <% end %>
+               </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     <% end %>
   </div>
-
-  <p><%= format thing.description %></p>
-  
-  <% if thing.attachment.file?  %>
-    <p>
-      <%= link_to thing.attachment_file_name, thing.attachment.url, :class => 'paperclip' %>
-    </p>
-  <% end %>
-  
-  <% unless thing.accounts.empty? %>
-    <div class='margin_bottom'>
-      <label>Users with this thing</label>
-      <ul class='plain_list'>
-        <% thing.accounts.each do |account| %>
-           <li>
-             <% if account.avatar.file? %>
-               <%= link_to image_tag(account.avatar(:micro)), account_index_path(account.login), :title => account.name %>
-             <% else %>
-               <%= link_to account.name, account_index_path(account.login), :title => account.blog_title %>
-             <% end %>
-           </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   
   <% render :layout => 'layouts/content_info', :locals => { :content => thing } do %>
-    <% unless current_page? thing %>
-      <%= link_to 'See more >>', thing %>
+    <% if logged_in? %>
+      <% if current_account.things.include?(thing) %>        
+        <%= link_to '', remove_thing_path(thing), :method => :delete, :class => 'remove', :title => "Remove #{thing.name} from my things" %>
+      <% else %>
+        <%= link_to '', add_thing_path(thing), :method => :post, :class => 'add', :title => "Add #{thing.name} to my things" %>
+      <% end %>  
     <% end %>
     <% if user_content?(thing) %>
-      <%= link_to "<span class='thing_edit'></span>", edit_thing_path(thing) %>
-      <%= link_to "<span class='thing_destroy'></span>", thing, :confirm => 'Are you sure?', :method => :delete %>
-    <% end %>
-    <% if logged_in? %>
-      <div class='right'>
-        <% if current_account.things.include?(thing) %>
-          <p>
-            <%= link_to "Remove #{thing.name} from my things", remove_thing_path(thing), :method => :delete, :class => 'remove' %>
-          </p>
-        <% else %>
-          <p>
-            <%= link_to "Add #{thing.name} to my things", add_thing_path(thing), :method => :post, :class => 'add' %>
-          </p>
-        <% end %>  
-      </div>
-    <% end %>
-  <% end %>
-  
-  <% unless thing.comments.empty?  %>
-    <% render :layout => 'comments/comment', :object => thing.comments.first do %>
-      <h4>last comment</h4>
-    <% end %>
-  <% end %>
+      <%= link_to '', edit_thing_path(thing), :class => 'thing_edit', :title => 'edit' %>
+      <%= link_to '', thing, :confirm => 'Are you sure?', :method => :delete, :class => 'thing_destroy', :title => 'delete' %>
+    <% end %>    
+  <% end %>  
 <% end %>

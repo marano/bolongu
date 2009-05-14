@@ -1,61 +1,55 @@
-<% div_for gallery, :class => 'part padding' do %>
-  <div class='content_icon left'><span class='gallery_icon'></span></div>
-  <% if gallery.tweeted? %>
-    <div class='content_icon left'><span class='tweet_icon'></span></div>
-  <% end %>
-  <% if gallery.blog_private %>
-    <div class='content_icon left'><span class='private_icon'></span></div>
-  <% end %>
+<% div_for gallery do %>
+  <div class='content part'>
+    <div class='content_icon left'><span class='gallery_icon'></span></div>
+    <% if gallery.tweeted? %>
+      <div class='content_icon left'><span class='tweet_icon'></span></div>
+    <% end %>
+    <% if gallery.blog_private %>
+      <div class='content_icon left'><span class='private_icon'></span></div>
+    <% end %>
 
-  <h2>
-    <%= link_to_unless_current gallery.name, gallery_path(gallery) %>
-  </h2>
+    <h2>
+      <%= link_to_unless_current gallery.name, gallery_path(gallery) %>
+    </h2>
 
-  <p>
-    <%= format gallery.description %>
-  </p>
-  
-  <% if (current_page? gallery) and logged_in? and gallery.account == current_account %>
-    <div>
-      <h3>
-        Upload new photo
-      </h3>
-      <p>
-        <% form_for (@gallery_photo or flash[:gallery_photo] or GalleryPhoto.new), :html => { :multipart => true } do |f| %>
-          <%= f.error_messages %>
-          <%= hidden_field_tag 'gallery_photo[gallery_id]', gallery.id %>
-          
-          <%= f.file_field :photo, :class => 'input' %>
-          <%= f.submit 'Upload', :class => 'button green_bg' %>
-        <% end %>
-      </p>
-    </div>
-  <% end %>
-
-  <div class='padding text_left'>
-    <ul id="gallery_<%= gallery.id %>_photos" class='plain_list text_left'>
-      <% for gallery_photo in gallery.gallery_photos %>
-        <% content_tag_for :li, gallery_photo, :style => 'padding: 0' do %>
-          <%= link_to image_tag(gallery_photo.url(current_page?(gallery) ? :small : :tiny)), gallery_photo %>
-        <% end %>
-      <% end %>      
-    </ul>
+    <p>
+      <%= format gallery.description %>
+    </p>
     
-    <%= sortable_element "gallery_#{gallery.id}_photos", :url => sort_gallery_photos_path %>
+    <% if (current_page? gallery) and logged_in? and gallery.account == current_account %>
+      <div>
+        <h3>
+          Upload new photo
+        </h3>
+        <p>
+          <% form_for (@gallery_photo or flash[:gallery_photo] or GalleryPhoto.new), :html => { :multipart => true } do |f| %>
+            <%= f.error_messages %>
+            <%= hidden_field_tag 'gallery_photo[gallery_id]', gallery.id %>
+            
+            <%= f.file_field :photo, :class => 'input' %>
+            <%= f.submit 'Upload', :class => 'button green_bg' %>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+
+    <div class='padding text_left'>
+      <ul id="gallery_<%= gallery.id %>_photos" class='plain_list text_left'>
+        <% for gallery_photo in gallery.gallery_photos %>
+          <% content_tag_for :li, gallery_photo, :style => 'padding: 0' do %>
+            <%= link_to image_tag(gallery_photo.url(current_page?(gallery) ? :small : :tiny)), gallery_photo %>
+          <% end %>
+        <% end %>      
+      </ul>
+      
+      <%= sortable_element "gallery_#{gallery.id}_photos", :url => sort_gallery_photos_path %>
+    </div>
   </div>
   
   <% render :layout => 'layouts/content_info', :locals => { :content => gallery } do %>
-    <%= link_to 'See more >>', gallery %>
     <% if user_content?(gallery) %>
-      <%= link_to "<span class='gallery_edit'></span>", edit_gallery_path(gallery) %>
-      <%= link_to "<span class='gallery_destroy'></span>", gallery, :confirm => 'Are you sure?', :method => :delete %>
+      <%= link_to '', edit_gallery_path(gallery), :class => 'gallery_edit', :title => 'edit' %>
+      <%= link_to '', gallery, :confirm => 'Are you sure?', :method => :delete, :class => 'gallery_destroy', :title => 'destroy' %>
     <% end %>
   <% end %>
-  
-  <% unless gallery.comments.empty?  %>
-    <% render :layout => 'comments/comment', :object => gallery.comments.first do %>
-      <h4>last comment</h4>
-    <% end %>
-  <% end %>
-  
 <% end %>

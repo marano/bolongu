@@ -1,10 +1,12 @@
 <% title @gallery_photo.gallery.name %>
 
-<% div_for @gallery_photo, :class => 'part padding margin_bottom' do %>
-  <%= link_to "Back to #{@gallery_photo.gallery.name}", @gallery_photo.gallery %>
+<% div_for @gallery_photo do %>
+  <div class='part top_pagination margin_bottom'>
+    <div class='text_center'><%= will_paginate @gallery_photos %></div>
+  </div>
 
-  <% div_for @gallery_photo do %>
-    <%= will_paginate @gallery_photos %>
+
+  <div class='content part'>    
     <h2>
       <%= h @gallery_photo.name %>
     </h2>
@@ -14,16 +16,20 @@
     <p>
       <%=h @gallery_photo.caption %>
     </p>
-
-    <div class='manager_links right'>
-      <% if logged_in? and (@gallery_photo.publisher == current_account or @gallery_photo.gallery.account == current_account) %>
-        <%= link_to 'Edit', edit_gallery_photo_path(@gallery_photo) %> |
-        <%= link_to 'Delete', gallery_photo_path(@gallery_photo), :confirm => 'Are you sure?', :method => :delete %>    
-      <% end %>
-    </div>
+  </div>
     
-    <div class='clear'></div>
+  <% render :layout => 'layouts/content_info', :locals => { :content => @gallery_photo } do %>
+    <% if user_content?(@gallery_photo) or user_content?(@gallery_photo.gallery)%>
+      <%= link_to '', edit_gallery_photo_path(@gallery_photo), :class => 'gallery_photo_edit', :title => 'edit' %>
+      <%= link_to '', @gallery_photo, :confirm => 'Are you sure?', :method => :delete, :class => 'gallery_photo_destroy', :title => 'delete' %>
+    <% end %>
   <% end %>
+    
+  <div class='back part margin_top'>
+    <%= link_to "Back to #{@gallery_photo.gallery.name}", @gallery_photo.gallery %>
+  </div>
+    
+    <div class='clear'></div>  
 <% end %>
 
 <%= render :partial => 'comments/comments', :locals => { :commentable => @gallery_photo } %>

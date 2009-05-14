@@ -20,6 +20,10 @@
       <%= f.text_area :caption, :class => 'input' %>
     </p>
     <p>
+      <span class='tag_icon'></span><%= f.label :tag_list %><br />
+      <%= f.text_field :tag_list, :class => 'input' %>
+    </p>
+    <p>
       <%= f.submit 'Update', :class => 'button green_bg' %>
     </p>
   <% end %>

@@ -1,28 +1,19 @@
-<% div_for tweet, :class => 'part' do %>
-  <div class='content_icon left'><span class='tweet_icon'></span></div>
-  <% if tweet.blog_private %>
-    <div class='content_icon left'><span class='private_icon'></span></div>
-  <% end %>
+<% div_for tweet do %>
+  <div class='content part'>
+    <div class='content_icon left'><span class='tweet_icon'></span></div>
+    <% if tweet.blog_private %>
+      <div class='content_icon left'><span class='private_icon'></span></div>
+    <% end %>
 
-  <p><%= tweet_body tweet.body %></p>
+    <p><%= tweet_body tweet.body %></p>
+  </div>
   
-  <% render :layout => 'layouts/content_info', :locals => { :content => tweet } do %>    
-    <div class='manager_links text_right'>
-      <% unless current_page? tweet %>
-        <%= link_to 'show', tweet %>
-      <% end %>
-      <% unless current_page? show_twitter_tweet_path(tweet.twitter_id) %>
-        <%= link_to 'on Twitter', show_twitter_tweet_path(tweet.twitter_id) %>
-      <% end %>
-      <% if user_content?(tweet) %>
-        <%= link_to "<span class='tweet_destroy'></span>", tweet, :confirm => 'Are you sure?', :method => :delete %>
-      <% end %>
-    </div>
-  <% end %>
-  
-  <% unless tweet.comments.empty?  %>
-    <% render :layout => 'comments/comment', :object => tweet.comments.first do %>
-      <h4>last comment</h4>
+  <% render :layout => 'layouts/content_info', :locals => { :content => tweet } do %> 
+    <% unless current_page? show_twitter_tweet_path(tweet.twitter_id) %>
+      <%= link_to 'on Twitter', show_twitter_tweet_path(tweet.twitter_id) %>
+    <% end %>
+    <% if user_content?(tweet) %>
+      <%= link_to '', tweet, :confirm => 'Are you sure?', :method => :delete, :class => 'tweet_destroy', :title => 'delete' %>
     <% end %>
   <% end %>
 <% end %>

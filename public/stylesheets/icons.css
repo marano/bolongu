@@ -135,7 +135,7 @@
   background: transparent url('/images/thing_create_tiny.png') no-repeat center left;
 }
 
-.user_menu, .filter_menu_account {
+.user_menu, .user_icon, .filter_menu_account {
   padding-left: 18px;
   background: transparent url('/images/user_tiny.png') no-repeat center left;
 }
@@ -220,14 +220,24 @@
   background: transparent url('/images/edit_big.png') no-repeat center left;
 }
 
-.edit, .post_edit, .thing_edit, .gallery_edit, .bookmark_edit {
+.edit, .post_edit, .thing_edit, .gallery_edit, .gallery_photo_edit, .bookmark_edit {
   padding-left: 18px;
   background: transparent url('/images/edit_tiny.png') no-repeat center left;
 }
 
-.destroy, .post_destroy, .thing_destroy, .tweet_destroy, .gallery_destroy, .bookmark_destroy {
+.destroy, .post_destroy, .thing_destroy, .tweet_destroy, .gallery_destroy, .gallery_photo_destroy, .bookmark_destroy, .comment_destroy {
   padding-left: 18px;
   background: transparent url('/images/delete_tiny.png') no-repeat center left;
+}
+
+.comment_icon {
+  padding-left: 18px;
+  background: transparent url('/images/comment_tiny.png') no-repeat center left;
+}
+
+.comment_title {
+  padding-left: 36px;
+  background: transparent url('/images/comment_big.png') no-repeat center left;
 }
 
 /* END ICONS */

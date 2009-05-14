@@ -1,38 +1,37 @@
-<% div_for comment, :class => 'part padding margin_top margin_bottom' do %>
-  <p>
+<% div_for comment, :class => 'part' do %>
+  <% if block_given? %>
     <%= yield %>
-    
+  <% end %>
+   
     <table width='100%'>
       <tr>        
         <% if comment.author %>
-          <td width='50px'>
+          <td width='30px'>
             <% if comment.author.avatar.file?  %>
-              <%= link_to_unless_current image_tag(comment.author.avatar.url(:tiny)), account_index_url(comment.author.login) %>
+              <%= link_to_unless_current image_tag(comment.author.avatar.url(:micro)), account_index_url(comment.author.login) %>
             <% end %>
           </td>
-          <td width='120'>
+          <td width=''>
             <div class='account_info_name'>
               <%= link_to_unless_current comment.author.name, account_index_url(comment.author.login) %>
             </div>
             <span class='time_ago text_left'><%= time_ago_in_words comment.created_at %></span>
           </td>
         <% else %>
-          <td width='180px'>
+          <td width='20%'>
             <%= render :partial => 'comments/anonymous', :locals => { :comment => comment } %>
           </td>
         <% end %>
-        <td>
+        <td width='80%'>
           <div class='comment_body'>
-            <%= simple_format comment.body %>
-            
-            <% if logged_in? and current_account_content?(comment) || current_account_content?(comment.commentable) %>
-              <div class='right'>
-                <%= link_to_remote 'Delete', :url => [ comment ], :confirm => 'Are you sure?', :method => :delete, :html => { :class => 'destroy' } %>
-              </div>
-            <% end %>
+            <p><%= simple_format comment.body %></p>
           </div>
+        </td>
+        <td>
+          <% if logged_in? and current_account_content?(comment) || current_account_content?(comment.commentable) %>
+            <%= link_to "<span class='comment_destroy'></span>", comment, :confirm => 'Are you sure?', :method => :delete %>
+          <% end %>
         </td>
       </tr>
     </table>
-  </p>
 <% end %>

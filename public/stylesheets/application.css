@@ -140,12 +140,32 @@ pre {
 
 .content_icon { margin: 10px 5px 5px 0; }
 
-.back { margin-top: 20px; }
+.back { padding: 5px; }
 
-.post, .thing, .gallery, .gallery_photo, .bookmark, .tweet { 
-  text-align: justify;
+.top_pagination { padding: 5px; }
+
+.post, .thing, .gallery, .gallery_photo, .bookmark, .tweet {
   margin: 0px 0px 10px 0px;
-  padding: 0px 10px 10px 10px;
+  text-align: justify;
+}
+
+.content {  
+  padding: 0px 10px 0px 10px;
+}
+
+.users_with_thing {
+  padding: 10px 10px 0 10px;
+  margin-top: 2px;
+}
+
+.content_tags {  
+  padding: 0 10px 0 10px;
+  margin-top: 2px;
+}
+
+.content_info {
+    margin-top: 2px;
+    padding: 0px 10px 0px 10px;
 }
 
 .post_photo, .thing_photo {
@@ -154,7 +174,6 @@ pre {
 }
 
 .photo_list {}
-
 .manager_links { 
 }
 
@@ -191,12 +210,38 @@ pre {
 
 /* COMMENT */
 
+.comments_title {
+  margin-bottom: 2px;
+}
+
+.comments_title h3 {
+  margin:0;
+  padding-top: 3px;
+  padding-bottom: 5px;
+}
+
+.last_comment_label {
+  padding: 0;
+  margin-top: 5px;
+  margin-bottom: 1px;
+}
+
 .comment {
-    padding-top: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 0 10px 0 10px;
     clear: left;
 }
 
-.new_comment { margin-bottom: 10px; }
+.p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 0 10px 0 10px;
+    clear: left;
+}
+
+
+.new_comment { margin-bottom: 2px; }
 
 .comment_input {
     width: 80%;
@@ -227,6 +272,11 @@ pre {
 /* END ACCOUNT INFO */
 
 /* SCRAP */
+ 
+.scrap {
+  margin: 0 0 5px 0;
+  padding: 0px 10px 0 10px;
+} 
  
 .scrap_input {
     width: 90%;

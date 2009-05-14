@@ -13,6 +13,6 @@
     <% unless comment.email.blank? %>
       <br/><%= mail_to comment.email %>
     <% end %>
-    <div class="left"><%= time_ago_in_words comment.created_at %></div>
+    <div class="left"><span class='time_ago'></span><%= time_ago_in_words comment.created_at %></div>
   </div>
 </div>
