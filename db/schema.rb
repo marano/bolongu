@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090513061507) do
+ActiveRecord::Schema.define(:version => 20090514172700) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -179,7 +179,8 @@ ActiveRecord::Schema.define(:version => 20090513061507) do
     t.integer  "twitter_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "blog_private",   :default => false
+    t.boolean  "blog_private",    :default => false
+    t.string   "cached_tag_list"
   end
 
 end
