@@ -60,13 +60,13 @@ class Bookmark < ActiveRecord::Base
       t.wait_until_ready
       
       if t.ok?    
-        screen_file = Tempfile.new('screen')
-        screen_file << t.retrieve(:large)      
+        #screen_file = Tempfile.new('screen')
+        #screen_file << t.retrieve(:large)      
          
         screen_excerpt_file = Tempfile.new('screen_excerpt')
         screen_excerpt_file << t.retrieve(:excerpt)
             
-        bookmark.screen = screen_file
+        #bookmark.screen = screen_file
         bookmark.screen_excerpt = screen_excerpt_file
         
         bookmark.save
