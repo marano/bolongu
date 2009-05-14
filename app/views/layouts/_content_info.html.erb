@@ -17,14 +17,14 @@
           <%= link_to_unless_current image_tag(content.account.avatar.url(:micro)), account_index_path(content.account.login) %>
         <% end %>
       </td>
-      <td class='text_left'>
+      <td class='text_left' width='35%'>
         <div class='account_info_name'>
           <%= link_to_unless_current content.account.name, account_index_url(content.account.login) %>
         </div>
         <span class='time_ago'><%= time_ago_in_words content.created_at %></span>
       </td>
         
-      <td width='100%'>
+      <td width='65%'>
       <div class='manager_links'>
         <p class='text_right'>          
           <%= link_to content.comments.count, content, :class => 'comment_icon', :title => 'comments' %>

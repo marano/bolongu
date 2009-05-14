@@ -191,7 +191,11 @@ pre {
   font-size: 0.8em;
 }
 
-.time_ago { font-size: 0.8em; }
+.time_ago { 
+  padding-top: 3px;
+  padding-bottom: 1px;
+  font-size: 0.8em;
+}
 
 /* END MISCELANIOUS */
 
@@ -261,6 +265,7 @@ pre {
     text-align: left;
     font-weight: bold;
     margin-right: 5px;
+    margin-bottom: 4px;
 }
 
 /* END ACCOUNT INFO */
