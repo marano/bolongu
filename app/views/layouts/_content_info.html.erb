@@ -26,9 +26,9 @@
         
       <td width='65%'>
       <div class='manager_links'>
-        <p class='text_right'>          
-          <%= link_to content.comments.count, content, :class => 'comment_icon', :title => 'comments' %>
+        <p class='text_right'>
           <%= link_to('show', content) unless current_page? content %>
+          <%= link_to content.comments.count, content, :class => 'comment_icon', :title => 'comments' %>          
           <%= # share_this content.title, url_for(content) 
           %>
           <%= yield %>
