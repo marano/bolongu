@@ -48,6 +48,6 @@
     <p><%= label_tag :password_confirmation, 'Confirm Password' %><br/>
     <%= f.password_field :password_confirmation, :class => 'input' %></p>
 
-    <p><%= submit_tag 'Update', :class => 'button green_bg' %></p>
+    <p><%= submit_tag 'Update', :class => 'button green_bg', :disable_with => 'Updating...' %></p>
   <% end -%>
 </div>
