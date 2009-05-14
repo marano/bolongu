@@ -38,7 +38,7 @@ ActionController::Routing::Routes.draw do |map|
     gallery_photo.resources :comments, :only => [ :create ]
   end
   
-  map.resources :bookmarks do |bookmark|
+  map.resources :bookmarks, :member => { :reload_thumb => :post } do |bookmark|
     bookmark.resources :comments, :only => [ :create ]
   end
   

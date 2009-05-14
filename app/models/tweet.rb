@@ -13,6 +13,8 @@ class Tweet < ActiveRecord::Base
   validates_presence_of :twitter_id
   validates_uniqueness_of :twitter_id
   
+  default_scope :order => 'created_at DESC'
+  
   attr_accessor :options
   
   def should_notify

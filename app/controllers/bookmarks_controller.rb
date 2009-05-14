@@ -1,4 +1,15 @@
 class BookmarksController < ApplicationController
+
+  def reload_thumb
+    @bookmark = Bookmark.find(params[:id])
+    if Bookmark.fetch_thumbs!(@bookmark)
+      flash[:notice] = 'Success!'
+    else
+      flash[:error] = 'Oh crap!'
+    end
+    redirect_to :back
+  end
+
   # GET /bookmarks
   # GET /bookmarks.xml
   def index
