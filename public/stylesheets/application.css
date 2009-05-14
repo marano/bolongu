@@ -84,6 +84,7 @@ pre {
 }
 
 .menu_item p a {
+  font-weight: bold;
   padding-top: 5px;
   padding-bottom: 5px;
 }
