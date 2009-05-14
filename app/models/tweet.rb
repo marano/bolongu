@@ -28,7 +28,9 @@ class Tweet < ActiveRecord::Base
   end
   
   def tweet!
-    self.twitter_id = account.twitter_client.update(body, options).id
+    SystemTimer.timeout_after(20.seconds) do
+      self.twitter_id = account.twitter_client.update(body, options).id
+    end
   end
   
   def untweet!

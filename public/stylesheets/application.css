@@ -146,6 +146,9 @@ pre {
 
 .post, .thing, .gallery, .gallery_photo, .bookmark, .tweet {
   margin: 0px 0px 10px 0px;
+}
+
+.post, .thing, .gallery, .gallery_photo, .bookmark {
   text-align: justify;
 }
 
@@ -155,16 +158,16 @@ pre {
 
 .users_with_thing {
   padding: 10px 10px 0 10px;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .content_tags {  
   padding: 0 10px 0 10px;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .content_info {
-    margin-top: 2px;
+    margin-top: 1px;
     padding: 0px 10px 0px 10px;
 }
 
@@ -210,10 +213,6 @@ pre {
 
 /* COMMENT */
 
-.comments_title {
-  margin-bottom: 2px;
-}
-
 .comments_title h3 {
   margin:0;
   padding-top: 3px;
@@ -227,21 +226,16 @@ pre {
 }
 
 .comment {
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 1px;
     padding: 0 10px 0 10px;
     clear: left;
 }
 
-.p {
-    margin-top: 2px;
-    margin-bottom: 2px;
+.comment p {
     padding: 0 10px 0 10px;
-    clear: left;
 }
 
-
-.new_comment { margin-bottom: 2px; }
+.comments_title, .new_comment, .comment { margin-bottom: 2px; }
 
 .comment_input {
     width: 80%;

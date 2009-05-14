@@ -27,29 +27,50 @@ class Bookmark < ActiveRecord::Base
   end
   
   def make_thumbs
-    #Thread.new do
-      begin
-        t = Nailer.new(adress)
-        t.wait_until_ready
-        
+    Bookmark.fetch_thumbs!(self)
+#    #Thread.new do
+#      begin
+#        t = Nailer.new(adress)
+#        t.wait_until_ready
+#        
+#        screen_file = Tempfile.new('screen')
+#        screen_file << t.retrieve(:large)      
+#        
+#        screen_excerpt_file = Tempfile.new('screen_excerpt')
+#        screen_excerpt_file << t.retrieve(:excerpt)
+#        
+#        screen = screen_file
+#        screen_excerpt = screen_excerpt_file
+#        
+#        save
+##        b = Bookmark.find(id)
+##        
+##        b.screen = screen_file
+##        b.screen_excerpt = screen_excerpt_file
+##        
+##        b.save
+#      rescue => e
+#      end
+#    #end
+  end
+  
+  def self.fetch_thumbs!(bookmark)
+    SystemTimer.timeout_after(20.seconds) do      
+      t = Nailer.new(bookmark.adress)
+      t.wait_until_ready
+      
+      if t.ok?    
         screen_file = Tempfile.new('screen')
         screen_file << t.retrieve(:large)      
-        
+         
         screen_excerpt_file = Tempfile.new('screen_excerpt')
         screen_excerpt_file << t.retrieve(:excerpt)
+            
+        bookmark.screen = screen_file
+        bookmark.screen_excerpt = screen_excerpt_file
         
-        screen = screen_file
-        screen_excerpt = screen_excerpt_file
-        
-        save        
-#        b = Bookmark.find(id)
-#        
-#        b.screen = screen_file
-#        b.screen_excerpt = screen_excerpt_file
-#        
-#        b.save
-      rescue => e
+        bookmark.save
       end
-    #end
+    end
   end
 end
