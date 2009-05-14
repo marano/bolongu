@@ -21,7 +21,7 @@
   
   <% render :layout => 'layouts/content_info', :locals => { :content => bookmark } do %>
     <% if user_content?(bookmark) %>
-      <%= link_to 'reload', reload_thumb_bookmark_path(bookmark), :method => :post, :class => 'bookmark_reload', :title => 'reload' %>
+      <%= link_to 'reload thumb', reload_thumb_bookmark_path(bookmark), :method => :post, :class => 'bookmark_reload', :title => 'reload thumb' %>
       <%= link_to '', edit_bookmark_path(bookmark), :class => 'bookmark_edit', :title => 'edit' %>
       <%= link_to '', bookmark, :confirm => 'Are you sure?', :method => :delete, :class => 'bookmark_destroy', :title => 'delete' %>
     <% end %>
