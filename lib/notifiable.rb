@@ -15,7 +15,7 @@ module Notifiable
   end
 
   def notify!
-    if should_notify == true and should_notify != false
+    unless should_notify == false
       Notification.notify!(self)
     end
   end
