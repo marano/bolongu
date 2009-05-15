@@ -16,6 +16,7 @@ class TagList < Array
   def add(*names)
     extract_and_apply_options!(names)
     concat(names)
+    map! { |a| a.downcase }
     clean!
     self
   end

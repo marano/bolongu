@@ -43,10 +43,10 @@ class Tweet < ActiveRecord::Base
   end
   
   def make_tags
-#    unless tweetable
+    unless tweetable
       string_tag_list = ''
       body.scan(/[#]\w{1,}/).each { |word| string_tag_list << "#{word[/.(.*)/m,1]}," }
       self.tag_list = string_tag_list
-#    end      
+    end
   end
 end
