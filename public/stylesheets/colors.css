@@ -21,9 +21,7 @@ pre { background-color: #eee; }
 
 .menu_item:hover { background-color: #ff3300 }
 
-.menu_item a, .menu_item a:visited { color: #FFF; }
-
-.menu_item a:hover { color: #FFF; }
+.menu_item a, .menu_item a:hover, .menu_item a:visited { color: #FFF; }
 
 .current_menu_item, .current_menu_item:hover { background-color: #FFF; }
 
@@ -35,10 +33,20 @@ pre { background-color: #eee; }
 
 .filter_menu_item:hover { background-color: #ff3300 }
 
-.filter_menu_item a, .filter_menu_item a:visited { color: #FFF; }
-
-.filter_menu_item a:hover { color: #FFF; }
+.filter_menu_item a, .filter_menu_item a:hover, .filter_menu_item a:visited { color: #FFF; }
 
 .current_filter_menu_item, .current_filter_menu_item:hover { background-color: #FFF; }
 
 .current_filter_menu_item a, .current_filter_menu_item a:hover, .current_filter_menu_item a:visited { color: #000; }
+
+
+
+
+
+
+
+
+
+
+
+

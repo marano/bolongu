@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   map.home '/home', :controller => 'home'
   map.about '/about', :controller => 'home', :action => 'about'
   
+  map.colors '/style/colors.:format', :controller => 'style', :action => 'colors'
+  
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'accounts', :action => 'activate', :activation_code => nil

@@ -1,0 +1,40 @@
+body { color: <%= @base %>; }
+
+a { color: <%= @link %>; }
+a:active { color: <%= @link_hover %>; }
+a:visited { color: <%= @base %>; }
+a:hover { color: <%= @link_hover %>; }
+
+hr { background-color: #999; }
+
+pre { background-color: #eee; }
+
+.button { color: <%= @button_base %>; }
+
+.button:hover { color: <%= @button_hover %>; cursor: pointer; }
+
+.bg_color { background-color: <%= @bg %>; }
+
+.part { background-color: <%= @content_bg %>; }
+
+/* MENU */
+
+.menu_item:hover { background-color: <%= @menu_hover_bg %> }
+
+.menu_item a, .menu_item a:hover, .menu_item a:visited { color: <%= @menu_link %>; }
+
+.current_menu_item, .current_menu_item:hover { background-color: <%= @current_menu_bg %>; }
+
+.current_menu_item a, .current_menu_item a:hover, .current_menu_item a:visited { color: <%= @current_menu_link %>; }
+
+.scrap_count { color: <%= @menu_hover_bg %>; }
+
+/* FILTER MENU */
+
+.filter_menu_item:hover { background-color: <%= @menu_hover_bg %> }
+
+.filter_menu_item a, .filter_menu_item a:hover, .filter_menu_item a:visited { color: <%= @menu_link %>; }
+
+.current_filter_menu_item, .current_filter_menu_item:hover { background-color: <%= @current_menu_bg %>; }
+
+.current_filter_menu_item a, .current_filter_menu_item a:hover, .current_filter_menu_item a:visited { color: <%= @current_menu_link %>; }
