@@ -7,5 +7,22 @@
 <div class='part padding margin_top'>
   <p>Site created and provided by Thiago Marano. Any requests or suggestions feel free to contact me here <%= link_to '/marano', account_index_path('marano') %> or send me an email at thiagomarano@gmail.com. The source code is hosted at <%= link_to 'github', 'http://github.com/marano/bolongu' %>.</p>
   
-  <div id='about_logo' class='text_center'><%= image_tag 'logo_big.jpg' %></div>  
+  <div id='about_logo' class='text_center'><%= image_tag 'logo_big.jpg' %></div>
+</div>
+
+<div class='part padding margin_top'>
+  <h3>Bolongu! statistics</h3>
+  
+  <p><label>Users</label> <%= Account.count %></p>
+  <p><label>Friendships</label> <%= Friendship.count %></p>
+  <p><label>Posts</label> <%= Post.count %></p>
+  <p><label>Things</label> <%= Thing.count %></p>
+  <p><label>Galleries</label> <%= Gallery.count %></p>
+  <p><label>Gallery Photos</label> <%= GalleryPhoto.count %></p>
+  <p><label>Bookmarks</label> <%= Bookmark.count %></p>
+  <p><label>Tweets</label> <%= Tweet.count %></p>
+  <p><label>Scraps</label> <%= Scrap.count %></p>
+  <p><label>Comments</label> <%= Comment.count %></p>
+  <p><label>Tags</label> <%= Tag.count %></p>
+  <p><label>Taggings</label> <%= Tagging.count %></p>
 </div>
