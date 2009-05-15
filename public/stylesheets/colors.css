@@ -39,6 +39,6 @@ pre { background-color: #eee; }
 
 .filter_menu_item a:hover { color: #FFF; }
 
-.current_filter_menu_item, .currentfilter_menu_item:hover { background-color: #FFF; }
+.current_filter_menu_item, .current_filter_menu_item:hover { background-color: #FFF; }
 
 .current_filter_menu_item a, .current_filter_menu_item a:hover, .current_filter_menu_item a:visited { color: #000; }
