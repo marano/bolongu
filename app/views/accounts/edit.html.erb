@@ -12,7 +12,7 @@
     <%= f.text_field :name, :class => 'input' %></p>
     
     <p><%= label_tag :bio %><br/>
-    <%= f.text_field :bio, :class => 'input' %></p>
+    <%= f.text_field :bio, :class => 'input long_input' %></p>
 
     <p>
       <% if current_account.avatar.file?  %>
@@ -25,7 +25,7 @@
     </p>
 
     <p><%= label_tag :blog_title %><br/>
-    <%= f.text_field :blog_title, :class => 'input' %></p>
+    <%= f.text_field :blog_title, :class => 'input long_input' %></p>
 
     <p><%= label_tag :login %><br/>
     <%= @account.login %></p>

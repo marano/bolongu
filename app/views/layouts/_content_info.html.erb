@@ -1,7 +1,7 @@
 <% unless content.tags.empty? %>
   <div class='content_tags part'>
     <p>
-      <span class='tag_icon'></span><label>Tags</label>
+      <span class='tag_icon'></span>
       <% content.tags.each_with_index do |tag, index| %>
         <%= link_to tag.name, tag %><%= ', ' if index < content.tags.size - 1 %>
       <% end %>

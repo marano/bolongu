@@ -7,10 +7,15 @@ class TwitterController < ApplicationController
     render 'blog'
   end
   
-  def blog    
-    @tweets = current_account.twitter_client.user_timeline(:id => params[:id])
-    @user = current_account.twitter_client.user(params[:id])
-    render 'blog'
+  def blog
+    if logged_in?
+      @tweets = current_account.twitter_client.user_timeline(:id => params[:id])
+      @user = current_account.twitter_client.user(params[:id])
+      render 'blog'
+    else
+      flash[:error] = 'You need to be logged in!'
+      redirect_to :back
+    end
   end
 
   def activate
@@ -55,7 +60,16 @@ class TwitterController < ApplicationController
   end
   
   def show
-    @tweet = current_account.twitter_client.status(params[:id])
+    if logged_in?
+      if current_account.twitter_active
+        @tweet = current_account.twitter_client.status(params[:id])
+      else
+        flash[:error] = 'You need to activate Twitter at your account!'
+      end
+    else
+      flash[:error] = 'You need to be logged in!'
+      redirect_to :back
+    end
   end
   
   def fav

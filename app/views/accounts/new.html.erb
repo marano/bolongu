@@ -10,9 +10,12 @@
 
   <p><%= label_tag 'name' %><br/>
   <%= f.text_field :name, :class => 'input' %></p>
+  
+  <p><%= label_tag :bio %><br/>
+  <%= f.text_field :bio, :class => 'input long_input' %></p>
 
   <p><%= label_tag 'blog title' %><br/>
-  <%= f.text_field :blog_title, :class => 'input' %></p>
+  <%= f.text_field :blog_title, :class => 'input long_input' %></p>
 
   <p><%= label_tag 'login' %><br/>
   <%= f.text_field :login, :class => 'input' %></p>
