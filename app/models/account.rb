@@ -39,7 +39,7 @@ class Account < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :bio, :password, :password_confirmation, :blog_title, :avatar, :twitter_token, :twitter_secret, :twitter_active
+  attr_accessible :login, :email, :name, :bio, :password, :password_confirmation, :blog_title, :avatar, :twitter_token, :twitter_secret, :twitter_active, :style_text_color, :style_link_color, :style_active_color, :style_bg_color, :style_content_bg_color
 
   def twitter_oauth
     @twitter_oauth ||= Twitter::OAuth.new(TwitterConfig['token'], TwitterConfig['secret'])

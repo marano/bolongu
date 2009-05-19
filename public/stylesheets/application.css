@@ -58,7 +58,10 @@ pre {
   width: 964px;
 }
 
-.part { border: solid 1px rgb(255,255,255); }
+.part {
+  border-width: 1px;
+  border-style: solid;
+}
 
 #content {}
 

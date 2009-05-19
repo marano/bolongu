@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.about '/about', :controller => 'home', :action => 'about'
   
   map.colors '/style/colors.:format', :controller => 'style', :action => 'colors'
+  map.colors '/style/:account_id/colors.:format', :controller => 'style', :action => 'colors'
   
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'

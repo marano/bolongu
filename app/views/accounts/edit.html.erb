@@ -1,3 +1,5 @@
+<% javascript 'jscolor/jscolor.js'  %>
+
 <div class='part padding margin_bottom'>
   <h1 class='user_edit_title'>Account Settings</h1>
 </div>
@@ -40,6 +42,24 @@
       <% else %>      
         Off <%= link_to 'activate', activate_twitter_path %>
       <% end %>
+    </p>
+    
+    <h3>Theme</h3>
+    <p>
+      <%= label_tag :style_text_color %>
+      <%= f.text_field :style_text_color, :class => 'input color' %><br/>
+      
+      <%= label_tag :style_link_color %>
+      <%= f.text_field :style_link_color, :class => 'input color' %><br/>
+      
+      <%= label_tag :style_active_color %>
+      <%= f.text_field :style_active_color, :class => 'input color' %><br/>
+      
+      <%= label_tag :style_bg_color %>
+      <%= f.text_field :style_bg_color, :class => 'input color' %><br/>
+      
+      <%= label_tag :style_content_bg_color %>
+      <%= f.text_field :style_content_bg_color, :class => 'input color' %><br/>
     </p>
 
     <p><%= label_tag :password %><br/>

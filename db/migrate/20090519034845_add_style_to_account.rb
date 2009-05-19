@@ -7,11 +7,11 @@ class AddStyleToAccount < ActiveRecord::Migration
     add_column :accounts, :style_content_bg_color, :string
     
     Account.all.each do |account|      
-      account.style_text_color = "##{DefaultThemeConfig['text_color']}"
-      account.style_link_color = "##{DefaultThemeConfig['link_color']}"
-      account.style_active_color = "##{DefaultThemeConfig['active_color']}"
-      account.style_bg_color = "##{DefaultThemeConfig['bg_color']}"
-      account.style_content_bg_color = "##{DefaultThemeConfig['content_bg_color']}"
+      account.style_text_color = "#{DefaultThemeConfig['text_color']}"
+      account.style_link_color = "#{DefaultThemeConfig['link_color']}"
+      account.style_active_color = "#{DefaultThemeConfig['active_color']}"
+      account.style_bg_color = "#{DefaultThemeConfig['bg_color']}"
+      account.style_content_bg_color = "#{DefaultThemeConfig['content_bg_color']}"
       account.save
     end
   end
