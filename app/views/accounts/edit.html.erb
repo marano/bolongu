@@ -35,39 +35,43 @@
     <p><%= label_tag :email %><br/>
     <%= @account.email %></p>
     
+    <h3><span class='tweet_icon'></span>Twitter</h3>
+    
     <p>
-      <%= label_tag :twitter_active, 'Twitter' %>
+      <%= label_tag :twitter_active, 'Status' %>
       <% if @account.twitter_active %>
         On <%= link_to 'deactivate', deactivate_twitter_path %>
       <% else %>      
         Off <%= link_to 'activate', activate_twitter_path %>
       <% end %>
-    </p>
-    
-    <h3>Theme</h3>
-    <%= link_to 'restore', restore_default_theme_path, :method => :put %>
-    <p>
-      <%= label_tag :style_text_color %><br/>
-      <%= f.text_field :style_text_color, :class => 'input color' %><br/>
-      
-      <%= label_tag :style_link_color %><br/>
-      <%= f.text_field :style_link_color, :class => 'input color' %><br/>
-      
-      <%= label_tag :style_active_color %><br/>
-      <%= f.text_field :style_active_color, :class => 'input color' %><br/>
-      
-      <%= label_tag :style_bg_color %><br/>
-      <%= f.text_field :style_bg_color, :class => 'input color' %><br/>
-      
-      <%= label_tag :style_content_bg_color %><br/>
-      <%= f.text_field :style_content_bg_color, :class => 'input color' %><br/>
-    </p>
+    </p>    
+
+    <h3>Password</h3>
 
     <p><%= label_tag :password %><br/>
     <%= f.password_field :password, :class => 'input' %></p>
 
     <p><%= label_tag :password_confirmation, 'Confirm Password' %><br/>
     <%= f.password_field :password_confirmation, :class => 'input' %></p>
+    
+    <h3>Theme</h3>
+    <%= link_to 'restore', restore_default_theme_path, :method => :put %>
+    <p>
+      <%= label_tag :style_text_color, 'text' %><br/>
+      <%= f.text_field :style_text_color, :class => 'input color' %><br/>
+      
+      <%= label_tag :style_link_color, 'link' %><br/>
+      <%= f.text_field :style_link_color, :class => 'input color' %><br/>
+      
+      <%= label_tag :style_active_color, 'active' %><br/>
+      <%= f.text_field :style_active_color, :class => 'input color' %><br/>
+      
+      <%= label_tag :style_bg_color, 'background' %><br/>
+      <%= f.text_field :style_bg_color, :class => 'input color' %><br/>
+      
+      <%= label_tag :style_content_bg_color, 'content background' %><br/>
+      <%= f.text_field :style_content_bg_color, :class => 'input color' %><br/>
+    </p>
 
     <p><%= submit_tag 'Update', :class => 'button bg_color', :disable_with => 'Updating...' %></p>
   <% end -%>
