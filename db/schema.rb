@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090514172700) do
+ActiveRecord::Schema.define(:version => 20090519034845) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(:version => 20090514172700) do
     t.boolean  "twitter_active",                           :default => false
     t.string   "twitter_token"
     t.string   "twitter_secret"
+    t.string   "style_text_color"
+    t.string   "style_link_color"
+    t.string   "style_active_color"
+    t.string   "style_bg_color"
+    t.string   "style_content_bg_color"
   end
 
   add_index "accounts", ["login"], :name => "index_accounts_on_login", :unique => true

@@ -43,3 +43,4 @@ Rails::Initializer.run do |config|
 end
 
 TwitterConfig = YAML.load(File.read(Rails.root + 'config' + 'twitter.yml'))
+DefaultThemeConfig = YAML.load(File.read(Rails.root + 'config' + 'default_theme.yml'))

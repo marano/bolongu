@@ -1,9 +1,22 @@
+<%  
+  @base = @text
+  @bg = @bg
+  @link = @link
+  @link_hover = @active
+  @button_hover = @active
+  @content_bg = @content_bg
+  @button_base = @content_bg
+  @menu_hover_bg = @active
+  @menu_link = @content_bg
+  @menu_link_hover = @content_bg
+  @current_menu_bg = @content_bg
+  @current_menu_link = @text 
+%>
+
 body { color: <%= @base %>; }
 
-a { color: <%= @link %>; }
-a:active { color: <%= @link_hover %>; }
-a:visited { color: <%= @link %>; }
-a:hover { color: <%= @link_hover %>; }
+a, a:visited { color: <%= @link %>; }
+a:active, a:hover { color: <%= @link_hover %>; }
 
 hr { background-color: #999; }
 
