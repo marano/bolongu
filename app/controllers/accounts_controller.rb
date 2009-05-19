@@ -1,5 +1,14 @@
 class AccountsController < ApplicationController
 
+  def restore_default_theme
+    if current_account.load_default_theme!
+      flash[:notice] = 'Default theme restored!'
+    else
+      flash[:error] = 'Default theme couldnt be restored!'
+    end
+    redirect_to edit_account_path(current_account)
+  end
+
   def account_index
     @show = params[:show]
     if account_from_path

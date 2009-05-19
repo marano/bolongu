@@ -5,6 +5,8 @@ class Account < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
+  after_create :load_default_theme!
+
   has_many :posts, :dependent => :destroy, :limit => 10, :order => 'created_at desc', :foreign_key => 'author_id'
   has_many :friendships, :dependent => :destroy, :include => :friend
   has_many :friends, :through => :friendships, :source => :friend, :order => 'last_login DESC'
@@ -123,6 +125,15 @@ class Account < ActiveRecord::Base
   
   def to_s
     name
+  end
+  
+  def load_default_theme!
+    self.style_text_color = "#{::DefaultThemeConfig['text_color']}"
+    self.style_link_color = "#{::DefaultThemeConfig['link_color']}"
+    self.style_active_color = "#{::DefaultThemeConfig['active_color']}"
+    self.style_bg_color = "#{::DefaultThemeConfig['bg_color']}"
+    self.style_content_bg_color = "#{::DefaultThemeConfig['content_bg_color']}"
+    save
   end
   
   def friend_ids_as_string

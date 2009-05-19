@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.forgot_password '/forgot_password', :controller => 'accounts', :action => 'forgot_password', :conditions => { :method => :get }
   map.send_password '/send_password', :controller => 'accounts', :action => 'send_password', :conditions => { :method => :post }
   #map.reset_password '/reset_password', :controller => 'accounts', :action => 'reset_password'
+  map.restore_default_theme '/restore_theme', :controller => 'accounts', :action => 'restore_default_theme', :conditions => { :method => :put }
 
   map.resources :accounts, :except => [ :index, :show ] do |account|
     account.resources :things, :only => [ :index ]
