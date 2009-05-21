@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   rescue_from Twitter::TwitterError, :with => :twitter_unauthorized
   rescue_from Timeout::Error, :with => :timeout_error
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found_error
-  rescue_from Exception, :with => :manage_error
+  #rescue_from Exception, :with => :manage_error
 
   protected
 
