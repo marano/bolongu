@@ -85,7 +85,7 @@ jQuery(function($) {
     var pieces = $(this).attr('rel').split(':$;:');
     var screen_name = pieces[0];
     var text = pieces[1];
-    $('#text').focus().val('RT ' + screen_name + ' ' + text);
+    $('#text').focus().val('RT @' + screen_name + ' ' + text);
     $('label[for=text]').text('Retweet ' + screen_name);
     return false;
   });
