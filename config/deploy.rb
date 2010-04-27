@@ -62,6 +62,7 @@ end
 desc "Garante que o database.yml foi corretamente configurado"
 task :before_symlink do
   on_rollback {}
+
   run "test -d #{release_path}/tmp || mkdir -m 755 #{release_path}/tmp"
   run "test -d #{release_path}/db || mkdir -m 755 #{release_path}/db"
   #Copia também a configuração do email de envio
