@@ -226,7 +226,7 @@ module ActionView
     class JavaScriptElementProxy < JavaScriptProxy #:nodoc:
       
       unless const_defined? :JQUERY_VAR
-        JQUERY_VAR = ActionView::Helpers::PrototypeHelper::JQUERY_VAR
+        JQUERY_VAR = PrototypeHelper::JQUERY_VAR
       end
       
       def initialize(generator, id)
@@ -260,7 +260,7 @@ module ActionView
     class JavaScriptElementCollectionProxy < JavaScriptCollectionProxy #:nodoc:\
       
       unless const_defined? :JQUERY_VAR
-        JQUERY_VAR = ActionView::Helpers::PrototypeHelper::JQUERY_VAR
+        JQUERY_VAR = PrototypeHelper::JQUERY_VAR
       end
       
       def initialize(generator, pattern)
@@ -271,7 +271,7 @@ module ActionView
     module ScriptaculousHelper
       
       unless const_defined? :JQUERY_VAR
-        JQUERY_VAR = ActionView::Helpers::PrototypeHelper::JQUERY_VAR
+        JQUERY_VAR = PrototypeHelper::JQUERY_VAR
       end
       
       unless const_defined? :SCRIPTACULOUS_EFFECTS

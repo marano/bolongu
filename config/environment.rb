@@ -17,9 +17,12 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on and have them installed with rake gems:install
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
+  config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "xml-simple", :lib => "xmlsimple"
+  #config.gem "oauth 0.3.4", :lib => "oauth"#, :version => "0.3.4"
+  #config.gem "mash 0.1.1", :lib => "mash"#, :version => "0.1.1"
+  #config.gem "httparty 0.4.3", :lib => "httparty", :version => "0.4.3"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -44,3 +47,5 @@ end
 
 TwitterConfig = YAML.load(File.read(Rails.root + 'config' + 'twitter.yml'))
 DefaultThemeConfig = YAML.load(File.read(Rails.root + 'config' + 'default_theme.yml'))
+
+CAPTCHA_SALT = ':(A#%&:OU%OAI#%UG#%FAGFCUESFDAISYdAydosdoa*Sy87dy78#DASFd'

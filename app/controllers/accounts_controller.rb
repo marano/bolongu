@@ -1,5 +1,7 @@
 class AccountsController < ApplicationController
 
+  validates_captcha
+
   def restore_default_theme
     if current_account.load_default_theme!
       flash[:notice] = 'Default theme restored!'
@@ -65,6 +67,11 @@ class AccountsController < ApplicationController
   def create
     logout_keeping_session!
     @account = Account.new(params[:account])
+    unless captcha_validated?      
+      flash[:error] = "You're a robot! Aren't you?"
+      render :action => 'new'
+      return
+    end
     success = @account && @account.save
     if success && @account.errors.empty?
       redirect_back_or_default('/')

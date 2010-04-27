@@ -29,6 +29,9 @@
   <p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
   <%= f.password_field :password_confirmation, :class => 'input' %></p>
 
+  <p><%= captcha_input_text 'Are you human? ' %><br />
+  <%= captcha_image %></p>
+
   <p><%= submit_tag 'Sign up', :class => 'button bg_color', :disable_with => 'Signing up...' %></p>
   <% end -%>
   
