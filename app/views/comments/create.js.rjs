@@ -1,3 +1,7 @@
-page.insert_html :top, :comments, :partial => @comment
-page[@comment].visual_effect :highlight
-page[:new_comment].reset 
+unless @spam
+  page.insert_html :top, :comments, :partial => @comment
+  page[@comment].visual_effect :highlight
+  page[:new_comment].reset 
+end
+
+page.replace_html "notification_message", :partial => "layouts/notification_message"

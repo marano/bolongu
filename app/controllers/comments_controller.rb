@@ -6,12 +6,26 @@ class CommentsController < ApplicationController
 
   def create
     @comment = find_commentable.comments.build(params[:comment])
+    
+    if not logged_in? and @comment.spam?
+      @spam = true
+      flash[:error] = "You're a robot! Aren't you?"
+      
+      respond_to do |format|
+        format.html { redirect_to @comment.commentable }
+        format.xml  { head :ok }
+        format.js
+      end
+      
+      return
+    end
 
     if logged_in?
       @comment.author = current_account
     end
 
     if @comment.save
+      flash[:notice] = 'Thank you for commenting!'
       @comment.send_notification(url_for(@comment))
       
       respond_to do |format|

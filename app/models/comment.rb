@@ -6,6 +6,8 @@ class Comment < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
   
   validates_presence_of :body
+  
+  acts_as_snook :author_field => :name
 
   alias :account :author
 

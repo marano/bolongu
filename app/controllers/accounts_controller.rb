@@ -67,7 +67,7 @@ class AccountsController < ApplicationController
   def create
     logout_keeping_session!
     @account = Account.new(params[:account])
-    unless captcha_validated?      
+    unless captcha_validated?
       flash[:error] = "You're a robot! Aren't you?"
       render :action => 'new'
       return

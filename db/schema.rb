@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090519034845) do
+ActiveRecord::Schema.define(:version => 20100429181001) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20090519034845) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.boolean  "read",             :default => false
+    t.string   "spam_status"
   end
 
   create_table "friendships", :force => true do |t|
